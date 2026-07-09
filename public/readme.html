@@ -4,7 +4,7 @@
 :root{--bg:#0d1117;--panel:#151b23;--text:#f0f3f6;--muted:#a8b3bf;--line:#303946;--accent:#f0c36a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#182233 0,var(--bg) 42rem);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main,footer{max-width:960px;margin:0 auto;padding:1.2rem}main{padding-top:2rem}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:.3rem 0 1rem}h2{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--accent)}h3{color:var(--text);margin-top:1.5rem}p,li{color:var(--muted)}strong{color:var(--text)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}pre{background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem;overflow:auto;color:var(--text)}code{background:rgba(255,255,255,.06);border-radius:7px;padding:.1rem .35rem}pre code{background:none;padding:0}blockquote{border-left:3px solid var(--accent);padding:.5rem 1rem;background:rgba(240,195,106,.08);color:var(--text);border-radius:10px}.top{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.pill{display:inline-flex;border:1px solid var(--line);background:#1f2630;border-radius:999px;padding:.3rem .7rem;color:var(--muted);font-size:.9rem}.footer-line{border-top:1px solid var(--line);padding-top:1rem;color:var(--muted)}
 </style></head>
 <body><main><div class="top"><a class="pill" href="index.html">← Dashboard</a><a class="pill" href="README.md">Raw README.md</a></div><h1>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</h1>
-<p><strong>MARD-HAT</strong> is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC and botnet/C2 pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in <strong>Magic Paws / MARD-Eu</strong>.</p>
+<p><strong>MARD-HAT</strong> is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in <strong>Magic Paws / MARD-Eu</strong>.</p>
 <p>MARD-HAT does <strong>not</strong> attribute activity to a state actor. It does <strong>not</strong> prove sabotage, disinformation, or hybrid activity by itself. A high score should be treated as a prompt for further analysis, not as a conclusion.</p>
 <h2>Positioning</h2>
 <p>MARD-HAT does not compete with professional influence-operation platforms, government counter-FIMI units, large commercial narrative-intelligence systems, or full cyber threat-intelligence platforms. Their data breadth, platform access, analyst teams and commercial tooling are much larger.</p>
@@ -68,7 +68,7 @@ Cyber / botnet pressure
 <li>historical approximation where possible.</li>
 </ul>
 <h3>v0.1.4 — FIMI-lite</h3>
-<p>The next planned layer is FIMI-lite:</p>
+<p>The active FIMI-lite layer uses:</p>
 <pre><code>
 GDELT = fast narrative and media-spike sensor
 
@@ -77,7 +77,7 @@ EUvsDisinfo = curated and validated disinformation case source
 DISARM = structured FIMI taxonomy and tagging model
 
 </code></pre>
-<p>This will make the Disinformation Alert Level more meaningful. Until then, the level should be read as a proxy derived mainly from cyber/IOC and botnet/C2 telemetry.</p>
+<p>This makes the Disinformation Alert Level more meaningful, but it remains a contextual early-warning indicator. GDELT measures narrative/media volume; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. None of these alone prove coordination or attribution.</p>
 <h3>Later phases</h3>
 <p>Later candidates include additional social-media or web intelligence sources, such as Open Measures or comparable platforms, depending on access, cost, legality, licensing and operational usefulness.</p>
 <h2>Outputs</h2>

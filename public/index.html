@@ -122,9 +122,9 @@
 </head>
 <body>
   <header>
-    <div class="eyebrow">MARD-HAT v0.1.3a // Public OSINT telemetry</div>
+    <div class="eyebrow">MARD-HAT v0.1.4 // Public OSINT telemetry</div>
     <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
-    <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC and botnet/C2 pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
+    <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
 
   <main>
@@ -151,7 +151,12 @@
       <article class="card span6">
         <div class="label">Disinformation Alert Level</div>
         <div id="dal" class="dal"></div>
-        <p id="dalnote" class="muted small">Loading proxy level.</p>
+        <p id="dalnote" class="muted small">Loading FIMI-lite level.</p>
+      </article>
+
+      <article class="card span12">
+        <div class="label">FIMI-lite crawl summary</div>
+        <div id="fimi" class="small muted">Loading FIMI-lite crawl results.</div>
       </article>
 
       <article class="card span6">
@@ -209,8 +214,11 @@
       kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely recent known-exploited vulnerabilities are to be exploited broadly.',
       threatfox_ioc_current: 'ThreatFox IOC pressure calibrated against the historical approximation. It indicates how unusual the current IOC reporting density is compared with recent history.',
       threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure over the last 36 hours. Uses historical percentile calibration where available; otherwise a conservative capped fallback is used. It is not attribution by itself.',
-      epss_hot_global: 'Context only. Counts globally hot EPSS entries returned by the high-percentile query. It is not used as a pressure bar in v0.1.3.',
-      source_coverage: 'Context only. Shows how many configured telemetry sources are reachable. It is source health, not activity pressure.'
+      epss_hot_global: 'Context only. Counts globally hot EPSS entries returned by the high-percentile query. It is not used as a pressure bar in v0.1.4.',
+      source_coverage: 'Context only. Shows how many configured telemetry sources are reachable. It is source health, not activity pressure.',
+      gdelt_narrative_pressure: 'FIMI-lite context. GDELT narrative-volume pressure for configured maritime/hybrid queries over the configured window. GDELT does not classify disinformation by itself.',
+      euvsdisinfo_case_signal: 'FIMI-lite context. EUvsDisinfo curated case exposure for maritime/hybrid queries. Implemented through domain-restricted GDELT ArticleList queries.',
+      disarm_tag_relevance: 'FIMI-lite context. Local DISARM-aligned keyword mapping used to structure observed narratives into transparent categories.'
     };
 
     const SCORE_PART_LABELS = {
@@ -220,7 +228,10 @@
       threatfox_ioc_current: 'ThreatFox IOC pressure, current',
       threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure, 36h',
       epss_hot_global: 'Global EPSS hot set',
-      source_coverage: 'Source coverage / health'
+      source_coverage: 'Source coverage / health',
+      gdelt_narrative_pressure: 'GDELT narrative pressure',
+      euvsdisinfo_case_signal: 'EUvsDisinfo case signal',
+      disarm_tag_relevance: 'DISARM-aligned tag relevance'
     };
 
     const BOT_HELP = {
@@ -314,6 +325,31 @@
       $('dal').innerHTML = [0,1,2,3].map(n => `<span class="dal-num dal-${n} ${n === active ? 'dal-active' : ''}">${n}</span>`).join('');
       $('dalnote').textContent = `Level ${active}: ${dal?.label ?? '--'} · ${dal?.note ?? 'Proxy-based level.'}`;
     }
+
+    function renderFimi(fimi) {
+      if (!fimi || !fimi.enabled) {
+        $('fimi').innerHTML = '<p>FIMI-lite sources are disabled or unavailable.</p>';
+        return;
+      }
+      const tags = Array.isArray(fimi.disarm_aligned?.tags)
+        ? fimi.disarm_aligned.tags.slice(0, 5).map(t => `${escapeHtml(t.label)} (${escapeHtml(t.count)})`).join(', ')
+        : '';
+      const domains = Array.isArray(fimi.gdelt?.top_domains)
+        ? fimi.gdelt.top_domains.slice(0, 5).map(d => `${escapeHtml(d.name)} (${escapeHtml(d.count)})`).join(', ')
+        : '';
+      const sample = Array.isArray(fimi.euvsdisinfo?.sample)
+        ? fimi.euvsdisinfo.sample.slice(0, 4).map(a => `<li>${a.url ? `<a href="${escapeHtml(a.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(a.title || a.url)}</a>` : escapeHtml(a.title || 'untitled')}</li>`).join('')
+        : '';
+      $('fimi').innerHTML = `
+        <p>FIMI-lite score: <strong>${fimi.score ?? 0}</strong> · confidence <strong>${escapeHtml(fimi.confidence || 'low')}</strong> · mode <code>${escapeHtml(fimi.mode || '--')}</code></p>
+        <p>GDELT narrative watch: <strong>${fimi.gdelt?.unique_articles ?? 0}</strong> unique articles in ${escapeHtml(fimi.gdelt?.timespan || '--')} across ${escapeHtml(fimi.gdelt?.query_count ?? '--')} queries.</p>
+        <p>EUvsDisinfo case watch: <strong>${fimi.euvsdisinfo?.candidate_count ?? 0}</strong> candidate items in ${escapeHtml(fimi.euvsdisinfo?.timespan || '--')}.</p>
+        <p>DISARM-aligned tags: <strong>${fimi.disarm_aligned?.tag_count ?? 0}</strong>${tags ? ` · ${tags}` : ''}</p>
+        ${domains ? `<p>Top GDELT domains: ${domains}</p>` : ''}
+        ${sample ? `<p>EUvsDisinfo sample:</p><ul>${sample}</ul>` : ''}
+        <p class="muted">${escapeHtml(fimi.note || 'Context only. Not attribution-grade.')}</p>
+      `;
+    }
     function renderMetrics(metrics) {
       const kev = metrics?.kev || {};
       const epss = metrics?.epss || {};
@@ -334,6 +370,9 @@
         <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong>${hist.fallback_limited ? ' <span class="muted">· fallback limited</span>' : ''}</p>
         <p>ThreatFox export items: <strong>${hist.source_items ?? '--'}</strong></p>
         <p>ThreatFox 36h bot/C2 count: <strong>${hist.current_36h_botnet_c2_count ?? '--'}</strong></p>
+        <p>FIMI-lite score: <strong>${metrics?.fimi_lite?.score ?? '--'}</strong></p>
+        <p>GDELT unique articles: <strong>${metrics?.fimi_lite?.gdelt?.unique_articles ?? '--'}</strong></p>
+        <p>EUvsDisinfo candidates: <strong>${metrics?.fimi_lite?.euvsdisinfo?.candidate_count ?? '--'}</strong></p>
         ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
       `;
     }
@@ -372,9 +411,10 @@
       renderParts('contextparts', latest.context_parts, true);
       renderBotState(latest.bot_activity_state || {});
       renderDal(latest.disinformation_alert_level || {});
+      renderFimi(latest.metrics?.fimi_lite || {});
       renderMetrics(latest.metrics);
       renderSources(latest.source_health);
-      $('roadmap').textContent = latest.roadmap?.next || 'v0.1.4: FIMI-lite with EUvsDisinfo, GDELT and DISARM.';
+      $('roadmap').textContent = latest.roadmap?.next || 'v0.1.5: refine FIMI-lite calibration and optional URLhaus.';
       renderChart(history);
       setInterval(updateGeneratedLine, 60000);
     }
