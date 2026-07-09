@@ -1,1 +1,201 @@
-zhgv
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MARD-HAT // Hybrid Activity Telemetry</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #151b23;
+      --panel2: #1f2630;
+      --text: #f0f3f6;
+      --muted: #a8b3bf;
+      --line: #303946;
+      --accent: #f0c36a;
+      --ok: #64d78a;
+      --warn: #ffd166;
+      --high: #ff9f5a;
+      --crit: #ff6b6b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #182233 0, var(--bg) 42rem);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    header, main, footer { max-width: 1120px; margin: 0 auto; padding: 1.2rem; }
+    header { padding-top: 2rem; }
+    .eyebrow { color: var(--accent); letter-spacing: .08em; text-transform: uppercase; font-size: .78rem; font-weight: 700; }
+    h1 { margin: .25rem 0 .5rem; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; }
+    .lead { color: var(--muted); max-width: 830px; font-size: 1.05rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(12, 1fr); }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+    .span4 { grid-column: span 4; }
+    .span6 { grid-column: span 6; }
+    .span8 { grid-column: span 8; }
+    .span12 { grid-column: span 12; }
+    @media (max-width: 820px) { .span4, .span6, .span8 { grid-column: span 12; } }
+    .score { font-size: clamp(3.8rem, 12vw, 7rem); line-height: .9; font-weight: 850; letter-spacing: -.07em; }
+    .label { color: var(--muted); font-size: .88rem; text-transform: uppercase; letter-spacing: .05em; }
+    .pill { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--line); background: var(--panel2); border-radius: 999px; padding: .25rem .6rem; color: var(--muted); font-size: .86rem; }
+    .level-normal { color: var(--ok); }
+    .level-elevated, .level-watch { color: var(--warn); }
+    .level-high { color: var(--high); }
+    .level-critical { color: var(--crit); }
+    .parts { display: grid; gap: .75rem; }
+    .bar { height: .7rem; background: #0b0f15; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+    .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--ok), var(--warn), var(--high), var(--crit)); }
+    .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+    code, pre { background: rgba(255,255,255,.06); border-radius: 8px; padding: .12rem .35rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { padding-left: 1.15rem; }
+    .muted { color: var(--muted); }
+    .small { font-size: .9rem; }
+    svg { width: 100%; height: 160px; display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">MARD-HAT v0.1 // Public OSINT telemetry</div>
+    <h1>Hybrid Activity Telemetry</h1>
+    <p class="lead">A cost-neutral, public, open-source telemetry layer for cyber/exploit pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
+  </header>
+
+  <main>
+    <section class="grid">
+      <article class="card span4">
+        <div class="label">HAT score</div>
+        <div id="score" class="score">--</div>
+        <p><span id="level" class="pill">loading</span> <span id="confidence" class="pill">confidence --</span></p>
+        <p id="generated" class="muted small">Generated: --</p>
+      </article>
+
+      <article class="card span8">
+        <div class="row"><div class="label">Trend history</div><span id="trend" class="pill">trend --</span></div>
+        <svg id="chart" viewBox="0 0 800 160" preserveAspectRatio="none" aria-label="HAT score history"></svg>
+        <p id="baseline" class="muted small">Baseline: --</p>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Score parts</div>
+        <div id="parts" class="parts"></div>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Main drivers</div>
+        <ul id="drivers"></ul>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Key metrics</div>
+        <div id="metrics" class="small"></div>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Source health</div>
+        <div id="sources" class="small"></div>
+      </article>
+
+      <article class="card span12">
+        <div class="label">Claim limit</div>
+        <p id="claim" class="muted">Loading.</p>
+        <p class="small muted">Suggested use: feed <code>hat_latest.json</code> into Magic Paws as a side indicator first. Only mix into the main Hybrid Index after a baseline period.</p>
+        <p class="small"><a href="hat_latest.json">latest JSON</a> · <a href="hat_history.json">history JSON</a> · <a href="hat_source_health.json">source health JSON</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="muted small">
+    <p>MARD-HAT is a public experimental telemetry project. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation.</p>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fmtDate = (s) => s ? new Date(s).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '--';
+
+    function levelClass(level) {
+      return `level-${String(level || '').toLowerCase()}`;
+    }
+
+    function renderChart(history) {
+      const svg = $('chart');
+      svg.innerHTML = '';
+      if (!Array.isArray(history) || history.length < 2) {
+        svg.innerHTML = '<text x="10" y="85" fill="#a8b3bf">Not enough history yet.</text>';
+        return;
+      }
+      const points = history.slice(-60).map((d, i, arr) => {
+        const x = arr.length === 1 ? 0 : (i / (arr.length - 1)) * 780 + 10;
+        const y = 145 - (Math.max(0, Math.min(100, d.hat_score || 0)) / 100) * 130;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(' ');
+      svg.innerHTML = `
+        <line x1="10" y1="145" x2="790" y2="145" stroke="#303946" />
+        <line x1="10" y1="80" x2="790" y2="80" stroke="#303946" stroke-dasharray="5 5" />
+        <line x1="10" y1="15" x2="790" y2="15" stroke="#303946" />
+        <polyline fill="none" stroke="#f0c36a" stroke-width="4" points="${points}" />
+      `;
+    }
+
+    function renderParts(parts) {
+      $('parts').innerHTML = Object.entries(parts || {}).map(([key, value]) => `
+        <div>
+          <div class="row"><span>${key.replaceAll('_', ' ')}</span><strong>${value}</strong></div>
+          <div class="bar"><div class="fill" style="width:${Math.max(0, Math.min(100, value))}%"></div></div>
+        </div>
+      `).join('');
+    }
+
+    function renderMetrics(metrics) {
+      const kev = metrics?.kev || {};
+      const epss = metrics?.epss || {};
+      $('metrics').innerHTML = `
+        <p>Total KEV: <strong>${kev.total_kev ?? '--'}</strong></p>
+        <p>Recent KEV 7d: <strong>${kev.recent_7d ?? '--'}</strong></p>
+        <p>Recent KEV 30d: <strong>${kev.recent_30d ?? '--'}</strong></p>
+        <p>Mean EPSS, recent KEV: <strong>${kev.epss_mean_recent_kev ?? '--'}</strong></p>
+        <p>Hot EPSS global count: <strong>${epss.hot_global_count ?? '--'}</strong></p>
+      `;
+    }
+
+    function renderSources(sources) {
+      $('sources').innerHTML = (sources || []).map(s => `
+        <p><strong>${s.source}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${s.status}</span>${typeof s.count === 'number' ? ` · ${s.count}` : ''}</p>
+      `).join('');
+    }
+
+    async function main() {
+      const [latest, history] = await Promise.all([
+        fetch('hat_latest.json', { cache: 'no-store' }).then(r => r.json()),
+        fetch('hat_history.json', { cache: 'no-store' }).then(r => r.json()).catch(() => [])
+      ]);
+      $('score').textContent = latest.hat_score ?? '--';
+      $('level').textContent = latest.level ?? 'unknown';
+      $('level').className = `pill ${levelClass(latest.level)}`;
+      $('confidence').textContent = `confidence ${latest.confidence ?? '--'}`;
+      $('trend').textContent = `trend ${latest.trend ?? '--'}`;
+      $('generated').textContent = `Generated: ${fmtDate(latest.generated_at)}`;
+      $('baseline').textContent = `Baseline: ${latest.baseline?.status ?? '--'} · points ${latest.baseline?.points ?? 0} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
+      $('claim').textContent = latest.assessment?.claim_limit || 'Contextual indicator only.';
+      $('drivers').innerHTML = (latest.drivers || []).map(d => `<li>${d}</li>`).join('');
+      renderParts(latest.score_parts);
+      renderMetrics(latest.metrics);
+      renderSources(latest.source_health);
+      renderChart(history);
+    }
+    main().catch(err => {
+      document.body.insertAdjacentHTML('afterbegin', `<pre>${String(err)}</pre>`);
+    });
+  </script>
+</body>
+</html>
