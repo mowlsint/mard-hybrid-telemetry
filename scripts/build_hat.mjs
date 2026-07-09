@@ -64,7 +64,7 @@ async function fetchText(url, label, timeoutMs = 30000) {
   try {
     const res = await fetch(url, {
       headers: {
-        'user-agent': 'mard-hybrid-telemetry/0.1.3 (+public OSINT telemetry; no attribution)'
+        'user-agent': 'mard-hybrid-telemetry/0.1.3a (+public OSINT telemetry; no attribution)'
       },
       signal: controller.signal
     });
@@ -81,7 +81,7 @@ async function fetchBinary(url, label, timeoutMs = 90000) {
   try {
     const res = await fetch(url, {
       headers: {
-        'user-agent': 'mard-hybrid-telemetry/0.1.3 (+public OSINT telemetry; no attribution)'
+        'user-agent': 'mard-hybrid-telemetry/0.1.3a (+public OSINT telemetry; no attribution)'
       },
       signal: controller.signal
     });
@@ -109,6 +109,15 @@ async function unzipToText(zipPath) {
     maxBuffer: 300 * 1024 * 1024
   });
   return stdout;
+}
+
+async function bufferToTextMaybeZip(buffer, storedPath) {
+  // ZIP files start with PK. ThreatFox/export endpoints may return either a ZIP
+  // or a plain JSON/CSV response depending on the endpoint variant.
+  if (buffer.length >= 2 && buffer[0] === 0x50 && buffer[1] === 0x4b) {
+    return await unzipToText(storedPath);
+  }
+  return buffer.toString('utf8');
 }
 
 async function fetchCisaKev(sources) {
@@ -165,7 +174,7 @@ async function postThreatFox(source, key, body, label) {
       headers: {
         'Auth-Key': key,
         'content-type': 'application/json',
-        'user-agent': 'mard-hybrid-telemetry/0.1.3'
+        'user-agent': 'mard-hybrid-telemetry/0.1.3a'
       },
       body: JSON.stringify(body),
       signal: controller.signal
@@ -274,51 +283,68 @@ function parseThreatFoxCsv(text) {
 
 async function fetchThreatFoxHistoricalExport(source, key, scoring) {
   if (!source?.historical_export_enabled) return { ok: false, status: 'disabled', items: [] };
-  const jsonUrl = source.export_json_url_template?.replace('{auth_key}', encodeURIComponent(key));
-  const csvUrl = source.export_csv_url_template?.replace('{auth_key}', encodeURIComponent(key));
 
-  // Try JSON export first. The ThreatFox export page documents full export URLs by Auth-Key;
-  // the exact JSON shape can vary, so parsing is intentionally defensive.
-  if (jsonUrl) {
-    try {
-      const zip = await fetchBinary(jsonUrl, 'threatfox_full_json_export');
-      const zipPath = path.join(RAW_DIR, `threatfox_full_json_${stamp}.zip`);
-      await fs.writeFile(zipPath, zip);
-      const text = await unzipToText(zipPath);
+  const makeCandidates = (kind) => {
+    const list = [];
+    const plural = source[`export_${kind}_url_templates`];
+    const singular = source[`export_${kind}_url_template`];
+    if (Array.isArray(plural)) list.push(...plural);
+    if (singular) list.push(singular);
+    return [...new Set(list)]
+      .filter(Boolean)
+      .map(template => template.replace('{auth_key}', encodeURIComponent(key)));
+  };
+
+  const tryCandidate = async (url, kind) => {
+    const buffer = await fetchBinary(url, `threatfox_full_${kind}_export`);
+    const ext = url.includes('.zip') ? 'zip' : kind;
+    const stored = path.join(RAW_DIR, `threatfox_full_${kind}_${stamp}.${ext}`);
+    await fs.writeFile(stored, buffer);
+    const text = await bufferToTextMaybeZip(buffer, stored);
+    if (kind === 'json') {
       const json = JSON.parse(text);
       const items = extractThreatFoxItems(json);
+      if (!items.length) throw new Error('ThreatFox JSON export parsed but returned zero items');
       return {
         ok: true,
         status: 'ok',
-        format: 'json',
+        format: url.includes('.zip') ? 'json.zip' : 'json',
         count: items.length,
-        hash: sha256(zip),
-        raw_file: path.relative(ROOT, zipPath),
+        hash: sha256(buffer),
+        raw_file: path.relative(ROOT, stored),
         items
       };
-    } catch (err) {
-      // Fall through to CSV export.
     }
-  }
-
-  if (csvUrl) {
-    const zip = await fetchBinary(csvUrl, 'threatfox_full_csv_export');
-    const zipPath = path.join(RAW_DIR, `threatfox_full_csv_${stamp}.zip`);
-    await fs.writeFile(zipPath, zip);
-    const text = await unzipToText(zipPath);
     const items = parseThreatFoxCsv(text);
+    if (!items.length) throw new Error('ThreatFox CSV export parsed but returned zero items');
     return {
       ok: true,
       status: 'ok',
-      format: 'csv',
+      format: url.includes('.zip') ? 'csv.zip' : 'csv',
       count: items.length,
-      hash: sha256(zip),
-      raw_file: path.relative(ROOT, zipPath),
+      hash: sha256(buffer),
+      raw_file: path.relative(ROOT, stored),
       items
     };
+  };
+
+  const errors = [];
+  for (const url of makeCandidates('json')) {
+    try {
+      return await tryCandidate(url, 'json');
+    } catch (err) {
+      errors.push(`json:${String(err.message || err)}`);
+    }
+  }
+  for (const url of makeCandidates('csv')) {
+    try {
+      return await tryCandidate(url, 'csv');
+    } catch (err) {
+      errors.push(`csv:${String(err.message || err)}`);
+    }
   }
 
-  return { ok: false, status: 'no_export_url', items: [] };
+  return { ok: false, status: 'error', error: errors.slice(0, 4).join(' | ') || 'no export candidate succeeded', items: [] };
 }
 
 function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previousHistory = []) {
@@ -329,6 +355,18 @@ function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previo
 
   const historicalDays = scoring.windows.threatfox_historical_days || 180;
   const botHours = scoring.windows.bot_activity_hours || 36;
+  const windowMs = botHours * 3600000;
+  const currentBegin = now.getTime() - windowMs;
+
+  // Current 36h counts can be derived from the recent 7d API response even when
+  // the full export is unavailable. This prevents using a full 7d count as a
+  // fake 36h value.
+  const recent7Parsed = day7
+    .map(item => ({ item, d: parseThreatFoxDate(item), bot: isThreatFoxBotnetC2(item) }))
+    .filter(x => x.d && x.d.getTime() <= now.getTime());
+  const recent36 = recent7Parsed.filter(x => x.d.getTime() > currentBegin && x.d.getTime() <= now.getTime());
+  const recent36Bot = recent36.filter(x => x.bot);
+
   const histRaw = Array.isArray(historicalItems) ? historicalItems : [];
   const cutoff = now.getTime() - historicalDays * 86400000;
   const hist = histRaw
@@ -349,7 +387,7 @@ function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previo
   const start = new Date(now.getTime() - historicalDays * 86400000);
   start.setUTCHours(23, 59, 59, 999);
   for (let t = start.getTime(); t <= now.getTime(); t += 86400000) endTimes.push(t);
-  const windowMs = botHours * 3600000;
+
   const rolling36Ioc = [];
   const rolling36Bot = [];
   for (const end of endTimes) {
@@ -367,24 +405,28 @@ function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previo
     rolling36Bot.push(bot);
   }
 
-  const currentBegin = now.getTime() - windowMs;
-  const current36 = hist.filter(x => x.d.getTime() > currentBegin && x.d.getTime() <= now.getTime());
-  const current36Bot = current36.filter(x => x.bot);
+  const current36 = hist.length
+    ? hist.filter(x => x.d.getTime() > currentBegin && x.d.getTime() <= now.getTime())
+    : recent36;
+  const current36Bot = hist.length
+    ? current36.filter(x => x.bot)
+    : recent36Bot;
 
   // If export parsing failed or is thin, fall back to local run history for rough percentile inputs.
   const histFromRunsIoc = (previousHistory || [])
     .map(h => h?.metrics?.threatfox_ioc_count_1d)
     .filter(Number.isFinite);
   const histFromRunsBot = (previousHistory || [])
-    .map(h => h?.metrics?.threatfox_botnet_c2_36h ?? h?.metrics?.threatfox_botnet_c2_count_7d)
+    .map(h => h?.metrics?.threatfox_botnet_c2_36h)
     .filter(Number.isFinite);
 
   const currentIocPercentile = percentileRank(dayCounts.length >= 14 ? dayCounts : histFromRunsIoc, day1.length);
   const currentBotPercentile = percentileRank(dayBotCounts.length >= 14 ? dayBotCounts : histFromRunsBot, botnet1d.length);
-  const trailing36IocPercentile = percentileRank(rolling36Ioc.length >= 14 ? rolling36Ioc : histFromRunsIoc, current36.length || day1.length);
-  const trailing36BotPercentile = percentileRank(rolling36Bot.length >= 14 ? rolling36Bot : histFromRunsBot, current36Bot.length || botnet7d.length);
+  const trailing36IocPercentile = percentileRank(rolling36Ioc.length >= 14 ? rolling36Ioc : histFromRunsIoc, current36.length || recent36.length || day1.length);
+  const trailing36BotPercentile = percentileRank(rolling36Bot.length >= 14 ? rolling36Bot : histFromRunsBot, current36Bot.length || recent36Bot.length || botnet1d.length);
 
   const historicalAvailable = hist.length > 0 && dayCounts.length >= 7;
+  const fallbackLimited = !historicalAvailable;
 
   return {
     enabled: true,
@@ -397,13 +439,14 @@ function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previo
     botnet_families_7d: topCounts(botnet7d, getThreatFoxFamily, 10),
     historical: {
       status: historicalAvailable ? 'active' : 'warming_up_or_unavailable',
-      method: historicalAvailable ? 'threatfox_export_percentile_approximation' : 'local_history_or_fallback',
+      method: historicalAvailable ? 'threatfox_export_percentile_approximation' : 'recent_7d_api_plus_local_history_limited_fallback',
+      fallback_limited: fallbackLimited,
       window_days: historicalDays,
       source_items: hist.length,
       days_with_iocs: dayCounts.length,
       bot_activity_hours: botHours,
-      current_36h_ioc_count: current36.length || null,
-      current_36h_botnet_c2_count: current36Bot.length || null,
+      current_36h_ioc_count: current36.length || recent36.length || null,
+      current_36h_botnet_c2_count: current36Bot.length || recent36Bot.length || null,
       current_ioc_percentile: currentIocPercentile === null ? null : Math.round(currentIocPercentile),
       current_botnet_c2_percentile: currentBotPercentile === null ? null : Math.round(currentBotPercentile),
       trailing_36h_ioc_percentile: trailing36IocPercentile === null ? null : Math.round(trailing36IocPercentile),
@@ -491,8 +534,8 @@ function summariseKev(kevVulns, epssByCve, scoring) {
   };
 }
 
-function fallbackThreatFoxScore(value, cap) {
-  return scoreFromCount(value || 0, cap);
+function fallbackThreatFoxScore(value, cap, maxScore = 65) {
+  return Math.min(maxScore, scoreFromCount(value || 0, cap));
 }
 
 function computeScores(metrics, sourceHealth, scoring, previousHistory) {
@@ -501,12 +544,14 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
   const thresholds = scoring.thresholds;
   const hist = metrics.threatfox?.historical || {};
 
+  const fallbackMax = caps.threatfox_fallback_max_score ?? 65;
   const threatfoxIocCurrent = Number.isFinite(hist.current_ioc_percentile)
     ? hist.current_ioc_percentile
-    : fallbackThreatFoxScore(metrics.threatfox.ioc_count_1d || 0, caps.threatfox_ioc_1d_cap_fallback);
+    : fallbackThreatFoxScore(metrics.threatfox.ioc_count_1d || 0, caps.threatfox_ioc_1d_cap_fallback, fallbackMax);
+  const bot36Count = hist.current_36h_botnet_c2_count ?? metrics.threatfox.botnet_c2_count_1d ?? 0;
   const threatfoxBot36 = Number.isFinite(hist.trailing_36h_botnet_c2_percentile)
     ? hist.trailing_36h_botnet_c2_percentile
-    : fallbackThreatFoxScore(metrics.threatfox.botnet_c2_count_7d || 0, caps.threatfox_botnet_c2_36h_cap_fallback);
+    : fallbackThreatFoxScore(bot36Count, caps.threatfox_botnet_c2_36h_cap_fallback, fallbackMax);
 
   const parts = {
     kev_recent_7d: scoreFromCount(metrics.kev.recent_7d, caps.kev_recent_7d_cap),
@@ -737,7 +782,7 @@ async function main() {
     if (threatfoxSummary.historical?.status === 'active') {
       drivers.push(`ThreatFox historical approximation active: ${threatfoxSummary.historical.source_items} items over approx. ${threatfoxSummary.historical.window_days} days`);
     } else {
-      drivers.push('ThreatFox historical approximation not fully active; fallback scoring may be used');
+      drivers.push('ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously');
     }
     drivers.push(`Bot state: ${botActivityState.primary_code} — ${botActivityState.primary_label}`);
     drivers.push(`Disinformation Alert Level proxy: ${disinfoAlert.level} (${disinfoAlert.label})`);
@@ -749,7 +794,7 @@ async function main() {
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.3',
+    schema: 'mard-hat-v0.1.3a',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
