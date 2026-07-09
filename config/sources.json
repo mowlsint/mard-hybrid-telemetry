@@ -16,12 +16,12 @@
       "note": "EPSS API. Used for high-percentile exploitation pressure and KEV enrichment."
     },
     "threatfox": {
-      "enabled": false,
+      "enabled": true,
       "kind": "api",
       "auth": "optional_secret",
       "secret_name": "ABUSECH_AUTH_KEY",
       "url": "https://threatfox-api.abuse.ch/api/v1/",
-      "note": "Optional. Free abuse.ch Auth-Key required. Disabled by default for public/community zero-secret operation."
+      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Free abuse.ch Auth-Key required. If the secret is missing, the feed degrades gracefully."
     },
     "urlhaus": {
       "enabled": false,
