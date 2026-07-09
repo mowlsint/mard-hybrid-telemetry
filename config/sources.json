@@ -17,11 +17,14 @@
     },
     "threatfox": {
       "enabled": true,
-      "kind": "api",
+      "kind": "api_and_export",
       "auth": "optional_secret",
       "secret_name": "ABUSECH_AUTH_KEY",
       "url": "https://threatfox-api.abuse.ch/api/v1/",
-      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Free abuse.ch Auth-Key required. If the secret is missing, the feed degrades gracefully."
+      "historical_export_enabled": true,
+      "export_json_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json.zip",
+      "export_csv_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv.zip",
+      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Uses recent API plus full export for a 6-month historical approximation where available. The key is never written to output."
     },
     "urlhaus": {
       "enabled": false,
@@ -29,6 +32,24 @@
       "auth": "optional_secret",
       "secret_name": "ABUSECH_AUTH_KEY",
       "note": "Optional. Free abuse.ch Auth-Key required. Disabled by default for public/community zero-secret operation."
+    },
+    "gdelt": {
+      "enabled": false,
+      "kind": "api",
+      "auth": "none",
+      "note": "Planned for v0.1.4 FIMI-lite narrative spike watch."
+    },
+    "euvsdisinfo": {
+      "enabled": false,
+      "kind": "curated_case_watch",
+      "auth": "none",
+      "note": "Planned for v0.1.4 FIMI-lite curated maritime disinformation case watch."
+    },
+    "disarm": {
+      "enabled": false,
+      "kind": "taxonomy",
+      "auth": "none",
+      "note": "Planned for v0.1.4 FIMI-lite taxonomy tagging."
     }
   }
 }

@@ -1,26 +1,38 @@
 {
   "schema": "mard-hat-scoring-v1",
-  "label": "MARD Hybrid Activity Telemetry v0.1.2",
+  "label": "MARD Hybrid Activity Telemetry v0.1.3",
   "windows": {
     "short_days": 7,
     "medium_days": 30,
-    "history_points_for_baseline": 14
+    "history_points_for_baseline": 14,
+    "threatfox_historical_days": 180,
+    "bot_activity_hours": 36
   },
   "weights": {
     "kev_recent_7d": 0.25,
     "kev_recent_30d": 0.15,
-    "epss_hot_global": 0.05,
-    "kev_epss_mean": 0.2,
-    "threatfox_ioc_1d": 0.2,
-    "threatfox_botnet_c2_7d": 0.15,
+    "kev_epss_mean": 0.20,
+    "threatfox_ioc_current": 0.20,
+    "threatfox_botnet_c2_36h": 0.20,
+    "epss_hot_global": 0.0,
     "source_coverage": 0.0
   },
   "caps": {
     "kev_recent_7d_cap": 8,
     "kev_recent_30d_cap": 32,
     "epss_hot_count_cap": 250,
-    "threatfox_ioc_1d_cap": 1500,
-    "threatfox_botnet_c2_7d_cap": 300
+    "threatfox_ioc_1d_cap_fallback": 1500,
+    "threatfox_botnet_c2_36h_cap_fallback": 1500
+  },
+  "bot_activity": {
+    "busy_percentile": 75,
+    "high_percentile": 90
+  },
+  "disinformation_alert": {
+    "auto_level_3_enabled": false,
+    "level_1_percentile": 65,
+    "level_2_percentile": 75,
+    "level_3_percentile": 90
   },
   "thresholds": {
     "normal_max": 20,
@@ -29,5 +41,5 @@
     "high_max": 80
   },
   "claim_limit": "Contextual digital-pressure indicator only. Not attribution-grade and not sufficient to prove hybrid activity on its own.",
-  "note": "v0.1.2: ThreatFox is enabled when ABUSECH_AUTH_KEY exists. ThreatFox IOC and botnet/C2 pressure now feed the HAT score; source coverage remains health context only."
+  "note": "v0.1.3: ThreatFox activity is calibrated by historical approximation where available. BIL/BWB/BAB bot-state labels and a proxy Disinformation Alert Level were added. EPSS hot set and source coverage are shown as context, not pressure bars."
 }
