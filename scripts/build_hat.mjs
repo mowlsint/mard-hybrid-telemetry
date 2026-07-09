@@ -853,6 +853,8 @@ function buildDisinformationAlert(botActivityState, score, scoring, fimiLite = n
   const euvsCount = Number(fimiLite?.euvsdisinfo?.candidate_count ?? 0);
   const gdeltCount = Number(fimiLite?.gdelt?.unique_articles ?? 0);
   const tagCount = Number(fimiLite?.disarm_aligned?.tag_count ?? 0);
+  const hasFimiSourceSignal = fimiScore > 0 || euvsCount > 0 || gdeltCount > 0 || tagCount > 0;
+  const proxyElevated = botActivityState.primary_code === 'BAB' || botActivityState.primary_code === 'BWB' || maxBasis >= (cfg.level_1_percentile ?? 65) || ['watch', 'high', 'critical'].includes(score.level);
 
   let level = 0;
   if (
@@ -878,20 +880,37 @@ function buildDisinformationAlert(botActivityState, score, scoring, fimiLite = n
   ) level = 3;
 
   const labels = ['none', 'low', 'elevated', 'high'];
+  let mode = 'fimi_lite_with_bot_ioc_proxy';
+  let note = 'FIMI-lite and bot/IOC proxy telemetry are contextual side signals only. Not attribution-grade.';
+  if (level === 0 && !hasFimiSourceSignal) {
+    mode = 'no_fimi_signal_no_proxy_elevation';
+    note = 'No matching FIMI-lite source signals were detected in this run, and bot/IOC proxy telemetry did not elevate the DAL. Not attribution-grade.';
+  } else if (!hasFimiSourceSignal && proxyElevated) {
+    mode = 'bot_ioc_proxy_only_no_fimi_signal';
+    note = `Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade.`;
+  } else if (hasFimiSourceSignal && proxyElevated) {
+    note = 'Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade.';
+  } else if (hasFimiSourceSignal) {
+    mode = 'fimi_lite_source_signal_only';
+    note = 'Derived from FIMI-lite source signals. Contextual only; not attribution-grade and not sufficient to prove coordination or attribution.';
+  }
+
   return {
     schema: 'mard-hat-dal-v2',
     level,
     label: labels[level],
     scale: [0, 1, 2, 3],
-    mode: 'fimi_lite_with_bot_ioc_proxy',
+    mode,
     fimi_lite_score: Math.round(fimiScore),
     corroboration: {
       gdelt_unique_articles: gdeltCount,
       euvsdisinfo_candidates: euvsCount,
       disarm_aligned_tags: tagCount,
-      bot_state: botActivityState.primary_code
+      bot_state: botActivityState.primary_code,
+      fimi_source_signal_present: hasFimiSourceSignal,
+      bot_ioc_proxy_elevated: proxyElevated
     },
-    note: 'FIMI-lite estimate derived from GDELT narrative-volume watch, EUvsDisinfo curated-case exposure, DISARM-aligned local tags, and bot/IOC proxy telemetry. Not attribution-grade.'
+    note
   };
 }
 
@@ -1042,16 +1061,23 @@ async function main() {
     drivers.push('ThreatFox feed error: see source health');
   }
   if (fimiLite?.enabled) {
-    drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
-    drivers.push(`GDELT narrative watch: ${fimiLite.gdelt?.unique_articles ?? 0} unique articles in ${fimiLite.gdelt?.timespan ?? '36h'}`);
-    drivers.push(`EUvsDisinfo case watch: ${fimiLite.euvsdisinfo?.candidate_count ?? 0} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
+    const gdeltCount = Number(fimiLite.gdelt?.unique_articles ?? 0);
+    const euvsCount = Number(fimiLite.euvsdisinfo?.candidate_count ?? 0);
     const tagList = (fimiLite.disarm_aligned?.tags || []).slice(0, 3).map(t => t.label).join(', ');
-    if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
+    const hasFimiSourceSignal = Number(fimiLite.score ?? 0) > 0 || gdeltCount > 0 || euvsCount > 0 || Boolean(tagList);
+    if (hasFimiSourceSignal) {
+      drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
+      drivers.push(`GDELT narrative watch: ${gdeltCount} unique articles in ${fimiLite.gdelt?.timespan ?? '36h'}`);
+      drivers.push(`EUvsDisinfo case watch: ${euvsCount} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
+      if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
+    } else {
+      drivers.push('FIMI-lite crawls returned no matching source signals in this run');
+    }
   }
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.4',
+    schema: 'mard-hat-v0.1.4a',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
@@ -1076,7 +1102,7 @@ async function main() {
     },
     roadmap: {
       next: 'v0.1.5: refine FIMI-lite calibration, optional URLhaus, and maritime relevance weighting',
-      active: 'v0.1.4 FIMI-lite: GDELT narrative spike watch, EUvsDisinfo case watch, DISARM-aligned taxonomy tagging',
+      active: 'v0.1.4a FIMI-lite display-clarity: zero-result FIMI crawls and proxy-only DAL are labelled explicitly',
       open_measures: 'later'
     },
     links: {
