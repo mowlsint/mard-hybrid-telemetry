@@ -13,4 +13,12 @@ if (!latest.schema || typeof latest.hat_score !== 'number') {
   console.error('Invalid latest schema/score.');
   process.exit(1);
 }
+if (!latest.bot_activity_state?.primary_code) {
+  console.error('Missing bot_activity_state.primary_code.');
+  process.exit(1);
+}
+if (!latest.disinformation_alert_level || typeof latest.disinformation_alert_level.level !== 'number') {
+  console.error('Missing disinformation_alert_level.level.');
+  process.exit(1);
+}
 console.log('Output check ok.');
