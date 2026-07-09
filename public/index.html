@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MARD-HAT // Hybrid Activity Telemetry</title>
+  <title>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -17,6 +17,7 @@
       --warn: #ffd166;
       --high: #ff9f5a;
       --crit: #ff6b6b;
+      --shadow: rgba(0,0,0,.38);
     }
     * { box-sizing: border-box; }
     body {
@@ -51,7 +52,7 @@
     .level-elevated, .level-watch { color: var(--warn); }
     .level-high { color: var(--high); }
     .level-critical { color: var(--crit); }
-    .parts { display: grid; gap: .75rem; }
+    .parts { display: grid; gap: .9rem; }
     .bar { height: .7rem; background: #0b0f15; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
     .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--ok), var(--warn), var(--high), var(--crit)); }
     .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
@@ -62,12 +63,75 @@
     .muted { color: var(--muted); }
     .small { font-size: .9rem; }
     svg { width: 100%; height: 160px; display: block; }
+    .part-name { display: inline-flex; align-items: center; gap: .35rem; min-width: 0; }
+    .part-label { overflow-wrap: anywhere; }
+    .info {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--accent);
+      background: rgba(240,195,106,.08);
+      font-size: .74rem;
+      font-weight: 800;
+      cursor: help;
+      flex: 0 0 auto;
+    }
+    .info::after {
+      content: attr(data-tip);
+      position: absolute;
+      left: 50%;
+      bottom: 135%;
+      transform: translateX(-50%);
+      width: min(340px, 78vw);
+      padding: .7rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #0b0f15;
+      color: var(--text);
+      box-shadow: 0 14px 38px var(--shadow);
+      white-space: normal;
+      font-weight: 500;
+      font-size: .86rem;
+      line-height: 1.35;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .12s ease, transform .12s ease;
+      z-index: 20;
+    }
+    .info::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 118%;
+      transform: translateX(-50%) rotate(45deg);
+      width: .7rem;
+      height: .7rem;
+      background: #0b0f15;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 19;
+    }
+    .info:hover::after,
+    .info:focus::after,
+    .info:hover::before,
+    .info:focus::before {
+      opacity: 1;
+    }
+    footer { padding-bottom: 2rem; }
+    .footer-line { display: flex; flex-wrap: wrap; gap: .5rem 1rem; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1rem; }
   </style>
 </head>
 <body>
   <header>
     <div class="eyebrow">MARD-HAT v0.1 // Public OSINT telemetry</div>
-    <h1>Hybrid Activity Telemetry</h1>
+    <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
     <p class="lead">A cost-neutral, public, open-source telemetry layer for cyber/exploit pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
 
@@ -77,7 +141,7 @@
         <div class="label">HAT score</div>
         <div id="score" class="score">--</div>
         <p><span id="level" class="pill">loading</span> <span id="confidence" class="pill">confidence --</span></p>
-        <p id="generated" class="muted small">Generated: --</p>
+        <p id="generated" class="muted small">Generated: -- · Workflow age: --</p>
       </article>
 
       <article class="card span8">
@@ -109,22 +173,69 @@
       <article class="card span12">
         <div class="label">Claim limit</div>
         <p id="claim" class="muted">Loading.</p>
-        <p class="small muted">Suggested use: feed <code>hat_latest.json</code> into Magic Paws as a side indicator first. Only mix into the main Hybrid Index after a baseline period.</p>
         <p class="small"><a href="hat_latest.json">latest JSON</a> · <a href="hat_history.json">history JSON</a> · <a href="hat_source_health.json">source health JSON</a></p>
       </article>
     </section>
   </main>
 
   <footer class="muted small">
-    <p>MARD-HAT is a public experimental telemetry project. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation.</p>
+    <div class="footer-line">
+      <span>MARD-HAT is a public experimental telemetry project. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation.</span>
+      <span>© <span id="year">YYYY</span> MOwlSINT.de</span>
+    </div>
   </footer>
 
   <script>
     const $ = (id) => document.getElementById(id);
+    let latestGeneratedAt = null;
+
+    const SCORE_PART_HELP = {
+      kev_recent_7d: 'Counts CISA Known Exploited Vulnerabilities added in the last 7 days. It indicates very recent public exploit pressure. Higher values mean more newly acknowledged exploited vulnerabilities in the short window.',
+      kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and helps smooth short spikes.',
+      epss_hot_global: 'Counts globally hot EPSS entries returned by the high-percentile EPSS query. In v0.1.1 this is mostly contextual and strongly down-weighted, because a fixed top query can otherwise inflate the score.',
+      kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely the recent known-exploited vulnerabilities are to be exploited broadly in the near term.',
+      source_coverage: 'Shows how many configured telemetry sources are reachable. This is a health/context indicator, not a direct activity-pressure signal in v0.1.1.'
+    };
+
+    const SCORE_PART_LABELS = {
+      kev_recent_7d: 'Recent KEV additions, 7 days',
+      kev_recent_30d: 'Recent KEV additions, 30 days',
+      epss_hot_global: 'Global EPSS hot set',
+      kev_epss_mean: 'Mean EPSS of recent KEV',
+      source_coverage: 'Source coverage / health'
+    };
+
     const fmtDate = (s) => s ? new Date(s).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '--';
 
     function levelClass(level) {
       return `level-${String(level || '').toLowerCase()}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function workflowAge(iso) {
+      if (!iso) return '--';
+      const ms = Date.now() - new Date(iso).getTime();
+      if (!Number.isFinite(ms) || ms < 0) return '--';
+      const minutes = Math.floor(ms / 60000);
+      if (minutes < 2) return 'just now';
+      if (minutes < 60) return `${minutes} min`;
+      const hours = Math.floor(minutes / 60);
+      const rest = minutes % 60;
+      if (hours < 48) return rest ? `${hours} h ${rest} min` : `${hours} h`;
+      const days = Math.floor(hours / 24);
+      return `${days} d ${hours % 24} h`;
+    }
+
+    function updateGeneratedLine() {
+      $('generated').textContent = `Generated: ${fmtDate(latestGeneratedAt)} · Workflow age: ${workflowAge(latestGeneratedAt)}`;
     }
 
     function renderChart(history) {
@@ -148,12 +259,23 @@
     }
 
     function renderParts(parts) {
-      $('parts').innerHTML = Object.entries(parts || {}).map(([key, value]) => `
-        <div>
-          <div class="row"><span>${key.replaceAll('_', ' ')}</span><strong>${value}</strong></div>
-          <div class="bar"><div class="fill" style="width:${Math.max(0, Math.min(100, value))}%"></div></div>
-        </div>
-      `).join('');
+      $('parts').innerHTML = Object.entries(parts || {}).map(([key, value]) => {
+        const label = SCORE_PART_LABELS[key] || key.replaceAll('_', ' ');
+        const tip = SCORE_PART_HELP[key] || 'Score component used by the current MARD-HAT scoring configuration.';
+        const safeValue = Math.max(0, Math.min(100, Number(value) || 0));
+        return `
+          <div>
+            <div class="row">
+              <span class="part-name">
+                <span class="part-label">${escapeHtml(label)}</span>
+                <span class="info" tabindex="0" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}" data-tip="${escapeHtml(tip)}">i</span>
+              </span>
+              <strong>${escapeHtml(value)}</strong>
+            </div>
+            <div class="bar"><div class="fill" style="width:${safeValue}%"></div></div>
+          </div>
+        `;
+      }).join('');
     }
 
     function renderMetrics(metrics) {
@@ -169,32 +291,38 @@
     }
 
     function renderSources(sources) {
-      $('sources').innerHTML = (sources || []).map(s => `
-        <p><strong>${s.source}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${s.status}</span>${typeof s.count === 'number' ? ` · ${s.count}` : ''}</p>
+      const list = Array.isArray(sources)
+        ? sources
+        : Object.entries(sources || {}).map(([source, status]) => ({ source, status }));
+      $('sources').innerHTML = list.map(s => `
+        <p><strong>${escapeHtml(s.source)}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${escapeHtml(s.status)}</span>${typeof s.count === 'number' ? ` · ${s.count}` : ''}</p>
       `).join('');
     }
 
     async function main() {
+      $('year').textContent = new Date().getFullYear();
       const [latest, history] = await Promise.all([
         fetch('hat_latest.json', { cache: 'no-store' }).then(r => r.json()),
         fetch('hat_history.json', { cache: 'no-store' }).then(r => r.json()).catch(() => [])
       ]);
+      latestGeneratedAt = latest.generated_at;
       $('score').textContent = latest.hat_score ?? '--';
       $('level').textContent = latest.level ?? 'unknown';
       $('level').className = `pill ${levelClass(latest.level)}`;
       $('confidence').textContent = `confidence ${latest.confidence ?? '--'}`;
       $('trend').textContent = `trend ${latest.trend ?? '--'}`;
-      $('generated').textContent = `Generated: ${fmtDate(latest.generated_at)}`;
+      updateGeneratedLine();
       $('baseline').textContent = `Baseline: ${latest.baseline?.status ?? '--'} · points ${latest.baseline?.points ?? 0} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
       $('claim').textContent = latest.assessment?.claim_limit || 'Contextual indicator only.';
-      $('drivers').innerHTML = (latest.drivers || []).map(d => `<li>${d}</li>`).join('');
+      $('drivers').innerHTML = (latest.drivers || []).map(d => `<li>${escapeHtml(d)}</li>`).join('');
       renderParts(latest.score_parts);
       renderMetrics(latest.metrics);
       renderSources(latest.source_health);
       renderChart(history);
+      setInterval(updateGeneratedLine, 60000);
     }
     main().catch(err => {
-      document.body.insertAdjacentHTML('afterbegin', `<pre>${String(err)}</pre>`);
+      document.body.insertAdjacentHTML('afterbegin', `<pre>${escapeHtml(String(err))}</pre>`);
     });
   </script>
 </body>
