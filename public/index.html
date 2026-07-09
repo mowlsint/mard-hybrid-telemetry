@@ -122,7 +122,7 @@
 </head>
 <body>
   <header>
-    <div class="eyebrow">MARD-HAT v0.1.3 // Public OSINT telemetry</div>
+    <div class="eyebrow">MARD-HAT v0.1.3a // Public OSINT telemetry</div>
     <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
     <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC and botnet/C2 pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
@@ -208,7 +208,7 @@
       kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and smooths short spikes.',
       kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely recent known-exploited vulnerabilities are to be exploited broadly.',
       threatfox_ioc_current: 'ThreatFox IOC pressure calibrated against the historical approximation. It indicates how unusual the current IOC reporting density is compared with recent history.',
-      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure over the last 36 hours, calibrated against the historical approximation. It is not attribution by itself.',
+      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure over the last 36 hours. Uses historical percentile calibration where available; otherwise a conservative capped fallback is used. It is not attribution by itself.',
       epss_hot_global: 'Context only. Counts globally hot EPSS entries returned by the high-percentile query. It is not used as a pressure bar in v0.1.3.',
       source_coverage: 'Context only. Shows how many configured telemetry sources are reachable. It is source health, not activity pressure.'
     };
@@ -331,8 +331,9 @@
         <p>ThreatFox IOCs 1d: <strong>${threatfox.ioc_count_1d ?? '--'}</strong></p>
         <p>ThreatFox IOCs 7d: <strong>${threatfox.ioc_count_7d ?? '--'}</strong></p>
         <p>ThreatFox botnet/C2 7d: <strong>${threatfox.botnet_c2_count_7d ?? '--'}</strong></p>
-        <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong></p>
+        <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong>${hist.fallback_limited ? ' <span class="muted">· fallback limited</span>' : ''}</p>
         <p>ThreatFox export items: <strong>${hist.source_items ?? '--'}</strong></p>
+        <p>ThreatFox 36h bot/C2 count: <strong>${hist.current_36h_botnet_c2_count ?? '--'}</strong></p>
         ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
       `;
     }
