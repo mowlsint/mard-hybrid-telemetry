@@ -31,7 +31,7 @@
     header { padding-top: 2rem; }
     .eyebrow { color: var(--accent); letter-spacing: .08em; text-transform: uppercase; font-size: .78rem; font-weight: 700; }
     h1 { margin: .25rem 0 .5rem; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; }
-    .lead { color: var(--muted); max-width: 830px; font-size: 1.05rem; }
+    .lead { color: var(--muted); max-width: 850px; font-size: 1.05rem; }
     .grid { display: grid; gap: 1rem; grid-template-columns: repeat(12, 1fr); }
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
@@ -48,6 +48,10 @@
     .score { font-size: clamp(3.8rem, 12vw, 7rem); line-height: .9; font-weight: 850; letter-spacing: -.07em; }
     .label { color: var(--muted); font-size: .88rem; text-transform: uppercase; letter-spacing: .05em; }
     .pill { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--line); background: var(--panel2); border-radius: 999px; padding: .25rem .6rem; color: var(--muted); font-size: .86rem; }
+    .chip { display: inline-flex; flex-direction: column; gap: .1rem; border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 16px; padding: .65rem .75rem; min-width: 8.2rem; }
+    .chip strong { font-size: 1.8rem; line-height: 1; letter-spacing: -.04em; }
+    .chip span { color: var(--muted); font-size: .82rem; }
+    .chip-active { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(240,195,106,.35) inset; }
     .level-normal { color: var(--ok); }
     .level-elevated, .level-watch { color: var(--warn); }
     .level-high { color: var(--high); }
@@ -55,6 +59,7 @@
     .parts { display: grid; gap: .9rem; }
     .bar { height: .7rem; background: #0b0f15; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
     .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--ok), var(--warn), var(--high), var(--crit)); }
+    .fill-context { background: linear-gradient(90deg, #6d7890, var(--accent)); }
     .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
     code, pre { background: rgba(255,255,255,.06); border-radius: 8px; padding: .12rem .35rem; }
     a { color: var(--accent); text-decoration: none; }
@@ -87,7 +92,7 @@
       left: 50%;
       bottom: 135%;
       transform: translateX(-50%);
-      width: min(340px, 78vw);
+      width: min(360px, 78vw);
       padding: .7rem .8rem;
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -100,39 +105,26 @@
       line-height: 1.35;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .12s ease, transform .12s ease;
+      transition: opacity .12s ease;
       z-index: 20;
     }
-    .info::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 118%;
-      transform: translateX(-50%) rotate(45deg);
-      width: .7rem;
-      height: .7rem;
-      background: #0b0f15;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 19;
-    }
-    .info:hover::after,
-    .info:focus::after,
-    .info:hover::before,
-    .info:focus::before {
-      opacity: 1;
-    }
+    .info:hover::after, .info:focus::after { opacity: 1; }
+    .dal { display: flex; gap: .45rem; align-items: center; flex-wrap: wrap; margin-top: .75rem; }
+    .dal-num { width: 2.35rem; height: 2.35rem; border: 1px solid var(--line); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); background: rgba(255,255,255,.035); font-weight: 800; }
+    .dal-active { border-color: var(--accent); color: var(--text); box-shadow: 0 0 0 2px rgba(240,195,106,.45); }
+    .dal-0.dal-active { background: rgba(100,215,138,.12); }
+    .dal-1.dal-active { background: rgba(255,209,102,.16); }
+    .dal-2.dal-active { background: rgba(255,159,90,.18); }
+    .dal-3.dal-active { background: rgba(255,107,107,.20); }
     footer { padding-bottom: 2rem; }
     .footer-line { display: flex; flex-wrap: wrap; gap: .5rem 1rem; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1rem; }
   </style>
 </head>
 <body>
   <header>
-    <div class="eyebrow">MARD-HAT v0.1.2 // Public OSINT telemetry</div>
+    <div class="eyebrow">MARD-HAT v0.1.3 // Public OSINT telemetry</div>
     <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
-    <p class="lead">A cost-neutral, public, open-source telemetry layer for cyber/exploit pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
+    <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC and botnet/C2 pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
 
   <main>
@@ -151,8 +143,25 @@
       </article>
 
       <article class="card span6">
-        <div class="label">Score parts</div>
+        <div class="label">Bot activity state</div>
+        <div id="botstate" style="display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.8rem;"></div>
+        <p id="botbasis" class="muted small">Loading bot-state basis.</p>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Disinformation Alert Level</div>
+        <div id="dal" class="dal"></div>
+        <p id="dalnote" class="muted small">Loading proxy level.</p>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Pressure score parts</div>
         <div id="parts" class="parts"></div>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Context metrics</div>
+        <div id="contextparts" class="parts"></div>
       </article>
 
       <article class="card span6">
@@ -168,6 +177,11 @@
       <article class="card span6">
         <div class="label">Source health</div>
         <div id="sources" class="small"></div>
+      </article>
+
+      <article class="card span6">
+        <div class="label">Roadmap</div>
+        <p id="roadmap" class="muted small">Loading roadmap.</p>
       </article>
 
       <article class="card span12">
@@ -190,31 +204,33 @@
     let latestGeneratedAt = null;
 
     const SCORE_PART_HELP = {
-      kev_recent_7d: 'Counts CISA Known Exploited Vulnerabilities added in the last 7 days. It indicates very recent public exploit pressure. Higher values mean more newly acknowledged exploited vulnerabilities in the short window.',
-      kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and helps smooth short spikes.',
-      epss_hot_global: 'Counts globally hot EPSS entries returned by the high-percentile EPSS query. In v0.1.1 this is mostly contextual and strongly down-weighted, because a fixed top query can otherwise inflate the score.',
-      kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely the recent known-exploited vulnerabilities are to be exploited broadly in the near term.',
-      threatfox_ioc_1d: 'Counts recent ThreatFox indicators of compromise from the last 1 day. This is the first active IOC-pressure input and can reflect malware, infrastructure, payload-delivery and botnet-related reporting density.',
-      threatfox_botnet_c2_7d: 'Counts ThreatFox indicators in the last 7 days that look botnet/C2-related by threat type, tags, or malware context. This is a contextual botnet/C2 pressure signal, not attribution by itself.',
-      source_coverage: 'Shows how many configured telemetry sources are reachable. This is a health/context indicator, not a direct activity-pressure signal in v0.1.1.'
+      kev_recent_7d: 'Counts CISA Known Exploited Vulnerabilities added in the last 7 days. It indicates very recent public exploit pressure.',
+      kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and smooths short spikes.',
+      kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely recent known-exploited vulnerabilities are to be exploited broadly.',
+      threatfox_ioc_current: 'ThreatFox IOC pressure calibrated against the historical approximation. It indicates how unusual the current IOC reporting density is compared with recent history.',
+      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure over the last 36 hours, calibrated against the historical approximation. It is not attribution by itself.',
+      epss_hot_global: 'Context only. Counts globally hot EPSS entries returned by the high-percentile query. It is not used as a pressure bar in v0.1.3.',
+      source_coverage: 'Context only. Shows how many configured telemetry sources are reachable. It is source health, not activity pressure.'
     };
 
     const SCORE_PART_LABELS = {
       kev_recent_7d: 'Recent KEV additions, 7 days',
       kev_recent_30d: 'Recent KEV additions, 30 days',
-      epss_hot_global: 'Global EPSS hot set',
       kev_epss_mean: 'Mean EPSS of recent KEV',
-      threatfox_ioc_1d: 'ThreatFox IOC pressure, 1 day',
-      threatfox_botnet_c2_7d: 'ThreatFox botnet/C2 pressure, 7 days',
+      threatfox_ioc_current: 'ThreatFox IOC pressure, current',
+      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure, 36h',
+      epss_hot_global: 'Global EPSS hot set',
       source_coverage: 'Source coverage / health'
     };
 
+    const BOT_HELP = {
+      BIL: 'Bots in Lurking Position: no clear elevated bot/IOC state is visible in the current proxy telemetry.',
+      BWB: 'Bots were busy: elevated activity is visible or suspected in the last 36 hours, but the current state does not qualify as busy.',
+      BAB: 'Bots are busy: current bot/IOC pressure is elevated by the proxy telemetry.'
+    };
+
     const fmtDate = (s) => s ? new Date(s).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '--';
-
-    function levelClass(level) {
-      return `level-${String(level || '').toLowerCase()}`;
-    }
-
+    function levelClass(level) { return `level-${String(level || '').toLowerCase()}`; }
     function escapeHtml(value) {
       return String(value ?? '')
         .replaceAll('&', '&amp;')
@@ -223,7 +239,6 @@
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#039;');
     }
-
     function workflowAge(iso) {
       if (!iso) return '--';
       const ms = Date.now() - new Date(iso).getTime();
@@ -237,11 +252,9 @@
       const days = Math.floor(hours / 24);
       return `${days} d ${hours % 24} h`;
     }
-
     function updateGeneratedLine() {
       $('generated').textContent = `Generated: ${fmtDate(latestGeneratedAt)} · Workflow age: ${workflowAge(latestGeneratedAt)}`;
     }
-
     function renderChart(history) {
       const svg = $('chart');
       svg.innerHTML = '';
@@ -261,9 +274,8 @@
         <polyline fill="none" stroke="#f0c36a" stroke-width="4" points="${points}" />
       `;
     }
-
-    function renderParts(parts) {
-      $('parts').innerHTML = Object.entries(parts || {}).map(([key, value]) => {
+    function renderParts(targetId, parts, context = false) {
+      $(targetId).innerHTML = Object.entries(parts || {}).map(([key, value]) => {
         const label = SCORE_PART_LABELS[key] || key.replaceAll('_', ' ');
         const tip = SCORE_PART_HELP[key] || 'Score component used by the current MARD-HAT scoring configuration.';
         const safeValue = Math.max(0, Math.min(100, Number(value) || 0));
@@ -276,16 +288,37 @@
               </span>
               <strong>${escapeHtml(value)}</strong>
             </div>
-            <div class="bar"><div class="fill" style="width:${safeValue}%"></div></div>
+            <div class="bar"><div class="fill ${context ? 'fill-context' : ''}" style="width:${safeValue}%"></div></div>
           </div>
         `;
       }).join('');
     }
-
+    function renderBotState(state) {
+      const chips = [
+        { title: 'Primary', code: state?.primary_code || '--', label: state?.primary_label || '--', active: true },
+        { title: 'Current', code: state?.current_code || '--', label: state?.current_label || '--', active: state?.current_code === 'BAB' },
+        { title: 'Last 36h', code: state?.trailing_36h_code || '--', label: state?.trailing_36h_label || '--', active: state?.trailing_36h_code === 'BWB' }
+      ];
+      $('botstate').innerHTML = chips.map(c => `
+        <div class="chip ${c.active ? 'chip-active' : ''}" title="${escapeHtml(BOT_HELP[c.code] || c.label)}">
+          <span>${escapeHtml(c.title)}</span>
+          <strong>${escapeHtml(c.code)}</strong>
+          <span>${escapeHtml(c.label)}</span>
+        </div>
+      `).join('');
+      const b = state?.basis || {};
+      $('botbasis').textContent = `Basis: current IOC pctl ${b.ioc_current_percentile ?? '--'}, current bot/C2 pctl ${b.botnet_c2_current_percentile ?? '--'}, 36h IOC pctl ${b.ioc_36h_percentile ?? '--'}, 36h bot/C2 pctl ${b.botnet_c2_36h_percentile ?? '--'}. Confidence: ${state?.confidence ?? '--'}.`;
+    }
+    function renderDal(dal) {
+      const active = Number(dal?.level ?? 0);
+      $('dal').innerHTML = [0,1,2,3].map(n => `<span class="dal-num dal-${n} ${n === active ? 'dal-active' : ''}">${n}</span>`).join('');
+      $('dalnote').textContent = `Level ${active}: ${dal?.label ?? '--'} · ${dal?.note ?? 'Proxy-based level.'}`;
+    }
     function renderMetrics(metrics) {
       const kev = metrics?.kev || {};
       const epss = metrics?.epss || {};
       const threatfox = metrics?.threatfox || {};
+      const hist = threatfox.historical || {};
       const families = Array.isArray(threatfox.malware_families_1d)
         ? threatfox.malware_families_1d.slice(0, 5).map(x => `${escapeHtml(x.name)} (${escapeHtml(x.count)})`).join(', ')
         : '';
@@ -294,14 +327,15 @@
         <p>Recent KEV 7d: <strong>${kev.recent_7d ?? '--'}</strong></p>
         <p>Recent KEV 30d: <strong>${kev.recent_30d ?? '--'}</strong></p>
         <p>Mean EPSS, recent KEV: <strong>${kev.epss_mean_recent_kev ?? '--'}</strong></p>
-        <p>Hot EPSS global count: <strong>${epss.hot_global_count ?? '--'}</strong></p>
+        <p>Hot EPSS global count: <strong>${epss.hot_global_count ?? '--'}</strong> <span class="muted">context only</span></p>
         <p>ThreatFox IOCs 1d: <strong>${threatfox.ioc_count_1d ?? '--'}</strong></p>
         <p>ThreatFox IOCs 7d: <strong>${threatfox.ioc_count_7d ?? '--'}</strong></p>
         <p>ThreatFox botnet/C2 7d: <strong>${threatfox.botnet_c2_count_7d ?? '--'}</strong></p>
+        <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong></p>
+        <p>ThreatFox export items: <strong>${hist.source_items ?? '--'}</strong></p>
         ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
       `;
     }
-
     function renderSources(sources) {
       const list = Array.isArray(sources)
         ? sources
@@ -310,17 +344,18 @@
         const extra = [
           typeof s.count === 'number' ? `${s.count}` : '',
           typeof s.count_7d === 'number' ? `7d ${s.count_7d}` : '',
-          typeof s.botnet_cc_count === 'number' ? `botnet/C2 ${s.botnet_cc_count}` : ''
+          typeof s.botnet_cc_count === 'number' ? `botnet/C2 ${s.botnet_cc_count}` : '',
+          s.historical_export_status ? `hist ${s.historical_export_status}` : ''
         ].filter(Boolean).join(' · ');
         return `<p><strong>${escapeHtml(s.source)}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${escapeHtml(s.status)}</span>${extra ? ` · ${escapeHtml(extra)}` : ''}</p>`;
       }).join('');
     }
-
     async function main() {
       $('year').textContent = new Date().getFullYear();
+      const bust = `?v=${Date.now()}`;
       const [latest, history] = await Promise.all([
-        fetch('hat_latest.json', { cache: 'no-store' }).then(r => r.json()),
-        fetch('hat_history.json', { cache: 'no-store' }).then(r => r.json()).catch(() => [])
+        fetch(`hat_latest.json${bust}`, { cache: 'no-store' }).then(r => r.json()),
+        fetch(`hat_history.json${bust}`, { cache: 'no-store' }).then(r => r.json()).catch(() => [])
       ]);
       latestGeneratedAt = latest.generated_at;
       $('score').textContent = latest.hat_score ?? '--';
@@ -332,9 +367,13 @@
       $('baseline').textContent = `Baseline: ${latest.baseline?.status ?? '--'} · points ${latest.baseline?.points ?? 0} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
       $('claim').textContent = latest.assessment?.claim_limit || 'Contextual indicator only.';
       $('drivers').innerHTML = (latest.drivers || []).map(d => `<li>${escapeHtml(d)}</li>`).join('');
-      renderParts(latest.score_parts);
+      renderParts('parts', latest.score_parts, false);
+      renderParts('contextparts', latest.context_parts, true);
+      renderBotState(latest.bot_activity_state || {});
+      renderDal(latest.disinformation_alert_level || {});
       renderMetrics(latest.metrics);
       renderSources(latest.source_health);
+      $('roadmap').textContent = latest.roadmap?.next || 'v0.1.4: FIMI-lite with EUvsDisinfo, GDELT and DISARM.';
       renderChart(history);
       setInterval(updateGeneratedLine, 60000);
     }
