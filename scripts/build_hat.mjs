@@ -12,6 +12,7 @@ const EVIDENCE_DIR = path.join(PUBLIC_DIR, 'evidence_cards');
 
 const now = new Date();
 const generatedAt = now.toISOString();
+const stamp = generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15);
 
 function clamp(n, min = 0, max = 100) {
   return Math.max(min, Math.min(max, Number.isFinite(n) ? n : 0));
@@ -60,7 +61,7 @@ async function fetchText(url, label, timeoutMs = 30000) {
   try {
     const res = await fetch(url, {
       headers: {
-        'user-agent': 'mard-hybrid-telemetry/0.1 (+public OSINT telemetry; no attribution)'
+        'user-agent': 'mard-hybrid-telemetry/0.1.2 (+public OSINT telemetry; no attribution)'
       },
       signal: controller.signal
     });
@@ -86,7 +87,7 @@ async function fetchCisaKev(sources) {
   const source = sources.sources.cisa_kev;
   if (!source?.enabled) return { ok: false, reason: 'disabled' };
   const { json, raw, hash } = await fetchJson(source.url, 'cisa_kev');
-  const rawPath = path.join(RAW_DIR, `cisa_kev_${generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15)}.json`);
+  const rawPath = path.join(RAW_DIR, `cisa_kev_${stamp}.json`);
   await fs.writeFile(rawPath, raw);
   const vulns = Array.isArray(json.vulnerabilities) ? json.vulnerabilities : [];
   return {
@@ -103,7 +104,7 @@ async function fetchEpssTop(sources) {
   if (!source?.enabled) return { ok: false, reason: 'disabled' };
   const url = `${source.base_url}?percentile-gt=0.99&order=!epss&limit=250`;
   const { json, raw, hash } = await fetchJson(url, 'first_epss_top');
-  const rawPath = path.join(RAW_DIR, `first_epss_top_${generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15)}.json`);
+  const rawPath = path.join(RAW_DIR, `first_epss_top_${stamp}.json`);
   await fs.writeFile(rawPath, raw);
   const data = Array.isArray(json.data) ? json.data : [];
   return {
@@ -119,7 +120,7 @@ async function fetchEpssForCves(sources, cves) {
   const source = sources.sources.first_epss;
   if (!source?.enabled || cves.length === 0) return { ok: false, reason: 'disabled_or_empty', data: [] };
   const results = [];
-  // FIRST documents comma-separated batch queries. Keep chunks conservative for URL length.
+  // FIRST supports comma-separated batch queries. Keep chunks conservative for URL length.
   for (const chunk of chunkArray([...new Set(cves)].slice(0, 300), 80)) {
     const url = `${source.base_url}?cve=${encodeURIComponent(chunk.join(','))}`;
     const { json } = await fetchJson(url, 'first_epss_kev_batch');
@@ -128,36 +129,105 @@ async function fetchEpssForCves(sources, cves) {
   return { ok: true, count: results.length, data: results };
 }
 
-async function fetchThreatFoxOptional(sources) {
-  const source = sources.sources.threatfox;
-  const key = process.env.ABUSECH_AUTH_KEY;
-  if (!source?.enabled) return { ok: false, status: 'disabled' };
-  if (!key) return { ok: false, status: 'missing_ABUSECH_AUTH_KEY' };
-
+async function postThreatFox(source, key, body, label) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 30000);
+  const timer = setTimeout(() => controller.abort(), 45000);
   try {
     const res = await fetch(source.url, {
       method: 'POST',
       headers: {
         'Auth-Key': key,
         'content-type': 'application/json',
-        'user-agent': 'mard-hybrid-telemetry/0.1'
+        'user-agent': 'mard-hybrid-telemetry/0.1.2'
       },
-      body: JSON.stringify({ query: 'get_iocs', days: 1 }),
+      body: JSON.stringify(body),
       signal: controller.signal
     });
-    if (!res.ok) throw new Error(`threatfox: HTTP ${res.status}`);
+    if (!res.ok) throw new Error(`${label}: HTTP ${res.status}`);
     const text = await res.text();
-    const rawPath = path.join(RAW_DIR, `threatfox_iocs_${generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15)}.json`);
-    await fs.writeFile(rawPath, text);
     const json = JSON.parse(text);
-    const data = Array.isArray(json.data) ? json.data : [];
-    const botnetCc = data.filter(x => String(x.threat_type || '').toLowerCase().includes('botnet')).length;
-    return { ok: true, count: data.length, botnet_cc_count: botnetCc, raw_file: path.relative(ROOT, rawPath), data };
+    return { json, raw: text, hash: sha256(text) };
   } finally {
     clearTimeout(timer);
   }
+}
+
+function asLower(value) {
+  return String(value ?? '').toLowerCase();
+}
+
+function getThreatFoxFamily(item) {
+  return item.malware_printable || item.malware || item.signature || 'unknown';
+}
+
+function isThreatFoxBotnetC2(item) {
+  const threatType = asLower(item.threat_type);
+  const malware = asLower(item.malware || item.malware_printable || item.signature);
+  const tags = Array.isArray(item.tags) ? item.tags.map(asLower).join(' ') : asLower(item.tags);
+  // ThreatFox commonly uses threat_type values such as botnet_cc and payload_delivery.
+  // Keep this conservative: direct botnet/c2 indicators only.
+  return threatType.includes('botnet') || tags.includes('botnet') || (tags.includes('c2') && malware !== 'unknown');
+}
+
+function topCounts(items, keyFn, limit = 10) {
+  const counts = new Map();
+  for (const item of items) {
+    const key = String(keyFn(item) || 'unknown').trim() || 'unknown';
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+    .slice(0, limit);
+}
+
+function summariseThreatFoxData(data1d, data7d) {
+  const day1 = Array.isArray(data1d) ? data1d : [];
+  const day7 = Array.isArray(data7d) ? data7d : [];
+  const botnet1d = day1.filter(isThreatFoxBotnetC2);
+  const botnet7d = day7.filter(isThreatFoxBotnetC2);
+
+  return {
+    enabled: true,
+    ioc_count_1d: day1.length,
+    ioc_count_7d: day7.length,
+    botnet_c2_count_1d: botnet1d.length,
+    botnet_c2_count_7d: botnet7d.length,
+    threat_types_1d: topCounts(day1, x => x.threat_type || 'unknown', 8),
+    malware_families_1d: topCounts(day1, getThreatFoxFamily, 10),
+    botnet_families_7d: topCounts(botnet7d, getThreatFoxFamily, 10)
+  };
+}
+
+async function fetchThreatFoxOptional(sources) {
+  const source = sources.sources.threatfox;
+  const key = process.env.ABUSECH_AUTH_KEY;
+  if (!source?.enabled) return { ok: false, status: 'disabled', summary: { enabled: false } };
+  if (!key) return { ok: false, status: 'missing_ABUSECH_AUTH_KEY', summary: { enabled: true, missing_secret: true } };
+
+  const oneDay = await postThreatFox(source, key, { query: 'get_iocs', days: 1 }, 'threatfox_iocs_1d');
+  const sevenDays = await postThreatFox(source, key, { query: 'get_iocs', days: 7 }, 'threatfox_iocs_7d');
+
+  const raw1d = path.join(RAW_DIR, `threatfox_iocs_1d_${stamp}.json`);
+  const raw7d = path.join(RAW_DIR, `threatfox_iocs_7d_${stamp}.json`);
+  await fs.writeFile(raw1d, oneDay.raw);
+  await fs.writeFile(raw7d, sevenDays.raw);
+
+  const data1d = Array.isArray(oneDay.json.data) ? oneDay.json.data : [];
+  const data7d = Array.isArray(sevenDays.json.data) ? sevenDays.json.data : [];
+  const summary = summariseThreatFoxData(data1d, data7d);
+
+  return {
+    ok: true,
+    status: 'ok',
+    count: data1d.length,
+    count_7d: data7d.length,
+    botnet_cc_count: summary.botnet_c2_count_7d,
+    hash_1d: oneDay.hash,
+    hash_7d: sevenDays.hash,
+    raw_files: [path.relative(ROOT, raw1d), path.relative(ROOT, raw7d)],
+    summary
+  };
 }
 
 function summariseKev(kevVulns, epssByCve, scoring) {
@@ -206,6 +276,8 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
     kev_recent_30d: scoreFromCount(metrics.kev.recent_30d, caps.kev_recent_30d_cap),
     epss_hot_global: scoreFromCount(metrics.epss.hot_global_count, caps.epss_hot_count_cap),
     kev_epss_mean: clamp(metrics.kev.epss_mean_recent_kev * 100),
+    threatfox_ioc_1d: scoreFromCount(metrics.threatfox.ioc_count_1d || 0, caps.threatfox_ioc_1d_cap),
+    threatfox_botnet_c2_7d: scoreFromCount(metrics.threatfox.botnet_c2_count_7d || 0, caps.threatfox_botnet_c2_7d_cap),
     source_coverage: clamp((sourceHealth.filter(s => s.status === 'ok').length / sourceHealth.length) * 100)
   };
 
@@ -214,6 +286,8 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
     parts.kev_recent_30d * weights.kev_recent_30d +
     parts.epss_hot_global * weights.epss_hot_global +
     parts.kev_epss_mean * weights.kev_epss_mean +
+    parts.threatfox_ioc_1d * weights.threatfox_ioc_1d +
+    parts.threatfox_botnet_c2_7d * weights.threatfox_botnet_c2_7d +
     parts.source_coverage * weights.source_coverage
   );
 
@@ -237,11 +311,10 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
 }
 
 async function writeEvidenceCard(latest) {
-  const stamp = generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15);
   const card = {
     schema: 'mard-hat-evidence-card-v1',
     generated_at: generatedAt,
-    title: 'Daily open-source exploit-pressure snapshot',
+    title: 'Daily open-source exploit and IOC-pressure snapshot',
     claim_limit: latest.assessment.claim_limit,
     score: latest.hat_score,
     level: latest.level,
@@ -250,7 +323,7 @@ async function writeEvidenceCard(latest) {
     key_metrics: latest.metrics,
     source_health: latest.source_health
   };
-  const file = path.join(EVIDENCE_DIR, `${stamp}_open_source_exploit_pressure.json`);
+  const file = path.join(EVIDENCE_DIR, `${stamp}_open_source_exploit_ioc_pressure.json`);
   await fs.writeFile(file, JSON.stringify(card, null, 2));
   return path.relative(PUBLIC_DIR, file);
 }
@@ -295,10 +368,18 @@ async function main() {
     sourceHealth.push({ source: 'first_epss_kev_enrichment', status: 'error', error: String(err.message || err) });
   }
 
-  let threatfox = { ok: false };
+  let threatfox = { ok: false, status: 'disabled', summary: { enabled: false } };
   try {
     threatfox = await fetchThreatFoxOptional(sources);
-    sourceHealth.push({ source: 'threatfox_optional', status: threatfox.ok ? 'ok' : threatfox.status, count: threatfox.count ?? 0, botnet_cc_count: threatfox.botnet_cc_count ?? 0 });
+    sourceHealth.push({
+      source: 'threatfox_optional',
+      status: threatfox.ok ? 'ok' : threatfox.status,
+      count: threatfox.count ?? 0,
+      count_7d: threatfox.count_7d ?? 0,
+      botnet_cc_count: threatfox.botnet_cc_count ?? 0,
+      hash_1d: threatfox.hash_1d ?? null,
+      hash_7d: threatfox.hash_7d ?? null
+    });
   } catch (err) {
     sourceHealth.push({ source: 'threatfox_optional', status: 'error', error: String(err.message || err) });
   }
@@ -306,6 +387,11 @@ async function main() {
   const epssByCve = new Map((epssKev.data || []).map(row => [row.cve, row]));
   const kevSummary = summariseKev(kev.vulnerabilities || [], epssByCve, scoring);
   const epssHotGlobal = (epssTop.data || []).length;
+
+  const threatfoxSummary = {
+    enabled: Boolean(sources.sources.threatfox?.enabled),
+    ...(threatfox.summary || {})
+  };
 
   const metrics = {
     kev: kevSummary,
@@ -318,10 +404,11 @@ async function main() {
         date: x.date
       }))
     },
+    threatfox: threatfoxSummary,
     optional_abusech: {
       threatfox_enabled: Boolean(sources.sources.threatfox?.enabled),
-      threatfox_count: threatfox.count ?? null,
-      botnet_cc_count: threatfox.botnet_cc_count ?? null
+      threatfox_count: threatfoxSummary.ioc_count_1d ?? null,
+      botnet_cc_count: threatfoxSummary.botnet_c2_count_7d ?? null
     }
   };
 
@@ -332,10 +419,18 @@ async function main() {
   drivers.push(`${kevSummary.recent_30d} CISA KEV additions in the last ${scoring.windows.medium_days} days`);
   drivers.push(`${epssHotGlobal} EPSS entries above the configured hot percentile query window`);
   if (kevSummary.epss_mean_recent_kev > 0) drivers.push(`Mean EPSS of recent KEV items: ${kevSummary.epss_mean_recent_kev}`);
+  if (threatfox.ok) {
+    drivers.push(`${threatfoxSummary.ioc_count_1d ?? 0} ThreatFox IOCs in the last 1 day`);
+    drivers.push(`${threatfoxSummary.botnet_c2_count_7d ?? 0} ThreatFox botnet/C2-like indicators in the last 7 days`);
+  } else if (threatfox.status === 'missing_ABUSECH_AUTH_KEY') {
+    drivers.push('ThreatFox is enabled but ABUSECH_AUTH_KEY is missing');
+  } else if (threatfox.status === 'error') {
+    drivers.push('ThreatFox feed error: see source health');
+  }
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1',
+    schema: 'mard-hat-v0.1.2',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
@@ -349,7 +444,7 @@ async function main() {
     source_health: sourceHealth,
     source_health_map: Object.fromEntries(sourceHealth.map(s => [s.source, s.status])),
     assessment: {
-      label: 'open-source cyber/exploit pressure telemetry',
+      label: 'open-source cyber/exploit and IOC pressure telemetry',
       magic_paws_use: 'contextual indicator only',
       claim_limit: scoring.claim_limit,
       no_attribution: true,
@@ -375,7 +470,9 @@ async function main() {
       kev_recent_7d: latest.metrics.kev.recent_7d,
       kev_recent_30d: latest.metrics.kev.recent_30d,
       epss_hot_global_count: latest.metrics.epss.hot_global_count,
-      epss_mean_recent_kev: latest.metrics.kev.epss_mean_recent_kev
+      epss_mean_recent_kev: latest.metrics.kev.epss_mean_recent_kev,
+      threatfox_ioc_count_1d: latest.metrics.threatfox.ioc_count_1d ?? 0,
+      threatfox_botnet_c2_count_7d: latest.metrics.threatfox.botnet_c2_count_7d ?? 0
     }
   };
 
