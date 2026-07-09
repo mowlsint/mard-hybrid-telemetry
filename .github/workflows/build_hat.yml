@@ -47,3 +47,19 @@ jobs:
           else
             echo "No telemetry changes to commit."
           fi
+
+      - name: Trigger Cloudflare Pages deploy
+        if: always()
+        shell: bash
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${CLOUDFLARE_DEPLOY_HOOK:-}" ]]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK not set; skipping Cloudflare deploy trigger."
+            exit 0
+          fi
+
+          echo "Triggering Cloudflare Pages deploy hook..."
+          curl -fsS -X POST "$CLOUDFLARE_DEPLOY_HOOK"
+          echo "Cloudflare Pages deploy hook triggered."
