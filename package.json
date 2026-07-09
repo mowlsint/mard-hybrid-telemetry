@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build_hat.mjs",
-    "check": "node scripts/check_outputs.mjs"
+    "check": "node scripts/check_outputs.mjs",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "engines": {
     "node": ">=20"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "wrangler": "^4.107.1"
+  }
 }
