@@ -78,4 +78,4 @@ Morning Summary: one cautious context paragraph
 Hybrid Index: no weighting until at least 30–60 days baseline
 ```
 
-After a baseline period, use only a low weight unless corroborated by maritime, FIMI, RF, AIS, ADS-B, KRITIS or incident evidence.
+After a baseline period, use only a low weight unless corroborated by maritime, FIMI, RF, AIS, ADS-B, KRITIS or incident evidence. MOwlSINT 
