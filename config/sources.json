@@ -24,7 +24,6 @@
       "historical_export_enabled": true,
       "export_json_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json.zip",
       "export_csv_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv.zip",
-      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Uses recent API plus full export candidates for a 6-month historical approximation where available. If export parsing fails, v0.1.3a uses a conservative limited fallback. The key is never written to output.",
       "export_json_url_templates": [
         "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json.zip",
         "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json"
@@ -32,32 +31,39 @@
       "export_csv_url_templates": [
         "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv.zip",
         "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv"
-      ]
+      ],
+      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Uses recent API plus full export candidates for a 6-month historical approximation where available. The key is never written to output."
+    },
+    "gdelt": {
+      "enabled": true,
+      "kind": "doc_api",
+      "auth": "none",
+      "base_url": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "timespan": "36h",
+      "maxrecords_per_query": 75,
+      "note": "FIMI-lite narrative spike watch using the GDELT DOC 2.0 API ArticleList mode. GDELT is not a disinformation classifier; it is used as a media/narrative-volume sensor."
+    },
+    "euvsdisinfo": {
+      "enabled": true,
+      "kind": "curated_case_watch_via_gdelt_domain_query",
+      "auth": "none",
+      "timespan": "90d",
+      "maxrecords_per_query": 50,
+      "note": "Curated pro-Kremlin disinformation case watch using EUvsDisinfo as a validated case source. v0.1.4 queries EUvsDisinfo exposure through GDELT domain-restricted ArticleList calls; direct database scraping is intentionally avoided."
+    },
+    "disarm": {
+      "enabled": true,
+      "kind": "local_taxonomy_mapping",
+      "auth": "none",
+      "config_file": "config/fimi_keywords.json",
+      "note": "DISARM-aligned local tag mapping for FIMI-lite. It classifies retrieved titles/snippets into transparent narrative/TTP-style categories without claiming official DISARM IDs."
     },
     "urlhaus": {
       "enabled": false,
       "kind": "api_or_dump",
       "auth": "optional_secret",
       "secret_name": "ABUSECH_AUTH_KEY",
-      "note": "Optional. Free abuse.ch Auth-Key required. Disabled by default for public/community zero-secret operation."
-    },
-    "gdelt": {
-      "enabled": false,
-      "kind": "api",
-      "auth": "none",
-      "note": "Planned for v0.1.4 FIMI-lite narrative spike watch."
-    },
-    "euvsdisinfo": {
-      "enabled": false,
-      "kind": "curated_case_watch",
-      "auth": "none",
-      "note": "Planned for v0.1.4 FIMI-lite curated maritime disinformation case watch."
-    },
-    "disarm": {
-      "enabled": false,
-      "kind": "taxonomy",
-      "auth": "none",
-      "note": "Planned for v0.1.4 FIMI-lite taxonomy tagging."
+      "note": "Optional later addition. Free abuse.ch Auth-Key required. Disabled by default."
     }
   }
 }

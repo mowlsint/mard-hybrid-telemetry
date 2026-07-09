@@ -1,0 +1,45 @@
+{
+  "schema": "mard-hat-fimi-keywords-v1",
+  "maritime_watch_queries": [
+    "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+    "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+    "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
+  ],
+  "euvsdisinfo_queries": [
+    "domain:euvsdisinfo.eu (\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector OR \"Russian-linked ships\" OR \"NATO piracy\" OR tanker OR sanctions)",
+    "domain:euvsdisinfo.eu (maritime OR cable OR pipeline OR sabotage OR piracy OR \"shadow fleet\" OR \"oil tanker\")"
+  ],
+  "disarm_aligned_tags": [
+    {
+      "id": "false_attribution",
+      "label": "False attribution / blame shifting",
+      "keywords": ["false flag", "blame", "accused", "sabotage", "ukraine", "nato", "usa", "west", "anglo-saxon", "cia"]
+    },
+    {
+      "id": "institutional_discrediting",
+      "label": "Discrediting institutions or alliances",
+      "keywords": ["nato", "eu", "european union", "government", "cover-up", "piracy", "illegal", "provocation"]
+    },
+    {
+      "id": "infrastructure_fear",
+      "label": "Critical-infrastructure fear framing",
+      "keywords": ["undersea cable", "submarine cable", "pipeline", "critical infrastructure", "energy", "port", "blackout", "internet cable"]
+    },
+    {
+      "id": "maritime_legal_framing",
+      "label": "Maritime legal or piracy framing",
+      "keywords": ["piracy", "seizure", "boarding", "sanctions", "tanker", "ship", "vessel", "blockade", "inspection", "freedom of navigation"]
+    },
+    {
+      "id": "conspiracy_framing",
+      "label": "Conspiracy or secret-plot framing",
+      "keywords": ["secret", "plot", "cover-up", "staged", "provocation", "hidden", "fabricated"]
+    },
+    {
+      "id": "narrative_amplification",
+      "label": "Narrative amplification / repetition",
+      "keywords": ["again", "recurring", "wave", "campaign", "propaganda", "narrative", "disinformation"]
+    }
+  ],
+  "note": "This is a transparent DISARM-aligned local mapping for early FIMI-lite. It does not claim official DISARM technique IDs."
+}

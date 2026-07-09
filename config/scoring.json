@@ -1,12 +1,14 @@
 {
   "schema": "mard-hat-scoring-v1",
-  "label": "MARD Hybrid Activity Telemetry v0.1.3a",
+  "label": "MARD Hybrid Activity Telemetry v0.1.4",
   "windows": {
     "short_days": 7,
     "medium_days": 30,
     "history_points_for_baseline": 14,
     "threatfox_historical_days": 180,
-    "bot_activity_hours": 36
+    "bot_activity_hours": 36,
+    "fimi_narrative_hours": 36,
+    "euvsdisinfo_case_days": 90
   },
   "weights": {
     "kev_recent_7d": 0.25,
@@ -17,20 +19,32 @@
     "epss_hot_global": 0.0,
     "source_coverage": 0.0
   },
+  "fimi_weights": {
+    "gdelt_narrative_pressure": 0.45,
+    "euvsdisinfo_case_signal": 0.35,
+    "disarm_tag_relevance": 0.20
+  },
   "caps": {
     "kev_recent_7d_cap": 8,
     "kev_recent_30d_cap": 32,
     "epss_hot_count_cap": 250,
     "threatfox_ioc_1d_cap_fallback": 2000,
     "threatfox_botnet_c2_36h_cap_fallback": 1200,
-    "threatfox_fallback_max_score": 65
+    "threatfox_fallback_max_score": 65,
+    "gdelt_articles_36h_cap_fallback": 120,
+    "euvsdisinfo_cases_90d_cap": 12,
+    "disarm_tags_cap": 8,
+    "fimi_fallback_max_score": 65
   },
   "bot_activity": {
     "busy_percentile": 75,
     "high_percentile": 90
   },
   "disinformation_alert": {
-    "auto_level_3_enabled": false,
+    "auto_level_3_enabled": true,
+    "level_1_fimi_score": 25,
+    "level_2_fimi_score": 55,
+    "level_3_fimi_score": 80,
     "level_1_percentile": 65,
     "level_2_percentile": 75,
     "level_3_percentile": 90
@@ -41,6 +55,6 @@
     "watch_max": 60,
     "high_max": 80
   },
-  "claim_limit": "Contextual digital-pressure indicator only. Not attribution-grade and not sufficient to prove hybrid activity on its own.",
-  "note": "v0.1.3a: Mini patch. ThreatFox export parsing is more defensive, 36h fallback is derived from recent 7d API timestamps where possible, and fallback scoring is capped to avoid false 100% bars while historical calibration is unavailable."
+  "claim_limit": "Contextual digital-pressure and FIMI-lite indicator only. Not attribution-grade and not sufficient to prove hybrid activity, sabotage, or state involvement on its own.",
+  "note": "v0.1.4: Adds FIMI-lite crawls: GDELT narrative spike watch, EUvsDisinfo curated-case watch via GDELT domain query, and DISARM-aligned local taxonomy tagging. These are used for Disinformation Alert Level and context, not as standalone proof."
 }
