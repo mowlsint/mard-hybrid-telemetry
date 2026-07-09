@@ -24,7 +24,15 @@
       "historical_export_enabled": true,
       "export_json_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json.zip",
       "export_csv_url_template": "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv.zip",
-      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Uses recent API plus full export for a 6-month historical approximation where available. The key is never written to output."
+      "note": "Optional but enabled when ABUSECH_AUTH_KEY is present. Uses recent API plus full export candidates for a 6-month historical approximation where available. If export parsing fails, v0.1.3a uses a conservative limited fallback. The key is never written to output.",
+      "export_json_url_templates": [
+        "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json.zip",
+        "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.json"
+      ],
+      "export_csv_url_templates": [
+        "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv.zip",
+        "https://threatfox-api.abuse.ch/v2/files/exports/{auth_key}/full.csv"
+      ]
     },
     "urlhaus": {
       "enabled": false,
