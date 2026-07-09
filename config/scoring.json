@@ -7,11 +7,11 @@
     "history_points_for_baseline": 14
   },
   "weights": {
-    "kev_recent_7d": 0.30,
-    "kev_recent_30d": 0.20,
-    "epss_hot_global": 0.20,
-    "kev_epss_mean": 0.20,
-    "source_coverage": 0.10
+    "kev_recent_7d": 0.4,
+    "kev_recent_30d": 0.3,
+    "epss_hot_global": 0.05,
+    "kev_epss_mean": 0.25,
+    "source_coverage": 0.0
   },
   "caps": {
     "kev_recent_7d_cap": 8,
@@ -24,5 +24,6 @@
     "watch_max": 60,
     "high_max": 80
   },
-  "claim_limit": "Contextual digital-pressure indicator only. Not attribution-grade and not sufficient to prove hybrid activity on its own."
+  "claim_limit": "Contextual digital-pressure indicator only. Not attribution-grade and not sufficient to prove hybrid activity on its own.",
+  "note": "v0.1.1: global EPSS hot count is retained as context but strongly down-weighted; source coverage is shown as health context, not activity pressure."
 }
