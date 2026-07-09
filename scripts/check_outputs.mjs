@@ -21,4 +21,8 @@ if (!latest.disinformation_alert_level || typeof latest.disinformation_alert_lev
   console.error('Missing disinformation_alert_level.level.');
   process.exit(1);
 }
+if (!latest.metrics?.fimi_lite || typeof latest.metrics.fimi_lite.score !== 'number') {
+  console.error('Missing metrics.fimi_lite.score.');
+  process.exit(1);
+}
 console.log('Output check ok.');

@@ -8,6 +8,7 @@ const execFileAsync = promisify(execFile);
 const ROOT = process.cwd();
 const SOURCES_PATH = path.join(ROOT, 'config', 'sources.json');
 const SCORING_PATH = path.join(ROOT, 'config', 'scoring.json');
+const FIMI_CONFIG_PATH = path.join(ROOT, 'config', 'fimi_keywords.json');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const RAW_DIR = path.join(ROOT, 'data', 'raw');
 const HISTORY_DIR = path.join(ROOT, 'data', 'history');
@@ -64,7 +65,7 @@ async function fetchText(url, label, timeoutMs = 30000) {
   try {
     const res = await fetch(url, {
       headers: {
-        'user-agent': 'mard-hybrid-telemetry/0.1.3a (+public OSINT telemetry; no attribution)'
+        'user-agent': 'mard-hybrid-telemetry/0.1.4 (+public OSINT telemetry; no attribution)'
       },
       signal: controller.signal
     });
@@ -81,7 +82,7 @@ async function fetchBinary(url, label, timeoutMs = 90000) {
   try {
     const res = await fetch(url, {
       headers: {
-        'user-agent': 'mard-hybrid-telemetry/0.1.3a (+public OSINT telemetry; no attribution)'
+        'user-agent': 'mard-hybrid-telemetry/0.1.4 (+public OSINT telemetry; no attribution)'
       },
       signal: controller.signal
     });
@@ -174,7 +175,7 @@ async function postThreatFox(source, key, body, label) {
       headers: {
         'Auth-Key': key,
         'content-type': 'application/json',
-        'user-agent': 'mard-hybrid-telemetry/0.1.3a'
+        'user-agent': 'mard-hybrid-telemetry/0.1.4'
       },
       body: JSON.stringify(body),
       signal: controller.signal
@@ -225,6 +226,216 @@ function topCounts(items, keyFn, limit = 10) {
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
     .slice(0, limit);
+}
+
+
+function uniqueBy(items, keyFn) {
+  const seen = new Set();
+  const out = [];
+  for (const item of items) {
+    const key = keyFn(item);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(item);
+  }
+  return out;
+}
+
+function stripHtml(value) {
+  return String(value ?? '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildGdeltUrl(baseUrl, query, timespan, maxrecords = 75) {
+  const params = new URLSearchParams({
+    query,
+    mode: 'artlist',
+    format: 'json',
+    sort: 'DateDesc',
+    maxrecords: String(maxrecords),
+    timespan
+  });
+  return `${baseUrl}?${params.toString()}`;
+}
+
+function normaliseGdeltArticle(article, queryLabel = '') {
+  const title = stripHtml(article.title || article.name || '');
+  const url = article.url || article.link || '';
+  const domain = article.domain || article.sourceCommonName || article.source || '';
+  const seen = article.seendate || article.date || article.datetime || null;
+  return {
+    title,
+    url,
+    domain,
+    language: article.language || article.lang || null,
+    source_country: article.sourcecountry || article.sourceCountry || null,
+    seen_date: seen,
+    query: queryLabel
+  };
+}
+
+async function fetchGdeltArticleQuery(source, query, timespan, maxrecords, label) {
+  const url = buildGdeltUrl(source.base_url, query, timespan, maxrecords);
+  const { json, raw, hash } = await fetchJson(url, label);
+  const articles = Array.isArray(json.articles) ? json.articles.map(a => normaliseGdeltArticle(a, query)) : [];
+  return { ok: true, query, url, raw, hash, count: articles.length, articles };
+}
+
+function applyDisarmAlignedTags(items, fimiConfig) {
+  const tags = [];
+  const text = items.map(item => `${item.title || ''} ${item.domain || ''} ${item.url || ''}`).join(' \n ').toLowerCase();
+  for (const tag of fimiConfig.disarm_aligned_tags || []) {
+    const matched = [];
+    for (const keyword of tag.keywords || []) {
+      const k = String(keyword).toLowerCase();
+      if (k && text.includes(k)) matched.push(keyword);
+    }
+    if (matched.length) {
+      tags.push({
+        id: tag.id,
+        label: tag.label,
+        count: matched.length,
+        matched_keywords: matched.slice(0, 12)
+      });
+    }
+  }
+  return tags.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+}
+
+async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = []) {
+  const gdeltSource = sources.sources.gdelt;
+  const euvsSource = sources.sources.euvsdisinfo;
+  const disarmSource = sources.sources.disarm;
+  const fimiHealth = [];
+
+  const gdeltQueries = Array.isArray(fimiConfig.maritime_watch_queries) ? fimiConfig.maritime_watch_queries : [];
+  const euvsQueries = Array.isArray(fimiConfig.euvsdisinfo_queries) ? fimiConfig.euvsdisinfo_queries : [];
+
+  const gdeltResults = [];
+  if (gdeltSource?.enabled) {
+    for (const [i, query] of gdeltQueries.entries()) {
+      try {
+        const r = await fetchGdeltArticleQuery(gdeltSource, query, gdeltSource.timespan || '36h', gdeltSource.maxrecords_per_query || 75, `gdelt_fimi_${i + 1}`);
+        const rawPath = path.join(RAW_DIR, `gdelt_fimi_${i + 1}_${stamp}.json`);
+        await fs.writeFile(rawPath, r.raw);
+        r.raw_file = path.relative(ROOT, rawPath);
+        gdeltResults.push(r);
+      } catch (err) {
+        gdeltResults.push({ ok: false, query, error: String(err.message || err), articles: [] });
+      }
+    }
+  }
+
+  const gdeltArticles = uniqueBy(gdeltResults.flatMap(r => r.articles || []), a => a.url || `${a.title}|${a.domain}`);
+  const gdeltOk = gdeltSource?.enabled && gdeltResults.some(r => r.ok);
+  fimiHealth.push({
+    source: 'gdelt_fimi',
+    status: gdeltSource?.enabled ? (gdeltOk ? 'ok' : 'error') : 'disabled',
+    count: gdeltArticles.length,
+    queries: gdeltQueries.length,
+    errors: gdeltResults.filter(r => !r.ok).map(r => r.error).slice(0, 3)
+  });
+
+  const euvsResults = [];
+  if (euvsSource?.enabled && gdeltSource?.enabled) {
+    for (const [i, query] of euvsQueries.entries()) {
+      try {
+        const r = await fetchGdeltArticleQuery(gdeltSource, query, euvsSource.timespan || '90d', euvsSource.maxrecords_per_query || 50, `euvsdisinfo_case_watch_${i + 1}`);
+        const rawPath = path.join(RAW_DIR, `euvsdisinfo_case_watch_${i + 1}_${stamp}.json`);
+        await fs.writeFile(rawPath, r.raw);
+        r.raw_file = path.relative(ROOT, rawPath);
+        euvsResults.push(r);
+      } catch (err) {
+        euvsResults.push({ ok: false, query, error: String(err.message || err), articles: [] });
+      }
+    }
+  }
+
+  const euvsArticles = uniqueBy(euvsResults.flatMap(r => r.articles || []), a => a.url || `${a.title}|${a.domain}`);
+  const euvsOk = euvsSource?.enabled && euvsResults.some(r => r.ok);
+  fimiHealth.push({
+    source: 'euvsdisinfo_case_watch',
+    status: euvsSource?.enabled ? (euvsOk ? 'ok' : 'error') : 'disabled',
+    count: euvsArticles.length,
+    queries: euvsQueries.length,
+    method: 'gdelt_domain_restricted_artlist',
+    errors: euvsResults.filter(r => !r.ok).map(r => r.error).slice(0, 3)
+  });
+
+  const allFimiArticles = uniqueBy([...gdeltArticles, ...euvsArticles], a => a.url || `${a.title}|${a.domain}`);
+  const disarmTags = disarmSource?.enabled ? applyDisarmAlignedTags(allFimiArticles, fimiConfig) : [];
+  fimiHealth.push({
+    source: 'disarm_aligned_taxonomy',
+    status: disarmSource?.enabled ? 'ok' : 'disabled',
+    count: disarmTags.length,
+    method: 'local_keyword_mapping'
+  });
+
+  const histGdelt = (previousHistory || []).map(h => h?.metrics?.gdelt_unique_articles_36h).filter(Number.isFinite);
+  const histFimiScore = (previousHistory || []).map(h => h?.metrics?.fimi_lite_score).filter(Number.isFinite);
+  const gdeltPercentile = percentileRank(histGdelt.length >= 14 ? histGdelt : [], gdeltArticles.length);
+
+  const caps = scoring.caps || {};
+  const fimiWeights = scoring.fimi_weights || {};
+  const fallbackMax = caps.fimi_fallback_max_score ?? 65;
+  const gdeltScore = gdeltPercentile === null
+    ? Math.min(fallbackMax, scoreFromCount(gdeltArticles.length, caps.gdelt_articles_36h_cap_fallback || 120))
+    : gdeltPercentile;
+  const euvsScore = scoreFromCount(euvsArticles.length, caps.euvsdisinfo_cases_90d_cap || 12);
+  const disarmScore = scoreFromCount(disarmTags.length, caps.disarm_tags_cap || 8);
+  const fimiScore = clamp(
+    gdeltScore * (fimiWeights.gdelt_narrative_pressure ?? 0.45) +
+    euvsScore * (fimiWeights.euvsdisinfo_case_signal ?? 0.35) +
+    disarmScore * (fimiWeights.disarm_tag_relevance ?? 0.20)
+  );
+
+  return {
+    enabled: Boolean(gdeltSource?.enabled || euvsSource?.enabled || disarmSource?.enabled),
+    status: fimiHealth.some(s => s.status === 'ok') ? 'ok' : 'error_or_disabled',
+    score: Math.round(fimiScore),
+    confidence: histGdelt.length >= 14 ? 'medium' : 'low',
+    mode: 'fimi_lite_open_source_proxy',
+    score_parts: {
+      gdelt_narrative_pressure: Math.round(gdeltScore),
+      euvsdisinfo_case_signal: Math.round(euvsScore),
+      disarm_tag_relevance: Math.round(disarmScore)
+    },
+    gdelt: {
+      timespan: gdeltSource?.timespan || '36h',
+      query_count: gdeltQueries.length,
+      article_count: gdeltResults.reduce((a, r) => a + (r.count || 0), 0),
+      unique_articles: gdeltArticles.length,
+      historical_percentile: gdeltPercentile === null ? null : Math.round(gdeltPercentile),
+      top_domains: topCounts(gdeltArticles, a => a.domain || 'unknown', 8),
+      sample: gdeltArticles.slice(0, 10)
+    },
+    euvsdisinfo: {
+      timespan: euvsSource?.timespan || '90d',
+      query_count: euvsQueries.length,
+      candidate_count: euvsArticles.length,
+      method: 'GDELT domain-restricted ArticleList query for euvsdisinfo.eu',
+      sample: euvsArticles.slice(0, 10)
+    },
+    disarm_aligned: {
+      method: 'local transparent keyword mapping; no official DISARM technique IDs claimed',
+      tag_count: disarmTags.length,
+      tags: disarmTags.slice(0, 12)
+    },
+    source_health: fimiHealth,
+    history: {
+      gdelt_points: histGdelt.length,
+      fimi_score_points: histFimiScore.length
+    },
+    note: 'FIMI-lite is a contextual signal. GDELT measures media/narrative volume, EUvsDisinfo provides curated case exposure, and DISARM-aligned tags structure the observations. This is not attribution-grade.'
+  };
 }
 
 function percentileRank(values, current) {
@@ -629,7 +840,7 @@ function buildBotActivityState(metrics, scoring) {
   };
 }
 
-function buildDisinformationAlert(botActivityState, score, scoring) {
+function buildDisinformationAlert(botActivityState, score, scoring, fimiLite = null) {
   const cfg = scoring.disinformation_alert || {};
   const maxBasis = Math.max(
     botActivityState.basis?.ioc_current_percentile ?? 0,
@@ -638,22 +849,49 @@ function buildDisinformationAlert(botActivityState, score, scoring) {
     botActivityState.basis?.botnet_c2_36h_percentile ?? 0
   );
 
+  const fimiScore = Number(fimiLite?.score ?? 0);
+  const euvsCount = Number(fimiLite?.euvsdisinfo?.candidate_count ?? 0);
+  const gdeltCount = Number(fimiLite?.gdelt?.unique_articles ?? 0);
+  const tagCount = Number(fimiLite?.disarm_aligned?.tag_count ?? 0);
+
   let level = 0;
-  if (botActivityState.primary_code === 'BWB' || maxBasis >= (cfg.level_1_percentile ?? 65) || score.level === 'watch') level = 1;
-  if (botActivityState.primary_code === 'BAB' || maxBasis >= (cfg.level_2_percentile ?? 75) || ['high', 'critical'].includes(score.level)) level = 2;
-  if (cfg.auto_level_3_enabled && maxBasis >= (cfg.level_3_percentile ?? 90) && score.level === 'critical') level = 3;
+  if (
+    fimiScore >= (cfg.level_1_fimi_score ?? 25) ||
+    botActivityState.primary_code === 'BWB' ||
+    maxBasis >= (cfg.level_1_percentile ?? 65) ||
+    score.level === 'watch'
+  ) level = 1;
+
+  if (
+    fimiScore >= (cfg.level_2_fimi_score ?? 55) ||
+    botActivityState.primary_code === 'BAB' ||
+    maxBasis >= (cfg.level_2_percentile ?? 75) ||
+    ['high', 'critical'].includes(score.level)
+  ) level = 2;
+
+  if (
+    cfg.auto_level_3_enabled &&
+    fimiScore >= (cfg.level_3_fimi_score ?? 80) &&
+    euvsCount > 0 &&
+    tagCount >= 2 &&
+    (botActivityState.primary_code !== 'BIL' || gdeltCount >= 20)
+  ) level = 3;
 
   const labels = ['none', 'low', 'elevated', 'high'];
   return {
-    schema: 'mard-hat-dal-v1',
+    schema: 'mard-hat-dal-v2',
     level,
     label: labels[level],
     scale: [0, 1, 2, 3],
-    mode: 'experimental_proxy',
-    level_3_reserved: !cfg.auto_level_3_enabled,
-    note: cfg.auto_level_3_enabled
-      ? 'Proxy-based estimate derived from bot/IOC telemetry; direct FIMI/narrative feeds are not yet active.'
-      : 'Proxy-based estimate derived from bot/IOC telemetry. Level 3 is reserved until GDELT/EUvsDisinfo/DISARM corroboration is active.'
+    mode: 'fimi_lite_with_bot_ioc_proxy',
+    fimi_lite_score: Math.round(fimiScore),
+    corroboration: {
+      gdelt_unique_articles: gdeltCount,
+      euvsdisinfo_candidates: euvsCount,
+      disarm_aligned_tags: tagCount,
+      bot_state: botActivityState.primary_code
+    },
+    note: 'FIMI-lite estimate derived from GDELT narrative-volume watch, EUvsDisinfo curated-case exposure, DISARM-aligned local tags, and bot/IOC proxy telemetry. Not attribution-grade.'
   };
 }
 
@@ -681,6 +919,7 @@ async function main() {
   await ensureDirs();
   const sources = await readJson(SOURCES_PATH);
   const scoring = await readJson(SCORING_PATH);
+  const fimiConfig = await readJson(FIMI_CONFIG_PATH, { maritime_watch_queries: [], euvsdisinfo_queries: [], disarm_aligned_tags: [] });
   if (!sources || !scoring) throw new Error('Missing config files.');
 
   const previousHistoryPath = path.join(PUBLIC_DIR, 'hat_history.json');
@@ -738,6 +977,16 @@ async function main() {
     sourceHealth.push({ source: 'threatfox_optional', status: 'error', error: String(err.message || err) });
   }
 
+
+  let fimiLite = { enabled: false, status: 'disabled', score: 0, source_health: [] };
+  try {
+    fimiLite = await fetchFimiLite(sources, scoring, fimiConfig, previousHistory);
+    sourceHealth.push(...(fimiLite.source_health || []));
+  } catch (err) {
+    fimiLite = { enabled: true, status: 'error', score: 0, source_health: [{ source: 'fimi_lite', status: 'error', error: String(err.message || err) }] };
+    sourceHealth.push(...fimiLite.source_health);
+  }
+
   const epssByCve = new Map((epssKev.data || []).map(row => [row.cve, row]));
   const kevSummary = summariseKev(kev.vulnerabilities || [], epssByCve, scoring);
   const epssHotGlobal = (epssTop.data || []).length;
@@ -764,12 +1013,13 @@ async function main() {
       threatfox_count: threatfoxSummary.ioc_count_1d ?? null,
       botnet_cc_count: threatfoxSummary.botnet_c2_count_7d ?? null,
       historical_export_status: threatfox.export_status ?? null
-    }
+    },
+    fimi_lite: fimiLite
   };
 
   const score = computeScores(metrics, sourceHealth, scoring, previousHistory);
   const botActivityState = buildBotActivityState(metrics, scoring);
-  const disinfoAlert = buildDisinformationAlert(botActivityState, score, scoring);
+  const disinfoAlert = buildDisinformationAlert(botActivityState, score, scoring, fimiLite);
 
   const drivers = [];
   drivers.push(`${kevSummary.recent_7d} CISA KEV additions in the last ${scoring.windows.short_days} days`);
@@ -791,10 +1041,17 @@ async function main() {
   } else if (threatfox.status === 'error') {
     drivers.push('ThreatFox feed error: see source health');
   }
+  if (fimiLite?.enabled) {
+    drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
+    drivers.push(`GDELT narrative watch: ${fimiLite.gdelt?.unique_articles ?? 0} unique articles in ${fimiLite.gdelt?.timespan ?? '36h'}`);
+    drivers.push(`EUvsDisinfo case watch: ${fimiLite.euvsdisinfo?.candidate_count ?? 0} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
+    const tagList = (fimiLite.disarm_aligned?.tags || []).slice(0, 3).map(t => t.label).join(', ');
+    if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
+  }
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.3a',
+    schema: 'mard-hat-v0.1.4',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
@@ -811,14 +1068,15 @@ async function main() {
     source_health: sourceHealth,
     source_health_map: Object.fromEntries(sourceHealth.map(s => [s.source, s.status])),
     assessment: {
-      label: 'open-source cyber/exploit, IOC and bot-state pressure telemetry',
+      label: 'open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry',
       magic_paws_use: 'contextual indicator only',
       claim_limit: scoring.claim_limit,
       no_attribution: true,
       no_proof_by_itself: true
     },
     roadmap: {
-      next: 'v0.1.4 FIMI-lite: EUvsDisinfo case watch, GDELT narrative spike watch, DISARM taxonomy tagging',
+      next: 'v0.1.5: refine FIMI-lite calibration, optional URLhaus, and maritime relevance weighting',
+      active: 'v0.1.4 FIMI-lite: GDELT narrative spike watch, EUvsDisinfo case watch, DISARM-aligned taxonomy tagging',
       open_measures: 'later'
     },
     links: {
@@ -848,7 +1106,11 @@ async function main() {
       threatfox_botnet_c2_count_7d: latest.metrics.threatfox.botnet_c2_count_7d ?? 0,
       threatfox_botnet_c2_36h: latest.metrics.threatfox.historical?.current_36h_botnet_c2_count ?? 0,
       threatfox_ioc_current_percentile: latest.metrics.threatfox.historical?.current_ioc_percentile ?? null,
-      threatfox_botnet_c2_36h_percentile: latest.metrics.threatfox.historical?.trailing_36h_botnet_c2_percentile ?? null
+      threatfox_botnet_c2_36h_percentile: latest.metrics.threatfox.historical?.trailing_36h_botnet_c2_percentile ?? null,
+      fimi_lite_score: latest.metrics.fimi_lite?.score ?? 0,
+      gdelt_unique_articles_36h: latest.metrics.fimi_lite?.gdelt?.unique_articles ?? 0,
+      euvsdisinfo_case_candidates_90d: latest.metrics.fimi_lite?.euvsdisinfo?.candidate_count ?? 0,
+      disarm_aligned_tag_count: latest.metrics.fimi_lite?.disarm_aligned?.tag_count ?? 0
     }
   };
 
