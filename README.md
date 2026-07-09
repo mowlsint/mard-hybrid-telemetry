@@ -1,6 +1,6 @@
 # MARD-HAT // Hybrid Activity Telemetry by MOwlSINT
 
-**MARD-HAT** is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC and botnet/C2 pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in **Magic Paws / MARD-Eu**.
+**MARD-HAT** is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in **Magic Paws / MARD-Eu**.
 
 MARD-HAT does **not** attribute activity to a state actor. It does **not** prove sabotage, disinformation, or hybrid activity by itself. A high score should be treated as a prompt for further analysis, not as a conclusion.
 
@@ -41,13 +41,16 @@ Cyber / botnet pressure
 
 ## Current scope
 
-The current MARD-HAT build uses open and low-cost sources to estimate public cyber and botnet-related pressure.
+The current MARD-HAT build uses open and low-cost sources to estimate public cyber, botnet-related and FIMI-lite pressure.
 
 Enabled or prepared in the current line:
 
 - **CISA Known Exploited Vulnerabilities (KEV)** for recently added, publicly known exploited vulnerabilities.
 - **FIRST EPSS** for exploitation-probability enrichment and global exploit-pressure context.
 - **ThreatFox / abuse.ch** for IOC and botnet/C2-like telemetry when `ABUSECH_AUTH_KEY` is configured as a GitHub Actions secret.
+- **GDELT DOC API** as a fast narrative/media-volume sensor.
+- **EUvsDisinfo exposure via GDELT domain-restricted queries** as a curated pro-Kremlin disinformation case signal.
+- **DISARM-aligned local taxonomy mapping** for transparent FIMI-lite tag structuring.
 - Static public JSON outputs for downstream ingestion.
 - Static HTML dashboard under `public/index.html`.
 
@@ -57,7 +60,7 @@ The current bot-state model adds lightweight operational labels:
 - **BWB — Bots were busy**: elevated activity is visible or suspected in the recent trailing window.
 - **BAB — Bots are busy**: elevated activity appears current.
 
-The **Disinformation Alert Level** is currently a proxy indicator derived from bot/IOC telemetry. It is not yet a direct narrative or disinformation measurement.
+The **Disinformation Alert Level** now combines FIMI-lite signals with bot/IOC proxy telemetry. It is still not attribution-grade and does not prove disinformation or hybrid activity by itself.
 
 ## Roadmap
 
@@ -74,7 +77,7 @@ The current line focuses on:
 
 ### v0.1.4 — FIMI-lite
 
-The next planned layer is FIMI-lite:
+The active FIMI-lite layer uses:
 
 ```text
 GDELT = fast narrative and media-spike sensor
@@ -82,7 +85,7 @@ EUvsDisinfo = curated and validated disinformation case source
 DISARM = structured FIMI taxonomy and tagging model
 ```
 
-This will make the Disinformation Alert Level more meaningful. Until then, the level should be read as a proxy derived mainly from cyber/IOC and botnet/C2 telemetry.
+This makes the Disinformation Alert Level more meaningful, but it remains a contextual early-warning indicator. GDELT measures narrative/media volume; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. None of these alone prove coordination or attribution.
 
 ### Later phases
 
