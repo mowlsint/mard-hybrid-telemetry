@@ -122,7 +122,7 @@
 </head>
 <body>
   <header>
-    <div class="eyebrow">MARD-HAT v0.1.4 // Public OSINT telemetry</div>
+    <div class="eyebrow">MARD-HAT v0.1.4a // Public OSINT telemetry</div>
     <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
     <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
@@ -328,9 +328,14 @@
 
     function renderFimi(fimi) {
       if (!fimi || !fimi.enabled) {
-        $('fimi').innerHTML = '<p>FIMI-lite sources are disabled or unavailable.</p>';
+        $('fimi').innerHTML = '<p>FIMI-lite sources are disabled or unavailable.</p><p class="muted">No FIMI-lite source assessment is available for this run.</p>';
         return;
       }
+      const gdeltCount = Number(fimi.gdelt?.unique_articles ?? 0);
+      const euvsCount = Number(fimi.euvsdisinfo?.candidate_count ?? 0);
+      const tagCount = Number(fimi.disarm_aligned?.tag_count ?? 0);
+      const fimiScore = Number(fimi.score ?? 0);
+      const hasFimiSourceSignal = fimiScore > 0 || gdeltCount > 0 || euvsCount > 0 || tagCount > 0;
       const tags = Array.isArray(fimi.disarm_aligned?.tags)
         ? fimi.disarm_aligned.tags.slice(0, 5).map(t => `${escapeHtml(t.label)} (${escapeHtml(t.count)})`).join(', ')
         : '';
@@ -341,10 +346,11 @@
         ? fimi.euvsdisinfo.sample.slice(0, 4).map(a => `<li>${a.url ? `<a href="${escapeHtml(a.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(a.title || a.url)}</a>` : escapeHtml(a.title || 'untitled')}</li>`).join('')
         : '';
       $('fimi').innerHTML = `
-        <p>FIMI-lite score: <strong>${fimi.score ?? 0}</strong> · confidence <strong>${escapeHtml(fimi.confidence || 'low')}</strong> · mode <code>${escapeHtml(fimi.mode || '--')}</code></p>
-        <p>GDELT narrative watch: <strong>${fimi.gdelt?.unique_articles ?? 0}</strong> unique articles in ${escapeHtml(fimi.gdelt?.timespan || '--')} across ${escapeHtml(fimi.gdelt?.query_count ?? '--')} queries.</p>
-        <p>EUvsDisinfo case watch: <strong>${fimi.euvsdisinfo?.candidate_count ?? 0}</strong> candidate items in ${escapeHtml(fimi.euvsdisinfo?.timespan || '--')}.</p>
-        <p>DISARM-aligned tags: <strong>${fimi.disarm_aligned?.tag_count ?? 0}</strong>${tags ? ` · ${tags}` : ''}</p>
+        <p>FIMI-lite score: <strong>${fimiScore}</strong> · confidence <strong>${escapeHtml(fimi.confidence || 'low')}</strong> · mode <code>${escapeHtml(fimi.mode || '--')}</code></p>
+        ${!hasFimiSourceSignal ? `<p><strong>No matching FIMI-lite source signals detected in this run.</strong></p>` : ''}
+        <p>GDELT narrative watch: ${gdeltCount > 0 ? `<strong>${gdeltCount}</strong> unique articles` : '<strong>no matching articles</strong>'} in ${escapeHtml(fimi.gdelt?.timespan || '--')} across ${escapeHtml(fimi.gdelt?.query_count ?? '--')} queries.</p>
+        <p>EUvsDisinfo case watch: ${euvsCount > 0 ? `<strong>${euvsCount}</strong> candidate items` : '<strong>no matching candidate items</strong>'} in ${escapeHtml(fimi.euvsdisinfo?.timespan || '--')}.</p>
+        <p>DISARM-aligned tags: ${tagCount > 0 ? `<strong>${tagCount}</strong>${tags ? ` · ${tags}` : ''}` : '<strong>none</strong> · no taggable FIMI-lite source material in this run'}</p>
         ${domains ? `<p>Top GDELT domains: ${domains}</p>` : ''}
         ${sample ? `<p>EUvsDisinfo sample:</p><ul>${sample}</ul>` : ''}
         <p class="muted">${escapeHtml(fimi.note || 'Context only. Not attribution-grade.')}</p>
@@ -368,11 +374,11 @@
         <p>ThreatFox IOCs 7d: <strong>${threatfox.ioc_count_7d ?? '--'}</strong></p>
         <p>ThreatFox botnet/C2 7d: <strong>${threatfox.botnet_c2_count_7d ?? '--'}</strong></p>
         <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong>${hist.fallback_limited ? ' <span class="muted">· fallback limited</span>' : ''}</p>
-        <p>ThreatFox export items: <strong>${hist.source_items ?? '--'}</strong></p>
+        <p>ThreatFox export: <strong>${Number(hist.source_items ?? 0) > 0 ? `${hist.source_items} items` : 'historical export unavailable / warming up'}</strong></p>
         <p>ThreatFox 36h bot/C2 count: <strong>${hist.current_36h_botnet_c2_count ?? '--'}</strong></p>
         <p>FIMI-lite score: <strong>${metrics?.fimi_lite?.score ?? '--'}</strong></p>
-        <p>GDELT unique articles: <strong>${metrics?.fimi_lite?.gdelt?.unique_articles ?? '--'}</strong></p>
-        <p>EUvsDisinfo candidates: <strong>${metrics?.fimi_lite?.euvsdisinfo?.candidate_count ?? '--'}</strong></p>
+        <p>GDELT unique articles: <strong>${Number(metrics?.fimi_lite?.gdelt?.unique_articles ?? 0) > 0 ? metrics.fimi_lite.gdelt.unique_articles : 'none detected'}</strong></p>
+        <p>EUvsDisinfo candidates: <strong>${Number(metrics?.fimi_lite?.euvsdisinfo?.candidate_count ?? 0) > 0 ? metrics.fimi_lite.euvsdisinfo.candidate_count : 'none detected'}</strong></p>
         ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
       `;
     }
