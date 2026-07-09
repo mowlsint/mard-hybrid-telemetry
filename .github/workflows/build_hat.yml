@@ -1,1 +1,49 @@
-zzz
+name: Build HAT Index
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Cost-neutral/public-repo cadence: every 6 hours, offset from the hour.
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-hat-index
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build telemetry outputs
+        run: npm run build
+        env:
+          # Optional only. Leave unset for the zero-secret public MVP.
+          ABUSECH_AUTH_KEY: ${{ secrets.ABUSECH_AUTH_KEY }}
+
+      - name: Check outputs
+        run: npm run check
+
+      - name: Commit generated telemetry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/hat_latest.json public/hat_history.json public/hat_source_health.json data/history/hat_history.jsonl data/evidence_cards/*.json data/raw/*.json || true
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git commit -m "Update HAT telemetry"
+            git push
+          else
+            echo "No telemetry changes to commit."
+          fi
