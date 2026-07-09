@@ -130,7 +130,7 @@
 </head>
 <body>
   <header>
-    <div class="eyebrow">MARD-HAT v0.1 // Public OSINT telemetry</div>
+    <div class="eyebrow">MARD-HAT v0.1.2 // Public OSINT telemetry</div>
     <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
     <p class="lead">A cost-neutral, public, open-source telemetry layer for cyber/exploit pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
   </header>
@@ -194,6 +194,8 @@
       kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and helps smooth short spikes.',
       epss_hot_global: 'Counts globally hot EPSS entries returned by the high-percentile EPSS query. In v0.1.1 this is mostly contextual and strongly down-weighted, because a fixed top query can otherwise inflate the score.',
       kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely the recent known-exploited vulnerabilities are to be exploited broadly in the near term.',
+      threatfox_ioc_1d: 'Counts recent ThreatFox indicators of compromise from the last 1 day. This is the first active IOC-pressure input and can reflect malware, infrastructure, payload-delivery and botnet-related reporting density.',
+      threatfox_botnet_c2_7d: 'Counts ThreatFox indicators in the last 7 days that look botnet/C2-related by threat type, tags, or malware context. This is a contextual botnet/C2 pressure signal, not attribution by itself.',
       source_coverage: 'Shows how many configured telemetry sources are reachable. This is a health/context indicator, not a direct activity-pressure signal in v0.1.1.'
     };
 
@@ -202,6 +204,8 @@
       kev_recent_30d: 'Recent KEV additions, 30 days',
       epss_hot_global: 'Global EPSS hot set',
       kev_epss_mean: 'Mean EPSS of recent KEV',
+      threatfox_ioc_1d: 'ThreatFox IOC pressure, 1 day',
+      threatfox_botnet_c2_7d: 'ThreatFox botnet/C2 pressure, 7 days',
       source_coverage: 'Source coverage / health'
     };
 
@@ -281,12 +285,20 @@
     function renderMetrics(metrics) {
       const kev = metrics?.kev || {};
       const epss = metrics?.epss || {};
+      const threatfox = metrics?.threatfox || {};
+      const families = Array.isArray(threatfox.malware_families_1d)
+        ? threatfox.malware_families_1d.slice(0, 5).map(x => `${escapeHtml(x.name)} (${escapeHtml(x.count)})`).join(', ')
+        : '';
       $('metrics').innerHTML = `
         <p>Total KEV: <strong>${kev.total_kev ?? '--'}</strong></p>
         <p>Recent KEV 7d: <strong>${kev.recent_7d ?? '--'}</strong></p>
         <p>Recent KEV 30d: <strong>${kev.recent_30d ?? '--'}</strong></p>
         <p>Mean EPSS, recent KEV: <strong>${kev.epss_mean_recent_kev ?? '--'}</strong></p>
         <p>Hot EPSS global count: <strong>${epss.hot_global_count ?? '--'}</strong></p>
+        <p>ThreatFox IOCs 1d: <strong>${threatfox.ioc_count_1d ?? '--'}</strong></p>
+        <p>ThreatFox IOCs 7d: <strong>${threatfox.ioc_count_7d ?? '--'}</strong></p>
+        <p>ThreatFox botnet/C2 7d: <strong>${threatfox.botnet_c2_count_7d ?? '--'}</strong></p>
+        ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
       `;
     }
 
@@ -294,9 +306,14 @@
       const list = Array.isArray(sources)
         ? sources
         : Object.entries(sources || {}).map(([source, status]) => ({ source, status }));
-      $('sources').innerHTML = list.map(s => `
-        <p><strong>${escapeHtml(s.source)}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${escapeHtml(s.status)}</span>${typeof s.count === 'number' ? ` · ${s.count}` : ''}</p>
-      `).join('');
+      $('sources').innerHTML = list.map(s => {
+        const extra = [
+          typeof s.count === 'number' ? `${s.count}` : '',
+          typeof s.count_7d === 'number' ? `7d ${s.count_7d}` : '',
+          typeof s.botnet_cc_count === 'number' ? `botnet/C2 ${s.botnet_cc_count}` : ''
+        ].filter(Boolean).join(' · ');
+        return `<p><strong>${escapeHtml(s.source)}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${escapeHtml(s.status)}</span>${extra ? ` · ${escapeHtml(extra)}` : ''}</p>`;
+      }).join('');
     }
 
     async function main() {
