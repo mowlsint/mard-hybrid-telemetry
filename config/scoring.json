@@ -1,0 +1,28 @@
+{
+  "schema": "mard-hat-scoring-v1",
+  "label": "MARD Hybrid Activity Telemetry v0.1",
+  "windows": {
+    "short_days": 7,
+    "medium_days": 30,
+    "history_points_for_baseline": 14
+  },
+  "weights": {
+    "kev_recent_7d": 0.30,
+    "kev_recent_30d": 0.20,
+    "epss_hot_global": 0.20,
+    "kev_epss_mean": 0.20,
+    "source_coverage": 0.10
+  },
+  "caps": {
+    "kev_recent_7d_cap": 8,
+    "kev_recent_30d_cap": 32,
+    "epss_hot_count_cap": 250
+  },
+  "thresholds": {
+    "normal_max": 20,
+    "elevated_max": 40,
+    "watch_max": 60,
+    "high_max": 80
+  },
+  "claim_limit": "Contextual digital-pressure indicator only. Not attribution-grade and not sufficient to prove hybrid activity on its own."
+}

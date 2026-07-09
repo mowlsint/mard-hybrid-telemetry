@@ -1,0 +1,34 @@
+{
+  "schema": "mard-hat-sources-v1",
+  "sources": {
+    "cisa_kev": {
+      "enabled": true,
+      "kind": "json",
+      "auth": "none",
+      "url": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
+      "note": "CISA KEV mirror on GitHub. Public domain / CC0 according to the upstream repository."
+    },
+    "first_epss": {
+      "enabled": true,
+      "kind": "api",
+      "auth": "none",
+      "base_url": "https://api.first.org/data/v1/epss",
+      "note": "EPSS API. Used for high-percentile exploitation pressure and KEV enrichment."
+    },
+    "threatfox": {
+      "enabled": false,
+      "kind": "api",
+      "auth": "optional_secret",
+      "secret_name": "ABUSECH_AUTH_KEY",
+      "url": "https://threatfox-api.abuse.ch/api/v1/",
+      "note": "Optional. Free abuse.ch Auth-Key required. Disabled by default for public/community zero-secret operation."
+    },
+    "urlhaus": {
+      "enabled": false,
+      "kind": "api_or_dump",
+      "auth": "optional_secret",
+      "secret_name": "ABUSECH_AUTH_KEY",
+      "note": "Optional. Free abuse.ch Auth-Key required. Disabled by default for public/community zero-secret operation."
+    }
+  }
+}
