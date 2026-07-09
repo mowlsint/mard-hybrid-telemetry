@@ -8,7 +8,7 @@ const SCORING_PATH = path.join(ROOT, 'config', 'scoring.json');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const RAW_DIR = path.join(ROOT, 'data', 'raw');
 const HISTORY_DIR = path.join(ROOT, 'data', 'history');
-const EVIDENCE_DIR = path.join(ROOT, 'data', 'evidence_cards');
+const EVIDENCE_DIR = path.join(PUBLIC_DIR, 'evidence_cards');
 
 const now = new Date();
 const generatedAt = now.toISOString();
@@ -252,7 +252,7 @@ async function writeEvidenceCard(latest) {
   };
   const file = path.join(EVIDENCE_DIR, `${stamp}_open_source_exploit_pressure.json`);
   await fs.writeFile(file, JSON.stringify(card, null, 2));
-  return path.relative(ROOT, file);
+  return path.relative(PUBLIC_DIR, file);
 }
 
 async function main() {
@@ -347,6 +347,7 @@ async function main() {
     metrics,
     drivers,
     source_health: sourceHealth,
+    source_health_map: Object.fromEntries(sourceHealth.map(s => [s.source, s.status])),
     assessment: {
       label: 'open-source cyber/exploit pressure telemetry',
       magic_paws_use: 'contextual indicator only',
