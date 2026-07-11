@@ -14,29 +14,28 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 20
+    "count": 19
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 539,
-    "count_7d": 4109,
-    "botnet_cc_count": 1326,
+    "count": 582,
+    "count_7d": 4058,
+    "botnet_cc_count": 1349,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "b67a4fea99154a3227465868244a813ec5360bd13b3dd82317690648297c4ed0",
-    "hash_7d": "fed97699c1d3e094bb4b11a93a38e8693dbdd3bd90c66f8323711f00f4dafd8c",
+    "hash_1d": "c1c5d55ea75f52184a1e301a9a087144601c3500bb60d5aa81d8bed03f012f21",
+    "hash_7d": "cde3216f4a651ce3b846d927993903937a58f55bd44b93799d2858ac3458d43b",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
+    "status": "ok",
+    "count": 75,
     "queries": 3,
     "errors": [
-      "fetch failed",
       "fetch failed",
       "fetch failed"
     ]
@@ -55,7 +54,7 @@
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 5,
     "method": "local_keyword_mapping"
   }
 ]
