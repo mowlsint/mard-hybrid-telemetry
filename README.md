@@ -76,7 +76,7 @@ The current line focuses on:
 - historical approximation where possible.
 
 
-### v0.1.4a — Display clarity for zero-result FIMI-lite runs
+### v0.1.4b — Display clarity for zero-result FIMI-lite runs
 
 This patch does not change the basic data model. It makes the public dashboard clearer when FIMI-lite crawls return no matching source signals. Zero-result GDELT/EUvsDisinfo/DISARM values are now labelled as "no matching signals" rather than looking like broken counters. The Disinformation Alert Level note now distinguishes source-corroborated FIMI-lite elevation from bot/IOC proxy-only elevation. ThreatFox historical export counters also show "historical export unavailable / warming up" when the export has not been processed.
 
