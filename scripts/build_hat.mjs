@@ -386,23 +386,49 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   const caps = scoring.caps || {};
   const fimiWeights = scoring.fimi_weights || {};
   const fallbackMax = caps.fimi_fallback_max_score ?? 65;
-  const gdeltScore = gdeltPercentile === null
-    ? Math.min(fallbackMax, scoreFromCount(gdeltArticles.length, caps.gdelt_articles_36h_cap_fallback || 120))
-    : gdeltPercentile;
-  const euvsScore = scoreFromCount(euvsArticles.length, caps.euvsdisinfo_cases_90d_cap || 12);
-  const disarmScore = scoreFromCount(disarmTags.length, caps.disarm_tags_cap || 8);
-  const fimiScore = clamp(
+  const externalHealth = fimiHealth.filter(s => ['gdelt_fimi', 'euvsdisinfo_case_watch'].includes(s.source));
+  const externalErrors = externalHealth.some(s => s.status === 'error');
+  const externalOk = externalHealth.some(s => s.status === 'ok');
+  const fimiSourceCount = gdeltArticles.length + euvsArticles.length + disarmTags.length;
+  const hasFimiSourceSignal = fimiSourceCount > 0;
+
+  // A historical percentile of 0 current articles must not create a synthetic FIMI signal.
+  // v0.1.4b: if GDELT/EUvsDisinfo are rate-limited or failed and there are no
+  // articles/cases/tags, keep the FIMI score at zero and mark the source state degraded.
+  const gdeltScore = gdeltArticles.length <= 0
+    ? 0
+    : (gdeltPercentile === null
+      ? Math.min(fallbackMax, scoreFromCount(gdeltArticles.length, caps.gdelt_articles_36h_cap_fallback || 120))
+      : gdeltPercentile);
+  const euvsScore = euvsArticles.length <= 0 ? 0 : scoreFromCount(euvsArticles.length, caps.euvsdisinfo_cases_90d_cap || 12);
+  const disarmScore = disarmTags.length <= 0 ? 0 : scoreFromCount(disarmTags.length, caps.disarm_tags_cap || 8);
+  const fimiScoreRaw = clamp(
     gdeltScore * (fimiWeights.gdelt_narrative_pressure ?? 0.45) +
     euvsScore * (fimiWeights.euvsdisinfo_case_signal ?? 0.35) +
     disarmScore * (fimiWeights.disarm_tag_relevance ?? 0.20)
   );
+  const fimiScore = hasFimiSourceSignal ? fimiScoreRaw : 0;
+  const fimiStatus = externalErrors
+    ? (hasFimiSourceSignal ? 'degraded_with_partial_source_signal' : 'degraded_no_source_signal')
+    : (externalOk || hasFimiSourceSignal || disarmSource?.enabled ? 'ok' : 'error_or_disabled');
+  const fimiMode = externalErrors && !hasFimiSourceSignal
+    ? 'fimi_lite_degraded_no_source_signal'
+    : 'fimi_lite_open_source_proxy';
 
   return {
     enabled: Boolean(gdeltSource?.enabled || euvsSource?.enabled || disarmSource?.enabled),
-    status: fimiHealth.some(s => s.status === 'ok') ? 'ok' : 'error_or_disabled',
+    status: fimiStatus,
     score: Math.round(fimiScore),
-    confidence: histGdelt.length >= 14 ? 'medium' : 'low',
-    mode: 'fimi_lite_open_source_proxy',
+    confidence: hasFimiSourceSignal && histGdelt.length >= 14 && !externalErrors ? 'medium' : 'low',
+    mode: fimiMode,
+    source_state: {
+      external_ok: externalOk,
+      external_errors: externalErrors,
+      source_signal_present: hasFimiSourceSignal,
+      note: externalErrors && !hasFimiSourceSignal
+        ? 'GDELT/EUvsDisinfo source access was degraded or rate-limited and no FIMI-lite source signal was detected.'
+        : 'FIMI-lite source state derived from open-source crawl health and observed source signals.'
+    },
     score_parts: {
       gdelt_narrative_pressure: Math.round(gdeltScore),
       euvsdisinfo_case_signal: Math.round(euvsScore),
@@ -853,7 +879,7 @@ function buildDisinformationAlert(botActivityState, score, scoring, fimiLite = n
   const euvsCount = Number(fimiLite?.euvsdisinfo?.candidate_count ?? 0);
   const gdeltCount = Number(fimiLite?.gdelt?.unique_articles ?? 0);
   const tagCount = Number(fimiLite?.disarm_aligned?.tag_count ?? 0);
-  const hasFimiSourceSignal = fimiScore > 0 || euvsCount > 0 || gdeltCount > 0 || tagCount > 0;
+  const hasFimiSourceSignal = Boolean(fimiLite?.source_state?.source_signal_present) || euvsCount > 0 || gdeltCount > 0 || tagCount > 0;
   const proxyElevated = botActivityState.primary_code === 'BAB' || botActivityState.primary_code === 'BWB' || maxBasis >= (cfg.level_1_percentile ?? 65) || ['watch', 'high', 'critical'].includes(score.level);
 
   let level = 0;
@@ -1064,12 +1090,15 @@ async function main() {
     const gdeltCount = Number(fimiLite.gdelt?.unique_articles ?? 0);
     const euvsCount = Number(fimiLite.euvsdisinfo?.candidate_count ?? 0);
     const tagList = (fimiLite.disarm_aligned?.tags || []).slice(0, 3).map(t => t.label).join(', ');
-    const hasFimiSourceSignal = Number(fimiLite.score ?? 0) > 0 || gdeltCount > 0 || euvsCount > 0 || Boolean(tagList);
+    const hasFimiSourceSignal = Boolean(fimiLite.source_state?.source_signal_present) || gdeltCount > 0 || euvsCount > 0 || Boolean(tagList);
+    const sourceDegraded = String(fimiLite.status || '').startsWith('degraded');
     if (hasFimiSourceSignal) {
       drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
       drivers.push(`GDELT narrative watch: ${gdeltCount} unique articles in ${fimiLite.gdelt?.timespan ?? '36h'}`);
       drivers.push(`EUvsDisinfo case watch: ${euvsCount} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
       if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
+    } else if (sourceDegraded) {
+      drivers.push('FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run');
     } else {
       drivers.push('FIMI-lite crawls returned no matching source signals in this run');
     }
@@ -1077,7 +1106,7 @@ async function main() {
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.4a',
+    schema: 'mard-hat-v0.1.4b',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
@@ -1102,7 +1131,7 @@ async function main() {
     },
     roadmap: {
       next: 'v0.1.5: refine FIMI-lite calibration, optional URLhaus, and maritime relevance weighting',
-      active: 'v0.1.4a FIMI-lite display-clarity: zero-result FIMI crawls and proxy-only DAL are labelled explicitly',
+      active: 'v0.1.4b FIMI source-health fix: rate-limited FIMI crawls no longer create synthetic FIMI scores',
       open_measures: 'later'
     },
     links: {
