@@ -1,46 +1,46 @@
 {
   "schema": "mard-hat-v0.1.4b",
-  "generated_at": "2026-07-16T03:40:43.838Z",
+  "generated_at": "2026-07-16T08:35:47.431Z",
   "window_days": 30,
-  "hat_score": 67,
+  "hat_score": 78,
   "level": "high",
   "confidence": "medium",
-  "trend": "stable",
+  "trend": "rising",
   "baseline": {
     "status": "active",
-    "points": 37,
-    "mean_hat_score": 60.2,
-    "delta_from_mean": 6.9
+    "points": 38,
+    "mean_hat_score": 60.4,
+    "delta_from_mean": 17.6
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 69,
     "kev_epss_mean": 13,
-    "threatfox_ioc_current": 46,
+    "threatfox_ioc_current": 100,
     "threatfox_botnet_c2_36h": 100
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 71
+    "source_coverage": 100
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
-    "primary_code": "BWB",
-    "primary_number": 1,
-    "primary_label": "Bots were busy",
-    "current_code": "BIL",
-    "current_label": "Bots in Lurking Position",
+    "primary_code": "BAB",
+    "primary_number": 2,
+    "primary_label": "Bots are busy",
+    "current_code": "BAB",
+    "current_label": "Bots are busy",
     "trailing_36h_code": "BWB",
     "trailing_36h_label": "Bots were busy",
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 46,
-      "botnet_c2_current_percentile": 6,
+      "ioc_current_percentile": 100,
+      "botnet_c2_current_percentile": 100,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 916,
-      "botnet_c2_36h_count": 326
+      "ioc_36h_count": 1694,
+      "botnet_c2_36h_count": 1319
     }
   },
   "disinformation_alert_level": {
@@ -53,17 +53,17 @@
       2,
       3
     ],
-    "mode": "bot_ioc_proxy_only_no_fimi_signal",
-    "fimi_lite_score": 0,
+    "mode": "fimi_lite_with_bot_ioc_proxy",
+    "fimi_lite_score": 52,
     "corroboration": {
-      "gdelt_unique_articles": 0,
+      "gdelt_unique_articles": 75,
       "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 0,
-      "bot_state": "BWB",
-      "fimi_source_signal_present": false,
+      "disarm_aligned_tags": 4,
+      "bot_state": "BAB",
+      "fimi_source_signal_present": true,
       "bot_ioc_proxy_elevated": true
     },
-    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
+    "note": "Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade."
   },
   "metrics": {
     "kev": {
@@ -261,71 +261,75 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 551,
-      "ioc_count_7d": 4488,
-      "botnet_c2_count_1d": 247,
-      "botnet_c2_count_7d": 1686,
+      "ioc_count_1d": 1471,
+      "ioc_count_7d": 5427,
+      "botnet_c2_count_1d": 1168,
+      "botnet_c2_count_7d": 2657,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 246
+          "count": 1168
         },
         {
           "name": "payload_delivery",
-          "count": 230
+          "count": 229
         },
         {
           "name": "payload",
-          "count": 73
+          "count": 71
         },
         {
           "name": "cc_skimming",
-          "count": 2
+          "count": 3
         }
       ],
       "malware_families_1d": [
         {
-          "name": "ClearFake",
-          "count": 100
+          "name": "MetaStealer",
+          "count": 997
         },
         {
-          "name": "Vidar",
-          "count": 90
+          "name": "ClearFake",
+          "count": 101
         },
         {
           "name": "Cobalt Strike",
-          "count": 63
+          "count": 64
         },
         {
           "name": "Unknown malware",
-          "count": 60
+          "count": 57
         },
         {
           "name": "Latrodectus",
           "count": 36
         },
         {
-          "name": "KongTuke",
-          "count": 27
+          "name": "Vidar",
+          "count": 26
         },
         {
-          "name": "Remcos",
-          "count": 22
+          "name": "KongTuke",
+          "count": 24
         },
         {
           "name": "InvisibleFerret",
           "count": 16
         },
         {
-          "name": "Unknown Loader",
-          "count": 16
+          "name": "AdaptixC2",
+          "count": 14
         },
         {
-          "name": "AsyncRAT",
+          "name": "Unknown Loader",
           "count": 14
         }
       ],
       "botnet_families_7d": [
+        {
+          "name": "MetaStealer",
+          "count": 996
+        },
         {
           "name": "VShell",
           "count": 296
@@ -336,35 +340,31 @@
         },
         {
           "name": "Cobalt Strike",
-          "count": 190
+          "count": 180
         },
         {
           "name": "Aisuru",
-          "count": 137
-        },
-        {
-          "name": "Vidar",
-          "count": 124
+          "count": 134
         },
         {
           "name": "Remcos",
           "count": 116
         },
         {
-          "name": "AsyncRAT",
-          "count": 64
+          "name": "Vidar",
+          "count": 113
         },
         {
           "name": "AdaptixC2",
-          "count": 62
+          "count": 75
+        },
+        {
+          "name": "AsyncRAT",
+          "count": 65
         },
         {
           "name": "ClearFake",
-          "count": 59
-        },
-        {
-          "name": "DCRat",
-          "count": 34
+          "count": 58
         }
       ],
       "historical": {
@@ -375,45 +375,169 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 916,
-        "current_36h_botnet_c2_count": 326,
-        "current_ioc_percentile": 46,
-        "current_botnet_c2_percentile": 6,
+        "current_36h_ioc_count": 1694,
+        "current_36h_botnet_c2_count": 1319,
+        "current_ioc_percentile": 100,
+        "current_botnet_c2_percentile": 100,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
       }
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 551,
-      "botnet_cc_count": 1686,
+      "threatfox_count": 1471,
+      "botnet_cc_count": 2657,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "degraded_no_source_signal",
-      "score": 0,
-      "confidence": "low",
-      "mode": "fimi_lite_degraded_no_source_signal",
+      "status": "ok",
+      "score": 52,
+      "confidence": "medium",
+      "mode": "fimi_lite_open_source_proxy",
       "source_state": {
-        "external_ok": false,
-        "external_errors": true,
-        "source_signal_present": false,
-        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no FIMI-lite source signal was detected."
+        "external_ok": true,
+        "external_errors": false,
+        "source_signal_present": true,
+        "note": "FIMI-lite source state derived from open-source crawl health and observed source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 0,
+        "gdelt_narrative_pressure": 93,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 0
+        "disarm_tag_relevance": 50
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
-        "unique_articles": 0,
-        "historical_percentile": 57,
-        "top_domains": [],
-        "sample": []
+        "article_count": 75,
+        "unique_articles": 75,
+        "historical_percentile": 93,
+        "top_domains": [
+          {
+            "name": "forex.cnfol.com",
+            "count": 2
+          },
+          {
+            "name": "kreiszeitung.de",
+            "count": 2
+          },
+          {
+            "name": "163.com",
+            "count": 1
+          },
+          {
+            "name": "barryanddistrictnews.co.uk",
+            "count": 1
+          },
+          {
+            "name": "basingstokegazette.co.uk",
+            "count": 1
+          },
+          {
+            "name": "big5.sputniknews.cn",
+            "count": 1
+          },
+          {
+            "name": "bordertelegraph.com",
+            "count": 1
+          },
+          {
+            "name": "bournemouthecho.co.uk",
+            "count": 1
+          }
+        ],
+        "sample": [
+          {
+            "title": "Ukraińskie ataki wywindowały cenę pszenicy",
+            "url": "https://info.wiara.pl/doc/9813000.Ukrainskie-ataki-wywindowaly-cene-pszenicy",
+            "domain": "info.wiara.pl",
+            "language": "Polish",
+            "source_country": "Poland",
+            "seen_date": "20260716T081500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Азербайджанская нефть выросла в цене",
+            "url": "https://news.day.az/economy/1848339.html",
+            "domain": "news.day.az",
+            "language": "Russian",
+            "source_country": "Azerbaijan",
+            "seen_date": "20260716T071500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Скільки коштує нафта сьогодні , 16 липня 2026 року : актуальні ціни Brent , WTI та Urals",
+            "url": "https://mignews.com.ua/ekonomika/czina-nafty-16-lypnya-2026-roku-skilky-koshtuyut-brent-wti-ta-urals-sogodni.html",
+            "domain": "mignews.com.ua",
+            "language": "Ukrainian",
+            "source_country": "Ukraine",
+            "seen_date": "20260716T070000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "DWP state pension and PIP update ahead of new united kingdom Prime Minister",
+            "url": "https://www.hulldailymail.co.uk/news/cost-of-living/dwp-state-pension-pip-update-11061867",
+            "domain": "hulldailymail.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20260716T064500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Who will be in Andy Burnham Cabinet ?",
+            "url": "https://www.fenlandcitizen.co.uk/national/who-will-be-in-andy-burnham-s-cabinet-169398/",
+            "domain": "fenlandcitizen.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Wächter der Nordsee , Germanwings und Co . – Flugzeuge verrotten auf großem Flugzeugfriedhof",
+            "url": "https://www.kreiszeitung.de/europa/waechter-der-nordsee-germanwings-und-co-flugzeuge-verrotten-auf-grossem-flugzeugfriedhof-94399503.html",
+            "domain": "kreiszeitung.de",
+            "language": "German",
+            "source_country": "Germany",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Who will be in Andy Burnham Cabinet ?",
+            "url": "https://www.harrowtimes.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
+            "domain": "harrowtimes.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Who will be in Andy Burnham Cabinet ? | Bromsgrove Advertiser",
+            "url": "https://www.bromsgroveadvertiser.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
+            "domain": "bromsgroveadvertiser.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "Who will be in Andy Burnham Cabinet ? | Barry And District News",
+            "url": "https://www.barryanddistrictnews.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
+            "domain": "barryanddistrictnews.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          },
+          {
+            "title": "30 km vor der Küste : Polens Kampfjets stiegen über der Ostsee auf und drängten ein russischen Jet ab . Warschau spricht von einem feindlichen Vorstoß",
+            "url": "https://www.focus.de/politik/ausland/30-km-vor-der-kueste-polens-kampfjets-stiegen-ueber-der-ostsee-auf-und-draengten-ein-russischen-jet-ab-warschau-spricht-von-einem-feindlichen-vorstoss_f6e507e8-9145-413b-bd14-cdb381338def.html",
+            "domain": "focus.de",
+            "language": "German",
+            "source_country": "Germany",
+            "seen_date": "20260716T063000Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+          }
+        ]
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -424,42 +548,77 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 0,
-        "tags": []
+        "tag_count": 4,
+        "tags": [
+          {
+            "id": "institutional_discrediting",
+            "label": "Discrediting institutions or alliances",
+            "count": 3,
+            "matched_keywords": [
+              "nato",
+              "eu",
+              "provocation"
+            ]
+          },
+          {
+            "id": "false_attribution",
+            "label": "False attribution / blame shifting",
+            "count": 3,
+            "matched_keywords": [
+              "ukraine",
+              "nato",
+              "west"
+            ]
+          },
+          {
+            "id": "conspiracy_framing",
+            "label": "Conspiracy or secret-plot framing",
+            "count": 1,
+            "matched_keywords": [
+              "provocation"
+            ]
+          },
+          {
+            "id": "narrative_amplification",
+            "label": "Narrative amplification / repetition",
+            "count": 1,
+            "matched_keywords": [
+              "again"
+            ]
+          }
+        ]
       },
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
-          "count": 0,
+          "status": "ok",
+          "count": 75,
           "queries": 3,
           "errors": [
-            "fetch failed",
-            "fetch failed",
+            "gdelt_fimi_2: HTTP 429",
             "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "error",
+          "status": "ok",
           "count": 0,
           "queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "fetch failed",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_1: HTTP 429"
           ]
         },
         {
           "source": "disarm_aligned_taxonomy",
           "status": "ok",
-          "count": 0,
+          "count": 4,
           "method": "local_keyword_mapping"
         }
       ],
       "history": {
-        "gdelt_points": 28,
-        "fimi_score_points": 28
+        "gdelt_points": 29,
+        "fimi_score_points": 29
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume, EUvsDisinfo provides curated case exposure, and DISARM-aligned tags structure the observations. This is not attribution-grade."
     }
@@ -469,12 +628,15 @@
     "22 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1323",
-    "551 ThreatFox IOCs in the last 1 day",
-    "1686 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1471 ThreatFox IOCs in the last 1 day",
+    "2657 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
-    "Bot state: BWB — Bots were busy",
+    "Bot state: BAB — Bots are busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
+    "FIMI-lite score: 52 (medium confidence)",
+    "GDELT narrative watch: 75 unique articles in 36h",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "DISARM-aligned tags observed: Discrediting institutions or alliances, False attribution / blame shifting, Conspiracy or secret-plot framing"
   ],
   "source_health": [
     {
@@ -497,43 +659,41 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 551,
-      "count_7d": 4488,
-      "botnet_cc_count": 1686,
+      "count": 1471,
+      "count_7d": 5427,
+      "botnet_cc_count": 2657,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "73102df81a8d73403607d2fcadd763f3058a17837ee04bcb0f19e02caf7db4bc",
-      "hash_7d": "fafbe68b34ad5a56c450627e7612583cf2271bbf3ce980e6abac6b61fe4b8ebb",
+      "hash_1d": "9bd7788e61d5768a97d50dc9a42af71a53b26c6e3292b970d53eb8a659dac1cc",
+      "hash_7d": "fab4e1704dd0d40f18d4b9de8570476d83a2e669716eea73b5b55c585808a1fb",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
-      "count": 0,
+      "status": "ok",
+      "count": 75,
       "queries": 3,
       "errors": [
-        "fetch failed",
-        "fetch failed",
+        "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "error",
+      "status": "ok",
       "count": 0,
       "queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "fetch failed",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_1: HTTP 429"
       ]
     },
     {
       "source": "disarm_aligned_taxonomy",
       "status": "ok",
-      "count": 0,
+      "count": 4,
       "method": "local_keyword_mapping"
     }
   ],
@@ -542,8 +702,8 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
-    "gdelt_fimi": "error",
-    "euvsdisinfo_case_watch": "error",
+    "gdelt_fimi": "ok",
+    "euvsdisinfo_case_watch": "ok",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -564,6 +724,6 @@
     "source_health_json": "hat_source_health.json"
   },
   "evidence_cards": [
-    "evidence_cards/20260716T034043_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260716T083547_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
