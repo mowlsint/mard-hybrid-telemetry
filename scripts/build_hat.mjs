@@ -13,6 +13,7 @@ const PUBLIC_DIR = path.join(ROOT, 'public');
 const RAW_DIR = path.join(ROOT, 'data', 'raw');
 const HISTORY_DIR = path.join(ROOT, 'data', 'history');
 const EVIDENCE_DIR = path.join(PUBLIC_DIR, 'evidence_cards');
+const DOWNLOADS_DIR = path.join(PUBLIC_DIR, 'downloads');
 
 const now = new Date();
 const generatedAt = now.toISOString();
@@ -46,7 +47,7 @@ function sha256(data) {
 }
 
 async function ensureDirs() {
-  for (const dir of [PUBLIC_DIR, RAW_DIR, HISTORY_DIR, EVIDENCE_DIR]) {
+  for (const dir of [PUBLIC_DIR, RAW_DIR, HISTORY_DIR, EVIDENCE_DIR, DOWNLOADS_DIR]) {
     await fs.mkdir(dir, { recursive: true });
   }
 }
@@ -282,6 +283,78 @@ function normaliseGdeltArticle(article, queryLabel = '') {
   };
 }
 
+function normalizeText(value) {
+  return String(value ?? '')
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, ' ')
+    .replace(/[^a-z0-9а-яёäöüß\-\.\/\s]/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function keywordMatches(text, keywords = []) {
+  const norm = normalizeText(text);
+  const matches = [];
+  for (const keyword of keywords || []) {
+    const k = normalizeText(keyword);
+    if (!k) continue;
+    if (norm.includes(k)) matches.push(keyword);
+  }
+  return [...new Set(matches)];
+}
+
+function classifyMaritimeArticle(article, fimiConfig, scoring) {
+  const filter = fimiConfig.maritime_filter || {};
+  const weights = scoring.maritime_relevance || {};
+  const text = [article.title, article.domain, article.url].filter(Boolean).join(' ');
+  const domain = normalizeText(article.domain || '');
+  const noiseDomains = new Set((filter.noise_domains || []).map(d => normalizeText(d)));
+  const maritime = keywordMatches(text, filter.maritime_anchors || []);
+  const threat = keywordMatches(text, filter.threat_fimi_anchors || []);
+  const region = keywordMatches(text, filter.core_mard_eu_region_anchors || []);
+  const spillover = keywordMatches(text, filter.global_maritime_spillover_anchors || []);
+  const isNoiseDomain = Boolean(domain && noiseDomains.has(domain));
+
+  const hasMaritimeThreat = maritime.length > 0 && threat.length > 0;
+  const isCore = hasMaritimeThreat && region.length > 0 && !isNoiseDomain;
+  const isGlobalSpillover = hasMaritimeThreat && !isCore && spillover.length > 0 && !isNoiseDomain;
+  const classification = isCore ? 'core_mard_eu' : isGlobalSpillover ? 'global_maritime_spillover' : 'rejected_noise_or_context';
+  const weight = isCore ? (weights.core_weight ?? 1.0) : isGlobalSpillover ? (weights.global_spillover_weight ?? 0.4) : 0;
+  const reason = isNoiseDomain
+    ? 'noise_domain'
+    : isCore
+      ? 'maritime+threat+regional_anchor'
+      : isGlobalSpillover
+        ? 'maritime+threat+global_spillover_anchor'
+        : 'missing_required_maritime_threat_region_combination';
+
+  return {
+    ...article,
+    maritime_relevance: {
+      accepted: weight > 0,
+      classification,
+      weight,
+      reason,
+      matched: { maritime, threat_fimi: threat, region, global_spillover: spillover }
+    }
+  };
+}
+
+function sourceStatusFromResults(enabled, results = []) {
+  if (!enabled) return 'disabled';
+  const okCount = results.filter(r => r.ok).length;
+  const errorCount = results.filter(r => !r.ok).length;
+  if (okCount > 0 && errorCount > 0) return 'partial';
+  if (okCount > 0) return 'ok';
+  if (errorCount > 0) return 'error';
+  return 'empty_or_disabled';
+}
+
+function statusIsUsable(status) {
+  return ['ok', 'partial', 'degraded_with_partial_source_signal'].includes(String(status || ''));
+}
+
 async function fetchGdeltArticleQuery(source, query, timespan, maxrecords, label) {
   const url = buildGdeltUrl(source.base_url, query, timespan, maxrecords);
   const { json, raw, hash } = await fetchJson(url, label);
@@ -334,13 +407,26 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
     }
   }
 
-  const gdeltArticles = uniqueBy(gdeltResults.flatMap(r => r.articles || []), a => a.url || `${a.title}|${a.domain}`);
-  const gdeltOk = gdeltSource?.enabled && gdeltResults.some(r => r.ok);
+  const rawGdeltArticles = uniqueBy(gdeltResults.flatMap(r => r.articles || []), a => a.url || `${a.title}|${a.domain}`);
+  const gdeltClassified = rawGdeltArticles.map(article => classifyMaritimeArticle(article, fimiConfig, scoring));
+  const gdeltAccepted = gdeltClassified.filter(a => a.maritime_relevance?.accepted);
+  const gdeltCore = gdeltAccepted.filter(a => a.maritime_relevance?.classification === 'core_mard_eu');
+  const gdeltSpillover = gdeltAccepted.filter(a => a.maritime_relevance?.classification === 'global_maritime_spillover');
+  const gdeltRejected = gdeltClassified.filter(a => !a.maritime_relevance?.accepted);
+  const gdeltWeightedCount = gdeltAccepted.reduce((sum, a) => sum + (Number(a.maritime_relevance?.weight) || 0), 0);
+  const gdeltStatus = sourceStatusFromResults(Boolean(gdeltSource?.enabled), gdeltResults);
   fimiHealth.push({
     source: 'gdelt_fimi',
-    status: gdeltSource?.enabled ? (gdeltOk ? 'ok' : 'error') : 'disabled',
-    count: gdeltArticles.length,
+    status: gdeltStatus,
+    count: gdeltAccepted.length,
+    raw_count: rawGdeltArticles.length,
+    core_count: gdeltCore.length,
+    global_spillover_count: gdeltSpillover.length,
+    rejected_count: gdeltRejected.length,
+    weighted_count: Number(gdeltWeightedCount.toFixed(2)),
     queries: gdeltQueries.length,
+    ok_queries: gdeltResults.filter(r => r.ok).length,
+    failed_queries: gdeltResults.filter(r => !r.ok).length,
     errors: gdeltResults.filter(r => !r.ok).map(r => r.error).slice(0, 3)
   });
 
@@ -360,45 +446,48 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   }
 
   const euvsArticles = uniqueBy(euvsResults.flatMap(r => r.articles || []), a => a.url || `${a.title}|${a.domain}`);
-  const euvsOk = euvsSource?.enabled && euvsResults.some(r => r.ok);
+  const euvsStatus = sourceStatusFromResults(Boolean(euvsSource?.enabled), euvsResults);
   fimiHealth.push({
     source: 'euvsdisinfo_case_watch',
-    status: euvsSource?.enabled ? (euvsOk ? 'ok' : 'error') : 'disabled',
+    status: euvsStatus,
     count: euvsArticles.length,
     queries: euvsQueries.length,
+    ok_queries: euvsResults.filter(r => r.ok).length,
+    failed_queries: euvsResults.filter(r => !r.ok).length,
     method: 'gdelt_domain_restricted_artlist',
     errors: euvsResults.filter(r => !r.ok).map(r => r.error).slice(0, 3)
   });
 
-  const allFimiArticles = uniqueBy([...gdeltArticles, ...euvsArticles], a => a.url || `${a.title}|${a.domain}`);
-  const disarmTags = disarmSource?.enabled ? applyDisarmAlignedTags(allFimiArticles, fimiConfig) : [];
+  const scoreRelevantFimiArticles = uniqueBy([...gdeltAccepted, ...euvsArticles], a => a.url || `${a.title}|${a.domain}`);
+  const disarmTags = disarmSource?.enabled ? applyDisarmAlignedTags(scoreRelevantFimiArticles, fimiConfig) : [];
   fimiHealth.push({
     source: 'disarm_aligned_taxonomy',
     status: disarmSource?.enabled ? 'ok' : 'disabled',
     count: disarmTags.length,
-    method: 'local_keyword_mapping'
+    method: 'local_keyword_mapping',
+    applied_to_articles: scoreRelevantFimiArticles.length
   });
 
-  const histGdelt = (previousHistory || []).map(h => h?.metrics?.gdelt_unique_articles_36h).filter(Number.isFinite);
+  const histGdelt = (previousHistory || [])
+    .map(h => h?.metrics?.gdelt_mard_eu_weighted_articles_36h)
+    .filter(Number.isFinite);
   const histFimiScore = (previousHistory || []).map(h => h?.metrics?.fimi_lite_score).filter(Number.isFinite);
-  const gdeltPercentile = percentileRank(histGdelt.length >= 14 ? histGdelt : [], gdeltArticles.length);
+  const gdeltPercentile = percentileRank(histGdelt.length >= 14 ? histGdelt : [], gdeltWeightedCount);
 
   const caps = scoring.caps || {};
   const fimiWeights = scoring.fimi_weights || {};
+  const maritimeCfg = scoring.maritime_relevance || {};
   const fallbackMax = caps.fimi_fallback_max_score ?? 65;
   const externalHealth = fimiHealth.filter(s => ['gdelt_fimi', 'euvsdisinfo_case_watch'].includes(s.source));
-  const externalErrors = externalHealth.some(s => s.status === 'error');
-  const externalOk = externalHealth.some(s => s.status === 'ok');
-  const fimiSourceCount = gdeltArticles.length + euvsArticles.length + disarmTags.length;
+  const externalErrors = externalHealth.some(s => ['error', 'partial'].includes(s.status));
+  const externalOk = externalHealth.some(s => ['ok', 'partial'].includes(s.status));
+  const fimiSourceCount = gdeltAccepted.length + euvsArticles.length + disarmTags.length;
   const hasFimiSourceSignal = fimiSourceCount > 0;
 
-  // A historical percentile of 0 current articles must not create a synthetic FIMI signal.
-  // v0.1.4b: if GDELT/EUvsDisinfo are rate-limited or failed and there are no
-  // articles/cases/tags, keep the FIMI score at zero and mark the source state degraded.
-  const gdeltScore = gdeltArticles.length <= 0
+  const gdeltScore = gdeltWeightedCount <= 0
     ? 0
     : (gdeltPercentile === null
-      ? Math.min(fallbackMax, scoreFromCount(gdeltArticles.length, caps.gdelt_articles_36h_cap_fallback || 120))
+      ? Math.min(fallbackMax, scoreFromCount(gdeltWeightedCount, maritimeCfg.accepted_article_cap_for_score || caps.gdelt_articles_36h_cap_fallback || 75))
       : gdeltPercentile);
   const euvsScore = euvsArticles.length <= 0 ? 0 : scoreFromCount(euvsArticles.length, caps.euvsdisinfo_cases_90d_cap || 12);
   const disarmScore = disarmTags.length <= 0 ? 0 : scoreFromCount(disarmTags.length, caps.disarm_tags_cap || 8);
@@ -409,39 +498,65 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   );
   const fimiScore = hasFimiSourceSignal ? fimiScoreRaw : 0;
   const fimiStatus = externalErrors
-    ? (hasFimiSourceSignal ? 'degraded_with_partial_source_signal' : 'degraded_no_source_signal')
+    ? (hasFimiSourceSignal ? 'partial' : 'degraded_no_source_signal')
     : (externalOk || hasFimiSourceSignal || disarmSource?.enabled ? 'ok' : 'error_or_disabled');
   const fimiMode = externalErrors && !hasFimiSourceSignal
     ? 'fimi_lite_degraded_no_source_signal'
-    : 'fimi_lite_open_source_proxy';
+    : 'fimi_lite_maritime_relevance_filtered';
+  const mediumCoreMin = maritimeCfg.min_core_signal_for_medium_confidence ?? 3;
+  const mediumTagMin = maritimeCfg.min_disarm_tags_for_medium_confidence ?? 2;
+  const confidence = hasFimiSourceSignal && !externalErrors && gdeltCore.length >= mediumCoreMin && disarmTags.length >= mediumTagMin
+    ? 'medium'
+    : 'low';
 
   return {
     enabled: Boolean(gdeltSource?.enabled || euvsSource?.enabled || disarmSource?.enabled),
     status: fimiStatus,
     score: Math.round(fimiScore),
-    confidence: hasFimiSourceSignal && histGdelt.length >= 14 && !externalErrors ? 'medium' : 'low',
+    confidence,
     mode: fimiMode,
     source_state: {
       external_ok: externalOk,
       external_errors: externalErrors,
       source_signal_present: hasFimiSourceSignal,
       note: externalErrors && !hasFimiSourceSignal
-        ? 'GDELT/EUvsDisinfo source access was degraded or rate-limited and no FIMI-lite source signal was detected.'
-        : 'FIMI-lite source state derived from open-source crawl health and observed source signals.'
+        ? 'GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected.'
+        : 'FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals.'
     },
     score_parts: {
       gdelt_narrative_pressure: Math.round(gdeltScore),
       euvsdisinfo_case_signal: Math.round(euvsScore),
       disarm_tag_relevance: Math.round(disarmScore)
     },
+    maritime_filter: {
+      schema: 'mard-hat-maritime-filter-v1',
+      rule: 'score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.',
+      raw_unique_articles: rawGdeltArticles.length,
+      accepted_articles: gdeltAccepted.length,
+      core_mard_eu_articles: gdeltCore.length,
+      global_maritime_spillover_articles: gdeltSpillover.length,
+      rejected_as_noise_or_broad_context: gdeltRejected.length,
+      weighted_article_count: Number(gdeltWeightedCount.toFixed(2)),
+      rejected_samples: gdeltRejected.slice(0, maritimeCfg.max_rejected_samples ?? 8).map(a => ({
+        title: a.title,
+        domain: a.domain,
+        reason: a.maritime_relevance?.reason,
+        matched: a.maritime_relevance?.matched
+      }))
+    },
     gdelt: {
       timespan: gdeltSource?.timespan || '36h',
       query_count: gdeltQueries.length,
       article_count: gdeltResults.reduce((a, r) => a + (r.count || 0), 0),
-      unique_articles: gdeltArticles.length,
+      unique_articles_raw: rawGdeltArticles.length,
+      unique_articles: gdeltAccepted.length,
+      core_mard_eu_articles: gdeltCore.length,
+      global_maritime_spillover_articles: gdeltSpillover.length,
+      rejected_articles: gdeltRejected.length,
+      weighted_articles: Number(gdeltWeightedCount.toFixed(2)),
       historical_percentile: gdeltPercentile === null ? null : Math.round(gdeltPercentile),
-      top_domains: topCounts(gdeltArticles, a => a.domain || 'unknown', 8),
-      sample: gdeltArticles.slice(0, 10)
+      top_domains: topCounts(gdeltAccepted, a => a.domain || 'unknown', 8),
+      sample: gdeltAccepted.slice(0, 20)
     },
     euvsdisinfo: {
       timespan: euvsSource?.timespan || '90d',
@@ -455,12 +570,13 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
       tag_count: disarmTags.length,
       tags: disarmTags.slice(0, 12)
     },
+    downloads_hint: 'See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.',
     source_health: fimiHealth,
     history: {
       gdelt_points: histGdelt.length,
       fimi_score_points: histFimiScore.length
     },
-    note: 'FIMI-lite is a contextual signal. GDELT measures media/narrative volume, EUvsDisinfo provides curated case exposure, and DISARM-aligned tags structure the observations. This is not attribution-grade.'
+    note: 'FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade.'
   };
 }
 
@@ -775,6 +891,61 @@ function fallbackThreatFoxScore(value, cap, maxScore = 65) {
   return Math.min(maxScore, scoreFromCount(value || 0, cap));
 }
 
+function sourceHealthWeight(status, scoring) {
+  const weights = scoring.health_weights || { ok: 1, partial: 0.5, degraded: 0.35, error: 0, disabled: 0 };
+  const key = String(status || '').toLowerCase();
+  if (Object.prototype.hasOwnProperty.call(weights, key)) return Number(weights[key]) || 0;
+  if (key.startsWith('degraded')) return Number(weights.degraded ?? 0.35);
+  if (key.includes('partial')) return Number(weights.partial ?? 0.5);
+  if (key.includes('error')) return Number(weights.error ?? 0);
+  return 0;
+}
+
+function sourceCoverageScore(sourceHealth, scoring) {
+  const items = Array.isArray(sourceHealth) ? sourceHealth.filter(s => s && s.status !== 'disabled') : [];
+  if (!items.length) return 0;
+  const total = items.reduce((sum, s) => sum + sourceHealthWeight(s.status, scoring), 0);
+  return clamp((total / items.length) * 100);
+}
+
+function scoreBand(score) {
+  const s = Number(score) || 0;
+  if (s <= 20) return { label: 'normal', color: 'green', css: 'normal', meaning: 'low contextual pressure' };
+  if (s <= 40) return { label: 'elevated', color: 'yellow', css: 'elevated', meaning: 'elevated contextual pressure' };
+  if (s <= 60) return { label: 'watch', color: 'orange', css: 'watch', meaning: 'watch-level contextual pressure' };
+  if (s <= 80) return { label: 'high', color: 'deep orange', css: 'high', meaning: 'high contextual pressure' };
+  return { label: 'critical', color: 'red', css: 'critical', meaning: 'critical contextual pressure' };
+}
+
+function buildObscurationContext(latestLike, scoring) {
+  const score = latestLike.hat_score ?? 0;
+  const bot = latestLike.bot_activity_state || {};
+  const fimi = latestLike.metrics?.fimi_lite || {};
+  const maritime = fimi.maritime_filter || {};
+  const threatfox = latestLike.metrics?.threatfox || {};
+  const sourceHealth = latestLike.source_health || [];
+  const partialSources = sourceHealth.filter(s => ['partial', 'error'].includes(String(s.status || ''))).map(s => s.source);
+  const signals = [];
+  if (bot.primary_code === 'BAB') signals.push('current bot/IOC proxy telemetry is elevated (BAB)');
+  if (bot.primary_code === 'BWB') signals.push('trailing bot/IOC proxy telemetry was elevated recently (BWB)');
+  if ((threatfox.historical?.current_36h_botnet_c2_count ?? 0) > 0) signals.push(`${threatfox.historical.current_36h_botnet_c2_count} botnet/C2-like indicators in the current 36h window`);
+  if ((maritime.core_mard_eu_articles ?? 0) > 0) signals.push(`${maritime.core_mard_eu_articles} score-relevant Core MARD-Eu maritime/FIMI articles`);
+  if ((maritime.global_maritime_spillover_articles ?? 0) > 0) signals.push(`${maritime.global_maritime_spillover_articles} Global Maritime Spillover articles retained with lower weight`);
+  if (partialSources.length) signals.push(`partial/degraded source access: ${partialSources.join(', ')}`);
+
+  let level = 'low';
+  if (bot.primary_code === 'BAB' && ((maritime.core_mard_eu_articles ?? 0) > 0 || (fimi.score ?? 0) >= 45)) level = 'watch';
+  if (score >= 80 && bot.primary_code === 'BAB' && (maritime.core_mard_eu_articles ?? 0) >= 8) level = 'high';
+
+  return {
+    schema: 'mard-hat-obscuration-context-v1',
+    level,
+    signals,
+    explanation: 'This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.',
+    claim_limit: 'Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself.'
+  };
+}
+
 function computeScores(metrics, sourceHealth, scoring, previousHistory) {
   const weights = scoring.weights;
   const caps = scoring.caps;
@@ -782,13 +953,16 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
   const hist = metrics.threatfox?.historical || {};
 
   const fallbackMax = caps.threatfox_fallback_max_score ?? 65;
-  const threatfoxIocCurrent = Number.isFinite(hist.current_ioc_percentile)
+  const threatfoxCap = hist.status === 'active' ? 100 : fallbackMax;
+  const threatfoxIocRaw = Number.isFinite(hist.current_ioc_percentile)
     ? hist.current_ioc_percentile
     : fallbackThreatFoxScore(metrics.threatfox.ioc_count_1d || 0, caps.threatfox_ioc_1d_cap_fallback, fallbackMax);
+  const threatfoxIocCurrent = Math.min(threatfoxCap, threatfoxIocRaw);
   const bot36Count = hist.current_36h_botnet_c2_count ?? metrics.threatfox.botnet_c2_count_1d ?? 0;
-  const threatfoxBot36 = Number.isFinite(hist.trailing_36h_botnet_c2_percentile)
+  const threatfoxBotRaw = Number.isFinite(hist.trailing_36h_botnet_c2_percentile)
     ? hist.trailing_36h_botnet_c2_percentile
     : fallbackThreatFoxScore(bot36Count, caps.threatfox_botnet_c2_36h_cap_fallback, fallbackMax);
+  const threatfoxBot36 = Math.min(threatfoxCap, threatfoxBotRaw);
 
   const parts = {
     kev_recent_7d: scoreFromCount(metrics.kev.recent_7d, caps.kev_recent_7d_cap),
@@ -800,7 +974,7 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
 
   const contextParts = {
     epss_hot_global: scoreFromCount(metrics.epss.hot_global_count, caps.epss_hot_count_cap),
-    source_coverage: clamp((sourceHealth.filter(s => s.status === 'ok').length / sourceHealth.length) * 100)
+    source_coverage: sourceCoverageScore(sourceHealth, scoring)
   };
 
   const hatScore = clamp(
@@ -821,6 +995,7 @@ function computeScores(metrics, sourceHealth, scoring, previousHistory) {
   return {
     hat_score: Math.round(hatScore),
     level: levelFromScore(hatScore, thresholds),
+    score_interpretation: { percentage: Math.round(hatScore), ...scoreBand(hatScore), scale: '0-100 percent contextual pressure' },
     confidence: baselineReady ? 'medium' : 'low',
     baseline: {
       status: baselineReady ? 'active' : 'warming_up',
@@ -960,6 +1135,91 @@ async function writeEvidenceCard(latest) {
   return path.relative(PUBLIC_DIR, file);
 }
 
+function csvEscape(value) {
+  const s = String(value ?? '');
+  return /[",\n\r]/.test(s) ? `"${s.replaceAll('"', '""')}"` : s;
+}
+
+async function writeAnalystDownloads(latest) {
+  await fs.mkdir(DOWNLOADS_DIR, { recursive: true });
+  const fimi = latest.metrics?.fimi_lite || {};
+  const accepted = Array.isArray(fimi.gdelt?.sample) ? fimi.gdelt.sample : [];
+  const bundle = {
+    schema: 'mard-hat-analyst-download-bundle-v1',
+    generated_at: latest.generated_at,
+    created_for: 'analyst re-use; no secrets; no raw Auth-Key material',
+    score: {
+      hat_score: latest.hat_score,
+      level: latest.level,
+      interpretation: latest.score_interpretation,
+      trend: latest.trend,
+      confidence: latest.confidence,
+      baseline: latest.baseline,
+      score_parts: latest.score_parts,
+      context_parts: latest.context_parts
+    },
+    bot_activity_state: latest.bot_activity_state,
+    disinformation_alert_level: latest.disinformation_alert_level,
+    obscuration_context: latest.obscuration_context,
+    maritime_fimi: {
+      score: fimi.score ?? 0,
+      confidence: fimi.confidence ?? 'low',
+      mode: fimi.mode ?? null,
+      maritime_filter: fimi.maritime_filter ?? null,
+      gdelt_summary: fimi.gdelt ?? null,
+      euvsdisinfo_summary: fimi.euvsdisinfo ?? null,
+      disarm_aligned: fimi.disarm_aligned ?? null
+    },
+    threatfox_summary: latest.metrics?.threatfox ?? null,
+    kev_summary: latest.metrics?.kev ?? null,
+    source_health: latest.source_health,
+    drivers: latest.drivers,
+    assessment: latest.assessment,
+    evidence_cards: latest.evidence_cards || []
+  };
+  await fs.writeFile(path.join(DOWNLOADS_DIR, 'hat_analyst_bundle_latest.json'), JSON.stringify(bundle, null, 2));
+
+  const rows = accepted.map(article => ({
+    classification: article.maritime_relevance?.classification || '',
+    weight: article.maritime_relevance?.weight ?? '',
+    reason: article.maritime_relevance?.reason || '',
+    title: article.title || '',
+    domain: article.domain || '',
+    language: article.language || '',
+    source_country: article.source_country || '',
+    seen_date: article.seen_date || '',
+    maritime_matches: (article.maritime_relevance?.matched?.maritime || []).join('|'),
+    threat_fimi_matches: (article.maritime_relevance?.matched?.threat_fimi || []).join('|'),
+    region_matches: (article.maritime_relevance?.matched?.region || []).join('|'),
+    global_spillover_matches: (article.maritime_relevance?.matched?.global_spillover || []).join('|'),
+    url: article.url || ''
+  }));
+  const headers = ['classification','weight','reason','title','domain','language','source_country','seen_date','maritime_matches','threat_fimi_matches','region_matches','global_spillover_matches','url'];
+  const csv = [headers.join(','), ...rows.map(row => headers.map(h => csvEscape(row[h])).join(','))].join('\n') + '\n';
+  await fs.writeFile(path.join(DOWNLOADS_DIR, 'fimi_maritime_articles_latest.csv'), csv);
+  await fs.writeFile(path.join(DOWNLOADS_DIR, 'fimi_maritime_articles_latest.json'), JSON.stringify(accepted, null, 2));
+
+  const shHeaders = ['source','status','count','raw_count','core_count','global_spillover_count','rejected_count','ok_queries','failed_queries','errors'];
+  const shCsv = [shHeaders.join(','), ...(latest.source_health || []).map(row => shHeaders.map(h => csvEscape(h === 'errors' ? (row.errors || []).join('|') : row[h])).join(','))].join('\n') + '\n';
+  await fs.writeFile(path.join(DOWNLOADS_DIR, 'source_health_latest.csv'), shCsv);
+  await fs.writeFile(path.join(DOWNLOADS_DIR, 'README_downloads.txt'), [
+    'MARD-HAT analyst downloads',
+    '',
+    'hat_analyst_bundle_latest.json: compact machine-readable bundle for re-use.',
+    'fimi_maritime_articles_latest.csv/json: score-relevant maritime/FIMI articles after local post-filtering.',
+    'source_health_latest.csv: source status with partial/error details.',
+    '',
+    'Claim limit: contextual telemetry only. No attribution and no proof of sabotage, disinformation, hybrid activity, or state involvement by itself.'
+  ].join('\n'));
+  return {
+    analyst_bundle: 'downloads/hat_analyst_bundle_latest.json',
+    fimi_maritime_csv: 'downloads/fimi_maritime_articles_latest.csv',
+    fimi_maritime_json: 'downloads/fimi_maritime_articles_latest.json',
+    source_health_csv: 'downloads/source_health_latest.csv',
+    download_readme: 'downloads/README_downloads.txt'
+  };
+}
+
 async function main() {
   await ensureDirs();
   const sources = await readJson(SOURCES_PATH);
@@ -1094,7 +1354,8 @@ async function main() {
     const sourceDegraded = String(fimiLite.status || '').startsWith('degraded');
     if (hasFimiSourceSignal) {
       drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
-      drivers.push(`GDELT narrative watch: ${gdeltCount} unique articles in ${fimiLite.gdelt?.timespan ?? '36h'}`);
+      drivers.push(`GDELT maritime/FIMI watch: ${gdeltCount} score-relevant articles in ${fimiLite.gdelt?.timespan ?? '36h'} after local maritime filtering`);
+      if (fimiLite.maritime_filter) drivers.push(`Maritime filter: ${fimiLite.maritime_filter.core_mard_eu_articles || 0} Core MARD-Eu, ${fimiLite.maritime_filter.global_maritime_spillover_articles || 0} Global Maritime Spillover, ${fimiLite.maritime_filter.rejected_as_noise_or_broad_context || 0} rejected as broad/noisy context`);
       drivers.push(`EUvsDisinfo case watch: ${euvsCount} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
       if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
     } else if (sourceDegraded) {
@@ -1106,11 +1367,12 @@ async function main() {
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.4b',
+    schema: 'mard-hat-v0.1.5',
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
     level: score.level,
+    score_interpretation: score.score_interpretation,
     confidence: score.confidence,
     trend: score.baseline.delta_from_mean === null ? 'unknown' : score.baseline.delta_from_mean > 8 ? 'rising' : score.baseline.delta_from_mean < -8 ? 'falling' : 'stable',
     baseline: score.baseline,
@@ -1130,8 +1392,8 @@ async function main() {
       no_proof_by_itself: true
     },
     roadmap: {
-      next: 'v0.1.5: refine FIMI-lite calibration, optional URLhaus, and maritime relevance weighting',
-      active: 'v0.1.4b FIMI source-health fix: rate-limited FIMI crawls no longer create synthetic FIMI scores',
+      next: 'v0.1.6: optional URLhaus, improved baselines, and stronger source-specific calibration',
+      active: 'v0.1.5 transparency and maritime relevance patch: partial source health, MARD-Eu FIMI filtering, score bands, downloads and obscuration context',
       open_measures: 'later'
     },
     links: {
@@ -1141,8 +1403,18 @@ async function main() {
     }
   };
 
+  latest.obscuration_context = buildObscurationContext(latest, scoring);
+  latest.links = {
+    ...(latest.links || {}),
+    analyst_bundle: 'downloads/hat_analyst_bundle_latest.json',
+    fimi_maritime_csv: 'downloads/fimi_maritime_articles_latest.csv',
+    fimi_maritime_json: 'downloads/fimi_maritime_articles_latest.json',
+    source_health_csv: 'downloads/source_health_latest.csv'
+  };
+
   const evidencePath = await writeEvidenceCard(latest);
   latest.evidence_cards = [evidencePath];
+  latest.downloads = await writeAnalystDownloads(latest);
 
   const newHistoryItem = {
     generated_at: latest.generated_at,
@@ -1163,7 +1435,10 @@ async function main() {
       threatfox_ioc_current_percentile: latest.metrics.threatfox.historical?.current_ioc_percentile ?? null,
       threatfox_botnet_c2_36h_percentile: latest.metrics.threatfox.historical?.trailing_36h_botnet_c2_percentile ?? null,
       fimi_lite_score: latest.metrics.fimi_lite?.score ?? 0,
-      gdelt_unique_articles_36h: latest.metrics.fimi_lite?.gdelt?.unique_articles ?? 0,
+      gdelt_unique_articles_36h: latest.metrics.fimi_lite?.gdelt?.unique_articles_raw ?? latest.metrics.fimi_lite?.gdelt?.unique_articles ?? 0,
+      gdelt_mard_eu_weighted_articles_36h: latest.metrics.fimi_lite?.gdelt?.weighted_articles ?? null,
+      gdelt_core_mard_eu_articles_36h: latest.metrics.fimi_lite?.gdelt?.core_mard_eu_articles ?? 0,
+      gdelt_global_spillover_articles_36h: latest.metrics.fimi_lite?.gdelt?.global_maritime_spillover_articles ?? 0,
       euvsdisinfo_case_candidates_90d: latest.metrics.fimi_lite?.euvsdisinfo?.candidate_count ?? 0,
       disarm_aligned_tag_count: latest.metrics.fimi_lite?.disarm_aligned?.tag_count ?? 0
     }
