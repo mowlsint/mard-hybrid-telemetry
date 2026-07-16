@@ -1,27 +1,35 @@
 {
-  "schema": "mard-hat-v0.1.4b",
-  "generated_at": "2026-07-16T14:25:43.455Z",
+  "schema": "mard-hat-v0.1.5",
+  "generated_at": "2026-07-16T18:03:44.759Z",
   "window_days": 30,
-  "hat_score": 77,
+  "hat_score": 64,
   "level": "high",
+  "score_interpretation": {
+    "percentage": 64,
+    "label": "high",
+    "color": "deep orange",
+    "css": "high",
+    "meaning": "high contextual pressure",
+    "scale": "0-100 percent contextual pressure"
+  },
   "confidence": "medium",
-  "trend": "rising",
+  "trend": "stable",
   "baseline": {
     "status": "active",
-    "points": 39,
-    "mean_hat_score": 60.8,
-    "delta_from_mean": 16.5
+    "points": 40,
+    "mean_hat_score": 61.3,
+    "delta_from_mean": 2.7
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 69,
     "kev_epss_mean": 13,
-    "threatfox_ioc_current": 97,
-    "threatfox_botnet_c2_36h": 100
+    "threatfox_ioc_current": 65,
+    "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 100
+    "source_coverage": 79
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
@@ -35,12 +43,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 97,
-      "botnet_c2_current_percentile": 97,
+      "ioc_current_percentile": 95,
+      "botnet_c2_current_percentile": 94,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 1719,
-      "botnet_c2_36h_count": 1334
+      "ioc_36h_count": 1745,
+      "botnet_c2_36h_count": 1353
     }
   },
   "disinformation_alert_level": {
@@ -53,17 +61,17 @@
       2,
       3
     ],
-    "mode": "fimi_lite_with_bot_ioc_proxy",
-    "fimi_lite_score": 52,
+    "mode": "bot_ioc_proxy_only_no_fimi_signal",
+    "fimi_lite_score": 0,
     "corroboration": {
-      "gdelt_unique_articles": 75,
+      "gdelt_unique_articles": 0,
       "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 4,
+      "disarm_aligned_tags": 0,
       "bot_state": "BAB",
-      "fimi_source_signal_present": true,
+      "fimi_source_signal_present": false,
       "bot_ioc_proxy_elevated": true
     },
-    "note": "Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade."
+    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
   },
   "metrics": {
     "kev": {
@@ -261,18 +269,18 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1379,
-      "ioc_count_7d": 5366,
-      "botnet_c2_count_1d": 1188,
-      "botnet_c2_count_7d": 2603,
+      "ioc_count_1d": 1363,
+      "ioc_count_7d": 4868,
+      "botnet_c2_count_1d": 1186,
+      "botnet_c2_count_7d": 2598,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1188
+          "count": 1186
         },
         {
           "name": "payload_delivery",
-          "count": 172
+          "count": 158
         },
         {
           "name": "payload",
@@ -290,26 +298,26 @@
         },
         {
           "name": "ClearFake",
-          "count": 84
+          "count": 90
         },
         {
           "name": "Cobalt Strike",
-          "count": 58
-        },
-        {
-          "name": "Unknown malware",
-          "count": 56
+          "count": 46
         },
         {
           "name": "AdaptixC2",
-          "count": 28
+          "count": 40
         },
         {
-          "name": "KongTuke",
-          "count": 27
+          "name": "Unknown malware",
+          "count": 33
         },
         {
           "name": "Vidar",
+          "count": 23
+        },
+        {
+          "name": "KongTuke",
           "count": 22
         },
         {
@@ -336,19 +344,19 @@
         },
         {
           "name": "Unknown malware",
-          "count": 228
+          "count": 223
         },
         {
           "name": "Cobalt Strike",
-          "count": 176
+          "count": 174
         },
         {
           "name": "Vidar",
-          "count": 117
+          "count": 114
         },
         {
           "name": "Aisuru",
-          "count": 107
+          "count": 104
         },
         {
           "name": "Remcos",
@@ -356,7 +364,7 @@
         },
         {
           "name": "AdaptixC2",
-          "count": 85
+          "count": 96
         },
         {
           "name": "AsyncRAT",
@@ -364,7 +372,7 @@
         },
         {
           "name": "ClearFake",
-          "count": 58
+          "count": 57
         }
       ],
       "historical": {
@@ -375,169 +383,61 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 1719,
-        "current_36h_botnet_c2_count": 1334,
-        "current_ioc_percentile": 97,
-        "current_botnet_c2_percentile": 97,
+        "current_36h_ioc_count": 1745,
+        "current_36h_botnet_c2_count": 1353,
+        "current_ioc_percentile": 95,
+        "current_botnet_c2_percentile": 94,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
       }
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1379,
-      "botnet_cc_count": 2603,
+      "threatfox_count": 1363,
+      "botnet_cc_count": 2598,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "ok",
-      "score": 52,
-      "confidence": "medium",
-      "mode": "fimi_lite_open_source_proxy",
+      "status": "degraded_no_source_signal",
+      "score": 0,
+      "confidence": "low",
+      "mode": "fimi_lite_degraded_no_source_signal",
       "source_state": {
         "external_ok": true,
-        "external_errors": false,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and observed source signals."
+        "external_errors": true,
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 93,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 50
+        "disarm_tag_relevance": 0
+      },
+      "maritime_filter": {
+        "schema": "mard-hat-maritime-filter-v1",
+        "rule": "score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
+        "raw_unique_articles": 0,
+        "accepted_articles": 0,
+        "core_mard_eu_articles": 0,
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 0,
+        "weighted_article_count": 0,
+        "rejected_samples": []
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 75,
-        "unique_articles": 75,
-        "historical_percentile": 93,
-        "top_domains": [
-          {
-            "name": "globalsecurity.org",
-            "count": 16
-          },
-          {
-            "name": "focus.ua",
-            "count": 2
-          },
-          {
-            "name": "kreiszeitung.de",
-            "count": 2
-          },
-          {
-            "name": "ru.euronews.com",
-            "count": 2
-          },
-          {
-            "name": "ansa.it",
-            "count": 1
-          },
-          {
-            "name": "az-online.de",
-            "count": 1
-          },
-          {
-            "name": "bankingnews.gr",
-            "count": 1
-          },
-          {
-            "name": "bnews.bg",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "Kyiv Long - Range Sanction Force Kremlin to Turn to New Delhi",
-            "url": "https://www.kyivpost.com/post/80397",
-            "domain": "kyivpost.com",
-            "language": "English",
-            "source_country": "Ukraine",
-            "seen_date": "20260716T140000Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Кремлевский канал Россия - 1 про убийство Киевстонера : Для нашей разведки будет делом чести",
-            "url": "https://www.dialog.ua/russia/kremlevskiy-kanal-rossiya-ugrozhaet-ubiystvom-reperu-kievstoneru.html",
-            "domain": "dialog.ua",
-            "language": "Russian",
-            "source_country": "Ukraine",
-            "seen_date": "20260716T140000Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Seven mystery drones swarm above European nuclear power plant",
-            "url": "https://metro.co.uk/2026/07/16/seven-mystery-drones-swarm-european-nuclear-power-plant-29153061/",
-            "domain": "metro.co.uk",
-            "language": "English",
-            "source_country": "United Kingdom",
-            "seen_date": "20260716T140000Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Indra Group vai apoiar reconstruo do sistema de tráfego aéreo da Ucrânia",
-            "url": "https://eco.sapo.pt/2026/07/16/indra-group-vai-apoiar-reconstrucao-do-sistema-de-trafego-aereo-da-ucrania/",
-            "domain": "eco.sapo.pt",
-            "language": "Portuguese",
-            "source_country": null,
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Dismissal of Ukraine defence chief sparks political crisis",
-            "url": "https://cyprus-mail.com/2026/07/16/dismissal-of-ukraines-defence-chief-sparks-political-crisis",
-            "domain": "cyprus-mail.com",
-            "language": "English",
-            "source_country": "Cyprus",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Naval Group - PPC Inspectra : Υπογραφή συμφωνίας για υποστήριξη συντήρησης των φρεγατών FDI",
-            "url": "https://www.inewsgr.com/93/Naval-Group-PPC-Inspectra-ypografi-symfonias-gia-ypostirixi-syntirisis-ton-fregaton-FDI.htm",
-            "domain": "inewsgr.com",
-            "language": "Greek",
-            "source_country": "Greece",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Putin - beskjed fra Tyskland : – Russland tester oss hver dag",
-            "url": "https://www.dagsavisen.no/nyheter/putin-beskjed-fra-tyskland-tester-oss-hver-dag/10444014",
-            "domain": "dagsavisen.no",
-            "language": "Norwegian",
-            "source_country": "Norway",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Naval Group - PPC Inspectra : Υπογραφή συμφωνίας για υποστήριξη συντήρησης των φρεγατών FDI",
-            "url": "https://www.newsit.gr/oikonomia/megales-epixeiriseis/naval-group-ppc-inspectra-ypografi-symfonias-gia-ypostiriksi-syntirisis-ton-fregaton-fdi/4730023/",
-            "domain": "newsit.gr",
-            "language": "Greek",
-            "source_country": "Greece",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "Ties with Somalia Signal Türkiye Plans for Greater Role in Africa",
-            "url": "https://jamestown.org/ties-with-somalia-signal-turkiyes-plans-for-greater-role-in-africa/",
-            "domain": "jamestown.org",
-            "language": "English",
-            "source_country": "Russia",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          },
-          {
-            "title": "« Молнии - ПВО » сбили дроны ВСУ над Красным Лиманом",
-            "url": "https://tvzvezda.ru/news/20267161554-tWzIs.html",
-            "domain": "tvzvezda.ru",
-            "language": "Russian",
-            "source_country": "Russia",
-            "seen_date": "20260716T134500Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
-          }
-        ]
+        "article_count": 0,
+        "unique_articles_raw": 0,
+        "unique_articles": 0,
+        "core_mard_eu_articles": 0,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 0,
+        "weighted_articles": 0,
+        "historical_percentile": null,
+        "top_domains": [],
+        "sample": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -548,64 +448,36 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 4,
-        "tags": [
-          {
-            "id": "institutional_discrediting",
-            "label": "Discrediting institutions or alliances",
-            "count": 4,
-            "matched_keywords": [
-              "nato",
-              "eu",
-              "european union",
-              "government"
-            ]
-          },
-          {
-            "id": "infrastructure_fear",
-            "label": "Critical-infrastructure fear framing",
-            "count": 2,
-            "matched_keywords": [
-              "energy",
-              "port"
-            ]
-          },
-          {
-            "id": "false_attribution",
-            "label": "False attribution / blame shifting",
-            "count": 2,
-            "matched_keywords": [
-              "ukraine",
-              "nato"
-            ]
-          },
-          {
-            "id": "maritime_legal_framing",
-            "label": "Maritime legal or piracy framing",
-            "count": 2,
-            "matched_keywords": [
-              "sanctions",
-              "ship"
-            ]
-          }
-        ]
+        "tag_count": 0,
+        "tags": []
       },
+      "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "ok",
-          "count": 75,
+          "status": "error",
+          "count": 0,
+          "raw_count": 0,
+          "core_count": 0,
+          "global_spillover_count": 0,
+          "rejected_count": 0,
+          "weighted_count": 0,
           "queries": 3,
+          "ok_queries": 0,
+          "failed_queries": 3,
           "errors": [
+            "gdelt_fimi_1: HTTP 429",
             "fetch failed",
-            "gdelt_fimi_2: HTTP 429"
+            "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "ok",
+          "status": "partial",
           "count": 0,
           "queries": 2,
+          "ok_queries": 1,
+          "failed_queries": 1,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "fetch failed"
@@ -614,15 +486,16 @@
         {
           "source": "disarm_aligned_taxonomy",
           "status": "ok",
-          "count": 4,
-          "method": "local_keyword_mapping"
+          "count": 0,
+          "method": "local_keyword_mapping",
+          "applied_to_articles": 0
         }
       ],
       "history": {
-        "gdelt_points": 30,
-        "fimi_score_points": 30
+        "gdelt_points": 0,
+        "fimi_score_points": 31
       },
-      "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume, EUvsDisinfo provides curated case exposure, and DISARM-aligned tags structure the observations. This is not attribution-grade."
+      "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
   },
   "drivers": [
@@ -630,15 +503,12 @@
     "22 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1319",
-    "1379 ThreatFox IOCs in the last 1 day",
-    "2603 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1363 ThreatFox IOCs in the last 1 day",
+    "2598 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Bots are busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite score: 52 (medium confidence)",
-    "GDELT narrative watch: 75 unique articles in 36h",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "DISARM-aligned tags observed: Discrediting institutions or alliances, Critical-infrastructure fear framing, False attribution / blame shifting"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "source_health": [
     {
@@ -661,32 +531,42 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 1379,
-      "count_7d": 5366,
-      "botnet_cc_count": 2603,
+      "count": 1363,
+      "count_7d": 4868,
+      "botnet_cc_count": 2598,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "96d67e5a4fd50134929de2a122fe403c39840c0edbe2cfcd46d320d16a35544c",
-      "hash_7d": "1da8035ca415bc58ef0ad911fe8023a8d3ed9a8dc15c1df44f181f8e42775155",
+      "hash_1d": "1e8a7caaa3d2f4473f29070d7af93920e4e5fcbcf489ea0545e8865790318a1f",
+      "hash_7d": "49f488730bd18debbe5213eb5628aba3c1e0a1bcf3d3e102543a13b8b13e45db",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "ok",
-      "count": 75,
+      "status": "error",
+      "count": 0,
+      "raw_count": 0,
+      "core_count": 0,
+      "global_spillover_count": 0,
+      "rejected_count": 0,
+      "weighted_count": 0,
       "queries": 3,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
+        "gdelt_fimi_1: HTTP 429",
         "fetch failed",
-        "gdelt_fimi_2: HTTP 429"
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "ok",
+      "status": "partial",
       "count": 0,
       "queries": 2,
+      "ok_queries": 1,
+      "failed_queries": 1,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "fetch failed"
@@ -695,8 +575,9 @@
     {
       "source": "disarm_aligned_taxonomy",
       "status": "ok",
-      "count": 4,
-      "method": "local_keyword_mapping"
+      "count": 0,
+      "method": "local_keyword_mapping",
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -704,8 +585,8 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
-    "gdelt_fimi": "ok",
-    "euvsdisinfo_case_watch": "ok",
+    "gdelt_fimi": "error",
+    "euvsdisinfo_case_watch": "partial",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -716,16 +597,38 @@
     "no_proof_by_itself": true
   },
   "roadmap": {
-    "next": "v0.1.5: refine FIMI-lite calibration, optional URLhaus, and maritime relevance weighting",
-    "active": "v0.1.4b FIMI source-health fix: rate-limited FIMI crawls no longer create synthetic FIMI scores",
+    "next": "v0.1.6: optional URLhaus, improved baselines, and stronger source-specific calibration",
+    "active": "v0.1.5 transparency and maritime relevance patch: partial source health, MARD-Eu FIMI filtering, score bands, downloads and obscuration context",
     "open_measures": "later"
   },
   "links": {
     "latest_json": "hat_latest.json",
     "history_json": "hat_history.json",
-    "source_health_json": "hat_source_health.json"
+    "source_health_json": "hat_source_health.json",
+    "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
+    "fimi_maritime_csv": "downloads/fimi_maritime_articles_latest.csv",
+    "fimi_maritime_json": "downloads/fimi_maritime_articles_latest.json",
+    "source_health_csv": "downloads/source_health_latest.csv"
+  },
+  "obscuration_context": {
+    "schema": "mard-hat-obscuration-context-v1",
+    "level": "low",
+    "signals": [
+      "current bot/IOC proxy telemetry is elevated (BAB)",
+      "1353 botnet/C2-like indicators in the current 36h window",
+      "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
+    ],
+    "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
+    "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20260716T142543_open_source_exploit_ioc_botstate_pressure.json"
-  ]
+    "evidence_cards/20260716T180344_open_source_exploit_ioc_botstate_pressure.json"
+  ],
+  "downloads": {
+    "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
+    "fimi_maritime_csv": "downloads/fimi_maritime_articles_latest.csv",
+    "fimi_maritime_json": "downloads/fimi_maritime_articles_latest.json",
+    "source_health_csv": "downloads/source_health_latest.csv",
+    "download_readme": "downloads/README_downloads.txt"
+  }
 }
