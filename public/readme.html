@@ -1,149 +1,24 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>MARD-HAT README</title><style>
-:root{--bg:#0d1117;--panel:#151b23;--text:#f0f3f6;--muted:#a8b3bf;--line:#303946;--accent:#f0c36a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#182233 0,var(--bg) 42rem);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main,footer{max-width:960px;margin:0 auto;padding:1.2rem}main{padding-top:2rem}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:.3rem 0 1rem}h2{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--accent)}h3{color:var(--text);margin-top:1.5rem}p,li{color:var(--muted)}strong{color:var(--text)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}pre{background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem;overflow:auto;color:var(--text)}code{background:rgba(255,255,255,.06);border-radius:7px;padding:.1rem .35rem}pre code{background:none;padding:0}blockquote{border-left:3px solid var(--accent);padding:.5rem 1rem;background:rgba(240,195,106,.08);color:var(--text);border-radius:10px}.top{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.pill{display:inline-flex;border:1px solid var(--line);background:#1f2630;border-radius:999px;padding:.3rem .7rem;color:var(--muted);font-size:.9rem}.footer-line{border-top:1px solid var(--line);padding-top:1rem;color:var(--muted)}
-</style></head>
-<body><main><div class="top"><a class="pill" href="index.html">← Dashboard</a><a class="pill" href="README.md">Raw README.md</a></div><h1>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</h1>
-<p><strong>MARD-HAT</strong> is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in <strong>Magic Paws / MARD-Eu</strong>.</p>
-<p>MARD-HAT does <strong>not</strong> attribute activity to a state actor. It does <strong>not</strong> prove sabotage, disinformation, or hybrid activity by itself. A high score should be treated as a prompt for further analysis, not as a conclusion.</p>
-<h2>Positioning</h2>
-<p>MARD-HAT does not compete with professional influence-operation platforms, government counter-FIMI units, large commercial narrative-intelligence systems, or full cyber threat-intelligence platforms. Their data breadth, platform access, analyst teams and commercial tooling are much larger.</p>
-<p>The specific value of MARD-HAT is different:</p>
-<ul>
-<li>small and transparent,</li>
-<li>public and community-readable,</li>
-<li>cost-neutral or low-cost by design,</li>
-<li>maritime-focus capable,</li>
-<li>machine-readable,</li>
-<li>compatible with Magic Paws / MARD-Eu,</li>
-<li>able to combine cyber/IOC pressure, botnet/C2 indicators and FIMI-lite signals as contextual telemetry.</li>
-</ul>
-<p>Most existing systems focus primarily on either:</p>
-<pre><code>
-Disinformation / narratives / influence networks
-
-</code></pre>
-<p>or:</p>
-<pre><code>
-Cyber threat intelligence / botnet / IOC telemetry
-
-</code></pre>
-<p>MARD-HAT is intended to connect both layers in a cautious way:</p>
-<pre><code>
-Cyber / botnet pressure
-
-+ Narrative / disinformation signals
-
-+ Maritime and critical-infrastructure context
-
-+ Conservative hybrid-activity side indicator
-
-</code></pre>
-<h2>Current scope</h2>
-<p>The current MARD-HAT build uses open and low-cost sources to estimate public cyber and botnet-related pressure.</p>
-<p>Enabled or prepared in the current line:</p>
-<ul>
-<li>**CISA Known Exploited Vulnerabilities (KEV)** for recently added, publicly known exploited vulnerabilities.</li>
-<li>**FIRST EPSS** for exploitation-probability enrichment and global exploit-pressure context.</li>
-<li>**ThreatFox / abuse.ch** for IOC and botnet/C2-like telemetry when `ABUSECH_AUTH_KEY` is configured as a GitHub Actions secret.</li>
-<li>Static public JSON outputs for downstream ingestion.</li>
-<li>Static HTML dashboard under `public/index.html`.</li>
-</ul>
-<p>The current bot-state model adds lightweight operational labels:</p>
-<ul>
-<li>**BIL — Bots in Lurking Position**: no clear elevated bot/IOC state.</li>
-<li>**BWB — Bots were busy**: elevated activity is visible or suspected in the recent trailing window.</li>
-<li>**BAB — Bots are busy**: elevated activity appears current.</li>
-</ul>
-<p>The <strong>Disinformation Alert Level</strong> is currently a proxy indicator derived from bot/IOC telemetry. It is not yet a direct narrative or disinformation measurement.</p>
-<h2>Roadmap</h2>
-<h3>v0.1.x — Cyber / IOC / botnet telemetry</h3>
-<p>The current line focuses on:</p>
-<ul>
-<li>exploit-pressure telemetry,</li>
-<li>IOC pressure,</li>
-<li>botnet/C2-like indicators,</li>
-<li>short-window bot-state labels,</li>
-<li>conservative confidence and claim limits,</li>
-<li>historical approximation where possible.</li>
-</ul>
-
-<h3>v0.1.4b — Display clarity for zero-result FIMI-lite runs</h3>
-<p>This patch does not change the basic data model. It makes the public dashboard clearer when FIMI-lite crawls return no matching source signals. Zero-result GDELT/EUvsDisinfo/DISARM values are now labelled as "no matching signals" rather than looking like broken counters. The Disinformation Alert Level note now distinguishes source-corroborated FIMI-lite elevation from bot/IOC proxy-only elevation. ThreatFox historical export counters also show "historical export unavailable / warming up" when the export has not been processed.</p>
-
-<h3>v0.1.4 — FIMI-lite</h3>
-<p>The active FIMI-lite layer uses:</p>
-<pre><code>
-GDELT = fast narrative and media-spike sensor
-
-EUvsDisinfo = curated and validated disinformation case source
-
-DISARM = structured FIMI taxonomy and tagging model
-
-</code></pre>
-<p>This makes the Disinformation Alert Level more meaningful, but it remains a contextual early-warning indicator. GDELT measures narrative/media volume; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. None of these alone prove coordination or attribution.</p>
-<h3>Later phases</h3>
-<p>Later candidates include additional social-media or web intelligence sources, such as Open Measures or comparable platforms, depending on access, cost, legality, licensing and operational usefulness.</p>
-<h2>Outputs</h2>
-<p>Primary downstream file:</p>
-<pre><code>
-public/hat_latest.json
-
-</code></pre>
-<p>Additional public outputs:</p>
-<pre><code>
-public/hat_history.json
-
-public/hat_source_health.json
-
-public/evidence_cards/*.json
-
-</code></pre>
-<p>Internal / repository history:</p>
-<pre><code>
-data/history/hat_history.jsonl
-
-data/raw/*.json
-
-</code></pre>
-<h2>Suggested downstream use</h2>
-<p>Recommended initial use in Magic Paws / MARD-Eu:</p>
-<pre><code>
-Magic Paws Dashboard: show as Cyber / IOC / Botnet Pressure side indicator
-
-Morning Summary: one cautious context paragraph
-
-Hybrid Index: no automatic weighting until a sufficient baseline exists
-
-</code></pre>
-<p>After a baseline period, MARD-HAT may be mixed into a broader Hybrid Index only with low weighting and only when corroborated by maritime, FIMI, RF, AIS, ADS-B, KRITIS or incident evidence.</p>
-<h2>Claim limit</h2>
-<p>Use this language in downstream products:</p>
-<blockquote>MARD-HAT is a contextual digital-pressure indicator. It is not attribution-grade and is not sufficient to prove sabotage, state activity, disinformation or a hybrid operation on its own.</blockquote>
-<h2>Operational notes</h2>
-<p>Secrets should never be committed to the repository. For ThreatFox, store the abuse.ch key as a GitHub Actions repository secret:</p>
-<pre><code>
-ABUSECH_AUTH_KEY
-
-</code></pre>
-<p>If Cloudflare Pages automatic deployment is unreliable, use a Cloudflare Pages Deploy Hook stored as:</p>
-<pre><code>
-CLOUDFLARE_DEPLOY_HOOK
-
-</code></pre>
-<p>The static site should be served from:</p>
-<pre><code>
-public/
-
-</code></pre>
-<p>For Cloudflare Pages, the recommended static mirror setup is:</p>
-<pre><code>
-Build command:     empty
-
-Build output dir:  public
-
-Root directory:    empty
-
-Production branch: main
-
-</code></pre></main><footer><div class="footer-line">© <span id="year"></span> MOwlSINT.de</div></footer><script>document.getElementById('year').textContent = new Date().getFullYear();</script></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MARD-HAT README</title><style>
+:root{--bg:#0d1117;--panel:#151b23;--text:#f0f3f6;--muted:#a8b3bf;--line:#303946;--accent:#f0c36a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#182233 0,var(--bg) 42rem);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main,footer{max-width:960px;margin:0 auto;padding:1.2rem}main{padding-top:2rem}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:.3rem 0 1rem}h2{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--accent)}h3{color:var(--text);margin-top:1.5rem}p,li{color:var(--muted)}strong{color:var(--text)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}pre{background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem;overflow:auto;color:var(--text)}code{background:rgba(255,255,255,.06);border-radius:7px;padding:.1rem .35rem}pre code{background:none;padding:0}table{width:100%;border-collapse:collapse}td,th{border:1px solid var(--line);padding:.55rem;text-align:left}th{color:var(--accent)}.top{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.pill{display:inline-flex;border:1px solid var(--line);background:#1f2630;border-radius:999px;padding:.3rem .7rem;color:var(--muted);font-size:.9rem}.notice{border-left:4px solid var(--accent);padding:.8rem 1rem;background:rgba(240,195,106,.08);border-radius:12px;color:var(--text)}
+</style></head><body><main><div class="top"><a class="pill" href="index.html">← Dashboard</a><a class="pill" href="README.md">Raw README.md</a></div>
+<h1>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</h1>
+<p><strong>MARD-HAT</strong> is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC, botnet/C2 and <strong>maritime FIMI-lite</strong> pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in <strong>Magic Paws / MARD-Eu</strong>.</p>
+<p class="notice">MARD-HAT does <strong>not</strong> attribute activity to a state actor. It does <strong>not</strong> prove sabotage, disinformation, coordination, or hybrid activity by itself.</p>
+<h2>v0.1.5 evaluation and transparency patch</h2>
+<ul><li>Score shown as a 0–100% contextual pressure score.</li><li>Visible green/yellow/orange/red score bands.</li><li>Source health supports ok / partial / error.</li><li>GDELT FIMI-lite hits are post-filtered for maritime relevance.</li><li>Core MARD-Eu and Global Maritime Spillover are separated.</li><li>Obscuration / information-fog context is explained cautiously.</li><li>Analyst downloads are available under <code>public/downloads/</code>.</li></ul>
+<h2>Score interpretation</h2><table><thead><tr><th>Range</th><th>Band</th><th>Meaning</th></tr></thead><tbody><tr><td>0–20</td><td>green / normal</td><td>low contextual pressure</td></tr><tr><td>21–40</td><td>yellow / elevated</td><td>elevated background pressure</td></tr><tr><td>41–60</td><td>orange / watch</td><td>watch-level pressure</td></tr><tr><td>61–80</td><td>deep orange / high</td><td>high contextual pressure</td></tr><tr><td>81–100</td><td>red / critical</td><td>critical contextual pressure</td></tr></tbody></table>
+<p>The score is a percentage-style contextual pressure score, not a probability.</p>
+<h2>Maritime FIMI-lite filter</h2><p>GDELT is a narrative/media-volume sensor, not a disinformation classifier. v0.1.5 therefore applies a local post-filter:</p><pre><code>An article counts only if it contains:
+1. at least one maritime anchor
+2. at least one threat/FIMI anchor
+3. for Core MARD-Eu, at least one North/Baltic/Northern-Europe regional anchor</code></pre>
+<p>Global maritime spillover such as Hormuz, Iran, Red Sea, Suez or global oil blockade narratives is retained separately and down-weighted.</p>
+<h2>Obscuration / information-fog context</h2><p>MARD-HAT does <strong>not</strong> claim that botnets or maritime disinformation are intentionally hiding maritime events. It can only mark conditions compatible with information fog or obscuration.</p><p>Technically, this matters because botnet/C2 infrastructure can support access, spam, amplification, credential theft, staging or disruption; broad narrative volume can bury or blur maritime/security signals; and partial source access can create analytical blind spots.</p>
+<h2>Analyst downloads</h2><pre><code>public/downloads/hat_analyst_bundle_latest.json
+public/downloads/fimi_maritime_articles_latest.csv
+public/downloads/fimi_maritime_articles_latest.json
+public/downloads/source_health_latest.csv
+public/downloads/README_downloads.txt</code></pre>
+<h2>Claim limit</h2><p>MARD-HAT is a contextual digital-pressure and FIMI-lite indicator only. It is not attribution-grade and is not sufficient to prove hybrid activity, sabotage, disinformation, coordination or state involvement on its own.</p>
+</main><footer><main><a href="index.html">Dashboard</a> · <a href="hat_latest.json">latest JSON</a> · <a href="downloads/hat_analyst_bundle_latest.json">analyst bundle</a></main></footer></body></html>

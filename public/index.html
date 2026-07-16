@@ -5,430 +5,134 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</title>
   <style>
-    :root {
-      --bg: #0d1117;
-      --panel: #151b23;
-      --panel2: #1f2630;
-      --text: #f0f3f6;
-      --muted: #a8b3bf;
-      --line: #303946;
-      --accent: #f0c36a;
-      --ok: #64d78a;
-      --warn: #ffd166;
-      --high: #ff9f5a;
-      --crit: #ff6b6b;
-      --shadow: rgba(0,0,0,.38);
+    :root{
+      --bg:#0d1117;--panel:#151b23;--panel2:#1f2630;--text:#f0f3f6;--muted:#a8b3bf;--line:#303946;--accent:#f0c36a;
+      --green:#64d78a;--yellow:#ffd166;--orange:#ff9f5a;--red:#ff6b6b;--blue:#7fb4ff;--shadow:rgba(0,0,0,.38)
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: radial-gradient(circle at top left, #182233 0, var(--bg) 42rem);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-    }
-    header, main, footer { max-width: 1120px; margin: 0 auto; padding: 1.2rem; }
-    header { padding-top: 2rem; }
-    .eyebrow { color: var(--accent); letter-spacing: .08em; text-transform: uppercase; font-size: .78rem; font-weight: 700; }
-    h1 { margin: .25rem 0 .5rem; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; }
-    .lead { color: var(--muted); max-width: 850px; font-size: 1.05rem; }
-    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(12, 1fr); }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 1rem;
-      box-shadow: 0 12px 40px rgba(0,0,0,.22);
-    }
-    .span4 { grid-column: span 4; }
-    .span6 { grid-column: span 6; }
-    .span8 { grid-column: span 8; }
-    .span12 { grid-column: span 12; }
-    @media (max-width: 820px) { .span4, .span6, .span8 { grid-column: span 12; } }
-    .score { font-size: clamp(3.8rem, 12vw, 7rem); line-height: .9; font-weight: 850; letter-spacing: -.07em; }
-    .label { color: var(--muted); font-size: .88rem; text-transform: uppercase; letter-spacing: .05em; }
-    .pill { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--line); background: var(--panel2); border-radius: 999px; padding: .25rem .6rem; color: var(--muted); font-size: .86rem; }
-    .chip { display: inline-flex; flex-direction: column; gap: .1rem; border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 16px; padding: .65rem .75rem; min-width: 8.2rem; }
-    .chip strong { font-size: 1.8rem; line-height: 1; letter-spacing: -.04em; }
-    .chip span { color: var(--muted); font-size: .82rem; }
-    .chip-active { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(240,195,106,.35) inset; }
-    .level-normal { color: var(--ok); }
-    .level-elevated, .level-watch { color: var(--warn); }
-    .level-high { color: var(--high); }
-    .level-critical { color: var(--crit); }
-    .parts { display: grid; gap: .9rem; }
-    .bar { height: .7rem; background: #0b0f15; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-    .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--ok), var(--warn), var(--high), var(--crit)); }
-    .fill-context { background: linear-gradient(90deg, #6d7890, var(--accent)); }
-    .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
-    code, pre { background: rgba(255,255,255,.06); border-radius: 8px; padding: .12rem .35rem; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { padding-left: 1.15rem; }
-    .muted { color: var(--muted); }
-    .small { font-size: .9rem; }
-    svg { width: 100%; height: 160px; display: block; }
-    .part-name { display: inline-flex; align-items: center; gap: .35rem; min-width: 0; }
-    .part-label { overflow-wrap: anywhere; }
-    .info {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.1rem;
-      height: 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      color: var(--accent);
-      background: rgba(240,195,106,.08);
-      font-size: .74rem;
-      font-weight: 800;
-      cursor: help;
-      flex: 0 0 auto;
-    }
-    .info::after {
-      content: attr(data-tip);
-      position: absolute;
-      left: 50%;
-      bottom: 135%;
-      transform: translateX(-50%);
-      width: min(360px, 78vw);
-      padding: .7rem .8rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #0b0f15;
-      color: var(--text);
-      box-shadow: 0 14px 38px var(--shadow);
-      white-space: normal;
-      font-weight: 500;
-      font-size: .86rem;
-      line-height: 1.35;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .12s ease;
-      z-index: 20;
-    }
-    .info:hover::after, .info:focus::after { opacity: 1; }
-    .dal { display: flex; gap: .45rem; align-items: center; flex-wrap: wrap; margin-top: .75rem; }
-    .dal-num { width: 2.35rem; height: 2.35rem; border: 1px solid var(--line); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); background: rgba(255,255,255,.035); font-weight: 800; }
-    .dal-active { border-color: var(--accent); color: var(--text); box-shadow: 0 0 0 2px rgba(240,195,106,.45); }
-    .dal-0.dal-active { background: rgba(100,215,138,.12); }
-    .dal-1.dal-active { background: rgba(255,209,102,.16); }
-    .dal-2.dal-active { background: rgba(255,159,90,.18); }
-    .dal-3.dal-active { background: rgba(255,107,107,.20); }
-    footer { padding-bottom: 2rem; }
-    .footer-line { display: flex; flex-wrap: wrap; gap: .5rem 1rem; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1rem; }
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top left,#182233 0,var(--bg) 42rem);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    header,main,footer{max-width:1180px;margin:0 auto;padding:1.2rem} header{padding-top:2rem}.eyebrow{color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;font-weight:800}h1{margin:.25rem 0 .5rem;font-size:clamp(2rem,5vw,4rem);line-height:1.05}.lead{color:var(--muted);max-width:920px;font-size:1.05rem}.grid{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}.card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:18px;padding:1rem;box-shadow:0 12px 40px rgba(0,0,0,.22)}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}@media(max-width:860px){.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}}
+    .score{font-size:clamp(4rem,14vw,8rem);line-height:.9;font-weight:900;letter-spacing:-.075em}.label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;font-weight:750}.pill{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:.25rem .65rem;color:var(--muted);font-size:.86rem}.small{font-size:.9rem}.muted{color:var(--muted)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}.kv{display:grid;grid-template-columns:minmax(12rem,1fr) 1fr;gap:.45rem .8rem}.kv div:nth-child(odd){color:var(--muted)}@media(max-width:640px){.kv{grid-template-columns:1fr}.kv div:nth-child(even){margin-bottom:.4rem}}ul{padding-left:1.15rem}.bands{display:grid;grid-template-columns:repeat(5,1fr);gap:.35rem;margin-top:.8rem}.band{border:1px solid var(--line);border-radius:10px;padding:.45rem .4rem;text-align:center;font-size:.8rem;color:var(--muted)}.band.active{color:var(--text);box-shadow:0 0 0 2px rgba(240,195,106,.42)}.b-normal.active{background:rgba(100,215,138,.17);border-color:var(--green)}.b-elevated.active{background:rgba(255,209,102,.17);border-color:var(--yellow)}.b-watch.active{background:rgba(255,159,90,.16);border-color:var(--orange)}.b-high.active{background:rgba(255,159,90,.25);border-color:var(--orange)}.b-critical.active{background:rgba(255,107,107,.22);border-color:var(--red)}.gauge{height:1rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:.75rem 0}.gaugeFill{height:100%;width:0%;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 35%,var(--orange) 65%,var(--red) 100%)}
+    .parts{display:grid;gap:.85rem}.bar{height:.62rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange),var(--red))}.fillCtx{background:linear-gradient(90deg,#6d7890,var(--accent))}.health{display:grid;gap:.45rem}.healthItem{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:12px;padding:.55rem .65rem;background:rgba(255,255,255,.025)}.status-ok{color:var(--green)}.status-partial,.status-degraded_no_source_signal,.status-degraded_with_partial_source_signal{color:var(--yellow)}.status-error{color:var(--red)}.status-disabled,.status-empty_or_disabled{color:var(--muted)}.downloads{display:flex;gap:.55rem;flex-wrap:wrap}.download{display:inline-flex;border:1px solid var(--line);border-radius:12px;padding:.55rem .7rem;background:rgba(240,195,106,.08)}svg{width:100%;height:160px;display:block}.chip{display:inline-flex;flex-direction:column;gap:.1rem;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:16px;padding:.65rem .75rem;min-width:8.2rem}.chip strong{font-size:1.8rem;line-height:1}.chip span{color:var(--muted);font-size:.82rem}.chip-active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(240,195,106,.35) inset}pre{white-space:pre-wrap;overflow:auto;background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem}.notice{border-left:4px solid var(--accent);padding:.75rem .9rem;background:rgba(240,195,106,.08);border-radius:12px}.footer-line{display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:space-between;border-top:1px solid var(--line);padding-top:1rem}
   </style>
 </head>
 <body>
-  <header>
-    <div class="eyebrow">MARD-HAT v0.1.4b // Public OSINT telemetry</div>
-    <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
-    <p class="lead">A public, open-source telemetry layer for cyber/exploit, IOC, botnet/C2 and FIMI-lite pressure. It is designed as contextual input for maritime and hybrid activity assessments — not as attribution-grade proof.</p>
-  </header>
+<header>
+  <div class="eyebrow">MARD-HAT v0.1.5 // Public OSINT telemetry</div>
+  <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
+  <p class="lead">Cyber/exploit, IOC, botnet/C2 and maritime FIMI-lite telemetry for contextual maritime risk assessment. The score is a percentage of contextual pressure, not proof of attribution or a hybrid operation.</p>
+</header>
+<main>
+  <section class="grid">
+    <article class="card span4">
+      <div class="label">HAT contextual pressure score</div>
+      <div><span id="score" class="score">--</span><span style="font-size:2rem;font-weight:800">%</span></div>
+      <div class="gauge"><div id="scoreFill" class="gaugeFill"></div></div>
+      <p><span id="level" class="pill">loading</span> <span id="confidence" class="pill">confidence --</span> <span id="trend" class="pill">trend --</span></p>
+      <div id="bands" class="bands"></div>
+      <p id="generated" class="muted small">Generated: -- · Workflow age: --</p>
+    </article>
 
-  <main>
-    <section class="grid">
-      <article class="card span4">
-        <div class="label">HAT score</div>
-        <div id="score" class="score">--</div>
-        <p><span id="level" class="pill">loading</span> <span id="confidence" class="pill">confidence --</span></p>
-        <p id="generated" class="muted small">Generated: -- · Workflow age: --</p>
-      </article>
+    <article class="card span8">
+      <div class="row"><div class="label">Trend and baseline</div><span id="baseline" class="pill">baseline --</span></div>
+      <svg id="chart" viewBox="0 0 800 160" preserveAspectRatio="none" aria-label="HAT score history"></svg>
+      <p class="muted small">Bands: green 0–20 normal, yellow 21–40 elevated, orange 41–60 watch, deep orange 61–80 high, red 81–100 critical. The score is a percentage of open-source contextual pressure, not a probability.</p>
+    </article>
 
-      <article class="card span8">
-        <div class="row"><div class="label">Trend history</div><span id="trend" class="pill">trend --</span></div>
-        <svg id="chart" viewBox="0 0 800 160" preserveAspectRatio="none" aria-label="HAT score history"></svg>
-        <p id="baseline" class="muted small">Baseline: --</p>
-      </article>
+    <article class="card span6">
+      <div class="label">Score transparency</div>
+      <div id="parts" class="parts" style="margin-top:.8rem"></div>
+      <p id="scoreExplain" class="muted small"></p>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Bot activity state</div>
-        <div id="botstate" style="display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.8rem;"></div>
-        <p id="botbasis" class="muted small">Loading bot-state basis.</p>
-      </article>
+    <article class="card span6">
+      <div class="label">Bot activity state</div>
+      <div id="botstate" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.8rem"></div>
+      <p id="botbasis" class="muted small">Loading bot-state basis.</p>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Disinformation Alert Level</div>
-        <div id="dal" class="dal"></div>
-        <p id="dalnote" class="muted small">Loading FIMI-lite level.</p>
-      </article>
+    <article class="card span6">
+      <div class="label">Maritime FIMI-lite filter</div>
+      <div id="fimi" class="small muted" style="margin-top:.7rem">Loading FIMI-lite crawl results.</div>
+    </article>
 
-      <article class="card span12">
-        <div class="label">FIMI-lite crawl summary</div>
-        <div id="fimi" class="small muted">Loading FIMI-lite crawl results.</div>
-      </article>
+    <article class="card span6">
+      <div class="label">Obscuration / information-fog context</div>
+      <div id="obscuration" class="small muted" style="margin-top:.7rem">Loading context.</div>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Pressure score parts</div>
-        <div id="parts" class="parts"></div>
-      </article>
+    <article class="card span6">
+      <div class="label">Disinformation Alert Level</div>
+      <div id="dal" style="display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;margin-top:.75rem"></div>
+      <p id="dalnote" class="muted small">Loading FIMI-lite level.</p>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Context metrics</div>
-        <div id="contextparts" class="parts"></div>
-      </article>
+    <article class="card span6">
+      <div class="label">Source health</div>
+      <div id="sources" class="health small" style="margin-top:.7rem"></div>
+      <p class="muted small">Status model: <b>ok</b> = complete enough; <b>partial</b> = at least one query succeeded and at least one failed/rate-limited; <b>error</b> = not usable in this run.</p>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Main drivers</div>
-        <ul id="drivers"></ul>
-      </article>
+    <article class="card span6">
+      <div class="label">Main drivers</div>
+      <ul id="drivers"></ul>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Key metrics</div>
-        <div id="metrics" class="small"></div>
-      </article>
+    <article class="card span6">
+      <div class="label">Key metrics</div>
+      <div id="metrics" class="small"></div>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Source health</div>
-        <div id="sources" class="small"></div>
-      </article>
+    <article class="card span12">
+      <div class="label">Downloads for own analysis</div>
+      <p class="muted small">These files are deliberately machine-readable and contain no secrets. Use them for your own scoring tests, source checks, charts or customer-facing extracts.</p>
+      <div id="downloads" class="downloads"></div>
+    </article>
 
-      <article class="card span6">
-        <div class="label">Roadmap</div>
-        <p id="roadmap" class="muted small">Loading roadmap.</p>
-      </article>
-
-      <article class="card span12">
-        <div class="label">Claim limit</div>
-        <p id="claim" class="muted">Loading.</p>
-        <p class="small"><a href="hat_latest.json">latest JSON</a> · <a href="hat_history.json">history JSON</a> · <a href="hat_source_health.json">source health JSON</a> · <a href="readme.html">README</a></p>
-      </article>
-    </section>
-  </main>
-
-  <footer class="muted small">
-    <div class="footer-line">
-      <span>MARD-HAT is a public experimental telemetry project. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation. <a href="readme.html">Read the project README</a>.</span>
-      <span>© <span id="year">YYYY</span> MOwlSINT.de</span>
-    </div>
-  </footer>
-
-  <script>
-    const $ = (id) => document.getElementById(id);
-    let latestGeneratedAt = null;
-
-    const SCORE_PART_HELP = {
-      kev_recent_7d: 'Counts CISA Known Exploited Vulnerabilities added in the last 7 days. It indicates very recent public exploit pressure.',
-      kev_recent_30d: 'Counts CISA Known Exploited Vulnerabilities added in the last 30 days. It indicates medium-window exploit pressure and smooths short spikes.',
-      kev_epss_mean: 'Mean EPSS score for recent CISA KEV items. It estimates how likely recent known-exploited vulnerabilities are to be exploited broadly.',
-      threatfox_ioc_current: 'ThreatFox IOC pressure calibrated against the historical approximation. It indicates how unusual the current IOC reporting density is compared with recent history.',
-      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure over the last 36 hours. Uses historical percentile calibration where available; otherwise a conservative capped fallback is used. It is not attribution by itself.',
-      epss_hot_global: 'Context only. Counts globally hot EPSS entries returned by the high-percentile query. It is not used as a pressure bar in v0.1.4.',
-      source_coverage: 'Context only. Shows how many configured telemetry sources are reachable. It is source health, not activity pressure.',
-      gdelt_narrative_pressure: 'FIMI-lite context. GDELT narrative-volume pressure for configured maritime/hybrid queries over the configured window. GDELT does not classify disinformation by itself.',
-      euvsdisinfo_case_signal: 'FIMI-lite context. EUvsDisinfo curated case exposure for maritime/hybrid queries. Implemented through domain-restricted GDELT ArticleList queries.',
-      disarm_tag_relevance: 'FIMI-lite context. Local DISARM-aligned keyword mapping used to structure observed narratives into transparent categories.'
-    };
-
-    const SCORE_PART_LABELS = {
-      kev_recent_7d: 'Recent KEV additions, 7 days',
-      kev_recent_30d: 'Recent KEV additions, 30 days',
-      kev_epss_mean: 'Mean EPSS of recent KEV',
-      threatfox_ioc_current: 'ThreatFox IOC pressure, current',
-      threatfox_botnet_c2_36h: 'ThreatFox botnet/C2 pressure, 36h',
-      epss_hot_global: 'Global EPSS hot set',
-      source_coverage: 'Source coverage / health',
-      gdelt_narrative_pressure: 'GDELT narrative pressure',
-      euvsdisinfo_case_signal: 'EUvsDisinfo case signal',
-      disarm_tag_relevance: 'DISARM-aligned tag relevance'
-    };
-
-    const BOT_HELP = {
-      BIL: 'Bots in Lurking Position: no clear elevated bot/IOC state is visible in the current proxy telemetry.',
-      BWB: 'Bots were busy: elevated activity is visible or suspected in the last 36 hours, but the current state does not qualify as busy.',
-      BAB: 'Bots are busy: current bot/IOC pressure is elevated by the proxy telemetry.'
-    };
-
-    const fmtDate = (s) => s ? new Date(s).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '--';
-    function levelClass(level) { return `level-${String(level || '').toLowerCase()}`; }
-    function escapeHtml(value) {
-      return String(value ?? '')
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
-    function workflowAge(iso) {
-      if (!iso) return '--';
-      const ms = Date.now() - new Date(iso).getTime();
-      if (!Number.isFinite(ms) || ms < 0) return '--';
-      const minutes = Math.floor(ms / 60000);
-      if (minutes < 2) return 'just now';
-      if (minutes < 60) return `${minutes} min`;
-      const hours = Math.floor(minutes / 60);
-      const rest = minutes % 60;
-      if (hours < 48) return rest ? `${hours} h ${rest} min` : `${hours} h`;
-      const days = Math.floor(hours / 24);
-      return `${days} d ${hours % 24} h`;
-    }
-    function updateGeneratedLine() {
-      $('generated').textContent = `Generated: ${fmtDate(latestGeneratedAt)} · Workflow age: ${workflowAge(latestGeneratedAt)}`;
-    }
-    function renderChart(history) {
-      const svg = $('chart');
-      svg.innerHTML = '';
-      if (!Array.isArray(history) || history.length < 2) {
-        svg.innerHTML = '<text x="10" y="85" fill="#a8b3bf">Not enough history yet.</text>';
-        return;
-      }
-      const points = history.slice(-60).map((d, i, arr) => {
-        const x = arr.length === 1 ? 0 : (i / (arr.length - 1)) * 780 + 10;
-        const y = 145 - (Math.max(0, Math.min(100, d.hat_score || 0)) / 100) * 130;
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-      }).join(' ');
-      svg.innerHTML = `
-        <line x1="10" y1="145" x2="790" y2="145" stroke="#303946" />
-        <line x1="10" y1="80" x2="790" y2="80" stroke="#303946" stroke-dasharray="5 5" />
-        <line x1="10" y1="15" x2="790" y2="15" stroke="#303946" />
-        <polyline fill="none" stroke="#f0c36a" stroke-width="4" points="${points}" />
-      `;
-    }
-    function renderParts(targetId, parts, context = false) {
-      $(targetId).innerHTML = Object.entries(parts || {}).map(([key, value]) => {
-        const label = SCORE_PART_LABELS[key] || key.replaceAll('_', ' ');
-        const tip = SCORE_PART_HELP[key] || 'Score component used by the current MARD-HAT scoring configuration.';
-        const safeValue = Math.max(0, Math.min(100, Number(value) || 0));
-        return `
-          <div>
-            <div class="row">
-              <span class="part-name">
-                <span class="part-label">${escapeHtml(label)}</span>
-                <span class="info" tabindex="0" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}" data-tip="${escapeHtml(tip)}">i</span>
-              </span>
-              <strong>${escapeHtml(value)}</strong>
-            </div>
-            <div class="bar"><div class="fill ${context ? 'fill-context' : ''}" style="width:${safeValue}%"></div></div>
-          </div>
-        `;
-      }).join('');
-    }
-    function renderBotState(state) {
-      const chips = [
-        { title: 'Primary', code: state?.primary_code || '--', label: state?.primary_label || '--', active: true },
-        { title: 'Current', code: state?.current_code || '--', label: state?.current_label || '--', active: state?.current_code === 'BAB' },
-        { title: 'Last 36h', code: state?.trailing_36h_code || '--', label: state?.trailing_36h_label || '--', active: state?.trailing_36h_code === 'BWB' }
-      ];
-      $('botstate').innerHTML = chips.map(c => `
-        <div class="chip ${c.active ? 'chip-active' : ''}" title="${escapeHtml(BOT_HELP[c.code] || c.label)}">
-          <span>${escapeHtml(c.title)}</span>
-          <strong>${escapeHtml(c.code)}</strong>
-          <span>${escapeHtml(c.label)}</span>
-        </div>
-      `).join('');
-      const b = state?.basis || {};
-      $('botbasis').textContent = `Basis: current IOC pctl ${b.ioc_current_percentile ?? '--'}, current bot/C2 pctl ${b.botnet_c2_current_percentile ?? '--'}, 36h IOC pctl ${b.ioc_36h_percentile ?? '--'}, 36h bot/C2 pctl ${b.botnet_c2_36h_percentile ?? '--'}. Confidence: ${state?.confidence ?? '--'}.`;
-    }
-    function renderDal(dal) {
-      const active = Number(dal?.level ?? 0);
-      $('dal').innerHTML = [0,1,2,3].map(n => `<span class="dal-num dal-${n} ${n === active ? 'dal-active' : ''}">${n}</span>`).join('');
-      $('dalnote').textContent = `Level ${active}: ${dal?.label ?? '--'} · ${dal?.note ?? 'Proxy-based level.'}`;
-    }
-
-    function renderFimi(fimi) {
-      if (!fimi || !fimi.enabled) {
-        $('fimi').innerHTML = '<p>FIMI-lite sources are disabled or unavailable.</p><p class="muted">No FIMI-lite source assessment is available for this run.</p>';
-        return;
-      }
-      const gdeltCount = Number(fimi.gdelt?.unique_articles ?? 0);
-      const euvsCount = Number(fimi.euvsdisinfo?.candidate_count ?? 0);
-      const tagCount = Number(fimi.disarm_aligned?.tag_count ?? 0);
-      const fimiScore = Number(fimi.score ?? 0);
-      const hasFimiSourceSignal = Boolean(fimi.source_state?.source_signal_present) || gdeltCount > 0 || euvsCount > 0 || tagCount > 0;
-      const sourceDegraded = String(fimi.status || '').startsWith('degraded') || fimi.source_state?.external_errors;
-      const tags = Array.isArray(fimi.disarm_aligned?.tags)
-        ? fimi.disarm_aligned.tags.slice(0, 5).map(t => `${escapeHtml(t.label)} (${escapeHtml(t.count)})`).join(', ')
-        : '';
-      const domains = Array.isArray(fimi.gdelt?.top_domains)
-        ? fimi.gdelt.top_domains.slice(0, 5).map(d => `${escapeHtml(d.name)} (${escapeHtml(d.count)})`).join(', ')
-        : '';
-      const sample = Array.isArray(fimi.euvsdisinfo?.sample)
-        ? fimi.euvsdisinfo.sample.slice(0, 4).map(a => `<li>${a.url ? `<a href="${escapeHtml(a.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(a.title || a.url)}</a>` : escapeHtml(a.title || 'untitled')}</li>`).join('')
-        : '';
-      $('fimi').innerHTML = `
-        <p>FIMI-lite score: <strong>${fimiScore}</strong> · confidence <strong>${escapeHtml(fimi.confidence || 'low')}</strong> · mode <code>${escapeHtml(fimi.mode || '--')}</code></p>
-        ${sourceDegraded && !hasFimiSourceSignal ? `<p><strong>FIMI-lite sources are degraded or rate-limited; no corroborating source signal was detected in this run.</strong></p>` : ''}
-        ${!sourceDegraded && !hasFimiSourceSignal ? `<p><strong>No matching FIMI-lite source signals detected in this run.</strong></p>` : ''}
-        <p>GDELT narrative watch: ${gdeltCount > 0 ? `<strong>${gdeltCount}</strong> unique articles` : (sourceDegraded ? '<strong>source unavailable / rate-limited</strong>' : '<strong>no matching articles</strong>')} in ${escapeHtml(fimi.gdelt?.timespan || '--')} across ${escapeHtml(fimi.gdelt?.query_count ?? '--')} queries.</p>
-        <p>EUvsDisinfo case watch: ${euvsCount > 0 ? `<strong>${euvsCount}</strong> candidate items` : (sourceDegraded ? '<strong>source unavailable / rate-limited or no data</strong>' : '<strong>no matching candidate items</strong>')} in ${escapeHtml(fimi.euvsdisinfo?.timespan || '--')}.</p>
-        <p>DISARM-aligned tags: ${tagCount > 0 ? `<strong>${tagCount}</strong>${tags ? ` · ${tags}` : ''}` : '<strong>none</strong> · no taggable FIMI-lite source material in this run'}</p>
-        ${domains ? `<p>Top GDELT domains: ${domains}</p>` : ''}
-        ${sample ? `<p>EUvsDisinfo sample:</p><ul>${sample}</ul>` : ''}
-        <p class="muted">${escapeHtml(fimi.source_state?.note || fimi.note || 'Context only. Not attribution-grade.')}</p>
-      `;
-    }
-    function renderMetrics(metrics) {
-      const kev = metrics?.kev || {};
-      const epss = metrics?.epss || {};
-      const threatfox = metrics?.threatfox || {};
-      const hist = threatfox.historical || {};
-      const families = Array.isArray(threatfox.malware_families_1d)
-        ? threatfox.malware_families_1d.slice(0, 5).map(x => `${escapeHtml(x.name)} (${escapeHtml(x.count)})`).join(', ')
-        : '';
-      $('metrics').innerHTML = `
-        <p>Total KEV: <strong>${kev.total_kev ?? '--'}</strong></p>
-        <p>Recent KEV 7d: <strong>${kev.recent_7d ?? '--'}</strong></p>
-        <p>Recent KEV 30d: <strong>${kev.recent_30d ?? '--'}</strong></p>
-        <p>Mean EPSS, recent KEV: <strong>${kev.epss_mean_recent_kev ?? '--'}</strong></p>
-        <p>Hot EPSS global count: <strong>${epss.hot_global_count ?? '--'}</strong> <span class="muted">context only</span></p>
-        <p>ThreatFox IOCs 1d: <strong>${threatfox.ioc_count_1d ?? '--'}</strong></p>
-        <p>ThreatFox IOCs 7d: <strong>${threatfox.ioc_count_7d ?? '--'}</strong></p>
-        <p>ThreatFox botnet/C2 7d: <strong>${threatfox.botnet_c2_count_7d ?? '--'}</strong></p>
-        <p>ThreatFox historical status: <strong>${hist.status ?? '--'}</strong>${hist.fallback_limited ? ' <span class="muted">· fallback limited</span>' : ''}</p>
-        <p>ThreatFox export: <strong>${Number(hist.source_items ?? 0) > 0 ? `${hist.source_items} items` : 'historical export unavailable / warming up'}</strong></p>
-        <p>ThreatFox 36h bot/C2 count: <strong>${hist.current_36h_botnet_c2_count ?? '--'}</strong></p>
-        <p>FIMI-lite score: <strong>${metrics?.fimi_lite?.score ?? '--'}</strong></p>
-        <p>GDELT unique articles: <strong>${Number(metrics?.fimi_lite?.gdelt?.unique_articles ?? 0) > 0 ? metrics.fimi_lite.gdelt.unique_articles : 'none detected'}</strong></p>
-        <p>EUvsDisinfo candidates: <strong>${Number(metrics?.fimi_lite?.euvsdisinfo?.candidate_count ?? 0) > 0 ? metrics.fimi_lite.euvsdisinfo.candidate_count : 'none detected'}</strong></p>
-        ${families ? `<p class="muted">Top 1d malware families: ${families}</p>` : ''}
-      `;
-    }
-    function renderSources(sources) {
-      const list = Array.isArray(sources)
-        ? sources
-        : Object.entries(sources || {}).map(([source, status]) => ({ source, status }));
-      $('sources').innerHTML = list.map(s => {
-        const extra = [
-          typeof s.count === 'number' ? `${s.count}` : '',
-          typeof s.count_7d === 'number' ? `7d ${s.count_7d}` : '',
-          typeof s.botnet_cc_count === 'number' ? `botnet/C2 ${s.botnet_cc_count}` : '',
-          s.historical_export_status ? `hist ${s.historical_export_status}` : ''
-        ].filter(Boolean).join(' · ');
-        return `<p><strong>${escapeHtml(s.source)}</strong>: <span class="${s.status === 'ok' ? 'level-normal' : 'muted'}">${escapeHtml(s.status)}</span>${extra ? ` · ${escapeHtml(extra)}` : ''}</p>`;
-      }).join('');
-    }
-    async function main() {
-      $('year').textContent = new Date().getFullYear();
-      const bust = `?v=${Date.now()}`;
-      const [latest, history] = await Promise.all([
-        fetch(`hat_latest.json${bust}`, { cache: 'no-store' }).then(r => r.json()),
-        fetch(`hat_history.json${bust}`, { cache: 'no-store' }).then(r => r.json()).catch(() => [])
-      ]);
-      latestGeneratedAt = latest.generated_at;
-      $('score').textContent = latest.hat_score ?? '--';
-      $('level').textContent = latest.level ?? 'unknown';
-      $('level').className = `pill ${levelClass(latest.level)}`;
-      $('confidence').textContent = `confidence ${latest.confidence ?? '--'}`;
-      $('trend').textContent = `trend ${latest.trend ?? '--'}`;
-      updateGeneratedLine();
-      $('baseline').textContent = `Baseline: ${latest.baseline?.status ?? '--'} · points ${latest.baseline?.points ?? 0} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
-      $('claim').textContent = latest.assessment?.claim_limit || 'Contextual indicator only.';
-      $('drivers').innerHTML = (latest.drivers || []).map(d => `<li>${escapeHtml(d)}</li>`).join('');
-      renderParts('parts', latest.score_parts, false);
-      renderParts('contextparts', latest.context_parts, true);
-      renderBotState(latest.bot_activity_state || {});
-      renderDal(latest.disinformation_alert_level || {});
-      renderFimi(latest.metrics?.fimi_lite || {});
-      renderMetrics(latest.metrics);
-      renderSources(latest.source_health);
-      $('roadmap').textContent = latest.roadmap?.next || 'v0.1.5: refine FIMI-lite calibration and optional URLhaus.';
-      renderChart(history);
-      setInterval(updateGeneratedLine, 60000);
-    }
-    main().catch(err => {
-      document.body.insertAdjacentHTML('afterbegin', `<pre>${escapeHtml(String(err))}</pre>`);
-    });
-  </script>
+    <article class="card span12">
+      <div class="label">Claim limit</div>
+      <p id="claim" class="muted">Loading.</p>
+      <p class="small"><a href="hat_latest.json">latest JSON</a> · <a href="hat_history.json">history JSON</a> · <a href="hat_source_health.json">source health JSON</a> · <a href="readme.html">README</a></p>
+    </article>
+  </section>
+</main>
+<footer class="muted small"><div class="footer-line"><span>MARD-HAT is experimental public telemetry. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation.</span><span>© <span id="year">YYYY</span> MOwlSINT.de</span></div></footer>
+<script>
+const $ = id => document.getElementById(id);
+const esc = v => String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+const pct = v => `${Math.round(Number(v)||0)}%`;
+const age = iso => { if(!iso) return '--'; const m=Math.max(0,Math.round((Date.now()-new Date(iso).getTime())/60000)); return m<90?`${m} min`:`${Math.round(m/60)} h${m>=2880?` (${Math.round(m/1440)} d)`:''}`; };
+const fmtDate = iso => iso ? new Date(iso).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}) : '--';
+function bandKey(score){ const s=Number(score)||0; return s<=20?'normal':s<=40?'elevated':s<=60?'watch':s<=80?'high':'critical'; }
+function renderBands(score){ const active=bandKey(score); const bands=[['normal','0–20','green'],['elevated','21–40','yellow'],['watch','41–60','orange'],['high','61–80','orange'],['critical','81–100','red']]; $('bands').innerHTML=bands.map(([k,r,c])=>`<div class="band b-${k} ${k===active?'active':''}"><b>${esc(k)}</b><br><span>${r}</span></div>`).join(''); }
+function renderBar(name,value,context=false){ const v=Math.max(0,Math.min(100,Number(value)||0)); return `<div><div class="row"><span>${esc(name)}</span><b>${Math.round(v)}%</b></div><div class="bar"><div class="fill ${context?'fillCtx':''}" style="width:${v}%"></div></div></div>`; }
+function renderChart(history){ const svg=$('chart'); const data=(history||[]).slice(-60).filter(x=>Number.isFinite(x.hat_score)); if(!data.length){svg.innerHTML='';return;} const w=800,h=160,p=8; const pts=data.map((d,i)=>[p+i*((w-p*2)/Math.max(1,data.length-1)), h-p-(d.hat_score/100)*(h-p*2)]); const poly=pts.map(p=>p.join(',')).join(' '); const last=pts[pts.length-1]; svg.innerHTML=`<rect x="0" y="0" width="800" height="160" fill="rgba(255,255,255,.02)"/><line x1="0" x2="800" y1="128" y2="128" stroke="rgba(100,215,138,.35)"/><line x1="0" x2="800" y1="96" y2="96" stroke="rgba(255,209,102,.32)"/><line x1="0" x2="800" y1="64" y2="64" stroke="rgba(255,159,90,.32)"/><line x1="0" x2="800" y1="32" y2="32" stroke="rgba(255,107,107,.32)"/><polyline points="${poly}" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="${last[0]}" cy="${last[1]}" r="5" fill="var(--accent)"/>`; }
+function statusClass(s){ return 'status-'+String(s||'').toLowerCase().replace(/[^a-z0-9_]+/g,'_'); }
+async function main(){
+  const [latest,history,health]=await Promise.all([fetch('hat_latest.json?ts='+Date.now()).then(r=>r.json()),fetch('hat_history.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[]),fetch('hat_source_health.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[])]);
+  $('year').textContent=new Date().getFullYear();
+  $('score').textContent=Math.round(latest.hat_score ?? 0); $('scoreFill').style.width=pct(latest.hat_score);
+  $('level').textContent=`${latest.level || '--'} · ${latest.score_interpretation?.color || bandKey(latest.hat_score)}`; $('confidence').textContent=`confidence ${latest.confidence || '--'}`; $('trend').textContent=`trend ${latest.trend || '--'}`; renderBands(latest.hat_score);
+  $('generated').textContent=`Generated: ${fmtDate(latest.generated_at)} · Workflow age: ${age(latest.generated_at)}`;
+  $('baseline').textContent=`baseline ${latest.baseline?.status || '--'} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
+  renderChart(history);
+  const labels={kev_recent_7d:'Recent KEV 7d',kev_recent_30d:'Recent KEV 30d',kev_epss_mean:'Mean EPSS recent KEV',threatfox_ioc_current:'ThreatFox IOC current',threatfox_botnet_c2_36h:'ThreatFox botnet/C2 36h',epss_hot_global:'Global EPSS hot set',source_coverage:'Source health coverage'};
+  $('parts').innerHTML=Object.entries(latest.score_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v)).join('')+Object.entries(latest.context_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v,true)).join('');
+  $('scoreExplain').textContent='ThreatFox score parts are capped when the long historical export is unavailable; raw bot-state percentiles remain visible in the bot-state basis.';
+  const bot=latest.bot_activity_state||{}; const codes=[['BIL','Bots in Lurking Position'],['BWB','Bots were busy'],['BAB','Bots are busy']];
+  $('botstate').innerHTML=codes.map(([c,t])=>`<span class="chip ${bot.primary_code===c?'chip-active':''}"><strong>${c}</strong><span>${t}</span></span>`).join('');
+  $('botbasis').textContent=`Current IOC percentile ${bot.basis?.ioc_current_percentile ?? '--'}, current bot/C2 percentile ${bot.basis?.botnet_c2_current_percentile ?? '--'}, 36h bot/C2 count ${bot.basis?.botnet_c2_36h_count ?? '--'} · confidence ${bot.confidence || '--'}`;
+  const f=latest.metrics?.fimi_lite||{}; const mf=f.maritime_filter||{};
+  $('fimi').innerHTML=`<div class="kv"><div>FIMI-lite score</div><div><b>${f.score ?? 0}%</b> · ${esc(f.confidence||'low')} · ${esc(f.status||'--')}</div><div>Raw GDELT articles</div><div>${mf.raw_unique_articles ?? f.gdelt?.unique_articles_raw ?? '--'}</div><div>Score-relevant articles</div><div>${mf.accepted_articles ?? f.gdelt?.unique_articles ?? '--'}</div><div>Core MARD-Eu</div><div>${mf.core_mard_eu_articles ?? '--'}</div><div>Global Maritime Spillover</div><div>${mf.global_maritime_spillover_articles ?? '--'}</div><div>Rejected broad/noisy context</div><div>${mf.rejected_as_noise_or_broad_context ?? '--'}</div><div>DISARM tags</div><div>${f.disarm_aligned?.tag_count ?? 0}</div></div><p class="notice small">${esc(mf.rule || 'Maritime/FIMI relevance filter active.')}</p>`;
+  const ob=latest.obscuration_context||{}; $('obscuration').innerHTML=`<p><b>Level: ${esc(ob.level||'--')}</b></p><p>${esc(ob.explanation||'Context not available.')}</p><ul>${(ob.signals||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="muted small">${esc(ob.claim_limit||'Context only.')}</p>`;
+  const dal=latest.disinformation_alert_level||{}; $('dal').innerHTML=[0,1,2,3].map(n=>`<span class="chip ${dal.level===n?'chip-active':''}"><strong>${n}</strong><span>${n===0?'none':n===1?'low':n===2?'elevated':'high'}</span></span>`).join(''); $('dalnote').textContent=dal.note||'';
+  $('sources').innerHTML=(health.length?health:latest.source_health||[]).map(s=>`<div class="healthItem"><div><b>${esc(s.source)}</b><br><span class="muted">count ${s.count ?? '--'}${s.raw_count!==undefined?` · raw ${s.raw_count}`:''}${s.ok_queries!==undefined?` · queries ok ${s.ok_queries}/${s.queries}`:''}${s.errors?.length?` · ${esc(s.errors.join(' | '))}`:''}</span></div><b class="${statusClass(s.status)}">${esc(s.status)}</b></div>`).join('');
+  $('drivers').innerHTML=(latest.drivers||[]).map(d=>`<li>${esc(d)}</li>`).join('');
+  $('metrics').innerHTML=`<div class="kv"><div>Total KEV</div><div>${latest.metrics?.kev?.total_kev ?? '--'}</div><div>Recent KEV 7d / 30d</div><div>${latest.metrics?.kev?.recent_7d ?? '--'} / ${latest.metrics?.kev?.recent_30d ?? '--'}</div><div>ThreatFox IOCs 1d / 7d</div><div>${latest.metrics?.threatfox?.ioc_count_1d ?? '--'} / ${latest.metrics?.threatfox?.ioc_count_7d ?? '--'}</div><div>Botnet/C2 1d / 7d</div><div>${latest.metrics?.threatfox?.botnet_c2_count_1d ?? '--'} / ${latest.metrics?.threatfox?.botnet_c2_count_7d ?? '--'}</div><div>ThreatFox history</div><div>${esc(latest.metrics?.threatfox?.historical?.status || '--')} ${latest.metrics?.threatfox?.historical?.fallback_limited?'· fallback-limited':''}</div></div>`;
+  const links=latest.downloads || latest.links || {}; const dl=[['Analyst JSON',links.analyst_bundle],['FIMI CSV',links.fimi_maritime_csv],['FIMI JSON',links.fimi_maritime_json],['Source health CSV',links.source_health_csv],['Download README',links.download_readme]];
+  $('downloads').innerHTML=dl.filter(x=>x[1]).map(([label,href])=>`<a class="download" href="${esc(href)}">${esc(label)}</a>`).join('');
+  $('claim').textContent=latest.assessment?.claim_limit || 'Contextual telemetry only. Not attribution-grade.';
+}
+main().catch(err=>{document.body.insertAdjacentHTML('afterbegin',`<pre>${esc(err.stack||err)}</pre>`);});
+</script>
 </body>
 </html>
