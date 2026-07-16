@@ -1,5 +1,5 @@
 {
-  "schema": "mard-hat-fimi-keywords-v1",
+  "schema": "mard-hat-fimi-keywords-v2",
   "maritime_watch_queries": [
     "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
     "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
@@ -13,33 +13,231 @@
     {
       "id": "false_attribution",
       "label": "False attribution / blame shifting",
-      "keywords": ["false flag", "blame", "accused", "sabotage", "ukraine", "nato", "usa", "west", "anglo-saxon", "cia"]
+      "keywords": [
+        "false flag",
+        "blame",
+        "accused",
+        "sabotage",
+        "ukraine",
+        "nato",
+        "usa",
+        "west",
+        "anglo-saxon",
+        "cia"
+      ]
     },
     {
       "id": "institutional_discrediting",
       "label": "Discrediting institutions or alliances",
-      "keywords": ["nato", "eu", "european union", "government", "cover-up", "piracy", "illegal", "provocation"]
+      "keywords": [
+        "nato",
+        "eu",
+        "european union",
+        "government",
+        "cover-up",
+        "piracy",
+        "illegal",
+        "provocation"
+      ]
     },
     {
       "id": "infrastructure_fear",
       "label": "Critical-infrastructure fear framing",
-      "keywords": ["undersea cable", "submarine cable", "pipeline", "critical infrastructure", "energy", "port", "blackout", "internet cable"]
+      "keywords": [
+        "undersea cable",
+        "submarine cable",
+        "pipeline",
+        "critical infrastructure",
+        "energy",
+        "port",
+        "blackout",
+        "internet cable"
+      ]
     },
     {
       "id": "maritime_legal_framing",
       "label": "Maritime legal or piracy framing",
-      "keywords": ["piracy", "seizure", "boarding", "sanctions", "tanker", "ship", "vessel", "blockade", "inspection", "freedom of navigation"]
+      "keywords": [
+        "piracy",
+        "seizure",
+        "boarding",
+        "sanctions",
+        "tanker",
+        "ship",
+        "vessel",
+        "blockade",
+        "inspection",
+        "freedom of navigation"
+      ]
     },
     {
       "id": "conspiracy_framing",
       "label": "Conspiracy or secret-plot framing",
-      "keywords": ["secret", "plot", "cover-up", "staged", "provocation", "hidden", "fabricated"]
+      "keywords": [
+        "secret",
+        "plot",
+        "cover-up",
+        "staged",
+        "provocation",
+        "hidden",
+        "fabricated"
+      ]
     },
     {
       "id": "narrative_amplification",
       "label": "Narrative amplification / repetition",
-      "keywords": ["again", "recurring", "wave", "campaign", "propaganda", "narrative", "disinformation"]
+      "keywords": [
+        "again",
+        "recurring",
+        "wave",
+        "campaign",
+        "propaganda",
+        "narrative",
+        "disinformation"
+      ]
     }
   ],
-  "note": "This is a transparent DISARM-aligned local mapping for early FIMI-lite. It does not claim official DISARM technique IDs."
+  "note": "This is a transparent DISARM-aligned local mapping for early FIMI-lite. It does not claim official DISARM technique IDs.",
+  "maritime_filter": {
+    "core_mard_eu_region_anchors": [
+      "baltic sea",
+      "ostsee",
+      "north sea",
+      "nordsee",
+      "skagerrak",
+      "kattegat",
+      "gulf of finland",
+      "gulf of bothnia",
+      "bornholm",
+      "gotland",
+      "kaliningrad",
+      "poland",
+      "polish",
+      "denmark",
+      "danish",
+      "germany",
+      "german",
+      "norway",
+      "norwegian",
+      "sweden",
+      "swedish",
+      "finland",
+      "finnish",
+      "estonia",
+      "latvia",
+      "lithuania",
+      "nato northern flank",
+      "northern flank",
+      "north atlantic",
+      "arctic",
+      "barents"
+    ],
+    "maritime_anchors": [
+      "ship",
+      "ships",
+      "vessel",
+      "vessels",
+      "tanker",
+      "tankers",
+      "shadow fleet",
+      "fleet",
+      "maritime",
+      "naval",
+      "navy",
+      "port",
+      "ports",
+      "harbour",
+      "harbor",
+      "offshore",
+      "oil terminal",
+      "terminal",
+      "strait",
+      "sea lane",
+      "shipping",
+      "submarine cable",
+      "undersea cable",
+      "cable",
+      "pipeline",
+      "nord stream",
+      "balticconnector",
+      "wind farm",
+      "offshore wind",
+      "ais",
+      "gnss",
+      "gps",
+      "jamming",
+      "spoofing"
+    ],
+    "threat_fimi_anchors": [
+      "sabotage",
+      "attack",
+      "attacks",
+      "strike",
+      "strikes",
+      "drone",
+      "drones",
+      "jamming",
+      "spoofing",
+      "false flag",
+      "disinformation",
+      "propaganda",
+      "sanctions",
+      "blockade",
+      "seizure",
+      "boarding",
+      "inspection",
+      "piracy",
+      "hybrid",
+      "nato",
+      "russia",
+      "russian",
+      "kremlin",
+      "ukraine",
+      "critical infrastructure",
+      "infrastructure",
+      "covert",
+      "provocation",
+      "cover-up",
+      "blame",
+      "accused"
+    ],
+    "global_maritime_spillover_anchors": [
+      "hormuz",
+      "iran",
+      "tehran",
+      "red sea",
+      "suez",
+      "bab el-mandeb",
+      "gulf of aden",
+      "black sea",
+      "azov sea",
+      "kharg island",
+      "strait",
+      "oil price",
+      "oil prices",
+      "energy target",
+      "naval blockade",
+      "port blockade"
+    ],
+    "noise_domains": [
+      "hulldailymail.co.uk",
+      "walesonline.co.uk",
+      "cambridge-news.co.uk",
+      "bromsgroveadvertiser.co.uk",
+      "barryanddistrictnews.co.uk",
+      "harrowtimes.co.uk",
+      "watfordobserver.co.uk",
+      "gazette-news.co.uk",
+      "basingstokegazette.co.uk",
+      "dorsetecho.co.uk",
+      "salisburyjournal.co.uk",
+      "braintreeandwithamtimes.co.uk",
+      "maldonandburnhamstandard.co.uk",
+      "rutland-times.co.uk",
+      "countytimes.co.uk",
+      "keighleynews.co.uk",
+      "wirralglobe.co.uk"
+    ],
+    "note": "A GDELT article is score-relevant only when it has a maritime anchor and a threat/FIMI anchor. Core MARD-Eu also needs a North/Baltic/Northern Europe anchor. Global spillover is kept separately and down-weighted."
+  }
 }

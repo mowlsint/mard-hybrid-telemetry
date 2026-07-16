@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-scoring-v1",
-  "label": "MARD Hybrid Activity Telemetry v0.1.4a",
+  "label": "MARD Hybrid Activity Telemetry v0.1.5",
   "windows": {
     "short_days": 7,
     "medium_days": 30,
@@ -22,7 +22,7 @@
   "fimi_weights": {
     "gdelt_narrative_pressure": 0.45,
     "euvsdisinfo_case_signal": 0.35,
-    "disarm_tag_relevance": 0.20
+    "disarm_tag_relevance": 0.2
   },
   "caps": {
     "kev_recent_7d_cap": 8,
@@ -56,5 +56,27 @@
     "high_max": 80
   },
   "claim_limit": "Contextual digital-pressure and FIMI-lite indicator only. Not attribution-grade and not sufficient to prove hybrid activity, sabotage, or state involvement on its own.",
-  "note": "v0.1.4a: Display-clarity patch for zero-result FIMI-lite crawls and unavailable ThreatFox historical exports. DAL notes now distinguish FIMI-lite corroboration from bot/IOC proxy-only elevation."
+  "note": "v0.1.5: Evaluated transparency patch. Adds partial source health, Maritime/FIMI post-filtering, Core MARD-Eu vs Global Maritime Spillover split, visible score bands, analyst downloads, and cautious obscuration-context wording.",
+  "health_weights": {
+    "ok": 1.0,
+    "partial": 0.5,
+    "degraded": 0.35,
+    "disabled": 0.0,
+    "empty_or_disabled": 0.25,
+    "error": 0.0
+  },
+  "maritime_relevance": {
+    "core_weight": 1.0,
+    "global_spillover_weight": 0.4,
+    "min_core_signal_for_medium_confidence": 3,
+    "min_disarm_tags_for_medium_confidence": 2,
+    "accepted_article_cap_for_score": 75,
+    "max_rejected_samples": 8
+  },
+  "downloads": {
+    "enabled": true,
+    "fimi_article_limit": 500,
+    "include_rejected_samples": true
+  },
+  "roadmap_note": "v0.1.5: maritime relevance filter, partial source health, transparent score bands, analyst downloads, and obscuration-context explanation."
 }
