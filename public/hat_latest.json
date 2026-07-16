@@ -1,22 +1,22 @@
 {
   "schema": "mard-hat-v0.1.4b",
-  "generated_at": "2026-07-16T08:35:47.431Z",
+  "generated_at": "2026-07-16T14:25:43.455Z",
   "window_days": 30,
-  "hat_score": 78,
+  "hat_score": 77,
   "level": "high",
   "confidence": "medium",
   "trend": "rising",
   "baseline": {
     "status": "active",
-    "points": 38,
-    "mean_hat_score": 60.4,
-    "delta_from_mean": 17.6
+    "points": 39,
+    "mean_hat_score": 60.8,
+    "delta_from_mean": 16.5
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 69,
     "kev_epss_mean": 13,
-    "threatfox_ioc_current": 100,
+    "threatfox_ioc_current": 97,
     "threatfox_botnet_c2_36h": 100
   },
   "context_parts": {
@@ -35,12 +35,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 100,
-      "botnet_c2_current_percentile": 100,
+      "ioc_current_percentile": 97,
+      "botnet_c2_current_percentile": 97,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 1694,
-      "botnet_c2_36h_count": 1319
+      "ioc_36h_count": 1719,
+      "botnet_c2_36h_count": 1334
     }
   },
   "disinformation_alert_level": {
@@ -70,7 +70,7 @@
       "total_kev": 1644,
       "recent_7d": 9,
       "recent_30d": 22,
-      "epss_mean_recent_kev": 0.1323,
+      "epss_mean_recent_kev": 0.1319,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2026-20253",
@@ -88,7 +88,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Improper Input Validation Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.78555,
-          "percentile": 0.99539
+          "percentile": 0.9954
         },
         {
           "cve": "CVE-2026-20230",
@@ -97,7 +97,7 @@
           "vulnerability_name": "Cisco Unified Communications Manager Server-Side Request Forgery (SSRF) Vulnerability",
           "date_added": "2026-06-25",
           "epss": 0.41694,
-          "percentile": 0.98528
+          "percentile": 0.98529
         },
         {
           "cve": "CVE-2026-48282",
@@ -106,7 +106,7 @@
           "vulnerability_name": "Adobe ColdFusion Path Traversal Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.28583,
-          "percentile": 0.97916
+          "percentile": 0.97917
         },
         {
           "cve": "CVE-2008-4128",
@@ -115,7 +115,7 @@
           "vulnerability_name": "Cisco IOS Cross-Site Request Forgery Vulnerability",
           "date_added": "2026-07-13",
           "epss": 0.23857,
-          "percentile": 0.97571
+          "percentile": 0.97573
         },
         {
           "cve": "CVE-2026-56164",
@@ -123,8 +123,8 @@
           "product": "SharePoint Server",
           "vulnerability_name": "Microsoft SharePoint Server Missing Authentication for Critical Function Vulnerability",
           "date_added": "2026-07-14",
-          "epss": 0.07047,
-          "percentile": 0.93465
+          "epss": 0.05601,
+          "percentile": 0.92028
         },
         {
           "cve": "CVE-2026-45659",
@@ -133,7 +133,7 @@
           "vulnerability_name": "Microsoft SharePoint Server Deserialization of Untrusted Data Vulnerability",
           "date_added": "2026-07-01",
           "epss": 0.03219,
-          "percentile": 0.86777
+          "percentile": 0.86785
         },
         {
           "cve": "CVE-2026-56290",
@@ -142,7 +142,7 @@
           "vulnerability_name": "Joomlack Page Builder Improper Access Control Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.02912,
-          "percentile": 0.85426
+          "percentile": 0.85434
         },
         {
           "cve": "CVE-2026-34908",
@@ -151,7 +151,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Improper Access Control Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02452,
-          "percentile": 0.82555
+          "percentile": 0.82561
         },
         {
           "cve": "CVE-2026-34909",
@@ -160,16 +160,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Path Traversal Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02269,
-          "percentile": 0.81067
-        },
-        {
-          "cve": "CVE-2026-15410",
-          "vendor_project": "SonicWall",
-          "product": "SMA1000 Appliances",
-          "vulnerability_name": "SonicWall SMA1000 Appliances Code Injection Vulnerability",
-          "date_added": "2026-07-14",
-          "epss": 0.01647,
-          "percentile": 0.73801
+          "percentile": 0.81078
         },
         {
           "cve": "CVE-2026-48908",
@@ -178,7 +169,16 @@
           "vulnerability_name": "JoomShaper SP Page Builder Unrestricted Upload of File with Dangerous Type Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.01569,
-          "percentile": 0.72547
+          "percentile": 0.72567
+        },
+        {
+          "cve": "CVE-2026-48939",
+          "vendor_project": "iCagenda",
+          "product": "iCagenda",
+          "vulnerability_name": "iCagenda Unrestricted Upload of File with Dangerous Type Vulnerability",
+          "date_added": "2026-07-10",
+          "epss": 0.01505,
+          "percentile": 0.71471
         }
       ]
     },
@@ -189,98 +189,98 @@
           "cve": "CVE-2014-0160",
           "epss": 0.99999,
           "percentile": 0.99997,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2014-3566",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2014-6271",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2015-1635",
           "epss": 0.99999,
           "percentile": 0.99998,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2017-5638",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2017-9841",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2019-0708",
           "epss": 0.99999,
           "percentile": 0.99999,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2020-5902",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2021-1498",
           "epss": 0.99999,
           "percentile": 0.9999,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2023-0669",
           "epss": 0.99999,
           "percentile": 0.99996,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2023-1389",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         },
         {
           "cve": "CVE-2023-1671",
           "epss": 0.99999,
           "percentile": 0.99991,
-          "date": "2026-07-15"
+          "date": "2026-07-16"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1471,
-      "ioc_count_7d": 5427,
-      "botnet_c2_count_1d": 1168,
-      "botnet_c2_count_7d": 2657,
+      "ioc_count_1d": 1379,
+      "ioc_count_7d": 5366,
+      "botnet_c2_count_1d": 1188,
+      "botnet_c2_count_7d": 2603,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1168
+          "count": 1188
         },
         {
           "name": "payload_delivery",
-          "count": 229
+          "count": 172
         },
         {
           "name": "payload",
-          "count": 71
+          "count": 17
         },
         {
           "name": "cc_skimming",
-          "count": 3
+          "count": 2
         }
       ],
       "malware_families_1d": [
@@ -290,35 +290,35 @@
         },
         {
           "name": "ClearFake",
-          "count": 101
+          "count": 84
         },
         {
           "name": "Cobalt Strike",
-          "count": 64
+          "count": 58
         },
         {
           "name": "Unknown malware",
-          "count": 57
+          "count": 56
         },
         {
-          "name": "Latrodectus",
-          "count": 36
-        },
-        {
-          "name": "Vidar",
-          "count": 26
+          "name": "AdaptixC2",
+          "count": 28
         },
         {
           "name": "KongTuke",
-          "count": 24
+          "count": 27
+        },
+        {
+          "name": "Vidar",
+          "count": 22
+        },
+        {
+          "name": "AsyncRAT",
+          "count": 17
         },
         {
           "name": "InvisibleFerret",
           "count": 16
-        },
-        {
-          "name": "AdaptixC2",
-          "count": 14
         },
         {
           "name": "Unknown Loader",
@@ -332,35 +332,35 @@
         },
         {
           "name": "VShell",
-          "count": 296
+          "count": 291
         },
         {
           "name": "Unknown malware",
-          "count": 219
+          "count": 228
         },
         {
           "name": "Cobalt Strike",
-          "count": 180
-        },
-        {
-          "name": "Aisuru",
-          "count": 134
-        },
-        {
-          "name": "Remcos",
-          "count": 116
+          "count": 176
         },
         {
           "name": "Vidar",
-          "count": 113
+          "count": 117
+        },
+        {
+          "name": "Aisuru",
+          "count": 107
+        },
+        {
+          "name": "Remcos",
+          "count": 103
         },
         {
           "name": "AdaptixC2",
-          "count": 75
+          "count": 85
         },
         {
           "name": "AsyncRAT",
-          "count": 65
+          "count": 66
         },
         {
           "name": "ClearFake",
@@ -375,18 +375,18 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 1694,
-        "current_36h_botnet_c2_count": 1319,
-        "current_ioc_percentile": 100,
-        "current_botnet_c2_percentile": 100,
+        "current_36h_ioc_count": 1719,
+        "current_36h_botnet_c2_count": 1334,
+        "current_ioc_percentile": 97,
+        "current_botnet_c2_percentile": 97,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
       }
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1471,
-      "botnet_cc_count": 2657,
+      "threatfox_count": 1379,
+      "botnet_cc_count": 2603,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -414,7 +414,11 @@
         "historical_percentile": 93,
         "top_domains": [
           {
-            "name": "forex.cnfol.com",
+            "name": "globalsecurity.org",
+            "count": 16
+          },
+          {
+            "name": "focus.ua",
             "count": 2
           },
           {
@@ -422,120 +426,116 @@
             "count": 2
           },
           {
-            "name": "163.com",
+            "name": "ru.euronews.com",
+            "count": 2
+          },
+          {
+            "name": "ansa.it",
             "count": 1
           },
           {
-            "name": "barryanddistrictnews.co.uk",
+            "name": "az-online.de",
             "count": 1
           },
           {
-            "name": "basingstokegazette.co.uk",
+            "name": "bankingnews.gr",
             "count": 1
           },
           {
-            "name": "big5.sputniknews.cn",
-            "count": 1
-          },
-          {
-            "name": "bordertelegraph.com",
-            "count": 1
-          },
-          {
-            "name": "bournemouthecho.co.uk",
+            "name": "bnews.bg",
             "count": 1
           }
         ],
         "sample": [
           {
-            "title": "Ukraińskie ataki wywindowały cenę pszenicy",
-            "url": "https://info.wiara.pl/doc/9813000.Ukrainskie-ataki-wywindowaly-cene-pszenicy",
-            "domain": "info.wiara.pl",
-            "language": "Polish",
-            "source_country": "Poland",
-            "seen_date": "20260716T081500Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
-          },
-          {
-            "title": "Азербайджанская нефть выросла в цене",
-            "url": "https://news.day.az/economy/1848339.html",
-            "domain": "news.day.az",
-            "language": "Russian",
-            "source_country": "Azerbaijan",
-            "seen_date": "20260716T071500Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
-          },
-          {
-            "title": "Скільки коштує нафта сьогодні , 16 липня 2026 року : актуальні ціни Brent , WTI та Urals",
-            "url": "https://mignews.com.ua/ekonomika/czina-nafty-16-lypnya-2026-roku-skilky-koshtuyut-brent-wti-ta-urals-sogodni.html",
-            "domain": "mignews.com.ua",
-            "language": "Ukrainian",
+            "title": "Kyiv Long - Range Sanction Force Kremlin to Turn to New Delhi",
+            "url": "https://www.kyivpost.com/post/80397",
+            "domain": "kyivpost.com",
+            "language": "English",
             "source_country": "Ukraine",
-            "seen_date": "20260716T070000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "seen_date": "20260716T140000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           },
           {
-            "title": "DWP state pension and PIP update ahead of new united kingdom Prime Minister",
-            "url": "https://www.hulldailymail.co.uk/news/cost-of-living/dwp-state-pension-pip-update-11061867",
-            "domain": "hulldailymail.co.uk",
+            "title": "Кремлевский канал Россия - 1 про убийство Киевстонера : Для нашей разведки будет делом чести",
+            "url": "https://www.dialog.ua/russia/kremlevskiy-kanal-rossiya-ugrozhaet-ubiystvom-reperu-kievstoneru.html",
+            "domain": "dialog.ua",
+            "language": "Russian",
+            "source_country": "Ukraine",
+            "seen_date": "20260716T140000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
+          },
+          {
+            "title": "Seven mystery drones swarm above European nuclear power plant",
+            "url": "https://metro.co.uk/2026/07/16/seven-mystery-drones-swarm-european-nuclear-power-plant-29153061/",
+            "domain": "metro.co.uk",
             "language": "English",
             "source_country": "United Kingdom",
-            "seen_date": "20260716T064500Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "seen_date": "20260716T140000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           },
           {
-            "title": "Who will be in Andy Burnham Cabinet ?",
-            "url": "https://www.fenlandcitizen.co.uk/national/who-will-be-in-andy-burnham-s-cabinet-169398/",
-            "domain": "fenlandcitizen.co.uk",
+            "title": "Indra Group vai apoiar reconstruo do sistema de tráfego aéreo da Ucrânia",
+            "url": "https://eco.sapo.pt/2026/07/16/indra-group-vai-apoiar-reconstrucao-do-sistema-de-trafego-aereo-da-ucrania/",
+            "domain": "eco.sapo.pt",
+            "language": "Portuguese",
+            "source_country": null,
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
+          },
+          {
+            "title": "Dismissal of Ukraine defence chief sparks political crisis",
+            "url": "https://cyprus-mail.com/2026/07/16/dismissal-of-ukraines-defence-chief-sparks-political-crisis",
+            "domain": "cyprus-mail.com",
             "language": "English",
-            "source_country": "United Kingdom",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "source_country": "Cyprus",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           },
           {
-            "title": "Wächter der Nordsee , Germanwings und Co . – Flugzeuge verrotten auf großem Flugzeugfriedhof",
-            "url": "https://www.kreiszeitung.de/europa/waechter-der-nordsee-germanwings-und-co-flugzeuge-verrotten-auf-grossem-flugzeugfriedhof-94399503.html",
-            "domain": "kreiszeitung.de",
-            "language": "German",
-            "source_country": "Germany",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "title": "Naval Group - PPC Inspectra : Υπογραφή συμφωνίας για υποστήριξη συντήρησης των φρεγατών FDI",
+            "url": "https://www.inewsgr.com/93/Naval-Group-PPC-Inspectra-ypografi-symfonias-gia-ypostirixi-syntirisis-ton-fregaton-FDI.htm",
+            "domain": "inewsgr.com",
+            "language": "Greek",
+            "source_country": "Greece",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           },
           {
-            "title": "Who will be in Andy Burnham Cabinet ?",
-            "url": "https://www.harrowtimes.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
-            "domain": "harrowtimes.co.uk",
+            "title": "Putin - beskjed fra Tyskland : – Russland tester oss hver dag",
+            "url": "https://www.dagsavisen.no/nyheter/putin-beskjed-fra-tyskland-tester-oss-hver-dag/10444014",
+            "domain": "dagsavisen.no",
+            "language": "Norwegian",
+            "source_country": "Norway",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
+          },
+          {
+            "title": "Naval Group - PPC Inspectra : Υπογραφή συμφωνίας για υποστήριξη συντήρησης των φρεγατών FDI",
+            "url": "https://www.newsit.gr/oikonomia/megales-epixeiriseis/naval-group-ppc-inspectra-ypografi-symfonias-gia-ypostiriksi-syntirisis-ton-fregaton-fdi/4730023/",
+            "domain": "newsit.gr",
+            "language": "Greek",
+            "source_country": "Greece",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
+          },
+          {
+            "title": "Ties with Somalia Signal Türkiye Plans for Greater Role in Africa",
+            "url": "https://jamestown.org/ties-with-somalia-signal-turkiyes-plans-for-greater-role-in-africa/",
+            "domain": "jamestown.org",
             "language": "English",
-            "source_country": "United Kingdom",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "source_country": "Russia",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           },
           {
-            "title": "Who will be in Andy Burnham Cabinet ? | Bromsgrove Advertiser",
-            "url": "https://www.bromsgroveadvertiser.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
-            "domain": "bromsgroveadvertiser.co.uk",
-            "language": "English",
-            "source_country": "United Kingdom",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
-          },
-          {
-            "title": "Who will be in Andy Burnham Cabinet ? | Barry And District News",
-            "url": "https://www.barryanddistrictnews.co.uk/news/national/26284312.will-andy-burnhams-cabinet/",
-            "domain": "barryanddistrictnews.co.uk",
-            "language": "English",
-            "source_country": "United Kingdom",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
-          },
-          {
-            "title": "30 km vor der Küste : Polens Kampfjets stiegen über der Ostsee auf und drängten ein russischen Jet ab . Warschau spricht von einem feindlichen Vorstoß",
-            "url": "https://www.focus.de/politik/ausland/30-km-vor-der-kueste-polens-kampfjets-stiegen-ueber-der-ostsee-auf-und-draengten-ein-russischen-jet-ab-warschau-spricht-von-einem-feindlichen-vorstoss_f6e507e8-9145-413b-bd14-cdb381338def.html",
-            "domain": "focus.de",
-            "language": "German",
-            "source_country": "Germany",
-            "seen_date": "20260716T063000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)"
+            "title": "« Молнии - ПВО » сбили дроны ВСУ над Красным Лиманом",
+            "url": "https://tvzvezda.ru/news/20267161554-tWzIs.html",
+            "domain": "tvzvezda.ru",
+            "language": "Russian",
+            "source_country": "Russia",
+            "seen_date": "20260716T134500Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)"
           }
         ]
       },
@@ -553,37 +553,39 @@
           {
             "id": "institutional_discrediting",
             "label": "Discrediting institutions or alliances",
-            "count": 3,
+            "count": 4,
             "matched_keywords": [
               "nato",
               "eu",
-              "provocation"
+              "european union",
+              "government"
+            ]
+          },
+          {
+            "id": "infrastructure_fear",
+            "label": "Critical-infrastructure fear framing",
+            "count": 2,
+            "matched_keywords": [
+              "energy",
+              "port"
             ]
           },
           {
             "id": "false_attribution",
             "label": "False attribution / blame shifting",
-            "count": 3,
+            "count": 2,
             "matched_keywords": [
               "ukraine",
-              "nato",
-              "west"
+              "nato"
             ]
           },
           {
-            "id": "conspiracy_framing",
-            "label": "Conspiracy or secret-plot framing",
-            "count": 1,
+            "id": "maritime_legal_framing",
+            "label": "Maritime legal or piracy framing",
+            "count": 2,
             "matched_keywords": [
-              "provocation"
-            ]
-          },
-          {
-            "id": "narrative_amplification",
-            "label": "Narrative amplification / repetition",
-            "count": 1,
-            "matched_keywords": [
-              "again"
+              "sanctions",
+              "ship"
             ]
           }
         ]
@@ -595,8 +597,8 @@
           "count": 75,
           "queries": 3,
           "errors": [
-            "gdelt_fimi_2: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "fetch failed",
+            "gdelt_fimi_2: HTTP 429"
           ]
         },
         {
@@ -606,7 +608,7 @@
           "queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: HTTP 429"
+            "fetch failed"
           ]
         },
         {
@@ -617,8 +619,8 @@
         }
       ],
       "history": {
-        "gdelt_points": 29,
-        "fimi_score_points": 29
+        "gdelt_points": 30,
+        "fimi_score_points": 30
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume, EUvsDisinfo provides curated case exposure, and DISARM-aligned tags structure the observations. This is not attribution-grade."
     }
@@ -627,16 +629,16 @@
     "9 CISA KEV additions in the last 7 days",
     "22 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1323",
-    "1471 ThreatFox IOCs in the last 1 day",
-    "2657 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1319",
+    "1379 ThreatFox IOCs in the last 1 day",
+    "2603 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Bots are busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
     "FIMI-lite score: 52 (medium confidence)",
     "GDELT narrative watch: 75 unique articles in 36h",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "DISARM-aligned tags observed: Discrediting institutions or alliances, False attribution / blame shifting, Conspiracy or secret-plot framing"
+    "DISARM-aligned tags observed: Discrediting institutions or alliances, Critical-infrastructure fear framing, False attribution / blame shifting"
   ],
   "source_health": [
     {
@@ -649,7 +651,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "1c29d1747aa6e5ffd9a75ce09f7d58b418e16a7190126a6c79a7468bc6e004ae"
+      "hash": "eb101df921170d21ffde128b1894a76eb7665f65258c84b5623a4be6769caf33"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -659,14 +661,14 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 1471,
-      "count_7d": 5427,
-      "botnet_cc_count": 2657,
+      "count": 1379,
+      "count_7d": 5366,
+      "botnet_cc_count": 2603,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "9bd7788e61d5768a97d50dc9a42af71a53b26c6e3292b970d53eb8a659dac1cc",
-      "hash_7d": "fab4e1704dd0d40f18d4b9de8570476d83a2e669716eea73b5b55c585808a1fb",
+      "hash_1d": "96d67e5a4fd50134929de2a122fe403c39840c0edbe2cfcd46d320d16a35544c",
+      "hash_7d": "1da8035ca415bc58ef0ad911fe8023a8d3ed9a8dc15c1df44f181f8e42775155",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -676,8 +678,8 @@
       "count": 75,
       "queries": 3,
       "errors": [
-        "gdelt_fimi_2: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "fetch failed",
+        "gdelt_fimi_2: HTTP 429"
       ]
     },
     {
@@ -687,7 +689,7 @@
       "queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429"
+        "fetch failed"
       ]
     },
     {
@@ -724,6 +726,6 @@
     "source_health_json": "hat_source_health.json"
   },
   "evidence_cards": [
-    "evidence_cards/20260716T083547_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260716T142543_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
