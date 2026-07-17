@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-07-17T08:29:54.638Z",
+  "generated_at": "2026-07-17T14:05:13.606Z",
   "window_days": 30,
   "hat_score": 53,
   "level": "watch",
@@ -16,20 +16,20 @@
   "trend": "falling",
   "baseline": {
     "status": "active",
-    "points": 43,
-    "mean_hat_score": 61.5,
-    "delta_from_mean": -8.9
+    "points": 44,
+    "mean_hat_score": 61.3,
+    "delta_from_mean": -8.3
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 78,
-    "kev_epss_mean": 15,
+    "kev_epss_mean": 16,
     "threatfox_ioc_current": 0,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 71
+    "source_coverage": 79
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
@@ -47,8 +47,8 @@
       "botnet_c2_current_percentile": 5,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 1457,
-      "botnet_c2_36h_count": 1242
+      "ioc_36h_count": 1474,
+      "botnet_c2_36h_count": 1243
     }
   },
   "disinformation_alert_level": {
@@ -78,7 +78,7 @@
       "total_kev": 1647,
       "recent_7d": 10,
       "recent_30d": 25,
-      "epss_mean_recent_kev": 0.1454,
+      "epss_mean_recent_kev": 0.1647,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2026-20253",
@@ -90,6 +90,15 @@
           "percentile": 0.99751
         },
         {
+          "cve": "CVE-2026-39808",
+          "vendor_project": "Fortinet",
+          "product": "FortiSandbox",
+          "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
+          "date_added": "2026-07-16",
+          "epss": 0.84158,
+          "percentile": 0.99666
+        },
+        {
           "cve": "CVE-2026-34910",
           "vendor_project": "Ubiquiti",
           "product": "UniFi OS",
@@ -99,22 +108,22 @@
           "percentile": 0.9954
         },
         {
-          "cve": "CVE-2026-39808",
-          "vendor_project": "Fortinet",
-          "product": "FortiSandbox",
-          "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
-          "date_added": "2026-07-16",
-          "epss": 0.48668,
-          "percentile": 0.9874
-        },
-        {
           "cve": "CVE-2026-20230",
           "vendor_project": "Cisco",
           "product": "Unified Communications Manager",
           "vulnerability_name": "Cisco Unified Communications Manager Server-Side Request Forgery (SSRF) Vulnerability",
           "date_added": "2026-06-25",
           "epss": 0.41694,
-          "percentile": 0.98529
+          "percentile": 0.9853
+        },
+        {
+          "cve": "CVE-2026-25089",
+          "vendor_project": "Fortinet",
+          "product": "FortiSandbox",
+          "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
+          "date_added": "2026-07-16",
+          "epss": 0.36135,
+          "percentile": 0.98302
         },
         {
           "cve": "CVE-2026-48282",
@@ -123,7 +132,7 @@
           "vulnerability_name": "Adobe ColdFusion Path Traversal Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.28583,
-          "percentile": 0.97917
+          "percentile": 0.97918
         },
         {
           "cve": "CVE-2008-4128",
@@ -132,16 +141,7 @@
           "vulnerability_name": "Cisco IOS Cross-Site Request Forgery Vulnerability",
           "date_added": "2026-07-13",
           "epss": 0.23857,
-          "percentile": 0.97573
-        },
-        {
-          "cve": "CVE-2026-25089",
-          "vendor_project": "Fortinet",
-          "product": "FortiSandbox",
-          "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
-          "date_added": "2026-07-16",
-          "epss": 0.23393,
-          "percentile": 0.97528
+          "percentile": 0.97574
         },
         {
           "cve": "CVE-2026-56164",
@@ -150,7 +150,7 @@
           "vulnerability_name": "Microsoft SharePoint Server Missing Authentication for Critical Function Vulnerability",
           "date_added": "2026-07-14",
           "epss": 0.05601,
-          "percentile": 0.92028
+          "percentile": 0.92033
         },
         {
           "cve": "CVE-2026-45659",
@@ -159,7 +159,7 @@
           "vulnerability_name": "Microsoft SharePoint Server Deserialization of Untrusted Data Vulnerability",
           "date_added": "2026-07-01",
           "epss": 0.03219,
-          "percentile": 0.86785
+          "percentile": 0.86791
         },
         {
           "cve": "CVE-2026-56290",
@@ -168,7 +168,7 @@
           "vulnerability_name": "Joomlack Page Builder Improper Access Control Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.02912,
-          "percentile": 0.85434
+          "percentile": 0.85443
         },
         {
           "cve": "CVE-2026-34908",
@@ -177,7 +177,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Improper Access Control Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02452,
-          "percentile": 0.82561
+          "percentile": 0.8257
         },
         {
           "cve": "CVE-2026-34909",
@@ -186,7 +186,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Path Traversal Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02269,
-          "percentile": 0.81078
+          "percentile": 0.81086
         }
       ]
     },
@@ -197,90 +197,90 @@
           "cve": "CVE-2014-0160",
           "epss": 0.99999,
           "percentile": 0.99997,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2014-3566",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2014-6271",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2015-1635",
           "epss": 0.99999,
           "percentile": 0.99998,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2017-5638",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2017-9841",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2019-0708",
           "epss": 0.99999,
           "percentile": 0.99999,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2020-5902",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2021-1498",
           "epss": 0.99999,
           "percentile": 0.9999,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2023-0669",
           "epss": 0.99999,
           "percentile": 0.99996,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2023-1389",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         },
         {
           "cve": "CVE-2023-1671",
           "epss": 0.99999,
           "percentile": 0.99991,
-          "date": "2026-07-16"
+          "date": "2026-07-17"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 306,
-      "ioc_count_7d": 4742,
-      "botnet_c2_count_1d": 163,
-      "botnet_c2_count_7d": 2576,
+      "ioc_count_1d": 280,
+      "ioc_count_7d": 4669,
+      "botnet_c2_count_1d": 140,
+      "botnet_c2_count_7d": 2554,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 163
+          "count": 140
         },
         {
           "name": "payload_delivery",
-          "count": 122
+          "count": 119
         },
         {
           "name": "payload",
@@ -290,42 +290,42 @@
       "malware_families_1d": [
         {
           "name": "ClearFake",
-          "count": 87
+          "count": 79
         },
         {
           "name": "AdaptixC2",
-          "count": 74
+          "count": 69
         },
         {
           "name": "Vidar",
-          "count": 30
+          "count": 25
+        },
+        {
+          "name": "SmartApeSG",
+          "count": 17
         },
         {
           "name": "Unknown malware",
-          "count": 26
-        },
-        {
-          "name": "AsyncRAT",
-          "count": 16
+          "count": 11
         },
         {
           "name": "ValleyRAT",
           "count": 11
         },
         {
-          "name": "SmartApeSG",
+          "name": "KongTuke",
           "count": 10
         },
         {
-          "name": "KongTuke",
-          "count": 9
+          "name": "Havoc",
+          "count": 8
         },
         {
-          "name": "Cobalt Strike",
-          "count": 6
+          "name": "AsyncRAT",
+          "count": 7
         },
         {
-          "name": "Vjw0rm",
+          "name": "Unknown Stealer",
           "count": 5
         }
       ],
@@ -336,39 +336,39 @@
         },
         {
           "name": "VShell",
-          "count": 290
+          "count": 283
         },
         {
           "name": "Unknown malware",
-          "count": 221
+          "count": 219
         },
         {
           "name": "Cobalt Strike",
-          "count": 156
+          "count": 149
         },
         {
           "name": "AdaptixC2",
-          "count": 137
+          "count": 145
         },
         {
           "name": "Vidar",
-          "count": 122
+          "count": 118
         },
         {
           "name": "Remcos",
-          "count": 96
+          "count": 91
         },
         {
           "name": "Aisuru",
-          "count": 89
+          "count": 84
         },
         {
           "name": "AsyncRAT",
-          "count": 67
+          "count": 63
         },
         {
           "name": "ClearFake",
-          "count": 49
+          "count": 47
         }
       ],
       "historical": {
@@ -379,8 +379,8 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 1457,
-        "current_36h_botnet_c2_count": 1242,
+        "current_36h_ioc_count": 1474,
+        "current_36h_botnet_c2_count": 1243,
         "current_ioc_percentile": 0,
         "current_botnet_c2_percentile": 5,
         "trailing_36h_ioc_percentile": 100,
@@ -389,8 +389,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 306,
-      "botnet_cc_count": 2576,
+      "threatfox_count": 280,
+      "botnet_cc_count": 2554,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -400,7 +400,7 @@
       "confidence": "low",
       "mode": "fimi_lite_degraded_no_source_signal",
       "source_state": {
-        "external_ok": false,
+        "external_ok": true,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -464,19 +464,18 @@
           "errors": [
             "fetch failed",
             "fetch failed",
-            "fetch failed"
+            "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "error",
+          "status": "partial",
           "count": 0,
           "queries": 2,
-          "ok_queries": 0,
-          "failed_queries": 2,
+          "ok_queries": 1,
+          "failed_queries": 1,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "fetch failed",
             "fetch failed"
           ]
         },
@@ -489,8 +488,8 @@
         }
       ],
       "history": {
-        "gdelt_points": 3,
-        "fimi_score_points": 34
+        "gdelt_points": 4,
+        "fimi_score_points": 35
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
@@ -499,9 +498,9 @@
     "10 CISA KEV additions in the last 7 days",
     "25 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1454",
-    "306 ThreatFox IOCs in the last 1 day",
-    "2576 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1647",
+    "280 ThreatFox IOCs in the last 1 day",
+    "2554 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BWB — Bots were busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
@@ -518,7 +517,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "eb101df921170d21ffde128b1894a76eb7665f65258c84b5623a4be6769caf33"
+      "hash": "9408c9e95f933f6f902264cbe7a589832ff14a7499cda60e7400ecf32bb181c3"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -528,14 +527,14 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 306,
-      "count_7d": 4742,
-      "botnet_cc_count": 2576,
+      "count": 280,
+      "count_7d": 4669,
+      "botnet_cc_count": 2554,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "b7fd70d81500d75b7a44306c3d1288f2744a9c33ec1bcd4f6981ca3769a4f002",
-      "hash_7d": "07a0a212f68daeda9b7ad2489ab61e4d7b49fa3c0898c0aa9f2b90cf375c7ab4",
+      "hash_1d": "8f9aac5c9466c413d4bfdcf2ef1409ceb81e29cd871ede3ea3384c79fe121389",
+      "hash_7d": "bfc9dda0497e5fe1c74995a53f4b59125138bdf180cad1ccd5de3a17d6728742",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -554,19 +553,18 @@
       "errors": [
         "fetch failed",
         "fetch failed",
-        "fetch failed"
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "error",
+      "status": "partial",
       "count": 0,
       "queries": 2,
-      "ok_queries": 0,
-      "failed_queries": 2,
+      "ok_queries": 1,
+      "failed_queries": 1,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "fetch failed",
         "fetch failed"
       ]
     },
@@ -584,7 +582,7 @@
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
     "gdelt_fimi": "error",
-    "euvsdisinfo_case_watch": "error",
+    "euvsdisinfo_case_watch": "partial",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -613,14 +611,14 @@
     "level": "low",
     "signals": [
       "trailing bot/IOC proxy telemetry was elevated recently (BWB)",
-      "1242 botnet/C2-like indicators in the current 36h window",
+      "1243 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20260717T082954_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260717T140513_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
