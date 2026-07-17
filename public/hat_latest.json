@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-07-16T19:35:28.049Z",
+  "generated_at": "2026-07-17T03:40:44.767Z",
   "window_days": 30,
   "hat_score": 66,
   "level": "high",
@@ -16,9 +16,9 @@
   "trend": "stable",
   "baseline": {
     "status": "active",
-    "points": 41,
-    "mean_hat_score": 61.3,
-    "delta_from_mean": 4.3
+    "points": 42,
+    "mean_hat_score": 61.4,
+    "delta_from_mean": 4.2
   },
   "score_parts": {
     "kev_recent_7d": 100,
@@ -29,7 +29,7 @@
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 79
+    "source_coverage": 71
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
@@ -43,12 +43,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 97,
-      "botnet_c2_current_percentile": 92,
+      "ioc_current_percentile": 90,
+      "botnet_c2_current_percentile": 89,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 1675,
-      "botnet_c2_36h_count": 1274
+      "ioc_36h_count": 1530,
+      "botnet_c2_36h_count": 1259
     }
   },
   "disinformation_alert_level": {
@@ -61,22 +61,22 @@
       2,
       3
     ],
-    "mode": "fimi_lite_with_bot_ioc_proxy",
-    "fimi_lite_score": 6,
+    "mode": "bot_ioc_proxy_only_no_fimi_signal",
+    "fimi_lite_score": 0,
     "corroboration": {
-      "gdelt_unique_articles": 1,
+      "gdelt_unique_articles": 0,
       "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 2,
+      "disarm_aligned_tags": 0,
       "bot_state": "BAB",
-      "fimi_source_signal_present": true,
+      "fimi_source_signal_present": false,
       "bot_ioc_proxy_elevated": true
     },
-    "note": "Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade."
+    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
   },
   "metrics": {
     "kev": {
       "total_kev": 1647,
-      "recent_7d": 12,
+      "recent_7d": 10,
       "recent_30d": 25,
       "epss_mean_recent_kev": 0.1454,
       "top_recent_kev_by_epss": [
@@ -269,26 +269,26 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1389,
-      "ioc_count_7d": 4816,
-      "botnet_c2_count_1d": 1189,
-      "botnet_c2_count_7d": 2594,
+      "ioc_count_1d": 1355,
+      "ioc_count_7d": 4777,
+      "botnet_c2_count_1d": 1175,
+      "botnet_c2_count_7d": 2589,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1189
+          "count": 1175
         },
         {
           "name": "payload_delivery",
-          "count": 160
+          "count": 152
         },
         {
           "name": "payload",
-          "count": 38
+          "count": 27
         },
         {
           "name": "cc_skimming",
-          "count": 2
+          "count": 1
         }
       ],
       "malware_families_1d": [
@@ -298,39 +298,39 @@
         },
         {
           "name": "ClearFake",
-          "count": 93
+          "count": 90
         },
         {
           "name": "AdaptixC2",
-          "count": 46
-        },
-        {
-          "name": "Cobalt Strike",
-          "count": 39
+          "count": 70
         },
         {
           "name": "Unknown malware",
-          "count": 32
+          "count": 38
         },
         {
           "name": "Vidar",
-          "count": 27
-        },
-        {
-          "name": "KongTuke",
-          "count": 22
+          "count": 31
         },
         {
           "name": "AsyncRAT",
-          "count": 21
+          "count": 17
         },
         {
           "name": "InvisibleFerret",
           "count": 16
         },
         {
-          "name": "Unknown Loader",
+          "name": "KongTuke",
           "count": 14
+        },
+        {
+          "name": "ValleyRAT",
+          "count": 11
+        },
+        {
+          "name": "SmartApeSG",
+          "count": 10
         }
       ],
       "botnet_families_7d": [
@@ -340,19 +340,23 @@
         },
         {
           "name": "VShell",
-          "count": 291
+          "count": 290
         },
         {
           "name": "Unknown malware",
-          "count": 223
+          "count": 222
         },
         {
           "name": "Cobalt Strike",
-          "count": 174
+          "count": 162
         },
         {
           "name": "Vidar",
-          "count": 118
+          "count": 122
+        },
+        {
+          "name": "AdaptixC2",
+          "count": 119
         },
         {
           "name": "Aisuru",
@@ -360,19 +364,15 @@
         },
         {
           "name": "Remcos",
-          "count": 103
-        },
-        {
-          "name": "AdaptixC2",
-          "count": 98
+          "count": 97
         },
         {
           "name": "AsyncRAT",
-          "count": 67
+          "count": 68
         },
         {
           "name": "ClearFake",
-          "count": 57
+          "count": 56
         }
       ],
       "historical": {
@@ -383,190 +383,61 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 1675,
-        "current_36h_botnet_c2_count": 1274,
-        "current_ioc_percentile": 97,
-        "current_botnet_c2_percentile": 92,
+        "current_36h_ioc_count": 1530,
+        "current_36h_botnet_c2_count": 1259,
+        "current_ioc_percentile": 90,
+        "current_botnet_c2_percentile": 89,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
       }
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1389,
-      "botnet_cc_count": 2594,
+      "threatfox_count": 1355,
+      "botnet_cc_count": 2589,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "partial",
-      "score": 6,
+      "status": "degraded_no_source_signal",
+      "score": 0,
       "confidence": "low",
-      "mode": "fimi_lite_maritime_relevance_filtered",
+      "mode": "fimi_lite_degraded_no_source_signal",
       "source_state": {
-        "external_ok": true,
+        "external_ok": false,
         "external_errors": true,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 1,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 25
+        "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 75,
-        "accepted_articles": 1,
-        "core_mard_eu_articles": 1,
+        "raw_unique_articles": 0,
+        "accepted_articles": 0,
+        "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 74,
-        "weighted_article_count": 1,
-        "rejected_samples": [
-          {
-            "title": "Ölpreise stagnieren : Iran - Konflikt setzt globale Wirtschaft unter Druck",
-            "domain": "berliner-zeitung.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          },
-          {
-            "title": "Chaos na železnici pre hada , napätie okolo Ruska a protesty v Kyjeve ( denný výber )",
-            "domain": "aktuality.sk",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Bis an die Grenze : Wie Außenminister Wadephul Russland mal ganz nahe kommt",
-            "domain": "wz-net.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Rosja znów sprawdza czujność NATO . Polskie myśliwce poderwane nad ...",
-            "domain": "info.wiara.pl",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "nato"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Російські Су - 30 та Іл - 20 зявилися над Балтикою Польща перехопила",
-            "domain": "lb.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Европейский антициклон принесет Москве ясные выходные без осадков",
-            "domain": "profile.ru",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Is North Korea Pursuing a Juche - Oriented Nuclear Triad ? - 38 North : Informed Analysis of North Korea",
-            "domain": "38north.org",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Trzy dni prowokacji Rosjan . Testowana jest nasza spójność",
-            "domain": "wiadomosci.wp.pl",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          }
-        ]
+        "rejected_as_noise_or_broad_context": 0,
+        "weighted_article_count": 0,
+        "rejected_samples": []
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 75,
-        "unique_articles_raw": 75,
-        "unique_articles": 1,
-        "core_mard_eu_articles": 1,
+        "article_count": 0,
+        "unique_articles_raw": 0,
+        "unique_articles": 0,
+        "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 74,
-        "weighted_articles": 1,
+        "rejected_articles": 0,
+        "weighted_articles": 0,
         "historical_percentile": null,
-        "top_domains": [
-          {
-            "name": "globalsecurity.org",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "Budrys in Brussels emphasized continued support for Ukraine , pressure on Russia , and countering hybrid threats in the Baltic Sea",
-            "url": "https://www.globalsecurity.org/military/library/news/2026/07/mil-260714-lithuania-mfa01.htm",
-            "domain": "globalsecurity.org",
-            "language": "English",
-            "source_country": "Syria",
-            "seen_date": "20260716T123000Z",
-            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "core_mard_eu",
-              "weight": 1,
-              "reason": "maritime+threat+regional_anchor",
-              "matched": {
-                "maritime": [
-                  "port"
-                ],
-                "threat_fimi": [
-                  "hybrid",
-                  "russia",
-                  "ukraine"
-                ],
-                "region": [
-                  "baltic sea",
-                  "lithuania"
-                ],
-                "global_spillover": []
-              }
-            }
-          }
-        ]
+        "top_domains": [],
+        "sample": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -577,43 +448,27 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 2,
-        "tags": [
-          {
-            "id": "infrastructure_fear",
-            "label": "Critical-infrastructure fear framing",
-            "count": 1,
-            "matched_keywords": [
-              "port"
-            ]
-          },
-          {
-            "id": "false_attribution",
-            "label": "False attribution / blame shifting",
-            "count": 1,
-            "matched_keywords": [
-              "ukraine"
-            ]
-          }
-        ]
+        "tag_count": 0,
+        "tags": []
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "partial",
-          "count": 1,
-          "raw_count": 75,
-          "core_count": 1,
+          "status": "error",
+          "count": 0,
+          "raw_count": 0,
+          "core_count": 0,
           "global_spillover_count": 0,
-          "rejected_count": 74,
-          "weighted_count": 1,
+          "rejected_count": 0,
+          "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 1,
-          "failed_queries": 2,
+          "ok_queries": 0,
+          "failed_queries": 3,
           "errors": [
             "fetch failed",
-            "gdelt_fimi_3: HTTP 429"
+            "fetch failed",
+            "fetch failed"
           ]
         },
         {
@@ -632,33 +487,29 @@
         {
           "source": "disarm_aligned_taxonomy",
           "status": "ok",
-          "count": 2,
+          "count": 0,
           "method": "local_keyword_mapping",
-          "applied_to_articles": 1
+          "applied_to_articles": 0
         }
       ],
       "history": {
-        "gdelt_points": 1,
-        "fimi_score_points": 32
+        "gdelt_points": 2,
+        "fimi_score_points": 33
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
   },
   "drivers": [
-    "12 CISA KEV additions in the last 7 days",
+    "10 CISA KEV additions in the last 7 days",
     "25 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1454",
-    "1389 ThreatFox IOCs in the last 1 day",
-    "2594 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1355 ThreatFox IOCs in the last 1 day",
+    "2589 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Bots are busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite score: 6 (low confidence)",
-    "GDELT maritime/FIMI watch: 1 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 74 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "DISARM-aligned tags observed: Critical-infrastructure fear framing, False attribution / blame shifting"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "source_health": [
     {
@@ -681,32 +532,33 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 1389,
-      "count_7d": 4816,
-      "botnet_cc_count": 2594,
+      "count": 1355,
+      "count_7d": 4777,
+      "botnet_cc_count": 2589,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "ea219a1d151ed2fdc59945bc91490e56b66d2ce6af74ac5a6d87ee10ce95b83f",
-      "hash_7d": "6a6816f9edaf97ac3c827f2e1468055c501a14c5bc1d8750826cbf2515f429f4",
+      "hash_1d": "dca88935902874a176794a8c23dbdc44bf746cb34ae46409fc56d69fc8e565b9",
+      "hash_7d": "4db0aac8599bf68e37c1e16324e03a0443ffd62094ca8b6c7466f36f540bdf33",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "partial",
-      "count": 1,
-      "raw_count": 75,
-      "core_count": 1,
+      "status": "error",
+      "count": 0,
+      "raw_count": 0,
+      "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 74,
-      "weighted_count": 1,
+      "rejected_count": 0,
+      "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
         "fetch failed",
-        "gdelt_fimi_3: HTTP 429"
+        "fetch failed",
+        "fetch failed"
       ]
     },
     {
@@ -725,9 +577,9 @@
     {
       "source": "disarm_aligned_taxonomy",
       "status": "ok",
-      "count": 2,
+      "count": 0,
       "method": "local_keyword_mapping",
-      "applied_to_articles": 1
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -735,7 +587,7 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
-    "gdelt_fimi": "partial",
+    "gdelt_fimi": "error",
     "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "ok"
   },
@@ -762,18 +614,17 @@
   },
   "obscuration_context": {
     "schema": "mard-hat-obscuration-context-v1",
-    "level": "watch",
+    "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1274 botnet/C2-like indicators in the current 36h window",
-      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
+      "1259 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20260716T193528_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260717T034044_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
