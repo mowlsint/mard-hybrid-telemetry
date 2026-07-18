@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "political_actor_entry_rules": {
+    "manual_core_actor": true,
+    "minimum_political_posts_per_week": 10,
+    "activity_window_days": 28,
+    "minimum_political_posts_in_window": 40,
+    "minimum_active_weeks_in_window": 3,
+    "top_percent_within_comparable_cohort": 15,
+    "engagement_percentile_min": 85,
+    "followers_any_platform_min": 100000,
+    "cluster_promotion": {
+      "minimum_relevant_clusters": 3,
+      "window_days": 30
+    }
+  },
+  "comparison_cohort_rule": [
+    "same platform",
+    "same broad actor type",
+    "same observation language or national political space"
+  ],
+  "important_limitations": [
+    "Inclusion is not an allegation of disinformation, extremism, automation or foreign coordination.",
+    "Narrative overlap is stored separately from evidence of coordination.",
+    "The 10-post/week and top-15-percent rules require a first 28-day observation window.",
+    "Official party, government, state-media and manually selected core sources remain eligible regardless of activity.",
+    "Only public content is collected.",
+    "RT/RT DE and other sanctioned-source public exports are metadata-and-analysis only."
+  ],
+  "verification_statuses": {
+    "official_primary": "Listed by the organisation/person on an official primary site.",
+    "official_or_primary_crosslink": "Platform endpoint is cross-linked from an official profile or primary biography.",
+    "official_platform": "Account identifies itself as official and matches the official organisation.",
+    "research_dataset_or_primary_crosslink": "Supported by GESIS or another documented research dataset and/or an official crosslink.",
+    "official_platform_or_crosslink": "Supported by the account itself and another linked official endpoint.",
+    "research_attributed": "Operation or source family attributed by a named research or government source.",
+    "pending": "Not enabled until a current official crosslink is found."
+  }
+}

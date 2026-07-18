@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "actor_classes": [
+    "armed_group_media",
+    "armed_group_official_source",
+    "bridge_media",
+    "factcheck_reference",
+    "government_source",
+    "high_reach_political_influencer",
+    "independent_media",
+    "known_fimi_infrastructure",
+    "maritime_media",
+    "maritime_state_corporate_source",
+    "maritime_state_source",
+    "media_outlet",
+    "milblogger",
+    "military_source_family",
+    "military_state_media",
+    "official_state_source",
+    "parliamentary_group",
+    "party_aligned_media",
+    "party_channel",
+    "party_media",
+    "party_youth_channel",
+    "political_actor",
+    "political_media_influencer",
+    "political_movement_channel",
+    "regional_state_source",
+    "state_aligned_media",
+    "state_media",
+    "state_media_parent",
+    "state_media_source_family",
+    "state_party_channel"
+  ],
+  "network_dimensions": {
+    "domestic_political_amplification": [
+      "party_origin",
+      "cross_party_adoption",
+      "central_asset_reuse",
+      "text_similarity",
+      "link_concentration",
+      "posting_synchrony"
+    ],
+    "foreign_information_manipulation": [
+      "official_origin",
+      "state_media_pickup",
+      "pseudo_media_laundering",
+      "mirror_domains",
+      "inauthentic_amplifiers",
+      "narrative_translation"
+    ],
+    "maritime_narratives": [
+      "shadow_fleet",
+      "sanctions",
+      "nato_baltic",
+      "undersea_infrastructure",
+      "gnss_jamming",
+      "port_disruption",
+      "red_sea",
+      "hormuz",
+      "arctic_shipping",
+      "taiwan_strait",
+      "south_china_sea"
+    ]
+  },
+  "assessment_fields": [
+    "narrative_similarity",
+    "coordination_confidence",
+    "automation_likelihood",
+    "foreign_origin_confidence",
+    "source_attribution_confidence"
+  ],
+  "safe_assessment_labels": [
+    "observed narrative overlap",
+    "possible coordinated amplification",
+    "probable coordinated amplification",
+    "state-origin message",
+    "state-media amplification",
+    "no evidence of coordination"
+  ],
+  "prohibited_shortcuts": [
+    "political disagreement equals disinformation",
+    "shared position equals foreign control",
+    "high posting frequency alone equals bot",
+    "state-media citation alone proves coordination"
+  ]
+}
