@@ -1,45 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-18T11:10:03.450Z",
+  "generated_at": "2026-07-18T11:26:55.210Z",
   "title": "MARD Influence & Narrative Watch — X/Nitter Ingest",
   "mode": "nitter_multi_instance_rss_html_fallback",
   "assessment_limit": "Best-effort public X collection through third-party Nitter instances. Missing posts or accounts are possible. No attribution, automation finding or HAT score integration.",
+  "collection_notice": "No configured public Nitter instance was usable from the GitHub runner. Per-account X collection was skipped and prior X metadata, if any, was retained.",
   "counts": {
-    "configured_instances": 10,
+    "configured_instances": 0,
     "eligible_endpoints": 63,
-    "checked_endpoints": 63,
+    "checked_endpoints": 0,
     "successful_endpoints": 0,
-    "failed_endpoints": 63,
+    "failed_endpoints": 0,
+    "skipped_endpoints": 63,
     "collected_x_items": 0,
-    "merged_current_items": 824
+    "merged_current_items": 822
   },
   "coverage": {
-    "countries": {
-      "DE": 47,
-      "CN": 7,
-      "IR": 3,
-      "RU": 3,
-      "BY": 2,
-      "YE": 1
-    },
-    "actor_classes": {
-      "political_actor": 28,
-      "party_channel": 8,
-      "official_state_source": 7,
-      "state_media": 7,
-      "bridge_media": 3,
-      "government_source": 3,
-      "independent_media": 3,
-      "armed_group_official_source": 1,
-      "high_reach_political_influencer": 1,
-      "party_aligned_media": 1,
-      "state_aligned_media": 1
-    },
+    "countries": {},
+    "actor_classes": {},
     "collection_modes": {}
   },
   "source_health": {
-    "state": "error",
+    "state": "unavailable",
     "success_ratio": 0,
-    "completeness_guaranteed": false
+    "completeness_guaranteed": false,
+    "skip_reason": "no_usable_public_instance_from_github_runner"
   }
 }

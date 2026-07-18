@@ -1,85 +1,23 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-18T11:11:55.441Z",
+  "generated_at": "2026-07-18T11:26:55.422Z",
   "mode": "hash_simhash_domain_time_clustering",
   "assessment_limit": "Clusters are analytical indicators of similar or synchronized public content. They are not attribution findings or bot determinations.",
   "parameters": {
     "cluster_window_hours": 72,
     "minimum_pair_score": 58,
-    "maximum_internal_clusters": 300
+    "maximum_internal_clusters": 400
   },
   "counts": {
-    "analysed_items": 538,
-    "clusters": 5,
-    "elevated_clusters": 4,
+    "analysed_items": 575,
+    "clusters": 6,
+    "elevated_clusters": 5,
     "strong_clusters": 2
   },
   "clusters": [
     {
-      "cluster_id": "c4613893848c13557eeaf928",
-      "generated_at": "2026-07-18T11:11:55.439Z",
-      "assessment": {
-        "label": "strong_amplification_pattern",
-        "coordination_indicator_score": 88,
-        "confidence": "low_medium",
-        "attribution_grade": false,
-        "automation_finding": false
-      },
-      "counts": {
-        "items": 2,
-        "actors": 2,
-        "endpoints": 2,
-        "unique_content_hashes": 1,
-        "pair_edges": 1
-      },
-      "time": {
-        "start_at": "2026-07-18T11:11:09.083Z",
-        "end_at": "2026-07-18T11:11:09.602Z",
-        "span_minutes": 0
-      },
-      "signals": [
-        "exact_content_hash",
-        "shared_referenced_domain",
-        "within_15_minutes"
-      ],
-      "actor_ids": [
-        "de_nius",
-        "de_julian_reichelt"
-      ],
-      "endpoint_ids": [
-        "de_nius__website__nius_de",
-        "de_julian_reichelt__website__nius_de"
-      ],
-      "item_ids": [
-        "2e63579a4976d5db5e4d1ad1587495d5",
-        "8f07d7a26eeb7135754778dd743e7409"
-      ],
-      "platforms": {
-        "website": 2
-      },
-      "countries": {
-        "DE": 2
-      },
-      "actor_classes": {
-        "bridge_media": 1,
-        "high_reach_political_influencer": 1
-      },
-      "shared_referenced_domains": {
-        "adnz.co": 1,
-        "api.nius.de": 1,
-        "cms.nius.de": 1,
-        "consent.cookiebot.com": 1,
-        "googletagmanager.com": 1,
-        "imasdk.googleapis.com": 1,
-        "nius.de": 1,
-        "securepubads.g.doubleclick.net": 1,
-        "use.typekit.net": 1
-      },
-      "restricted_item_count": 0
-    },
-    {
       "cluster_id": "4db1d1959d0f63140c6f1315",
-      "generated_at": "2026-07-18T11:11:55.439Z",
+      "generated_at": "2026-07-18T11:26:55.420Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -141,8 +79,128 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "b3e71cd60c41c20b815135d3",
+      "generated_at": "2026-07-18T11:26:55.420Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 82,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 4,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 2,
+        "pair_edges": 4
+      },
+      "time": {
+        "start_at": "2026-07-18T11:11:09.083Z",
+        "end_at": "2026-07-18T11:26:00.546Z",
+        "span_minutes": 15
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes",
+        "near_duplicate_text"
+      ],
+      "actor_ids": [
+        "de_nius",
+        "de_julian_reichelt"
+      ],
+      "endpoint_ids": [
+        "de_nius__website__nius_de",
+        "de_julian_reichelt__website__nius_de"
+      ],
+      "item_ids": [
+        "15a1b84c8fe272d364f2cef292be7b6e",
+        "7fbcb7a78745f067aae0a3dadc39ccc6",
+        "2e63579a4976d5db5e4d1ad1587495d5",
+        "8f07d7a26eeb7135754778dd743e7409"
+      ],
+      "platforms": {
+        "website": 4
+      },
+      "countries": {
+        "DE": 4
+      },
+      "actor_classes": {
+        "bridge_media": 2,
+        "high_reach_political_influencer": 2
+      },
+      "shared_referenced_domains": {
+        "adnz.co": 4,
+        "api.nius.de": 4,
+        "cms.nius.de": 4,
+        "consent.cookiebot.com": 4,
+        "googletagmanager.com": 4,
+        "imasdk.googleapis.com": 4,
+        "nius.de": 4,
+        "securepubads.g.doubleclick.net": 4,
+        "use.typekit.net": 4
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "10e8348d7f35aa9157c10fc0",
+      "generated_at": "2026-07-18T11:26:55.420Z",
+      "assessment": {
+        "label": "elevated_amplification_pattern",
+        "coordination_indicator_score": 70,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-07-18T07:58:00.000Z",
+        "end_at": "2026-07-18T11:15:03.000Z",
+        "span_minutes": 197
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_6_hours"
+      ],
+      "actor_ids": [
+        "ru_colonelcassad",
+        "ru_war_on_fakes"
+      ],
+      "endpoint_ids": [
+        "ru_colonelcassad__telegram__boris_rozhin",
+        "ru_war_on_fakes__telegram__warfakes"
+      ],
+      "item_ids": [
+        "0a3c828751dc6ac4374b927250854730",
+        "178b5dca34fc2fcc3cb3444b17d0f396"
+      ],
+      "platforms": {
+        "telegram": 2
+      },
+      "countries": {
+        "RU": 2
+      },
+      "actor_classes": {
+        "known_fimi_infrastructure": 1,
+        "milblogger": 1
+      },
+      "shared_referenced_domains": {
+        "max.ru": 1,
+        "t.me": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "e86e441313d8a85bfa85bdb6",
-      "generated_at": "2026-07-18T11:11:55.439Z",
+      "generated_at": "2026-07-18T11:26:55.420Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -201,7 +259,7 @@
     },
     {
       "cluster_id": "ab74eaacb2e30c445a5ad989",
-      "generated_at": "2026-07-18T11:11:55.432Z",
+      "generated_at": "2026-07-18T11:26:55.413Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 65,
@@ -217,8 +275,8 @@
         "pair_edges": 2
       },
       "time": {
-        "start_at": "2026-07-18T11:11:27.879Z",
-        "end_at": "2026-07-18T11:11:28.184Z",
+        "start_at": "2026-07-18T11:26:22.582Z",
+        "end_at": "2026-07-18T11:26:22.909Z",
         "span_minutes": 0
       },
       "signals": [
@@ -257,7 +315,7 @@
     },
     {
       "cluster_id": "0fd19c1d02f6e2df6272a780",
-      "generated_at": "2026-07-18T11:11:55.439Z",
+      "generated_at": "2026-07-18T11:26:55.420Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 61,
