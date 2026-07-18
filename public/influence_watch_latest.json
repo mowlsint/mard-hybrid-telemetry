@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-18T10:42:30.085Z",
+  "generated_at": "2026-07-18T11:11:55.441Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low_medium",
@@ -8,28 +8,67 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_metadata",
   "history": {
-    "total_items": 490,
-    "current_run_items": 557,
-    "items_24h": 296,
-    "items_7d": 414,
-    "items_28d": 487,
+    "total_items": 745,
+    "current_run_items": 824,
+    "items_24h": 433,
+    "items_7d": 619,
+    "items_28d": 741,
     "oldest_item_at": "2026-06-16T11:53:48.000Z",
-    "newest_item_at": "2026-07-18T10:42:19.423Z",
+    "newest_item_at": "2026-07-18T11:11:51.286Z",
     "retained_days": 35,
-    "max_items": 25000,
-    "max_bytes": 20000000,
-    "actual_bytes": 382686
+    "max_items": 35000,
+    "max_bytes": 26000000,
+    "actual_bytes": 584638
   },
   "activity": {
-    "active_actors_7d": 76,
-    "provisional_10_per_week_actors": 26,
+    "active_actors_7d": 103,
+    "provisional_10_per_week_actors": 34,
     "final_selection_decisions": 0
   },
   "clusters": {
-    "total": 3,
-    "elevated": 3,
-    "strong": 1,
+    "total": 5,
+    "elevated": 4,
+    "strong": 2,
     "top": [
+      {
+        "cluster_id": "c4613893848c13557eeaf928",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-07-18T11:11:09.083Z",
+          "end_at": "2026-07-18T11:11:09.602Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "website": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "bridge_media": 1,
+          "high_reach_political_influencer": 1
+        },
+        "shared_domain_count": 9,
+        "restricted_item_count": 0
+      },
       {
         "cluster_id": "4db1d1959d0f63140c6f1315",
         "assessment": {
@@ -123,8 +162,8 @@
           "pair_edges": 2
         },
         "time": {
-          "start_at": "2026-07-18T10:42:01.062Z",
-          "end_at": "2026-07-18T10:42:02.316Z",
+          "start_at": "2026-07-18T11:11:27.879Z",
+          "end_at": "2026-07-18T11:11:28.184Z",
           "span_minutes": 0
         },
         "signals": [
@@ -140,6 +179,46 @@
         },
         "actor_classes": {
           "state_party_channel": 3
+        },
+        "shared_domain_count": 1,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "0fd19c1d02f6e2df6272a780",
+        "assessment": {
+          "label": "possible_amplification_pattern",
+          "coordination_indicator_score": 61,
+          "confidence": "low",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 2,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-07-17T15:38:06.000Z",
+          "end_at": "2026-07-17T15:38:06.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "weak_text_similarity",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "website": 1,
+          "youtube": 1
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "party_media": 1
         },
         "shared_domain_count": 1,
         "restricted_item_count": 0
