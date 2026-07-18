@@ -91,6 +91,9 @@ jobs:
       - name: Test Stage 5 Nitter parsers
         run: node scripts/influence/test_influence_stage5_x_parser.mjs
 
+      - name: Preflight public Nitter instances
+        run: node scripts/influence/diagnose_nitter_instances.mjs
+
       - name: Fetch X metadata through Nitter
         run: node scripts/influence/fetch_influence_stage5_x_nitter.mjs
 
@@ -113,6 +116,7 @@ jobs:
             data/influence/ingest/source_health_latest.json \
             data/influence/ingest/social_source_health_latest.json \
             data/influence/ingest/x_source_health_latest.json \
+            data/influence/ingest/nitter_preflight_latest.json \
             public/influence_ingest_status.json \
             public/influence_source_health.json \
             public/influence_social_ingest_status.json \
