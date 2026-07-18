@@ -1,9 +1,9 @@
-name: Build Influence Watch Stage 3
+name: Build Influence Social Stage 4
 
 on:
   workflow_dispatch:
     inputs:
-      max_endpoints:
+      max_stage2_endpoints:
         description: "Maximum website and Telegram endpoints"
         required: false
         default: "300"
@@ -16,17 +16,9 @@ on:
         required: false
         default: "8"
       social_concurrency:
-        description: "Parallel Stage 4 requests"
+        description: "Parallel Bluesky and YouTube requests"
         required: false
         default: "6"
-      retention_days:
-        description: "History retention in days"
-        required: false
-        default: "35"
-      cluster_window_hours:
-        description: "Recent window used for cluster detection"
-        required: false
-        default: "72"
 
 permissions:
   contents: write
@@ -36,12 +28,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-influence-watch:
+  build-social-ingest:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 45
 
     env:
-      MARD_INFLUENCE_MAX_ENDPOINTS: ${{ inputs.max_endpoints || '300' }}
+      MARD_INFLUENCE_MAX_ENDPOINTS: ${{ inputs.max_stage2_endpoints || '300' }}
       MARD_INFLUENCE_CONCURRENCY: ${{ inputs.concurrency || '8' }}
       MARD_INFLUENCE_MAX_SOCIAL_ENDPOINTS: ${{ inputs.max_social_endpoints || '180' }}
       MARD_INFLUENCE_SOCIAL_CONCURRENCY: ${{ inputs.social_concurrency || '6' }}
@@ -49,13 +41,6 @@ jobs:
       MARD_INFLUENCE_MAX_ITEMS_PER_SOURCE: "12"
       MARD_INFLUENCE_MAX_ITEMS_PER_SOCIAL_SOURCE: "30"
       MARD_INFLUENCE_MAX_BODY_BYTES: "3000000"
-      MARD_INFLUENCE_RETENTION_DAYS: ${{ inputs.retention_days || '35' }}
-      MARD_INFLUENCE_MAX_HISTORY_ITEMS: "35000"
-      MARD_INFLUENCE_MAX_HISTORY_BYTES: "26000000"
-      MARD_INFLUENCE_CLUSTER_WINDOW_HOURS: ${{ inputs.cluster_window_hours || '72' }}
-      MARD_INFLUENCE_MAX_INTERNAL_CLUSTERS: "300"
-      MARD_INFLUENCE_MAX_PUBLIC_CLUSTERS: "25"
-      MARD_INFLUENCE_PUBLIC_HISTORY_SNAPSHOTS: "240"
 
     steps:
       - name: Checkout repository
@@ -75,31 +60,24 @@ jobs:
       - name: Validate influence registry
         run: node scripts/influence/validate_influence_registry.mjs
 
-      - name: Fetch Stage 2 website, RSS and Telegram metadata
+      - name: Fetch website, RSS and Telegram metadata
         run: node scripts/influence/fetch_influence_stage2.mjs
 
       - name: Check Stage 2 outputs
         run: node scripts/influence/check_influence_stage2.mjs
 
-      - name: Fetch Stage 4 Bluesky and YouTube metadata
+      - name: Fetch Bluesky and YouTube metadata
         run: node scripts/influence/fetch_influence_stage4_social.mjs
 
       - name: Check Stage 4 outputs
         run: node scripts/influence/check_influence_stage4_social.mjs
 
-      - name: Build Stage 3 history and clusters
-        run: node scripts/influence/build_influence_stage3.mjs
-
-      - name: Check Stage 3 outputs
-        run: node scripts/influence/check_influence_stage3.mjs
-
-      - name: Show public Influence Watch
+      - name: Show public social status
         run: |
           cat public/influence_social_ingest_status.json
-          cat public/influence_watch_latest.json
-          cat public/influence_watch_history.json
+          cat public/influence_social_source_health.json
 
-      - name: Commit Stage 2, Stage 4 and Stage 3 outputs
+      - name: Commit Stage 2 and Stage 4 outputs
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -109,20 +87,15 @@ jobs:
             data/influence/ingest/items_latest.json \
             data/influence/ingest/source_health_latest.json \
             data/influence/ingest/social_source_health_latest.json \
-            data/influence/history/items_history.jsonl \
-            data/influence/analysis/clusters_latest.json \
-            data/influence/analysis/actor_activity_latest.json \
             public/influence_ingest_status.json \
             public/influence_source_health.json \
             public/influence_social_ingest_status.json \
-            public/influence_social_source_health.json \
-            public/influence_watch_latest.json \
-            public/influence_watch_history.json
+            public/influence_social_source_health.json
 
           if git diff --cached --quiet; then
             echo "No generated changes."
             exit 0
           fi
 
-          git commit -m "Update Influence Watch Stage 4 and clustering outputs"
+          git commit -m "Update Influence Social Stage 4 outputs"
           git push
