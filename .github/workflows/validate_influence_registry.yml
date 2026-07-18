@@ -8,30 +8,35 @@ on:
     paths:
       - "config/influence/**"
       - "scripts/influence/**"
+      - ".node-version"
       - ".github/workflows/validate_influence_registry.yml"
 
 permissions:
   contents: write
 
 concurrency:
-  group: validate-influence-registry
+  group: mard-influence-repo-writer
   cancel-in-progress: false
 
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: ".node-version"
+          package-manager-cache: false
+
+      - name: Show runtime
+        run: node --version
 
       - name: Validate influence registry
         run: node scripts/influence/validate_influence_registry.mjs
