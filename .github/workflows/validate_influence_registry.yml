@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -41,18 +43,11 @@ jobs:
         run: |
           cat data/influence/validation_report.json
           cat public/influence_registry_status.json
+          cat public/influence_registry_methodology.json
 
       - name: Commit generated registry status
         shell: bash
         run: |
-          if git diff --quiet -- \
-            data/influence/validation_report.json \
-            public/influence_registry_status.json \
-            public/influence_registry_methodology.json; then
-            echo "No generated changes."
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -60,6 +55,11 @@ jobs:
             data/influence/validation_report.json \
             public/influence_registry_status.json \
             public/influence_registry_methodology.json
+
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+            exit 0
+          fi
 
           git commit -m "Update influence registry validation outputs"
           git push
