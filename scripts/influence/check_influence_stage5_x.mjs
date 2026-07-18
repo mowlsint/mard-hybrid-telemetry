@@ -30,7 +30,7 @@ async function main() {
   if (status?.counts?.checked_endpoints !== health.sources.length) {
     errors.push("X checked endpoint count differs from detailed health");
   }
-  if (!["ok", "partial", "error", "disabled"].includes(publicHealth.state)) {
+  if (!["ok", "partial", "error", "disabled", "unavailable"].includes(publicHealth.state)) {
     errors.push("invalid public X source-health state");
   }
   if (status?.source_health?.completeness_guaranteed !== false) {

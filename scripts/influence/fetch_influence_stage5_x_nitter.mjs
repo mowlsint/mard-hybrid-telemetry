@@ -54,6 +54,11 @@ const MAX_INSTANCE_ATTEMPTS = Math.max(
 );
 const STRICT_MODE =
   String(process.env.MARD_INFLUENCE_X_STRICT || "false").toLowerCase() === "true";
+const PREFLIGHT_UNAVAILABLE =
+  String(process.env.MARD_NITTER_PREFLIGHT_USABLE || "1") === "0";
+const PREFLIGHT_SKIP_REASON =
+  process.env.MARD_NITTER_SKIP_REASON ||
+  "no_usable_public_nitter_instance";
 
 const RESTRICTED_ACTORS = new Set([
   "ru_rt_global",
@@ -691,8 +696,10 @@ async function main() {
     );
   }
 
-  const instances = await loadInstances();
-  if (!instances.length) throw new Error("No enabled Nitter instances configured");
+  const instances = PREFLIGHT_UNAVAILABLE ? [] : await loadInstances();
+  if (!PREFLIGHT_UNAVAILABLE && !instances.length) {
+    throw new Error("No enabled Nitter instances configured");
+  }
 
   const { endpoints, entityById } = createRegistryIndexes(registry);
   const eligible = endpoints
@@ -713,9 +720,11 @@ async function main() {
     `[influence-stage5] eligible=${eligible.length} instances=${instances.length} concurrency=${CONCURRENCY} attempts=${MAX_INSTANCE_ATTEMPTS}`,
   );
 
-  const results = await mapConcurrent(eligible, CONCURRENCY, (endpoint) =>
-    processEndpoint(endpoint, entityById.get(endpoint.actor_id), instances),
-  );
+  const results = PREFLIGHT_UNAVAILABLE
+    ? []
+    : await mapConcurrent(eligible, CONCURRENCY, (endpoint) =>
+        processEndpoint(endpoint, entityById.get(endpoint.actor_id), instances),
+      );
   const health = results.map((result) => result.health);
   const xItems = results.flatMap((result) => result.items);
 
@@ -725,8 +734,12 @@ async function main() {
   }
 
   const merged = new Map();
+  const previousBaseItems = PREFLIGHT_UNAVAILABLE
+    ? existing.items
+    : existing.items.filter((item) => item.source_stage !== "stage5_x_nitter");
+
   for (const item of [
-    ...existing.items.filter((item) => item.source_stage !== "stage5_x_nitter"),
+    ...previousBaseItems,
     ...xItems,
   ]) {
     if (item?.item_id) merged.set(item.item_id, item);
@@ -736,9 +749,11 @@ async function main() {
   const okCount = health.filter((item) => item.status === "ok").length;
   const errorCount = health.filter((item) => item.status === "error").length;
   const state =
-    health.length === 0
-      ? "disabled"
-      : okCount / health.length >= 0.75
+    PREFLIGHT_UNAVAILABLE
+      ? "unavailable"
+      : health.length === 0
+        ? "disabled"
+        : okCount / health.length >= 0.75
         ? "ok"
         : okCount > 0
           ? "partial"
@@ -768,6 +783,8 @@ async function main() {
     schema_version: "1.0.0",
     generated_at: generatedAt,
     mode: "nitter_multi_instance_rss_html_fallback",
+    preflight_unavailable: PREFLIGHT_UNAVAILABLE,
+    preflight_skip_reason: PREFLIGHT_UNAVAILABLE ? PREFLIGHT_SKIP_REASON : "",
     score_integration: false,
     completeness_guaranteed: false,
     configured_instances: instances.map((instance) => ({
@@ -792,12 +809,16 @@ async function main() {
     mode: "nitter_multi_instance_rss_html_fallback",
     assessment_limit:
       "Best-effort public X collection through third-party Nitter instances. Missing posts or accounts are possible. No attribution, automation finding or HAT score integration.",
+    collection_notice: PREFLIGHT_UNAVAILABLE
+      ? "No configured public Nitter instance was usable from the GitHub runner. Per-account X collection was skipped and prior X metadata, if any, was retained."
+      : "At least one public Nitter instance passed preflight; per-account collection was attempted.",
     counts: {
       configured_instances: instances.length,
       eligible_endpoints: eligible.length,
       checked_endpoints: health.length,
       successful_endpoints: okCount,
       failed_endpoints: errorCount,
+      skipped_endpoints: PREFLIGHT_UNAVAILABLE ? eligible.length : 0,
       collected_x_items: xItems.length,
       merged_current_items: mergedItems.length,
     },
@@ -810,6 +831,7 @@ async function main() {
       state,
       success_ratio: Number((okCount / Math.max(1, health.length)).toFixed(3)),
       completeness_guaranteed: false,
+      skip_reason: PREFLIGHT_UNAVAILABLE ? PREFLIGHT_SKIP_REASON : "",
     },
   };
 
@@ -818,6 +840,8 @@ async function main() {
     generated_at: generatedAt,
     state,
     configured_instances: instances.length,
+    preflight_unavailable: PREFLIGHT_UNAVAILABLE,
+    skip_reason: PREFLIGHT_UNAVAILABLE ? PREFLIGHT_SKIP_REASON : "",
     status_counts: detailedHealth.status_counts,
     collection_mode_counts: detailedHealth.collection_mode_counts,
     instance_statistics: detailedHealth.instance_statistics,
@@ -842,7 +866,12 @@ async function main() {
     `[influence-stage5] checked=${health.length} ok=${okCount} error=${errorCount} x_items=${xItems.length} merged=${mergedItems.length} state=${state}`,
   );
 
-  if (STRICT_MODE && eligible.length > 0 && okCount === 0) {
+  if (
+    STRICT_MODE &&
+    !PREFLIGHT_UNAVAILABLE &&
+    eligible.length > 0 &&
+    okCount === 0
+  ) {
     throw new Error("Strict mode: no X endpoint completed successfully through Nitter.");
   }
 }
