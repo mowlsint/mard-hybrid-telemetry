@@ -1,0 +1,65 @@
+name: Validate Influence Registry
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "config/influence/**"
+      - "scripts/influence/**"
+      - ".github/workflows/validate_influence_registry.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-influence-registry
+  cancel-in-progress: false
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate influence registry
+        run: node scripts/influence/validate_influence_registry.mjs
+
+      - name: Build public-safe registry status
+        run: node scripts/influence/build_influence_registry_status.mjs
+
+      - name: Show generated status
+        run: |
+          cat data/influence/validation_report.json
+          cat public/influence_registry_status.json
+
+      - name: Commit generated registry status
+        shell: bash
+        run: |
+          if git diff --quiet -- \
+            data/influence/validation_report.json \
+            public/influence_registry_status.json \
+            public/influence_registry_methodology.json; then
+            echo "No generated changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            data/influence/validation_report.json \
+            public/influence_registry_status.json \
+            public/influence_registry_methodology.json
+
+          git commit -m "Update influence registry validation outputs"
+          git push
