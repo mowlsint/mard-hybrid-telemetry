@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-07-18",
+  "source": "https://github.com/zedeus/nitter/wiki/Instances",
+  "purpose": "Best-effort public Nitter instance pool for public X account monitoring.",
+  "important_limitations": [
+    "Instances are operated by third parties and can fail, rate-limit, block GitHub Actions or disappear without notice.",
+    "Nitter uses X's unofficial API; collection completeness cannot be guaranteed.",
+    "No single instance is treated as authoritative.",
+    "The ingest tries RSS first where enabled and falls back to the public HTML timeline."
+  ],
+  "instances": [
+    {
+      "base_url": "https://nitter.poast.org",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 10,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nitter.privacyredirect.com",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 20,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nitter.tiekoetter.com",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 30,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nitter.catsarch.com",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 40,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nitter.kareem.one",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 50,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://lightbrd.com",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 60,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nitter.space",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 70,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://nuku.trabun.org",
+      "enabled": true,
+      "rss_enabled": true,
+      "priority": 80,
+      "notes": "Listed as online and working in the official Nitter wiki on 2026-07-18."
+    },
+    {
+      "base_url": "https://xcancel.com",
+      "enabled": true,
+      "rss_enabled": false,
+      "priority": 90,
+      "notes": "HTML fallback only by default because RSS behavior has been reported as inconsistent."
+    },
+    {
+      "base_url": "https://nitter.net",
+      "enabled": true,
+      "rss_enabled": false,
+      "priority": 100,
+      "notes": "Official instance; HTML fallback only by default because RSS behavior has been reported as inconsistent."
+    }
+  ]
+}
