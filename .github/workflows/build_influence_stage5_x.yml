@@ -1,0 +1,129 @@
+name: Build Influence X Stage 5
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_stage2_endpoints:
+        description: "Maximum website and Telegram endpoints"
+        required: false
+        default: "350"
+      max_social_endpoints:
+        description: "Maximum Bluesky and YouTube endpoints"
+        required: false
+        default: "220"
+      max_x_endpoints:
+        description: "Maximum X endpoints collected through Nitter"
+        required: false
+        default: "180"
+      x_concurrency:
+        description: "Parallel X/Nitter account requests"
+        required: false
+        default: "3"
+      nitter_instance_attempts:
+        description: "Maximum Nitter instances attempted per X account"
+        required: false
+        default: "5"
+      strict_x:
+        description: "Fail the workflow when no X source succeeds"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mard-influence-repo-writer
+  cancel-in-progress: false
+
+jobs:
+  build-x-ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      MARD_INFLUENCE_MAX_ENDPOINTS: ${{ inputs.max_stage2_endpoints || '350' }}
+      MARD_INFLUENCE_CONCURRENCY: "8"
+      MARD_INFLUENCE_MAX_SOCIAL_ENDPOINTS: ${{ inputs.max_social_endpoints || '220' }}
+      MARD_INFLUENCE_SOCIAL_CONCURRENCY: "6"
+      MARD_INFLUENCE_MAX_X_ENDPOINTS: ${{ inputs.max_x_endpoints || '180' }}
+      MARD_INFLUENCE_X_CONCURRENCY: ${{ inputs.x_concurrency || '3' }}
+      MARD_NITTER_MAX_INSTANCE_ATTEMPTS: ${{ inputs.nitter_instance_attempts || '5' }}
+      MARD_INFLUENCE_X_STRICT: ${{ inputs.strict_x || 'false' }}
+      MARD_INFLUENCE_REQUEST_TIMEOUT_MS: "15000"
+      MARD_INFLUENCE_X_REQUEST_TIMEOUT_MS: "18000"
+      MARD_INFLUENCE_MAX_ITEMS_PER_SOURCE: "12"
+      MARD_INFLUENCE_MAX_ITEMS_PER_SOCIAL_SOURCE: "30"
+      MARD_INFLUENCE_MAX_ITEMS_PER_X_SOURCE: "30"
+      MARD_INFLUENCE_MAX_BODY_BYTES: "3000000"
+      MARD_INFLUENCE_X_MAX_BODY_BYTES: "3000000"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: ".node-version"
+          package-manager-cache: false
+
+      - name: Show runtime
+        run: node --version
+
+      - name: Validate influence registry
+        run: node scripts/influence/validate_influence_registry.mjs
+
+      - name: Fetch website, RSS and Telegram metadata
+        run: node scripts/influence/fetch_influence_stage2.mjs
+
+      - name: Check Stage 2 outputs
+        run: node scripts/influence/check_influence_stage2.mjs
+
+      - name: Fetch Bluesky and YouTube metadata
+        run: node scripts/influence/fetch_influence_stage4_social.mjs
+
+      - name: Check Stage 4 outputs
+        run: node scripts/influence/check_influence_stage4_social.mjs
+
+      - name: Test Stage 5 Nitter parsers
+        run: node scripts/influence/test_influence_stage5_x_parser.mjs
+
+      - name: Fetch X metadata through Nitter
+        run: node scripts/influence/fetch_influence_stage5_x_nitter.mjs
+
+      - name: Check Stage 5 X outputs
+        run: node scripts/influence/check_influence_stage5_x.mjs
+
+      - name: Show public X status
+        run: |
+          cat public/influence_x_ingest_status.json
+          cat public/influence_x_source_health.json
+
+      - name: Commit Stage 2, Stage 4 and Stage 5 outputs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            data/influence/ingest/items_latest.json \
+            data/influence/ingest/source_health_latest.json \
+            data/influence/ingest/social_source_health_latest.json \
+            data/influence/ingest/x_source_health_latest.json \
+            public/influence_ingest_status.json \
+            public/influence_source_health.json \
+            public/influence_social_ingest_status.json \
+            public/influence_social_source_health.json \
+            public/influence_x_ingest_status.json \
+            public/influence_x_source_health.json
+
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+            exit 0
+          fi
+
+          git commit -m "Update Influence Watch X/Nitter Stage 5 outputs"
+          git push
