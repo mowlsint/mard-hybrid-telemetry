@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-18T10:42:30.085Z",
+  "mode": "hash_simhash_domain_time_clustering",
+  "assessment_limit": "Clusters are analytical indicators of similar or synchronized public content. They are not attribution findings or bot determinations.",
+  "parameters": {
+    "cluster_window_hours": 72,
+    "minimum_pair_score": 58,
+    "maximum_internal_clusters": 200
+  },
+  "counts": {
+    "analysed_items": 373,
+    "clusters": 3,
+    "elevated_clusters": 3,
+    "strong_clusters": 1
+  },
+  "clusters": [
+    {
+      "cluster_id": "4db1d1959d0f63140c6f1315",
+      "generated_at": "2026-07-18T10:42:30.084Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-07-18T10:41:17.448Z",
+        "end_at": "2026-07-18T10:41:19.102Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_nius",
+        "de_julian_reichelt"
+      ],
+      "endpoint_ids": [
+        "de_nius__website__nius_de",
+        "de_julian_reichelt__website__nius_de"
+      ],
+      "item_ids": [
+        "4da86452460f3da2f990e3ca7c5c7279",
+        "2e73ced33940751eba60ee552a83d4ad"
+      ],
+      "platforms": {
+        "website": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "bridge_media": 1,
+        "high_reach_political_influencer": 1
+      },
+      "shared_referenced_domains": {
+        "adnz.co": 1,
+        "api.nius.de": 1,
+        "cms.nius.de": 1,
+        "consent.cookiebot.com": 1,
+        "googletagmanager.com": 1,
+        "imasdk.googleapis.com": 1,
+        "nius.de": 1,
+        "securepubads.g.doubleclick.net": 1,
+        "shop.nius.de": 1,
+        "use.typekit.net": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "e86e441313d8a85bfa85bdb6",
+      "generated_at": "2026-07-18T10:42:30.084Z",
+      "assessment": {
+        "label": "elevated_amplification_pattern",
+        "coordination_indicator_score": 69,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-07-17T16:15:20.000Z",
+        "end_at": "2026-07-18T06:17:28.000Z",
+        "span_minutes": 842
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain"
+      ],
+      "actor_ids": [
+        "ru_two_majors",
+        "ru_rybar"
+      ],
+      "endpoint_ids": [
+        "ru_two_majors__telegram__dva_majors",
+        "ru_rybar__telegram__rybar"
+      ],
+      "item_ids": [
+        "3d1740cded52a75e0b90d26a67eb7cf4",
+        "25f8c6fe272a76bd88be814905d5cb18"
+      ],
+      "platforms": {
+        "telegram": 2
+      },
+      "countries": {
+        "RU": 2
+      },
+      "actor_classes": {
+        "milblogger": 2
+      },
+      "shared_referenced_domains": {
+        "dzen.ru": 1,
+        "ibb.co": 1,
+        "max.ru": 1,
+        "ok.ru": 1,
+        "qr.nspk.ru": 1,
+        "rutube.ru": 1,
+        "t.me": 1,
+        "vk.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "ab74eaacb2e30c445a5ad989",
+      "generated_at": "2026-07-18T10:42:30.076Z",
+      "assessment": {
+        "label": "elevated_amplification_pattern",
+        "coordination_indicator_score": 65,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 3,
+        "actors": 3,
+        "endpoints": 3,
+        "unique_content_hashes": 3,
+        "pair_edges": 2
+      },
+      "time": {
+        "start_at": "2026-07-18T10:42:01.062Z",
+        "end_at": "2026-07-18T10:42:02.316Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "weak_text_similarity",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_thueringen",
+        "de_bsw_sachsen_anhalt",
+        "de_bsw_mecklenburg_vorpommern"
+      ],
+      "endpoint_ids": [
+        "de_bsw_thueringen__website__th_bsw_vg_de",
+        "de_bsw_sachsen_anhalt__website__st_bsw_vg_de",
+        "de_bsw_mecklenburg_vorpommern__website__mv_bsw_vg_de"
+      ],
+      "item_ids": [
+        "9038418dca275043a2714ce78e31b797",
+        "db5fd7904c4251d21c7aa4fed4d95e7c",
+        "56b76a30d5bc71ee2ff4811de582385b"
+      ],
+      "platforms": {
+        "website": 3
+      },
+      "countries": {
+        "DE": 3
+      },
+      "actor_classes": {
+        "state_party_channel": 3
+      },
+      "shared_referenced_domains": {
+        "platform.twitter.com": 2
+      },
+      "restricted_item_count": 0
+    }
+  ]
+}
