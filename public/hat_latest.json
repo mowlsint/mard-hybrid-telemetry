@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-07-19T13:55:43.228Z",
+  "generated_at": "2026-07-19T19:34:17.246Z",
   "window_days": 30,
   "hat_score": 55,
   "level": "watch",
@@ -16,20 +16,20 @@
   "trend": "stable",
   "baseline": {
     "status": "active",
-    "points": 53,
-    "mean_hat_score": 60.8,
-    "delta_from_mean": -5.6
+    "points": 54,
+    "mean_hat_score": 60.7,
+    "delta_from_mean": -5.3
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 75,
     "kev_epss_mean": 14,
-    "threatfox_ioc_current": 16,
+    "threatfox_ioc_current": 17,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 86
+    "source_coverage": 79
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
@@ -43,12 +43,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 16,
+      "ioc_current_percentile": 17,
       "botnet_c2_current_percentile": 4,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 557,
-      "botnet_c2_36h_count": 225
+      "ioc_36h_count": 624,
+      "botnet_c2_36h_count": 246
     }
   },
   "disinformation_alert_level": {
@@ -61,17 +61,17 @@
       2,
       3
     ],
-    "mode": "bot_ioc_proxy_only_no_fimi_signal",
-    "fimi_lite_score": 0,
+    "mode": "fimi_lite_with_bot_ioc_proxy",
+    "fimi_lite_score": 35,
     "corroboration": {
-      "gdelt_unique_articles": 0,
+      "gdelt_unique_articles": 1,
       "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 0,
+      "disarm_aligned_tags": 1,
       "bot_state": "BWB",
-      "fimi_source_signal_present": false,
+      "fimi_source_signal_present": true,
       "bot_ioc_proxy_elevated": true
     },
-    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
+    "note": "Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade."
   },
   "metrics": {
     "kev": {
@@ -269,36 +269,40 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 426,
-      "ioc_count_7d": 4692,
-      "botnet_c2_count_1d": 169,
-      "botnet_c2_count_7d": 2406,
+      "ioc_count_1d": 438,
+      "ioc_count_7d": 4746,
+      "botnet_c2_count_1d": 164,
+      "botnet_c2_count_7d": 2421,
       "threat_types_1d": [
         {
           "name": "payload_delivery",
-          "count": 177
+          "count": 193
         },
         {
           "name": "botnet_cc",
-          "count": 169
+          "count": 164
         },
         {
           "name": "payload",
-          "count": 80
+          "count": 81
         }
       ],
       "malware_families_1d": [
         {
           "name": "ClearFake",
-          "count": 115
+          "count": 131
         },
         {
           "name": "Unknown malware",
-          "count": 89
+          "count": 63
         },
         {
           "name": "Cobalt Strike",
-          "count": 43
+          "count": 52
+        },
+        {
+          "name": "Vidar",
+          "count": 51
         },
         {
           "name": "Mirai",
@@ -309,23 +313,19 @@
           "count": 33
         },
         {
-          "name": "Vidar",
-          "count": 16
-        },
-        {
           "name": "Aisuru",
           "count": 15
-        },
-        {
-          "name": "Vjw0rm",
-          "count": 14
         },
         {
           "name": "ACR Stealer",
           "count": 7
         },
         {
-          "name": "DCRat",
+          "name": "Kuiper",
+          "count": 6
+        },
+        {
+          "name": "SalatStealer",
           "count": 6
         }
       ],
@@ -340,27 +340,27 @@
         },
         {
           "name": "Cobalt Strike",
-          "count": 172
+          "count": 192
         },
         {
           "name": "VShell",
-          "count": 165
-        },
-        {
-          "name": "AdaptixC2",
-          "count": 125
+          "count": 139
         },
         {
           "name": "Vidar",
-          "count": 124
+          "count": 131
+        },
+        {
+          "name": "AdaptixC2",
+          "count": 129
+        },
+        {
+          "name": "Aisuru",
+          "count": 75
         },
         {
           "name": "Remcos",
           "count": 75
-        },
-        {
-          "name": "Aisuru",
-          "count": 71
         },
         {
           "name": "AsyncRAT",
@@ -368,7 +368,7 @@
         },
         {
           "name": "ClearFake",
-          "count": 43
+          "count": 51
         }
       ],
       "historical": {
@@ -379,9 +379,9 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 557,
-        "current_36h_botnet_c2_count": 225,
-        "current_ioc_percentile": 16,
+        "current_36h_ioc_count": 624,
+        "current_36h_botnet_c2_count": 246,
+        "current_ioc_percentile": 17,
         "current_botnet_c2_percentile": 4,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
@@ -389,51 +389,190 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 426,
-      "botnet_cc_count": 2406,
+      "threatfox_count": 438,
+      "botnet_cc_count": 2421,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "degraded_no_source_signal",
-      "score": 0,
+      "status": "partial",
+      "score": 35,
       "confidence": "low",
-      "mode": "fimi_lite_degraded_no_source_signal",
+      "mode": "fimi_lite_maritime_relevance_filtered",
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": false,
-        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
+        "source_signal_present": true,
+        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 0,
+        "gdelt_narrative_pressure": 71,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 0
+        "disarm_tag_relevance": 13
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 0,
-        "accepted_articles": 0,
+        "raw_unique_articles": 75,
+        "accepted_articles": 1,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 0,
-        "weighted_article_count": 0,
-        "rejected_samples": []
+        "global_maritime_spillover_articles": 1,
+        "rejected_as_noise_or_broad_context": 74,
+        "weighted_article_count": 0.4,
+        "rejected_samples": [
+          {
+            "title": "Thế giới đã tìm được lời giải thay thế eo biển Hormuz ?",
+            "domain": "stockbiz.vn",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": [
+                "hormuz"
+              ]
+            }
+          },
+          {
+            "title": "Filipinas inmoviliza la flota de barcos de pasajeros de la compaa luego de que al menos 18 personas murieran en el hundimiento de un ferry",
+            "domain": "bitacora.com.uy",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Covert Maritime Intelligence and Russia Shadow Fleet",
+            "domain": "maritime-executive.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "shadow fleet",
+                "fleet",
+                "maritime"
+              ],
+              "threat_fimi": [
+                "russia",
+                "covert"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Русия свали 161 украински дрона за ден ᐉ Новини от Fakti . bg - Свят",
+            "domain": "fakti.bg",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Araghchi says Iran faced bombing threat during US talks",
+            "domain": "siasat.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          },
+          {
+            "title": "Трамп закликав додати Іран до санкційного законопроєкту проти РФ",
+            "domain": "espreso.tv",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          },
+          {
+            "title": "Narni . Pillole . Tramini sembra un attore fatto , Quondam si confonde con le sigle ( sembra ), quindi oggi …",
+            "domain": "terninrete.it",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "« Он сам не хотел этого »: выяснилось , почему Дзержинского не удалось уберечь от преждевременной смерти",
+            "domain": "mk.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          }
+        ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
-        "unique_articles_raw": 0,
-        "unique_articles": 0,
+        "article_count": 75,
+        "unique_articles_raw": 75,
+        "unique_articles": 1,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_articles": 0,
-        "weighted_articles": 0,
-        "historical_percentile": null,
-        "top_domains": [],
-        "sample": []
+        "global_maritime_spillover_articles": 1,
+        "rejected_articles": 74,
+        "weighted_articles": 0.4,
+        "historical_percentile": 71,
+        "top_domains": [
+          {
+            "name": "ibtimes.com.au",
+            "count": 1
+          }
+        ],
+        "sample": [
+          {
+            "title": "Strait of Hormuz Update : US Blockade Holds as Renewed Fighting Sends Oil Prices Surging Sharply This Week",
+            "url": "https://www.ibtimes.com.au/us-iran-ceasefire-collapse-strait-hormuz-crisis-1872556",
+            "domain": "ibtimes.com.au",
+            "language": "English",
+            "source_country": "Australia",
+            "seen_date": "20260719T104500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "strait"
+                ],
+                "threat_fimi": [
+                  "blockade"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "hormuz",
+                  "iran",
+                  "strait",
+                  "oil price",
+                  "oil prices"
+                ]
+              }
+            }
+          }
+        ]
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -444,50 +583,61 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 0,
-        "tags": []
+        "tag_count": 1,
+        "tags": [
+          {
+            "id": "maritime_legal_framing",
+            "label": "Maritime legal or piracy framing",
+            "count": 1,
+            "matched_keywords": [
+              "blockade"
+            ]
+          }
+        ]
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
-          "count": 0,
-          "raw_count": 0,
+          "status": "partial",
+          "count": 1,
+          "raw_count": 75,
           "core_count": 0,
-          "global_spillover_count": 0,
-          "rejected_count": 0,
-          "weighted_count": 0,
+          "global_spillover_count": 1,
+          "rejected_count": 74,
+          "weighted_count": 0.4,
           "queries": 3,
-          "ok_queries": 0,
-          "failed_queries": 3,
+          "ok_queries": 1,
+          "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_2: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "fetch failed",
+            "fetch failed"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "ok",
+          "status": "error",
           "count": 0,
           "queries": 2,
-          "ok_queries": 2,
-          "failed_queries": 0,
+          "ok_queries": 0,
+          "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
-          "errors": []
+          "errors": [
+            "euvsdisinfo_case_watch_1: HTTP 429",
+            "euvsdisinfo_case_watch_2: HTTP 429"
+          ]
         },
         {
           "source": "disarm_aligned_taxonomy",
           "status": "ok",
-          "count": 0,
+          "count": 1,
           "method": "local_keyword_mapping",
-          "applied_to_articles": 0
+          "applied_to_articles": 1
         }
       ],
       "history": {
-        "gdelt_points": 13,
-        "fimi_score_points": 44
+        "gdelt_points": 14,
+        "fimi_score_points": 45
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
@@ -497,12 +647,16 @@
     "24 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1381",
-    "426 ThreatFox IOCs in the last 1 day",
-    "2406 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "438 ThreatFox IOCs in the last 1 day",
+    "2421 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BWB — Bots were busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
+    "FIMI-lite score: 35 (low confidence)",
+    "GDELT maritime/FIMI watch: 1 score-relevant articles in 36h after local maritime filtering",
+    "Maritime filter: 0 Core MARD-Eu, 1 Global Maritime Spillover, 74 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "DISARM-aligned tags observed: Maritime legal or piracy framing"
   ],
   "source_health": [
     {
@@ -525,51 +679,53 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 426,
-      "count_7d": 4692,
-      "botnet_cc_count": 2406,
+      "count": 438,
+      "count_7d": 4746,
+      "botnet_cc_count": 2421,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "2a8e1ee5ad2219b90767fe65327ac69de347e6ff2d9b3bbfddc16dcaedf8b504",
-      "hash_7d": "d60de86ef628e5f5dfd5e6b0f3e7e4493ee89ba280b329c8f48fd11c4319f1dd",
+      "hash_1d": "f7377ca7e53508aade98ea052d27eb5cd24830fe86c6d625680c2f4c50987d58",
+      "hash_7d": "f0d28e48a0a9cc5f609d2ce095a1549079afb9d8eb872eb50d41d2dc26bb2aa5",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
-      "count": 0,
-      "raw_count": 0,
+      "status": "partial",
+      "count": 1,
+      "raw_count": 75,
       "core_count": 0,
-      "global_spillover_count": 0,
-      "rejected_count": 0,
-      "weighted_count": 0,
+      "global_spillover_count": 1,
+      "rejected_count": 74,
+      "weighted_count": 0.4,
       "queries": 3,
-      "ok_queries": 0,
-      "failed_queries": 3,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "fetch failed",
+        "fetch failed"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "ok",
+      "status": "error",
       "count": 0,
       "queries": 2,
-      "ok_queries": 2,
-      "failed_queries": 0,
+      "ok_queries": 0,
+      "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
-      "errors": []
+      "errors": [
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: HTTP 429"
+      ]
     },
     {
       "source": "disarm_aligned_taxonomy",
       "status": "ok",
-      "count": 0,
+      "count": 1,
       "method": "local_keyword_mapping",
-      "applied_to_articles": 0
+      "applied_to_articles": 1
     }
   ],
   "source_health_map": {
@@ -577,8 +733,8 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
-    "gdelt_fimi": "error",
-    "euvsdisinfo_case_watch": "ok",
+    "gdelt_fimi": "partial",
+    "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -607,14 +763,15 @@
     "level": "low",
     "signals": [
       "trailing bot/IOC proxy telemetry was elevated recently (BWB)",
-      "225 botnet/C2-like indicators in the current 36h window",
-      "partial/degraded source access: gdelt_fimi"
+      "246 botnet/C2-like indicators in the current 36h window",
+      "1 Global Maritime Spillover articles retained with lower weight",
+      "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20260719T135543_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260719T193417_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
