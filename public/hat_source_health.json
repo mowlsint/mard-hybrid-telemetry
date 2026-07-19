@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "c78a5e46fa8a5300893109fe19746bd245fb818437907dd4b4b7937abfd4c021"
+    "hash": "d8a5c00ab73732855e239e9d45b537dc49880046c6ce3342ef93d2899808f1bb"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,51 +19,50 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 416,
-    "count_7d": 4693,
-    "botnet_cc_count": 2403,
+    "count": 426,
+    "count_7d": 4692,
+    "botnet_cc_count": 2406,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "c5e8c05e5b2ad02489e7e736c176b0eba5f9cda70bd5533d5ab44e112170733f",
-    "hash_7d": "c4bcdff2bb3e3fd368a5a66cce5b63fa9a3def224703fa900be0dcc0d3b4b7a0",
+    "hash_1d": "2a8e1ee5ad2219b90767fe65327ac69de347e6ff2d9b3bbfddc16dcaedf8b504",
+    "hash_7d": "d60de86ef628e5f5dfd5e6b0f3e7e4493ee89ba280b329c8f48fd11c4319f1dd",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 5,
-    "raw_count": 75,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
     "core_count": 0,
-    "global_spillover_count": 5,
-    "rejected_count": 70,
-    "weighted_count": 2,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
       "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "partial",
+    "status": "ok",
     "count": 0,
     "queries": 2,
-    "ok_queries": 1,
-    "failed_queries": 1,
+    "ok_queries": 2,
+    "failed_queries": 0,
     "method": "gdelt_domain_restricted_artlist",
-    "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429"
-    ]
+    "errors": []
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 3,
+    "count": 0,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 5
+    "applied_to_articles": 0
   }
 ]

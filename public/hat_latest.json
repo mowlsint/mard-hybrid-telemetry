@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-07-19T08:34:44.130Z",
+  "generated_at": "2026-07-19T13:55:43.228Z",
   "window_days": 30,
   "hat_score": 55,
   "level": "watch",
@@ -16,15 +16,15 @@
   "trend": "stable",
   "baseline": {
     "status": "active",
-    "points": 52,
-    "mean_hat_score": 60.9,
-    "delta_from_mean": -6.1
+    "points": 53,
+    "mean_hat_score": 60.8,
+    "delta_from_mean": -5.6
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 75,
-    "kev_epss_mean": 13,
-    "threatfox_ioc_current": 14,
+    "kev_epss_mean": 14,
+    "threatfox_ioc_current": 16,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
@@ -43,12 +43,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 14,
+      "ioc_current_percentile": 16,
       "botnet_c2_current_percentile": 4,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 798,
-      "botnet_c2_36h_count": 186
+      "ioc_36h_count": 557,
+      "botnet_c2_36h_count": 225
     }
   },
   "disinformation_alert_level": {
@@ -61,24 +61,24 @@
       2,
       3
     ],
-    "mode": "fimi_lite_with_bot_ioc_proxy",
-    "fimi_lite_score": 9,
+    "mode": "bot_ioc_proxy_only_no_fimi_signal",
+    "fimi_lite_score": 0,
     "corroboration": {
-      "gdelt_unique_articles": 5,
+      "gdelt_unique_articles": 0,
       "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 3,
+      "disarm_aligned_tags": 0,
       "bot_state": "BWB",
-      "fimi_source_signal_present": true,
+      "fimi_source_signal_present": false,
       "bot_ioc_proxy_elevated": true
     },
-    "note": "Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade."
+    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
   },
   "metrics": {
     "kev": {
       "total_kev": 1647,
       "recent_7d": 10,
       "recent_30d": 24,
-      "epss_mean_recent_kev": 0.1349,
+      "epss_mean_recent_kev": 0.1381,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2026-39808",
@@ -87,7 +87,7 @@
           "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
           "date_added": "2026-07-16",
           "epss": 0.84158,
-          "percentile": 0.99666
+          "percentile": 0.99667
         },
         {
           "cve": "CVE-2026-34910",
@@ -105,7 +105,7 @@
           "vulnerability_name": "Cisco Unified Communications Manager Server-Side Request Forgery (SSRF) Vulnerability",
           "date_added": "2026-06-25",
           "epss": 0.41694,
-          "percentile": 0.98531
+          "percentile": 0.98532
         },
         {
           "cve": "CVE-2026-25089",
@@ -114,7 +114,7 @@
           "vulnerability_name": "Fortinet FortiSandbox OS Command Injection Vulnerability",
           "date_added": "2026-07-16",
           "epss": 0.36135,
-          "percentile": 0.98302
+          "percentile": 0.98303
         },
         {
           "cve": "CVE-2026-48282",
@@ -132,7 +132,16 @@
           "vulnerability_name": "Cisco IOS Cross-Site Request Forgery Vulnerability",
           "date_added": "2026-07-13",
           "epss": 0.23857,
-          "percentile": 0.97575
+          "percentile": 0.97576
+        },
+        {
+          "cve": "CVE-2026-56291",
+          "vendor_project": "Balbooa",
+          "product": "Forms",
+          "vulnerability_name": "Balbooa Forms Unrestricted Upload of File with Dangerous Type Vulnerability",
+          "date_added": "2026-07-10",
+          "epss": 0.08635,
+          "percentile": 0.94503
         },
         {
           "cve": "CVE-2026-56164",
@@ -141,7 +150,7 @@
           "vulnerability_name": "Microsoft SharePoint Server Missing Authentication for Critical Function Vulnerability",
           "date_added": "2026-07-14",
           "epss": 0.05601,
-          "percentile": 0.92037
+          "percentile": 0.92039
         },
         {
           "cve": "CVE-2026-45659",
@@ -150,7 +159,7 @@
           "vulnerability_name": "Microsoft SharePoint Server Deserialization of Untrusted Data Vulnerability",
           "date_added": "2026-07-01",
           "epss": 0.03219,
-          "percentile": 0.86798
+          "percentile": 0.86805
         },
         {
           "cve": "CVE-2026-56290",
@@ -159,7 +168,7 @@
           "vulnerability_name": "Joomlack Page Builder Improper Access Control Vulnerability",
           "date_added": "2026-07-07",
           "epss": 0.02912,
-          "percentile": 0.8545
+          "percentile": 0.85455
         },
         {
           "cve": "CVE-2026-34908",
@@ -168,7 +177,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Improper Access Control Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02452,
-          "percentile": 0.82579
+          "percentile": 0.82584
         },
         {
           "cve": "CVE-2026-34909",
@@ -177,16 +186,7 @@
           "vulnerability_name": "Ubiquiti UniFi OS Path Traversal Vulnerability",
           "date_added": "2026-06-23",
           "epss": 0.02269,
-          "percentile": 0.81096
-        },
-        {
-          "cve": "CVE-2026-48908",
-          "vendor_project": "JoomShaper",
-          "product": "SP Page Builder",
-          "vulnerability_name": "JoomShaper SP Page Builder Unrestricted Upload of File with Dangerous Type Vulnerability",
-          "date_added": "2026-07-07",
-          "epss": 0.01569,
-          "percentile": 0.72594
+          "percentile": 0.81102
         }
       ]
     },
@@ -197,108 +197,108 @@
           "cve": "CVE-2014-0160",
           "epss": 0.99999,
           "percentile": 0.99997,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2014-3566",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2014-6271",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2015-1635",
           "epss": 0.99999,
           "percentile": 0.99998,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2017-5638",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2017-9841",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2019-0708",
           "epss": 0.99999,
           "percentile": 0.99999,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2020-5902",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2021-1498",
           "epss": 0.99999,
           "percentile": 0.9999,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2023-0669",
           "epss": 0.99999,
           "percentile": 0.99996,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2023-1389",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         },
         {
           "cve": "CVE-2023-1671",
           "epss": 0.99999,
           "percentile": 0.99991,
-          "date": "2026-07-18"
+          "date": "2026-07-19"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 416,
-      "ioc_count_7d": 4693,
-      "botnet_c2_count_1d": 150,
-      "botnet_c2_count_7d": 2403,
+      "ioc_count_1d": 426,
+      "ioc_count_7d": 4692,
+      "botnet_c2_count_1d": 169,
+      "botnet_c2_count_7d": 2406,
       "threat_types_1d": [
         {
           "name": "payload_delivery",
-          "count": 185
+          "count": 177
         },
         {
           "name": "botnet_cc",
-          "count": 150
+          "count": 169
         },
         {
           "name": "payload",
           "count": 80
-        },
-        {
-          "name": "cc_skimming",
-          "count": 1
         }
       ],
       "malware_families_1d": [
         {
           "name": "ClearFake",
-          "count": 110
+          "count": 115
         },
         {
           "name": "Unknown malware",
-          "count": 108
+          "count": 89
+        },
+        {
+          "name": "Cobalt Strike",
+          "count": 43
         },
         {
           "name": "Mirai",
@@ -309,28 +309,24 @@
           "count": 33
         },
         {
-          "name": "Cobalt Strike",
-          "count": 27
+          "name": "Vidar",
+          "count": 16
+        },
+        {
+          "name": "Aisuru",
+          "count": 15
         },
         {
           "name": "Vjw0rm",
           "count": 14
         },
         {
-          "name": "Vidar",
-          "count": 9
-        },
-        {
-          "name": "Aisuru",
-          "count": 8
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 8
-        },
-        {
           "name": "ACR Stealer",
           "count": 7
+        },
+        {
+          "name": "DCRat",
+          "count": 6
         }
       ],
       "botnet_families_7d": [
@@ -340,39 +336,39 @@
         },
         {
           "name": "Unknown malware",
-          "count": 275
-        },
-        {
-          "name": "VShell",
-          "count": 180
+          "count": 270
         },
         {
           "name": "Cobalt Strike",
-          "count": 154
+          "count": 172
+        },
+        {
+          "name": "VShell",
+          "count": 165
         },
         {
           "name": "AdaptixC2",
-          "count": 127
+          "count": 125
         },
         {
           "name": "Vidar",
-          "count": 117
+          "count": 124
         },
         {
           "name": "Remcos",
-          "count": 77
+          "count": 75
+        },
+        {
+          "name": "Aisuru",
+          "count": 71
         },
         {
           "name": "AsyncRAT",
           "count": 70
         },
         {
-          "name": "Aisuru",
-          "count": 66
-        },
-        {
           "name": "ClearFake",
-          "count": 36
+          "count": 43
         }
       ],
       "historical": {
@@ -383,9 +379,9 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 798,
-        "current_36h_botnet_c2_count": 186,
-        "current_ioc_percentile": 14,
+        "current_36h_ioc_count": 557,
+        "current_36h_botnet_c2_count": 225,
+        "current_ioc_percentile": 16,
         "current_botnet_c2_percentile": 4,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
@@ -393,319 +389,51 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 416,
-      "botnet_cc_count": 2403,
+      "threatfox_count": 426,
+      "botnet_cc_count": 2406,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "partial",
-      "score": 9,
+      "status": "degraded_no_source_signal",
+      "score": 0,
       "confidence": "low",
-      "mode": "fimi_lite_maritime_relevance_filtered",
+      "mode": "fimi_lite_degraded_no_source_signal",
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 3,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 38
+        "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 75,
-        "accepted_articles": 5,
+        "raw_unique_articles": 0,
+        "accepted_articles": 0,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 5,
-        "rejected_as_noise_or_broad_context": 70,
-        "weighted_article_count": 2,
-        "rejected_samples": [
-          {
-            "title": "What to know about the challenges Andy Burnham will face as united kingdom prime minister",
-            "domain": "japantoday.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "What to know about the challenges Andy Burnham will face as united kingdom prime minister",
-            "domain": "abcnews.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "The Iranian deception that fooled the US and funded its military",
-            "domain": "theweek.in",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          },
-          {
-            "title": "Ukraine - Krieg aktuell : Explosionen in Kiew – Einkaufszentrum getroffen",
-            "domain": "az-online.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "What to know about the challenges Andy Burnham will face as united kingdom prime minister",
-            "domain": "cecildaily.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "短命停火成財路 ！ 伊朗半個月狂運5000萬桶油到這國 進帳上看1900億元 | 中東戰火連綿 | 全球",
-            "domain": "udn.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "How global scammers use US tech to fleece people",
-            "domain": "pasadenastarnews.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Ukraine - Krieg aktuell : Explosionen in Kiew – Einkaufszentrum getroffen",
-            "domain": "ovb-online.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          }
-        ]
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 0,
+        "weighted_article_count": 0,
+        "rejected_samples": []
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 75,
-        "unique_articles_raw": 75,
-        "unique_articles": 5,
+        "article_count": 0,
+        "unique_articles_raw": 0,
+        "unique_articles": 0,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 5,
-        "rejected_articles": 70,
-        "weighted_articles": 2,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 0,
+        "weighted_articles": 0,
         "historical_percentile": null,
-        "top_domains": [
-          {
-            "name": "economictimes.indiatimes.com",
-            "count": 1
-          },
-          {
-            "name": "iraqsun.com",
-            "count": 1
-          },
-          {
-            "name": "moneycontrol.com",
-            "count": 1
-          },
-          {
-            "name": "newkerala.com",
-            "count": 1
-          },
-          {
-            "name": "yahoo.com",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "US forces redirect 5 commercial vessels , disable 1 after resumption of naval blockade on Iran",
-            "url": "http://www.iraqsun.com/news/279196631/us-forces-redirect-5-commercial-vessels-disable-1-after-resumption-of-naval-blockade-on-iran",
-            "domain": "iraqsun.com",
-            "language": "English",
-            "source_country": "Iraq",
-            "seen_date": "20260719T061500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "vessel",
-                  "vessels",
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran",
-                  "naval blockade"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Nobody is willing to move : Iran ship attacks push Strait of Hormuz into worst - case scenario , says maritime risk CEO",
-            "url": "https://www.moneycontrol.com/world/nobody-is-willing-to-move-iran-s-ship-attacks-push-strait-of-hormuz-into-worst-case-scenario-says-maritime-risk-ceo-article-13977644.html",
-            "domain": "moneycontrol.com",
-            "language": "English",
-            "source_country": "India",
-            "seen_date": "20260719T051500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ship",
-                  "maritime",
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "attack",
-                  "attacks"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US forces redirect 5 commercial vessels , disable 1 after resumption of naval blockade on Iran",
-            "url": "https://economictimes.indiatimes.com/news/international/world-news/us-forces-redirect-5-commercial-vessels-disable-1-after-resumption-of-naval-blockade-on-iran/articleshow/132488868.cms",
-            "domain": "economictimes.indiatimes.com",
-            "language": "English",
-            "source_country": "India",
-            "seen_date": "20260719T014500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "vessel",
-                  "vessels",
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran",
-                  "naval blockade"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US Navy Redirects 5 Ships , Disables 1 in Iran Blockade",
-            "url": "https://www.newkerala.com/news/a/us-forces-redirect-commercial-vessels-disable-after-resumption-558.htm",
-            "domain": "newkerala.com",
-            "language": "English",
-            "source_country": "India",
-            "seen_date": "20260719T004500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ship",
-                  "ships",
-                  "vessel",
-                  "vessels",
-                  "navy"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran"
-                ]
-              }
-            }
-          },
-          {
-            "title": "2 U . S . service members killed in Jordan defending against Iranian attacks",
-            "url": "https://www.yahoo.com/news/politics/articles/worst-case-scenario-shippers-u-102205801.html",
-            "domain": "yahoo.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20260718T224500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ship"
-                ],
-                "threat_fimi": [
-                  "attack",
-                  "attacks"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran"
-                ]
-              }
-            }
-          }
-        ]
+        "top_domains": [],
+        "sample": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -716,78 +444,50 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 3,
-        "tags": [
-          {
-            "id": "maritime_legal_framing",
-            "label": "Maritime legal or piracy framing",
-            "count": 3,
-            "matched_keywords": [
-              "ship",
-              "vessel",
-              "blockade"
-            ]
-          },
-          {
-            "id": "false_attribution",
-            "label": "False attribution / blame shifting",
-            "count": 1,
-            "matched_keywords": [
-              "cia"
-            ]
-          },
-          {
-            "id": "narrative_amplification",
-            "label": "Narrative amplification / repetition",
-            "count": 1,
-            "matched_keywords": [
-              "again"
-            ]
-          }
-        ]
+        "tag_count": 0,
+        "tags": []
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "partial",
-          "count": 5,
-          "raw_count": 75,
+          "status": "error",
+          "count": 0,
+          "raw_count": 0,
           "core_count": 0,
-          "global_spillover_count": 5,
-          "rejected_count": 70,
-          "weighted_count": 2,
+          "global_spillover_count": 0,
+          "rejected_count": 0,
+          "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 1,
-          "failed_queries": 2,
+          "ok_queries": 0,
+          "failed_queries": 3,
           "errors": [
             "gdelt_fimi_1: HTTP 429",
+            "gdelt_fimi_2: HTTP 429",
             "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "partial",
+          "status": "ok",
           "count": 0,
           "queries": 2,
-          "ok_queries": 1,
-          "failed_queries": 1,
+          "ok_queries": 2,
+          "failed_queries": 0,
           "method": "gdelt_domain_restricted_artlist",
-          "errors": [
-            "euvsdisinfo_case_watch_1: HTTP 429"
-          ]
+          "errors": []
         },
         {
           "source": "disarm_aligned_taxonomy",
           "status": "ok",
-          "count": 3,
+          "count": 0,
           "method": "local_keyword_mapping",
-          "applied_to_articles": 5
+          "applied_to_articles": 0
         }
       ],
       "history": {
-        "gdelt_points": 12,
-        "fimi_score_points": 43
+        "gdelt_points": 13,
+        "fimi_score_points": 44
       },
       "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
@@ -796,17 +496,13 @@
     "10 CISA KEV additions in the last 7 days",
     "24 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1349",
-    "416 ThreatFox IOCs in the last 1 day",
-    "2403 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1381",
+    "426 ThreatFox IOCs in the last 1 day",
+    "2406 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BWB — Bots were busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite score: 9 (low confidence)",
-    "GDELT maritime/FIMI watch: 5 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 5 Global Maritime Spillover, 70 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "DISARM-aligned tags observed: Maritime legal or piracy framing, False attribution / blame shifting, Narrative amplification / repetition"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "source_health": [
     {
@@ -819,7 +515,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "c78a5e46fa8a5300893109fe19746bd245fb818437907dd4b4b7937abfd4c021"
+      "hash": "d8a5c00ab73732855e239e9d45b537dc49880046c6ce3342ef93d2899808f1bb"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -829,52 +525,51 @@
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 416,
-      "count_7d": 4693,
-      "botnet_cc_count": 2403,
+      "count": 426,
+      "count_7d": 4692,
+      "botnet_cc_count": 2406,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "c5e8c05e5b2ad02489e7e736c176b0eba5f9cda70bd5533d5ab44e112170733f",
-      "hash_7d": "c4bcdff2bb3e3fd368a5a66cce5b63fa9a3def224703fa900be0dcc0d3b4b7a0",
+      "hash_1d": "2a8e1ee5ad2219b90767fe65327ac69de347e6ff2d9b3bbfddc16dcaedf8b504",
+      "hash_7d": "d60de86ef628e5f5dfd5e6b0f3e7e4493ee89ba280b329c8f48fd11c4319f1dd",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "partial",
-      "count": 5,
-      "raw_count": 75,
+      "status": "error",
+      "count": 0,
+      "raw_count": 0,
       "core_count": 0,
-      "global_spillover_count": 5,
-      "rejected_count": 70,
-      "weighted_count": 2,
+      "global_spillover_count": 0,
+      "rejected_count": 0,
+      "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
         "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "partial",
+      "status": "ok",
       "count": 0,
       "queries": 2,
-      "ok_queries": 1,
-      "failed_queries": 1,
+      "ok_queries": 2,
+      "failed_queries": 0,
       "method": "gdelt_domain_restricted_artlist",
-      "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429"
-      ]
+      "errors": []
     },
     {
       "source": "disarm_aligned_taxonomy",
       "status": "ok",
-      "count": 3,
+      "count": 0,
       "method": "local_keyword_mapping",
-      "applied_to_articles": 5
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -882,8 +577,8 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
-    "gdelt_fimi": "partial",
-    "euvsdisinfo_case_watch": "partial",
+    "gdelt_fimi": "error",
+    "euvsdisinfo_case_watch": "ok",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -912,15 +607,14 @@
     "level": "low",
     "signals": [
       "trailing bot/IOC proxy telemetry was elevated recently (BWB)",
-      "186 botnet/C2-like indicators in the current 36h window",
-      "5 Global Maritime Spillover articles retained with lower weight",
-      "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
+      "225 botnet/C2-like indicators in the current 36h window",
+      "partial/degraded source access: gdelt_fimi"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20260719T083444_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20260719T135543_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
