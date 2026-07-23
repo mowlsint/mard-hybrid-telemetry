@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1651,
-    "hash": "f17a5ced05e70c4abbc893bed7ffd52c8dd53ed4fb112c95380f8de53c5ba597"
+    "count": 1653,
+    "hash": "c61f8532deb6c833d80f1e2edf6abdce584aaf1cb480a160dffa7ce9e524011f"
   },
   {
     "source": "first_epss_top",
@@ -14,37 +14,37 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 28
+    "count": 25
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 403,
-    "count_7d": 4053,
-    "botnet_cc_count": 2324,
+    "count": 714,
+    "count_7d": 4347,
+    "botnet_cc_count": 2319,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "faed5e291be91dfb971ec80e91a4fb06920c17f6beef6fc0d8f362b3f8314103",
-    "hash_7d": "9bec850c1508fa243435ee63c318d9c0c0c14d70588adc60f688216f65de4195",
+    "hash_1d": "ade8c5cd7edf5fb307f008b3b3f4fe639061b421fcf30baba618723c367ed735",
+    "hash_7d": "924036d15a9aa67a1a9f60d0caee9de68c42b4bf8ee4186d9709b85f2f245f4a",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 1,
+    "count": 5,
     "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 1,
-    "rejected_count": 74,
-    "weighted_count": 0.4,
+    "global_spillover_count": 5,
+    "rejected_count": 70,
+    "weighted_count": 2,
     "queries": 3,
     "ok_queries": 1,
     "failed_queries": 2,
     "errors": [
-      "fetch failed",
-      "fetch failed"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -62,8 +62,8 @@
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 2,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 1
+    "applied_to_articles": 5
   }
 ]
