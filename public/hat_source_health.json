@@ -19,52 +19,52 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 1686,
-    "count_7d": 6683,
-    "botnet_cc_count": 1987,
+    "count": 1421,
+    "count_7d": 6592,
+    "botnet_cc_count": 1883,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "7a70b191244302311841c9644a58b771c200b80113426a89b347a2c368e54cb1",
-    "hash_7d": "a55c9cba861ae6bb9c2079be7be7a0d5e199166ea46c1e1aada43b86f6115747",
+    "hash_1d": "b23804664bb7c5fccdc58c94c440e44ddcc734a9a5323de8422e4c95da981434",
+    "hash_7d": "2ceb1b9003035a611db8116cf1ddfb5f343380c587cbb43980656c9cf7ef57bc",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 1,
-    "raw_count": 75,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
     "core_count": 0,
-    "global_spillover_count": 1,
-    "rejected_count": 74,
-    "weighted_count": 0.4,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
+      "gdelt_fimi_1: HTTP 429",
       "gdelt_fimi_2: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 1,
+    "count": 0,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 1
+    "applied_to_articles": 0
   }
 ]
