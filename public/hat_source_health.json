@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1655,
-    "hash": "e0326281b91c4f9a5be6bc01b0d0edbbfa933643bc96e5382cd1081b16d8170a"
+    "count": 1656,
+    "hash": "15b44d7c9c57f3d27128999e09f0fc991659a0b64713b5e1af599565447a2409"
   },
   {
     "source": "first_epss_top",
@@ -19,52 +19,51 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 1829,
-    "count_7d": 8056,
-    "botnet_cc_count": 2141,
+    "count": 1797,
+    "count_7d": 8145,
+    "botnet_cc_count": 2158,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "4934a25871de30b9349d90d27b97948abd8ab0d07354afc4f0bf72d7c0dfa4aa",
-    "hash_7d": "806a17f6c42782371226dba8a7d4c57c438679520f4da0491445bf43c2edef34",
+    "hash_1d": "708d41050fefbc674b45b902482376aa2a2641b957b479eb5f955abf662ed448",
+    "hash_7d": "32cc81b170af252cb30d80ac9e3eb667c169f711826899b5c393f36c5c4b66d0",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 3,
+    "count": 0,
     "raw_count": 75,
-    "core_count": 1,
-    "global_spillover_count": 2,
-    "rejected_count": 72,
-    "weighted_count": 1.8,
+    "core_count": 0,
+    "global_spillover_count": 0,
+    "rejected_count": 75,
+    "weighted_count": 0,
     "queries": 3,
     "ok_queries": 1,
     "failed_queries": 2,
     "errors": [
       "fetch failed",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_2: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 3,
+    "count": 0,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 3
+    "applied_to_articles": 0
   }
 ]
