@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1656,
-    "hash": "15b44d7c9c57f3d27128999e09f0fc991659a0b64713b5e1af599565447a2409"
+    "count": 1657,
+    "hash": "b67a7c010042b6e007416b18bc6b5324de2a66db8f2eb80ffb007a791657e257"
   },
   {
     "source": "first_epss_top",
@@ -14,37 +14,38 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 25
+    "count": 26
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 555,
-    "count_7d": 7264,
-    "botnet_cc_count": 2372,
+    "count": 424,
+    "count_7d": 6764,
+    "botnet_cc_count": 2308,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "86ae9716d2293d6becf4be93460d2488fc21b7f2f98ba9480233e6a29564e877",
-    "hash_7d": "4b36001a3d181b5c72fdafc3511996bfdb4743256730cd299150c9bf7b1c9e3f",
+    "hash_1d": "dc1d1790efa743a578d3403a5c34698027268a0bddb045ce1c7d02a7de65ddcb",
+    "hash_7d": "6302c4bc83a9379e15e03f76dce92b0847b287450fe60fc426cbc7bf87ef3468",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
-    "raw_count": 75,
+    "raw_count": 0,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 75,
+    "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_2: HTTP 429",
-      "gdelt_fimi_3: HTTP 429"
+      "fetch failed",
+      "fetch failed",
+      "fetch failed"
     ]
   },
   {
@@ -57,7 +58,7 @@
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
       "fetch failed",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "fetch failed"
     ]
   },
   {
