@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1657,
-    "hash": "16acee8334e59e44ccbaed4da7d02b409144061542b64ad74a9443fb7842a828"
+    "count": 1660,
+    "hash": "635dff916c4092c0bd851a5cebf914725f0d80496d4dbe9215c6f0e01d95ef9e"
   },
   {
     "source": "first_epss_top",
@@ -14,37 +14,37 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 26
+    "count": 29
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 469,
-    "count_7d": 6700,
-    "botnet_cc_count": 2373,
+    "count": 539,
+    "count_7d": 6671,
+    "botnet_cc_count": 2273,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "78ad8aa17b6f51f5681b00beae41bc1822a7469b67bee42391285df9390b856a",
-    "hash_7d": "bc0ffaed636c2db061618b7f80301a70f3f959170e816d28d83c8912657864f3",
+    "hash_1d": "2b8058362aa01c82fa63102ec4e2e1b5687a9f1dd1c3608c3df394af4866168e",
+    "hash_7d": "cef9014b9e4fbc467e6d11d9a01ab5a591929ff3bcf2d18de6fef25fb02465f8",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 0,
+    "count": 1,
     "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 75,
-    "weighted_count": 0,
+    "global_spillover_count": 1,
+    "rejected_count": 74,
+    "weighted_count": 0.4,
     "queries": 3,
     "ok_queries": 1,
     "failed_queries": 2,
     "errors": [
       "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429"
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -63,8 +63,8 @@
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 1,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 1
   }
 ]
