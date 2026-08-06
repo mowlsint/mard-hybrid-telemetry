@@ -14,19 +14,19 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 30
+    "count": 26
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 562,
-    "count_7d": 5423,
-    "botnet_cc_count": 2202,
+    "count": 554,
+    "count_7d": 5237,
+    "botnet_cc_count": 2215,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "aecf8f7e798dede9b5e9813515aa4b7d88c12adbf3ca2dd8335cd955fb11e4c8",
-    "hash_7d": "ae71c81fd70683b87a3cf9c153de02ba68ab2a3e58eadb190b905f714e2befec",
+    "hash_1d": "a379159e989c49047ce8c2e1c5e9b451b09959db9fc2b986e0a6fe2458fc1b73",
+    "hash_7d": "008f94433094dfb0f746af402f137a9fc0d10564138999a10586ec77c8e78edb",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -49,15 +49,14 @@
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: HTTP 429"
     ]
   },
   {
