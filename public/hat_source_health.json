@@ -3,13 +3,13 @@
     "source": "cisa_kev",
     "status": "ok",
     "count": 1661,
-    "hash": "2970501c07dabef0fac16f9a675460fbf1cdd60842ec6649074f945ec7f295d2"
+    "hash": "2f9153f9c6653728060b2861db60aee2911efc10db59f4d3fcabe623184d4d2e"
   },
   {
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "826850655f9ece965ce506d7c2177315be89a491fe1ff85103079e7f06f69757"
+    "hash": "e13c4fa67ca0c12a896943ece5bb309e9b977306ff7ee6480c10ef0b6437401b"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,32 +19,31 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 570,
-    "count_7d": 4539,
-    "botnet_cc_count": 1503,
+    "count": 503,
+    "count_7d": 4508,
+    "botnet_cc_count": 1450,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "33b4ce43a56377829d532848d82d9193c0ff967df0d3d0e0373ea07554cced69",
-    "hash_7d": "75c3b0fc8fe93f2e2e4bf549b3b7d7c236b6d7f95c1caf58759afb9dde34d370",
+    "hash_1d": "c173efd5da5561497e73869b6a5cb402ed1ed8f162c9e63e2d7788273a6cab72",
+    "hash_7d": "ade6283d68f0f6135bd52256dbc03ee099bae70ac9eea28aec89ad2173dd319f",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
-    "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "status": "partial",
+    "count": 4,
+    "raw_count": 75,
+    "core_count": 3,
+    "global_spillover_count": 1,
+    "rejected_count": 71,
+    "weighted_count": 3.4,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
       "fetch failed",
-      "gdelt_fimi_2: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
@@ -63,8 +62,8 @@
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 2,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 4
   }
 ]
