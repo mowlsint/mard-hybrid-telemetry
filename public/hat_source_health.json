@@ -19,51 +19,53 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 800,
-    "count_7d": 4548,
-    "botnet_cc_count": 1729,
+    "count": 1279,
+    "count_7d": 5098,
+    "botnet_cc_count": 1715,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "b91a426f66a6da79a9cac08656bfb54d2d64585af0449eb26e91a528ac2c85d0",
-    "hash_7d": "624441bf6ab7d72a5f31e2e652caef39ca8b411581622c490a7c8b42027fecd5",
+    "hash_1d": "598e5a5de7dcac7b0027d81de5bced2a2633758ae4bf7989308f4e505277886f",
+    "hash_7d": "80513d4ef66258a93523aa3c5fbb8d40002e0dcb10000bf034f7ed86e3b61d29",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 2,
-    "raw_count": 75,
-    "core_count": 1,
-    "global_spillover_count": 1,
-    "rejected_count": 73,
-    "weighted_count": 1.4,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
+    "core_count": 0,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
       "fetch failed",
-      "gdelt_fimi_2: HTTP 429"
+      "fetch failed",
+      "fetch failed"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "partial",
+    "status": "error",
     "count": 0,
     "queries": 2,
-    "ok_queries": 1,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
+      "fetch failed",
       "fetch failed"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 4,
+    "count": 0,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 2
+    "applied_to_articles": 0
   }
 ]
