@@ -19,53 +19,51 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 731,
-    "count_7d": 4464,
-    "botnet_cc_count": 1643,
+    "count": 800,
+    "count_7d": 4548,
+    "botnet_cc_count": 1729,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "6ca3f427992fadeb4a9458a94962868ec7c9d84401346f5a31e78e7432acd001",
-    "hash_7d": "41537f50153b471ec9df9060c34b52f38d58b45722afbc509fd79cc1e2b65835",
+    "hash_1d": "b91a426f66a6da79a9cac08656bfb54d2d64585af0449eb26e91a528ac2c85d0",
+    "hash_7d": "624441bf6ab7d72a5f31e2e652caef39ca8b411581622c490a7c8b42027fecd5",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
-    "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "status": "partial",
+    "count": 2,
+    "raw_count": 75,
+    "core_count": 1,
+    "global_spillover_count": 1,
+    "rejected_count": 73,
+    "weighted_count": 1.4,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
       "fetch failed",
-      "fetch failed",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_2: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "fetch failed"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 4,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 2
   }
 ]
