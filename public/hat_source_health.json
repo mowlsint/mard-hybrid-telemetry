@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "16da1fa0251894a44b27daede61c48547a3005cb850ad65a25c747ad2c86a393"
+    "hash": "646b9e927d4427a146c7b06d3a358617e8114a114f793b21a3cc86c4948d523a"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,33 +19,32 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 834,
-    "count_7d": 5756,
-    "botnet_cc_count": 1955,
+    "count": 514,
+    "count_7d": 5883,
+    "botnet_cc_count": 1968,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "82b0e9eb1723f8b1a64ff549e1b4955615d2f327b02ad779869e65fffef1fbfb",
-    "hash_7d": "3887f7ac1c1a459ebedd8161afcc975d5ae9b6dfbbcbee8ac92eeeb861aec283",
+    "hash_1d": "3ece9f53ce57be0a565f0bbfe24d598684eedb144bdec787e8b902c5cef4547f",
+    "hash_7d": "1bf84ce4630fa7af1d51b8faca1752fd47732c63260e50e734c2dc6d68a6ab4d",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
+    "status": "partial",
+    "count": 1,
+    "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "global_spillover_count": 1,
+    "rejected_count": 74,
+    "weighted_count": 0.4,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
       "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429",
-      "fetch failed"
+      "gdelt_fimi_2: HTTP 429"
     ]
   },
   {
@@ -57,15 +56,15 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "fetch failed"
+      "fetch failed",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 1,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 1
   }
 ]
