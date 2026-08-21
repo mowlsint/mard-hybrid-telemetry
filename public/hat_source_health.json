@@ -3,7 +3,7 @@
     "source": "cisa_kev",
     "status": "ok",
     "count": 1673,
-    "hash": "bafdd2c9f88166b388e57bd4eb42e0b6b16bd59f7395e8cb96a8781d045bf1eb"
+    "hash": "9f31ed2b24fe7899c616f15f719412cfe6625312283a0dfc80fcb193acad4bf5"
   },
   {
     "source": "first_epss_top",
@@ -19,45 +19,43 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 609,
-    "count_7d": 9315,
-    "botnet_cc_count": 2981,
+    "count": 703,
+    "count_7d": 8800,
+    "botnet_cc_count": 3004,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "4cd1f367f3456a14d31f6ebe14f495caefa47c43085a71aea3e91ebc6294fa6b",
-    "hash_7d": "5b3c6a512d8149ae7cd040ff4deabb4c6c79575098c18bb02245bf96098979bb",
+    "hash_1d": "0dc19e9015321659800962bf30ee5fd7e63a56bbeab4678b0c948da67469a798",
+    "hash_7d": "290e1a2fe6c8e310b6f391c1606223a0a4e09310294ffba79c8ffe4e45fea3f2",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
+    "status": "partial",
     "count": 0,
-    "raw_count": 0,
+    "raw_count": 75,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 0,
+    "rejected_count": 75,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
       "gdelt_fimi_2: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
       "fetch failed"
     ]
   },
