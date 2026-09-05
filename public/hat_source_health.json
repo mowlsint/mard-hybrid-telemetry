@@ -19,51 +19,51 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 471,
-    "count_7d": 3720,
-    "botnet_cc_count": 2142,
+    "count": 603,
+    "count_7d": 3894,
+    "botnet_cc_count": 2135,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "c4f2e40fd1af26601c18634e16b4cdb96293f23774ecab59703e485dbd67cf7c",
-    "hash_7d": "84e6aa348858d55acf7766cc3877b12eb7d96aa315e38b556371b17eb692c67d",
+    "hash_1d": "c70599ec21925e59e2e74f8defb48a7614d8bea8fddc1f20034899a8c57b59ce",
+    "hash_7d": "a51cc9d6530e98623d5696311d27399339429468408443d60e83832836efa355",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 9,
-    "raw_count": 148,
+    "count": 33,
+    "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 9,
-    "rejected_count": 139,
-    "weighted_count": 3.6,
+    "global_spillover_count": 33,
+    "rejected_count": 42,
+    "weighted_count": 13.2,
     "queries": 3,
-    "ok_queries": 2,
-    "failed_queries": 1,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
+      "gdelt_fimi_1: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 2,
+    "count": 1,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 9
+    "applied_to_articles": 33
   }
 ]
