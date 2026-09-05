@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "31879588ba9bf2839fe26a22e99a9c5a97ede6aed201c757b3e1d79a3d4b7dcb"
+    "hash": "69bfc250723c12c183c3150e1c6120e2afa8b669f95572e4e2d35e2524873dca"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,32 +19,31 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 7024,
-    "count_7d": 10267,
-    "botnet_cc_count": 8763,
+    "count": 471,
+    "count_7d": 3720,
+    "botnet_cc_count": 2142,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "4342d0bdf44d942842c810a50e0b348fd4745fe5a3f6ff7dda160268b6e1194e",
-    "hash_7d": "51ca386ba8deee327c6fb93954a3c8567dfc0a3ad2ac1394b6088274d20966d4",
+    "hash_1d": "c4f2e40fd1af26601c18634e16b4cdb96293f23774ecab59703e485dbd67cf7c",
+    "hash_7d": "84e6aa348858d55acf7766cc3877b12eb7d96aa315e38b556371b17eb692c67d",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 0,
-    "raw_count": 75,
+    "count": 9,
+    "raw_count": 148,
     "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 75,
-    "weighted_count": 0,
+    "global_spillover_count": 9,
+    "rejected_count": 139,
+    "weighted_count": 3.6,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 2,
+    "failed_queries": 1,
     "errors": [
-      "gdelt_fimi_2: HTTP 429",
-      "fetch failed"
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -57,14 +56,14 @@
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
       "euvsdisinfo_case_watch_1: HTTP 429",
-      "fetch failed"
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 2,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 9
   }
 ]
