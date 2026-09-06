@@ -19,33 +19,32 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 771,
-    "count_7d": 4108,
-    "botnet_cc_count": 2140,
+    "count": 1348,
+    "count_7d": 4850,
+    "botnet_cc_count": 2159,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "ff3b9952482cff6ec9e2c7c7d6d0540cde87d6112133e294105cdf7f5f901e4e",
-    "hash_7d": "c6f02de7d20126a50aea61a438415f1924d1d648ba048a61b1a75ae94ecb1cc6",
+    "hash_1d": "392a77047fc30648ff9dbe8b83c3f2f09e11661eda3e59a80c7708fb57b5d328",
+    "hash_7d": "23036addadd402bd2b64bc7895d1602c4da325779d9ec50fd6e5ac3f45115c55",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
+    "status": "partial",
+    "count": 39,
+    "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "global_spillover_count": 39,
+    "rejected_count": 36,
+    "weighted_count": 15.6,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
-      "fetch failed",
-      "fetch failed",
-      "fetch failed"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -57,15 +56,15 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
-      "fetch failed"
+      "euvsdisinfo_case_watch_1: HTTP 429",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 1,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 39
   }
 ]
