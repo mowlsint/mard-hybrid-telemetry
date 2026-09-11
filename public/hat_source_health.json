@@ -3,13 +3,13 @@
     "source": "cisa_kev",
     "status": "ok",
     "count": 1705,
-    "hash": "30f1fbd6104b59507bbb6ad0ced75c39834fe7bb8962a8f2ef1027d81a996211"
+    "hash": "95a3e8d87ae2f97df95b53332a4546120ae49321c6d9de2c795336b2bf6d80a5"
   },
   {
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "3bf2ac437a20ada29717ec06b5ba4b594c85a60ac91ea40c9879fab4c63912d6"
+    "hash": "415d9d191f62fbdff6fc5d1613eab8ebaafaebf9d8c3b4a9b1145f415a7f9a8c"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,31 +19,32 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 5109,
-    "count_7d": 11267,
-    "botnet_cc_count": 1834,
+    "count": 1980,
+    "count_7d": 11680,
+    "botnet_cc_count": 1922,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "cc7ba25df7f5db0c5cfb1319c00290bb160cd86cbf518c2258898df6ba103ce6",
-    "hash_7d": "2e969bd3dbd35a8fcfec451bf239a8a110a60991b0b8d6a0644e55d6b19a4e41",
+    "hash_1d": "329280f2fa1ba25bc9c9f1bda72a7449dc191b3a770a1f4183cc482a9021a5b3",
+    "hash_7d": "617212e2e0a47c1426e4d8c42b7e4b87366b8734aa23707916d7da34d1959999",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 6,
-    "raw_count": 75,
-    "core_count": 1,
-    "global_spillover_count": 5,
-    "rejected_count": 69,
-    "weighted_count": 3,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
+    "core_count": 0,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
+      "fetch failed",
+      "fetch failed",
       "fetch failed"
     ]
   },
@@ -63,8 +64,8 @@
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 3,
+    "count": 0,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 6
+    "applied_to_articles": 0
   }
 ]
