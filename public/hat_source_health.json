@@ -9,30 +9,30 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "08c633651bd1de0287f571518de1827c525a9f2e9fb0d4920228589c1fcb4598"
+    "hash": "29381b99d7d41f1a59d6ce45ee0db94fc2f6815d862b38bec869b8a4c73d9aec"
   },
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 44
+    "count": 45
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 2583,
-    "count_7d": 14856,
-    "botnet_cc_count": 2477,
+    "count": 2515,
+    "count_7d": 14887,
+    "botnet_cc_count": 2505,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "77b217e4182061b7c1d5e7658cc078ef5efe20a57ac314a585ff7844f7625d4c",
-    "hash_7d": "3689950c0b09fe5430f189ff46f9fc9242a2a359b41ede41fdd8ff86d545bea9",
+    "hash_1d": "bd97f7a549450178c0ccec2b0721a5a4f59728cc731a99921a723e4b3c31fb0d",
+    "hash_7d": "b5d47b01f0d94e0861435ea25099aa3493be6624d99081a2fcd05ba618a7e504",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
     "raw_count": 0,
     "core_count": 0,
@@ -40,22 +40,24 @@
     "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429"
+      "fetch failed",
+      "fetch failed",
+      "fetch failed"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "partial",
+    "status": "error",
     "count": 0,
     "queries": 2,
-    "ok_queries": 1,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
+      "fetch failed",
       "fetch failed"
     ]
   },
