@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "b94c81ffa7472ddf180947c95ddd62d12ea2898ec0144b2ed70364079fefd16d"
+    "hash": "7d54e3f987a5a3f1f2558142b288be96f30e97e0509c48b22fedc7b8e4fc7753"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,44 +19,44 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 1541,
-    "count_7d": 8271,
-    "botnet_cc_count": 2021,
+    "count": 702,
+    "count_7d": 8357,
+    "botnet_cc_count": 1994,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "74bdaa561b4db5fb89e0643b41cdbd7c1bf6e9c9e4867be61a5a77dd1fecee43",
-    "hash_7d": "99d207047801bad0b5f063245c3ee1464b230da5172eec029cc5127bb93e3d14",
+    "hash_1d": "753e74dd5a2df89609ad1f7c304d4198152f9e81e4525de3b9c28f97c28dae14",
+    "hash_7d": "6038d46b6ebac407a0a39a66f0e75c051c38c87c882befcb0af555ede8ea6303",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
-    "raw_count": 75,
+    "raw_count": 0,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 75,
+    "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429"
+      "fetch failed",
+      "gdelt_fimi_2: HTTP 429",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
       "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
