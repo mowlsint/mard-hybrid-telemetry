@@ -18,17 +18,8 @@
   },
   {
     "source": "threatfox_optional",
-    "status": "ok",
-    "count": 1301,
-    "count_7d": 10742,
-    "botnet_cc_count": 1834,
-    "historical_export_status": "error",
-    "historical_export_count": 0,
-    "historical_export_format": null,
-    "hash_1d": "2fa7b5f7f7a34586a3da2ee713b24404790f5133c6145f2c845149defe0511cf",
-    "hash_7d": "4bf7815d298317bbd88af9f523ce91a7b63bb913be3cd79f1aaf9c95bd403afb",
-    "export_hash": null,
-    "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
+    "status": "error",
+    "error": "threatfox_iocs_1d: HTTP 500"
   },
   {
     "source": "gdelt_fimi",
@@ -43,9 +34,9 @@
     "ok_queries": 0,
     "failed_queries": 3,
     "errors": [
-      "fetch failed",
-      "fetch failed",
-      "fetch failed"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
