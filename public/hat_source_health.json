@@ -9,24 +9,24 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "6f4655275d21d4a9b331a0498f92f05d21ea454a8d89dbd6539d5580605626ab"
+    "hash": "eda79fff6d05528856f29f02afe291002447c6f465f857fdf9a15c24acf8668c"
   },
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 41
+    "count": 0
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 1996,
-    "count_7d": 14299,
-    "botnet_cc_count": 1937,
+    "count": 1721,
+    "count_7d": 14211,
+    "botnet_cc_count": 1954,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "ba8f9c0b4506197e07ea16157fbd607f682b002c4761433e6ab62f64b147e7c2",
-    "hash_7d": "161d673c08a35585a6a65a28a73510ec1b7ce675ebdfcec72f115e59c129c06d",
+    "hash_1d": "a1cd6b8f6aa07faf68bca7c99eb902009fd73894bea2b1cacd46e3083a1538ff",
+    "hash_7d": "38f6fd909fed9f691007098c282e9ae173c138c3e2730e987e64f6ca4e2bba58",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -50,15 +50,14 @@
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
-      "fetch failed"
+      "euvsdisinfo_case_watch_1: HTTP 429"
     ]
   },
   {
