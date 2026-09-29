@@ -2,61 +2,63 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1728,
-    "hash": "164f2f100c3a2a810745500f49a8dd9041d59f9542c0ac1316d71578f25cb80b"
+    "count": 1729,
+    "hash": "62c798bffe1334f5ad43853a7ee9d6eb6969e5b98b6755a6e1c901a1b1ae8f5c"
   },
   {
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "eda79fff6d05528856f29f02afe291002447c6f465f857fdf9a15c24acf8668c"
+    "hash": "5c9e494bef51b34954b30ab1a4f6803d761745cf8c175f2e902cbc76bee2ef12"
   },
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 0
+    "count": 44
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 786,
-    "count_7d": 14333,
-    "botnet_cc_count": 1991,
+    "count": 916,
+    "count_7d": 14267,
+    "botnet_cc_count": 1912,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "924362d6b8aa8dfbd36ad69ab486a8ce9c2f804e9bfd53d9cb1e27c166b7eebf",
-    "hash_7d": "70ff4edaae64a2ce343cc9af3ad3e7f4e931c13a60502cecdd4e28b97fbd0b4f",
+    "hash_1d": "4fd16a56815a7baab12404d976fd9c89f972866cbe3a41befeab9fa998a9b973",
+    "hash_7d": "729579ec914f6c50f1260613d20ff218f5ad7b4bdcde1d040827e0905cadbbc2",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
-    "raw_count": 75,
+    "raw_count": 0,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 75,
+    "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "fetch failed",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429",
+      "fetch failed"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "partial",
+    "status": "error",
     "count": 0,
     "queries": 2,
-    "ok_queries": 1,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429"
+      "fetch failed",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
