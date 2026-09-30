@@ -14,58 +14,54 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 44
+    "count": 42
   },
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 916,
-    "count_7d": 14267,
-    "botnet_cc_count": 1912,
+    "count": 964,
+    "count_7d": 14185,
+    "botnet_cc_count": 1906,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "4fd16a56815a7baab12404d976fd9c89f972866cbe3a41befeab9fa998a9b973",
-    "hash_7d": "729579ec914f6c50f1260613d20ff218f5ad7b4bdcde1d040827e0905cadbbc2",
+    "hash_1d": "0d070ec10eb6998d828c8b5658abf319e5ead98b71c88f0cf3ddcc98e7256a9d",
+    "hash_7d": "272308f3b66a1e5d08b58d6fd89a8f5754c1a80d9704f7353b830fe53ce0d635",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
-    "core_count": 0,
+    "status": "partial",
+    "count": 1,
+    "raw_count": 75,
+    "core_count": 1,
     "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "rejected_count": 74,
+    "weighted_count": 1,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429",
-      "fetch failed"
+      "fetch failed",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "ok",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 2,
+    "failed_queries": 0,
     "method": "gdelt_domain_restricted_artlist",
-    "errors": [
-      "fetch failed",
-      "euvsdisinfo_case_watch_2: HTTP 429"
-    ]
+    "errors": []
   },
   {
     "source": "disarm_aligned_taxonomy",
     "status": "ok",
-    "count": 0,
+    "count": 4,
     "method": "local_keyword_mapping",
-    "applied_to_articles": 0
+    "applied_to_articles": 1
   }
 ]
