@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "1706e3df26c1fc7555c7b5215f78e655070e31f5c8f12504835baf9477e17560"
+    "hash": "5e0de3ff8a1f9185067f2e54d76f26ceb46b6fe378776e7afeeb06cfaac20edf"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -19,20 +19,20 @@
   {
     "source": "threatfox_optional",
     "status": "ok",
-    "count": 1594,
-    "count_7d": 13271,
-    "botnet_cc_count": 1840,
+    "count": 813,
+    "count_7d": 13527,
+    "botnet_cc_count": 1859,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "8933fea1e5ffa6ed0ae9d292ce75eb8885df40b94ca9fcfd3577b61671f6817c",
-    "hash_7d": "2fa7fbda4a5a145bd97d1684240b1b223a0f06c5ab930b8947d79bf88c52532d",
+    "hash_1d": "f2d715914050fddb8f2422d260f4e35893b701be33c3bbd399f007ac1d392024",
+    "hash_7d": "c283890b060872b57afed162d43f120b98975e6d3bd6ccf4197d5928e3c25c26",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "raw_count": 0,
     "core_count": 0,
@@ -40,24 +40,22 @@
     "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
-      "fetch failed",
-      "fetch failed",
-      "fetch failed"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429"
     ]
   },
   {
     "source": "euvsdisinfo_case_watch",
-    "status": "error",
+    "status": "partial",
     "count": 0,
     "queries": 2,
-    "ok_queries": 0,
-    "failed_queries": 2,
+    "ok_queries": 1,
+    "failed_queries": 1,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "fetch failed",
       "fetch failed"
     ]
   },
