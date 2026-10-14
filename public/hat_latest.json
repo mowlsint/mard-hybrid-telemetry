@@ -1,11 +1,11 @@
 {
   "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-10-13T18:38:34.178Z",
+  "generated_at": "2026-10-14T00:58:13.470Z",
   "window_days": 30,
-  "hat_score": 63,
+  "hat_score": 66,
   "level": "high",
   "score_interpretation": {
-    "percentage": 63,
+    "percentage": 66,
     "label": "high",
     "color": "deep orange",
     "css": "high",
@@ -17,11 +17,11 @@
   "baseline": {
     "status": "active",
     "points": 120,
-    "mean_hat_score": 61.8,
-    "delta_from_mean": 1
+    "mean_hat_score": 61.7,
+    "delta_from_mean": 4
   },
   "score_parts": {
-    "kev_recent_7d": 75,
+    "kev_recent_7d": 88,
     "kev_recent_30d": 97,
     "kev_epss_mean": 17,
     "threatfox_ioc_current": 65,
@@ -29,7 +29,7 @@
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 79
+    "source_coverage": 71
   },
   "bot_activity_state": {
     "schema": "mard-hat-bot-state-v1",
@@ -43,12 +43,12 @@
     "confidence": "low",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 68,
+      "ioc_current_percentile": 78,
       "botnet_c2_current_percentile": 99,
       "ioc_36h_percentile": 100,
       "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 2312,
-      "botnet_c2_36h_count": 1374
+      "ioc_36h_count": 2960,
+      "botnet_c2_36h_count": 1715
     }
   },
   "disinformation_alert_level": {
@@ -75,10 +75,10 @@
   },
   "metrics": {
     "kev": {
-      "total_kev": 1740,
-      "recent_7d": 6,
+      "total_kev": 1741,
+      "recent_7d": 7,
       "recent_30d": 31,
-      "epss_mean_recent_kev": 0.1747,
+      "epss_mean_recent_kev": 0.1652,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2015-3306",
@@ -124,15 +124,6 @@
           "date_added": "2026-09-25",
           "epss": 0.39979,
           "percentile": 0.98603
-        },
-        {
-          "cve": "CVE-2026-76461",
-          "vendor_project": "Cisco",
-          "product": "Secure Email Gateway",
-          "vulnerability_name": "Cisco Secure Email Gateway SQL Injection Vulnerability",
-          "date_added": "2026-09-14",
-          "epss": 0.29543,
-          "percentile": 0.98157
         },
         {
           "cve": "CVE-2026-93616",
@@ -187,6 +178,15 @@
           "date_added": "2026-09-18",
           "epss": 0.0288,
           "percentile": 0.86508
+        },
+        {
+          "cve": "CVE-2026-7273",
+          "vendor_project": "Zyxel",
+          "product": "GS1900 Series Switches",
+          "vulnerability_name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability",
+          "date_added": "2026-09-21",
+          "epss": 0.02501,
+          "percentile": 0.84308
         }
       ]
     },
@@ -269,22 +269,22 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1781,
-      "ioc_count_7d": 7925,
-      "botnet_c2_count_1d": 1085,
-      "botnet_c2_count_7d": 2938,
+      "ioc_count_1d": 2252,
+      "ioc_count_7d": 8565,
+      "botnet_c2_count_1d": 1361,
+      "botnet_c2_count_7d": 3420,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1085
-        },
-        {
-          "name": "payload",
-          "count": 399
+          "count": 1361
         },
         {
           "name": "payload_delivery",
-          "count": 292
+          "count": 490
+        },
+        {
+          "name": "payload",
+          "count": 396
         },
         {
           "name": "cc_skimming",
@@ -294,19 +294,31 @@
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 937
-        },
-        {
-          "name": "Mirai",
-          "count": 150
+          "count": 1010
         },
         {
           "name": "Unknown Loader",
-          "count": 127
+          "count": 292
+        },
+        {
+          "name": "Mirai",
+          "count": 163
         },
         {
           "name": "ClearFake",
-          "count": 83
+          "count": 100
+        },
+        {
+          "name": "Coruna",
+          "count": 97
+        },
+        {
+          "name": "SalatStealer",
+          "count": 70
+        },
+        {
+          "name": "Unknown Stealer",
+          "count": 57
         },
         {
           "name": "Unknown malware",
@@ -314,65 +326,53 @@
         },
         {
           "name": "php.shin_webshell",
-          "count": 45
-        },
-        {
-          "name": "Phorpiex",
-          "count": 33
-        },
-        {
-          "name": "PureRAT",
-          "count": 27
-        },
-        {
-          "name": "Remcos",
-          "count": 27
+          "count": 43
         },
         {
           "name": "AMOS",
-          "count": 26
+          "count": 35
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 1366
-        },
-        {
-          "name": "Cobalt Strike",
-          "count": 139
+          "count": 1629
         },
         {
           "name": "Unknown Stealer",
-          "count": 132
+          "count": 183
+        },
+        {
+          "name": "Cobalt Strike",
+          "count": 138
+        },
+        {
+          "name": "Unknown malware",
+          "count": 133
         },
         {
           "name": "DanaBot",
           "count": 130
         },
         {
-          "name": "Unknown malware",
-          "count": 122
-        },
-        {
           "name": "PureRAT",
-          "count": 112
+          "count": 119
         },
         {
           "name": "Remcos",
-          "count": 112
+          "count": 116
+        },
+        {
+          "name": "Coruna",
+          "count": 97
         },
         {
           "name": "AsyncRAT",
-          "count": 95
+          "count": 92
         },
         {
           "name": "Aisuru",
-          "count": 67
-        },
-        {
-          "name": "Remus",
-          "count": 59
+          "count": 74
         }
       ],
       "historical": {
@@ -383,9 +383,9 @@
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
-        "current_36h_ioc_count": 2312,
-        "current_36h_botnet_c2_count": 1374,
-        "current_ioc_percentile": 68,
+        "current_36h_ioc_count": 2960,
+        "current_36h_botnet_c2_count": 1715,
+        "current_ioc_percentile": 78,
         "current_botnet_c2_percentile": 99,
         "trailing_36h_ioc_percentile": 100,
         "trailing_36h_botnet_c2_percentile": 100
@@ -393,8 +393,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1781,
-      "botnet_cc_count": 2938,
+      "threatfox_count": 2252,
+      "botnet_cc_count": 3420,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -404,7 +404,7 @@
       "confidence": "low",
       "mode": "fimi_lite_degraded_no_source_signal",
       "source_state": {
-        "external_ok": true,
+        "external_ok": false,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -435,7 +435,7 @@
         "global_maritime_spillover_articles": 0,
         "rejected_articles": 0,
         "weighted_articles": 0,
-        "historical_percentile": 95,
+        "historical_percentile": 96,
         "top_domains": [],
         "sample": []
       },
@@ -473,14 +473,15 @@
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "partial",
+          "status": "error",
           "count": 0,
           "queries": 2,
-          "ok_queries": 1,
-          "failed_queries": 1,
+          "ok_queries": 0,
+          "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: HTTP 429"
+            "euvsdisinfo_case_watch_1: HTTP 429",
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
@@ -499,12 +500,12 @@
     }
   },
   "drivers": [
-    "6 CISA KEV additions in the last 7 days",
+    "7 CISA KEV additions in the last 7 days",
     "31 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1747",
-    "1781 ThreatFox IOCs in the last 1 day",
-    "2938 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1652",
+    "2252 ThreatFox IOCs in the last 1 day",
+    "3420 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Bots are busy",
     "Disinformation Alert Level proxy: 2 (elevated)",
@@ -514,8 +515,8 @@
     {
       "source": "cisa_kev",
       "status": "ok",
-      "count": 1740,
-      "hash": "bf25dac3bd410db5fb5e0fd406a2ebf626693d97619848b17b796d6c737d23d5"
+      "count": 1741,
+      "hash": "136904f12e4c6762e526352e3a67ed7b28cd21b4d82bed9c91719ff2e94f2f28"
     },
     {
       "source": "first_epss_top",
@@ -526,19 +527,19 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 30
+      "count": 29
     },
     {
       "source": "threatfox_optional",
       "status": "ok",
-      "count": 1781,
-      "count_7d": 7925,
-      "botnet_cc_count": 2938,
+      "count": 2252,
+      "count_7d": 8565,
+      "botnet_cc_count": 3420,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "56724a2df2349a313a23a80f2d5445f92f30e901cf2682b42f593aac55762816",
-      "hash_7d": "379fc7a14f9c2fcc598e2ddd591dcba83a1773782856bc5e2ef562bb2c849c9f",
+      "hash_1d": "4238ffe77917056598fc479348304548d817e4cdefd3a7e1c5400b92fd48cdff",
+      "hash_7d": "59a39a1ba83ca3df5258677d6e91230d6f4366549096a767147a7278821a0a99",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -562,14 +563,15 @@
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "partial",
+      "status": "error",
       "count": 0,
       "queries": 2,
-      "ok_queries": 1,
-      "failed_queries": 1,
+      "ok_queries": 0,
+      "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -586,7 +588,7 @@
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "ok",
     "gdelt_fimi": "error",
-    "euvsdisinfo_case_watch": "partial",
+    "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "ok"
   },
   "assessment": {
@@ -615,14 +617,14 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1374 botnet/C2-like indicators in the current 36h window",
+      "1715 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261013T183834_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261014T005813_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
