@@ -112,11 +112,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add \
+            data/influence/validation_report.json \
             data/influence/ingest/items_latest.json \
             data/influence/ingest/source_health_latest.json \
             data/influence/ingest/social_source_health_latest.json \
             data/influence/ingest/x_source_health_latest.json \
             data/influence/ingest/nitter_preflight_latest.json \
+            public/influence_nitter_preflight.json \
             public/influence_ingest_status.json \
             public/influence_source_health.json \
             public/influence_social_ingest_status.json \
