@@ -3,6 +3,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { pathToFileURL } from 'node:url';
+import { createJsonClient } from './lib/http.mjs';
+import { SCORING_VERSION, annotateLegacyHistory, historicalValues, sourceQuality, narrativeAlert } from './lib/quality.mjs';
 
 const execFileAsync = promisify(execFile);
 const ROOT = process.cwd();
@@ -16,6 +19,7 @@ const EVIDENCE_DIR = path.join(PUBLIC_DIR, 'evidence_cards');
 const DOWNLOADS_DIR = path.join(PUBLIC_DIR, 'downloads');
 
 const now = new Date();
+const gdeltClient = createJsonClient();
 const generatedAt = now.toISOString();
 const stamp = generatedAt.replaceAll(':', '').replaceAll('-', '').slice(0, 15);
 
@@ -128,7 +132,8 @@ async function fetchCisaKev(sources) {
   const { json, raw, hash } = await fetchJson(source.url, 'cisa_kev');
   const rawPath = path.join(RAW_DIR, `cisa_kev_${stamp}.json`);
   await fs.writeFile(rawPath, raw);
-  const vulns = Array.isArray(json.vulnerabilities) ? json.vulnerabilities : [];
+  if (!Array.isArray(json.vulnerabilities)) throw new Error('cisa_kev: missing vulnerabilities array');
+  const vulns = json.vulnerabilities;
   return {
     ok: true,
     hash,
@@ -145,7 +150,8 @@ async function fetchEpssTop(sources) {
   const { json, raw, hash } = await fetchJson(url, 'first_epss_top');
   const rawPath = path.join(RAW_DIR, `first_epss_top_${stamp}.json`);
   await fs.writeFile(rawPath, raw);
-  const data = Array.isArray(json.data) ? json.data : [];
+  if (!Array.isArray(json.data)) throw new Error('first_epss_top: missing data array');
+  const data = json.data;
   return {
     ok: true,
     hash,
@@ -162,7 +168,8 @@ async function fetchEpssForCves(sources, cves) {
   for (const chunk of chunkArray([...new Set(cves)].slice(0, 300), 80)) {
     const url = `${source.base_url}?cve=${encodeURIComponent(chunk.join(','))}`;
     const { json } = await fetchJson(url, 'first_epss_kev_batch');
-    if (Array.isArray(json.data)) results.push(...json.data);
+    if (!Array.isArray(json.data)) throw new Error('first_epss_kev_batch: missing data array');
+    results.push(...json.data);
   }
   return { ok: true, count: results.length, data: results };
 }
@@ -184,6 +191,8 @@ async function postThreatFox(source, key, body, label) {
     if (!res.ok) throw new Error(`${label}: HTTP ${res.status}`);
     const text = await res.text();
     const json = JSON.parse(text);
+    if (json.query_status !== 'ok' && json.query_status !== 'no_result') throw new Error(`${label}: unexpected query status`);
+    if (json.query_status === 'ok' && !Array.isArray(json.data)) throw new Error(`${label}: missing IOC data array`);
     return { json, raw: text, hash: sha256(text) };
   } finally {
     clearTimeout(timer);
@@ -204,10 +213,15 @@ function getThreatFoxFirstSeen(item) {
 
 function parseThreatFoxDate(item) {
   const raw = getThreatFoxFirstSeen(item);
-  if (!raw) return null;
-  const normalized = String(raw).includes('T') ? String(raw) : String(raw).replace(' ', 'T') + 'Z';
-  const d = new Date(normalized);
-  return Number.isNaN(d.getTime()) ? null : d;
+  if (raw === null || raw === undefined || raw === '') return null;
+  if (/^\d{10,13}$/.test(String(raw))) {
+    const date = new Date(Number(raw) * (String(raw).length === 10 ? 1000 : 1));
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+  let normalized = String(raw).replace(/ UTC$/i, 'Z').replace(' ', 'T');
+  if (!/(Z|[+-]\d{2}:?\d{2})$/i.test(normalized)) normalized += 'Z';
+  const date = new Date(normalized);
+  return Number.isNaN(date.getTime()) ? null : date;
 }
 
 function isThreatFoxBotnetC2(item) {
@@ -287,7 +301,7 @@ function normalizeText(value) {
   return String(value ?? '')
     .toLowerCase()
     .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, ' ')
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9а-яёäöüß\-\.\/\s]/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -299,7 +313,8 @@ function keywordMatches(text, keywords = []) {
   for (const keyword of keywords || []) {
     const k = normalizeText(keyword);
     if (!k) continue;
-    if (norm.includes(k)) matches.push(keyword);
+    const escaped = k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, 'u').test(norm)) matches.push(keyword);
   }
   return [...new Set(matches)];
 }
@@ -307,7 +322,9 @@ function keywordMatches(text, keywords = []) {
 function classifyMaritimeArticle(article, fimiConfig, scoring) {
   const filter = fimiConfig.maritime_filter || {};
   const weights = scoring.maritime_relevance || {};
-  const text = [article.title, article.domain, article.url].filter(Boolean).join(' ');
+  let articlePath = '';
+  try { articlePath = decodeURIComponent(new URL(article.url).pathname); } catch {}
+  const text = [article.title, articlePath].filter(Boolean).join(' ');
   const domain = normalizeText(article.domain || '');
   const noiseDomains = new Set((filter.noise_domains || []).map(d => normalizeText(d)));
   const maritime = keywordMatches(text, filter.maritime_anchors || []);
@@ -333,6 +350,7 @@ function classifyMaritimeArticle(article, fimiConfig, scoring) {
     ...article,
     maritime_relevance: {
       accepted: weight > 0,
+      classification_basis: 'headline_and_url_path_only',
       classification,
       weight,
       reason,
@@ -357,20 +375,16 @@ function statusIsUsable(status) {
 
 async function fetchGdeltArticleQuery(source, query, timespan, maxrecords, label) {
   const url = buildGdeltUrl(source.base_url, query, timespan, maxrecords);
-  const { json, raw, hash } = await fetchJson(url, label);
-  const articles = Array.isArray(json.articles) ? json.articles.map(a => normaliseGdeltArticle(a, query)) : [];
-  return { ok: true, query, url, raw, hash, count: articles.length, articles };
+  const { json, raw, attempts } = await gdeltClient(url, label);
+  const articles = json.articles.map(a => normaliseGdeltArticle(a, query));
+  return { ok: true, query, url, raw, hash: sha256(raw), attempts, count: articles.length, sample_cap_reached: articles.length >= maxrecords, articles };
 }
 
 function applyDisarmAlignedTags(items, fimiConfig) {
   const tags = [];
   const text = items.map(item => `${item.title || ''} ${item.domain || ''} ${item.url || ''}`).join(' \n ').toLowerCase();
   for (const tag of fimiConfig.disarm_aligned_tags || []) {
-    const matched = [];
-    for (const keyword of tag.keywords || []) {
-      const k = String(keyword).toLowerCase();
-      if (k && text.includes(k)) matched.push(keyword);
-    }
+    const matched = keywordMatches(text, tag.keywords || []);
     if (matched.length) {
       tags.push({
         id: tag.id,
@@ -383,7 +397,7 @@ function applyDisarmAlignedTags(items, fimiConfig) {
   return tags.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 
-async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = []) {
+async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [], previousLatest = null, { fetchQuery = fetchGdeltArticleQuery, persistRaw = true, configurationHash = null } = {}) {
   const gdeltSource = sources.sources.gdelt;
   const euvsSource = sources.sources.euvsdisinfo;
   const disarmSource = sources.sources.disarm;
@@ -396,9 +410,9 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   if (gdeltSource?.enabled) {
     for (const [i, query] of gdeltQueries.entries()) {
       try {
-        const r = await fetchGdeltArticleQuery(gdeltSource, query, gdeltSource.timespan || '36h', gdeltSource.maxrecords_per_query || 75, `gdelt_fimi_${i + 1}`);
+        const r = await fetchQuery(gdeltSource, query, gdeltSource.timespan || '36h', gdeltSource.maxrecords_per_query || 75, `gdelt_fimi_${i + 1}`);
         const rawPath = path.join(RAW_DIR, `gdelt_fimi_${i + 1}_${stamp}.json`);
-        await fs.writeFile(rawPath, r.raw);
+        if (persistRaw) await fs.writeFile(rawPath, r.raw);
         r.raw_file = path.relative(ROOT, rawPath);
         gdeltResults.push(r);
       } catch (err) {
@@ -434,9 +448,9 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   if (euvsSource?.enabled && gdeltSource?.enabled) {
     for (const [i, query] of euvsQueries.entries()) {
       try {
-        const r = await fetchGdeltArticleQuery(gdeltSource, query, euvsSource.timespan || '90d', euvsSource.maxrecords_per_query || 50, `euvsdisinfo_case_watch_${i + 1}`);
+        const r = await fetchQuery(gdeltSource, query, euvsSource.timespan || '90d', euvsSource.maxrecords_per_query || 50, `euvsdisinfo_case_watch_${i + 1}`);
         const rawPath = path.join(RAW_DIR, `euvsdisinfo_case_watch_${i + 1}_${stamp}.json`);
-        await fs.writeFile(rawPath, r.raw);
+        if (persistRaw) await fs.writeFile(rawPath, r.raw);
         r.raw_file = path.relative(ROOT, rawPath);
         euvsResults.push(r);
       } catch (err) {
@@ -462,16 +476,16 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
   const disarmTags = disarmSource?.enabled ? applyDisarmAlignedTags(scoreRelevantFimiArticles, fimiConfig) : [];
   fimiHealth.push({
     source: 'disarm_aligned_taxonomy',
-    status: disarmSource?.enabled ? 'ok' : 'disabled',
+    status: !disarmSource?.enabled ? 'disabled' : [gdeltStatus, euvsStatus].every(s => ['ok', 'disabled'].includes(s)) ? 'ok' : 'partial',
+    derived: true,
+    independent_evidence: false,
     count: disarmTags.length,
-    method: 'local_keyword_mapping',
+    method: 'local_topic_keyword_mapping; no falsehood or TTP finding',
     applied_to_articles: scoreRelevantFimiArticles.length
   });
 
-  const histGdelt = (previousHistory || [])
-    .map(h => h?.metrics?.gdelt_mard_eu_weighted_articles_36h)
-    .filter(Number.isFinite);
-  const histFimiScore = (previousHistory || []).map(h => h?.metrics?.fimi_lite_score).filter(Number.isFinite);
+  const histGdelt = historicalValues(previousHistory, 'gdelt_mard_eu_weighted_articles_36h', { configurationHash }).values;
+  const histFimiScore = historicalValues(previousHistory, 'fimi_lite_score', { configurationHash }).values;
   const gdeltPercentile = percentileRank(histGdelt.length >= 14 ? histGdelt : [], gdeltWeightedCount);
 
   const caps = scoring.caps || {};
@@ -496,7 +510,14 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
     euvsScore * (fimiWeights.euvsdisinfo_case_signal ?? 0.35) +
     disarmScore * (fimiWeights.disarm_tag_relevance ?? 0.20)
   );
-  const fimiScore = hasFimiSourceSignal ? fimiScoreRaw : 0;
+  const quality = sourceQuality(fimiHealth, ['gdelt_fimi', 'euvsdisinfo_case_watch']);
+  quality.sample_limited = [...gdeltResults, ...euvsResults].some(r => r.sample_cap_reached);
+  const observedScore = hasFimiSourceSignal ? Math.round(fimiScoreRaw) : 0;
+  const fimiScore = quality.score_valid ? observedScore : null;
+  const previousFimi = previousLatest?.metrics?.fimi_lite;
+  const lastSuccessful = quality.score_valid
+    ? { generated_at: generatedAt, score: fimiScore, accepted_articles: gdeltAccepted.length }
+    : previousFimi?.last_successful || (previousFimi?.source_health && sourceQuality(previousFimi.source_health, ['gdelt_fimi', 'euvsdisinfo_case_watch']).score_valid ? { generated_at: previousLatest.generated_at, score: previousFimi.score, accepted_articles: previousFimi.gdelt?.unique_articles } : null);
   const fimiStatus = externalErrors
     ? (hasFimiSourceSignal ? 'partial' : 'degraded_no_source_signal')
     : (externalOk || hasFimiSourceSignal || disarmSource?.enabled ? 'ok' : 'error_or_disabled');
@@ -511,10 +532,14 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
 
   return {
     enabled: Boolean(gdeltSource?.enabled || euvsSource?.enabled || disarmSource?.enabled),
-    status: fimiStatus,
-    score: Math.round(fimiScore),
-    confidence,
-    mode: fimiMode,
+    status: quality.score_valid ? 'ok' : quality.state,
+    score: fimiScore,
+    observed_partial_score: quality.score_valid ? null : (quality.successful_queries ? observedScore : null),
+    data_quality: quality,
+    last_successful: lastSuccessful,
+    last_successful_age_hours: lastSuccessful ? Number(((now.getTime() - Date.parse(lastSuccessful.generated_at)) / 3600000).toFixed(1)) : null,
+    confidence: quality.score_valid && !quality.sample_limited ? confidence : 'low',
+    mode: 'maritime_narrative_pressure; not a disinformation determination',
     source_state: {
       external_ok: externalOk,
       external_errors: externalErrors,
@@ -530,7 +555,7 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
     },
     maritime_filter: {
       schema: 'mard-hat-maritime-filter-v1',
-      rule: 'score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.',
+      rule: 'score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.',
       raw_unique_articles: rawGdeltArticles.length,
       accepted_articles: gdeltAccepted.length,
       core_mard_eu_articles: gdeltCore.length,
@@ -548,20 +573,24 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
       timespan: gdeltSource?.timespan || '36h',
       query_count: gdeltQueries.length,
       article_count: gdeltResults.reduce((a, r) => a + (r.count || 0), 0),
-      unique_articles_raw: rawGdeltArticles.length,
-      unique_articles: gdeltAccepted.length,
+      unique_articles_raw: gdeltStatus === 'ok' ? rawGdeltArticles.length : null,
+      unique_articles: gdeltStatus === 'ok' ? gdeltAccepted.length : null,
+      observed_articles: rawGdeltArticles.length,
+      sample_limited: gdeltResults.some(r => r.sample_cap_reached),
       core_mard_eu_articles: gdeltCore.length,
       global_maritime_spillover_articles: gdeltSpillover.length,
       rejected_articles: gdeltRejected.length,
-      weighted_articles: Number(gdeltWeightedCount.toFixed(2)),
+      weighted_articles: gdeltStatus === 'ok' ? Number(gdeltWeightedCount.toFixed(2)) : null,
       historical_percentile: gdeltPercentile === null ? null : Math.round(gdeltPercentile),
       top_domains: topCounts(gdeltAccepted, a => a.domain || 'unknown', 8),
-      sample: gdeltAccepted.slice(0, 20)
+      sample: gdeltAccepted.slice(0, 20),
+      articles: gdeltAccepted.slice(0, scoring.downloads?.fimi_article_limit ?? 500)
     },
     euvsdisinfo: {
       timespan: euvsSource?.timespan || '90d',
       query_count: euvsQueries.length,
-      candidate_count: euvsArticles.length,
+      candidate_count: euvsStatus === 'ok' ? euvsArticles.length : null,
+      observed_candidates: euvsArticles.length,
       method: 'GDELT domain-restricted ArticleList query for euvsdisinfo.eu',
       sample: euvsArticles.slice(0, 10)
     },
@@ -576,15 +605,16 @@ async function fetchFimiLite(sources, scoring, fimiConfig, previousHistory = [])
       gdelt_points: histGdelt.length,
       fimi_score_points: histFimiScore.length
     },
-    note: 'FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade.'
+    note: 'FIMI-lite is a legacy field name for maritime narrative pressure. Topic tags do not determine falsehood or DISARM techniques. FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade.'
   };
 }
 
 function percentileRank(values, current) {
   const nums = values.filter(Number.isFinite).sort((a, b) => a - b);
   if (!nums.length || !Number.isFinite(current)) return null;
-  const belowOrEqual = nums.filter(v => v <= current).length;
-  return clamp((belowOrEqual / nums.length) * 100);
+  const below = nums.filter(value => value < current).length;
+  const equal = nums.filter(value => value === current).length;
+  return clamp(((below + equal / 2) / nums.length) * 100);
 }
 
 function dateKey(d) {
@@ -700,110 +730,62 @@ async function fetchThreatFoxHistoricalExport(source, key, scoring) {
   return { ok: false, status: 'error', error: errors.slice(0, 4).join(' | ') || 'no export candidate succeeded', items: [] };
 }
 
-function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previousHistory = []) {
+function summariseThreatFoxData(data1d, data7d, historicalItems, scoring, previousHistory = [], referenceTime = now) {
   const day1 = Array.isArray(data1d) ? data1d : [];
   const day7 = Array.isArray(data7d) ? data7d : [];
   const botnet1d = day1.filter(isThreatFoxBotnetC2);
   const botnet7d = day7.filter(isThreatFoxBotnetC2);
-
   const historicalDays = scoring.windows.threatfox_historical_days || 180;
   const botHours = scoring.windows.bot_activity_hours || 36;
-  const windowMs = botHours * 3600000;
-  const currentBegin = now.getTime() - windowMs;
-
-  // Current 36h counts can be derived from the recent 7d API response even when
-  // the full export is unavailable. This prevents using a full 7d count as a
-  // fake 36h value.
-  const recent7Parsed = day7
-    .map(item => ({ item, d: parseThreatFoxDate(item), bot: isThreatFoxBotnetC2(item) }))
-    .filter(x => x.d && x.d.getTime() <= now.getTime());
-  const recent36 = recent7Parsed.filter(x => x.d.getTime() > currentBegin && x.d.getTime() <= now.getTime());
-  const recent36Bot = recent36.filter(x => x.bot);
-
-  const histRaw = Array.isArray(historicalItems) ? historicalItems : [];
-  const cutoff = now.getTime() - historicalDays * 86400000;
-  const hist = histRaw
-    .map(item => ({ item, d: parseThreatFoxDate(item), bot: isThreatFoxBotnetC2(item) }))
-    .filter(x => x.d && x.d.getTime() >= cutoff && x.d.getTime() <= now.getTime());
-
-  const perDayIoc = new Map();
-  const perDayBot = new Map();
-  for (const x of hist) {
-    const k = dateKey(x.d);
-    perDayIoc.set(k, (perDayIoc.get(k) || 0) + 1);
-    if (x.bot) perDayBot.set(k, (perDayBot.get(k) || 0) + 1);
+  const end = referenceTime.getTime();
+  const parse = items => items.map(item => ({ item, date: parseThreatFoxDate(item), bot: isThreatFoxBotnetC2(item) }));
+  const recentParsed = parse(day7);
+  const timeFilterValid = recentParsed.every(item => item.date && item.date.getTime() <= end);
+  const recent = recentParsed.filter(item => item.date && item.date.getTime() <= end);
+  const recent36 = recent.filter(item => item.date.getTime() > end - botHours * 3600000);
+  const recent36Bot = recent36.filter(item => item.bot);
+  const hist = parse(Array.isArray(historicalItems) ? historicalItems : [])
+    .filter(item => item.date && item.date.getTime() > end - historicalDays * 86400000 && item.date.getTime() <= end);
+  // Never create synthetic zero windows when the historical export is absent.
+  // Export and current API counts both use rolling windows ending at this UTC hour.
+  const allTimes = hist.map(item => item.date.getTime()).sort((a, b) => a - b);
+  const botTimes = hist.filter(item => item.bot).map(item => item.date.getTime()).sort((a, b) => a - b);
+  const oldest = allTimes[0] ?? end;
+  const upperBound = (values, target) => { let low = 0, high = values.length; while (low < high) { const middle = Math.floor((low + high) / 2); if (values[middle] <= target) low = middle + 1; else high = middle; } return low; };
+  const countAt = (at, hours, botsOnly) => { const times = botsOnly ? botTimes : allTimes; return upperBound(times, at) - upperBound(times, at - hours * 3600000); };
+  const windows = [];
+  for (let at = end - 86400000; at - botHours * 3600000 >= oldest; at -= 86400000) windows.push(at);
+  const exportReady = hist.length > 0 && windows.length >= 14;
+  const specifications = [
+    ['current_ioc_percentile', 'threatfox_ioc_count_1d', day1.length, 24, false],
+    ['current_botnet_c2_percentile', 'threatfox_botnet_c2_count_1d', botnet1d.length, 24, true],
+    ['trailing_36h_ioc_percentile', 'threatfox_ioc_count_36h', timeFilterValid ? recent36.length : null, botHours, false],
+    ['trailing_36h_botnet_c2_percentile', 'threatfox_botnet_c2_36h', timeFilterValid ? recent36Bot.length : null, botHours, true]
+  ];
+  const percentiles = {};
+  const baseline = {};
+  for (const [name, metric, current, hours, botsOnly] of specifications) {
+    const local = historicalValues(previousHistory, metric);
+    const values = exportReady ? windows.map(at => countAt(at, hours, botsOnly)) : local.values;
+    percentiles[name] = percentileRank(values, current);
+    baseline[name] = { source: exportReady ? 'historical_export' : local.ready ? 'valid_local_daily_history' : 'unavailable', days: exportReady ? windows.length : local.days, window_hours: hours };
   }
-
-  const dayCounts = [...perDayIoc.values()];
-  const dayBotCounts = [...perDayBot.values()];
-  const endTimes = [];
-  const start = new Date(now.getTime() - historicalDays * 86400000);
-  start.setUTCHours(23, 59, 59, 999);
-  for (let t = start.getTime(); t <= now.getTime(); t += 86400000) endTimes.push(t);
-
-  const rolling36Ioc = [];
-  const rolling36Bot = [];
-  for (const end of endTimes) {
-    const begin = end - windowMs;
-    let ioc = 0;
-    let bot = 0;
-    for (const x of hist) {
-      const ts = x.d.getTime();
-      if (ts > begin && ts <= end) {
-        ioc++;
-        if (x.bot) bot++;
-      }
-    }
-    rolling36Ioc.push(ioc);
-    rolling36Bot.push(bot);
-  }
-
-  const current36 = hist.length
-    ? hist.filter(x => x.d.getTime() > currentBegin && x.d.getTime() <= now.getTime())
-    : recent36;
-  const current36Bot = hist.length
-    ? current36.filter(x => x.bot)
-    : recent36Bot;
-
-  // If export parsing failed or is thin, fall back to local run history for rough percentile inputs.
-  const histFromRunsIoc = (previousHistory || [])
-    .map(h => h?.metrics?.threatfox_ioc_count_1d)
-    .filter(Number.isFinite);
-  const histFromRunsBot = (previousHistory || [])
-    .map(h => h?.metrics?.threatfox_botnet_c2_36h)
-    .filter(Number.isFinite);
-
-  const currentIocPercentile = percentileRank(dayCounts.length >= 14 ? dayCounts : histFromRunsIoc, day1.length);
-  const currentBotPercentile = percentileRank(dayBotCounts.length >= 14 ? dayBotCounts : histFromRunsBot, botnet1d.length);
-  const trailing36IocPercentile = percentileRank(rolling36Ioc.length >= 14 ? rolling36Ioc : histFromRunsIoc, current36.length || recent36.length || day1.length);
-  const trailing36BotPercentile = percentileRank(rolling36Bot.length >= 14 ? rolling36Bot : histFromRunsBot, current36Bot.length || recent36Bot.length || botnet1d.length);
-
-  const historicalAvailable = hist.length > 0 && dayCounts.length >= 7;
-  const fallbackLimited = !historicalAvailable;
-
   return {
-    enabled: true,
-    ioc_count_1d: day1.length,
-    ioc_count_7d: day7.length,
-    botnet_c2_count_1d: botnet1d.length,
-    botnet_c2_count_7d: botnet7d.length,
-    threat_types_1d: topCounts(day1, x => x.threat_type || 'unknown', 8),
+    enabled: true, ioc_count_1d: day1.length, ioc_count_7d: day7.length,
+    botnet_c2_count_1d: botnet1d.length, botnet_c2_count_7d: botnet7d.length,
+    threat_types_1d: topCounts(day1, item => item.threat_type || 'unknown', 8),
     malware_families_1d: topCounts(day1, getThreatFoxFamily, 10),
     botnet_families_7d: topCounts(botnet7d, getThreatFoxFamily, 10),
     historical: {
-      status: historicalAvailable ? 'active' : 'warming_up_or_unavailable',
-      method: historicalAvailable ? 'threatfox_export_percentile_approximation' : 'recent_7d_api_plus_local_history_limited_fallback',
-      fallback_limited: fallbackLimited,
-      window_days: historicalDays,
-      source_items: hist.length,
-      days_with_iocs: dayCounts.length,
-      bot_activity_hours: botHours,
-      current_36h_ioc_count: current36.length || recent36.length || null,
-      current_36h_botnet_c2_count: current36Bot.length || recent36Bot.length || null,
-      current_ioc_percentile: currentIocPercentile === null ? null : Math.round(currentIocPercentile),
-      current_botnet_c2_percentile: currentBotPercentile === null ? null : Math.round(currentBotPercentile),
-      trailing_36h_ioc_percentile: trailing36IocPercentile === null ? null : Math.round(trailing36IocPercentile),
-      trailing_36h_botnet_c2_percentile: trailing36BotPercentile === null ? null : Math.round(trailing36BotPercentile)
+      status: exportReady ? 'active' : 'warming_up_or_unavailable',
+      method: exportReady ? 'same_utc_hour_rolling_export_windows' : 'recent_7d_api_plus_valid_local_history',
+      fallback_limited: !exportReady, window_days: historicalDays,
+      source_items: hist.length, days_with_iocs: new Set(hist.map(item => dateKey(item.date))).size,
+      bot_activity_hours: botHours, time_filter_valid: timeFilterValid,
+      current_36h_ioc_count: timeFilterValid ? recent36.length : null,
+      current_36h_botnet_c2_count: timeFilterValid ? recent36Bot.length : null,
+      ...Object.fromEntries(Object.entries(percentiles).map(([key, value]) => [key, value === null ? null : Math.round(value)])),
+      percentile_baselines: baseline
     }
   };
 }
@@ -813,82 +795,41 @@ async function fetchThreatFoxOptional(sources, scoring, previousHistory) {
   const key = process.env.ABUSECH_AUTH_KEY;
   if (!source?.enabled) return { ok: false, status: 'disabled', summary: { enabled: false } };
   if (!key) return { ok: false, status: 'missing_ABUSECH_AUTH_KEY', summary: { enabled: true, missing_secret: true } };
-
   const oneDay = await postThreatFox(source, key, { query: 'get_iocs', days: 1 }, 'threatfox_iocs_1d');
   const sevenDays = await postThreatFox(source, key, { query: 'get_iocs', days: 7 }, 'threatfox_iocs_7d');
-
   const raw1d = path.join(RAW_DIR, `threatfox_iocs_1d_${stamp}.json`);
   const raw7d = path.join(RAW_DIR, `threatfox_iocs_7d_${stamp}.json`);
   await fs.writeFile(raw1d, oneDay.raw);
   await fs.writeFile(raw7d, sevenDays.raw);
-
-  let exportResult = { ok: false, status: 'disabled', items: [] };
-  try {
-    exportResult = await fetchThreatFoxHistoricalExport(source, key, scoring);
-  } catch (err) {
-    exportResult = { ok: false, status: 'error', error: String(err.message || err), items: [] };
-  }
-
-  const data1d = Array.isArray(oneDay.json.data) ? oneDay.json.data : [];
-  const data7d = Array.isArray(sevenDays.json.data) ? sevenDays.json.data : [];
+  let exportResult;
+  try { exportResult = await fetchThreatFoxHistoricalExport(source, key, scoring); }
+  catch (error) { exportResult = { ok: false, status: 'error', error: String(error.message || error), items: [] }; }
+  const data1d = oneDay.json.data || [];
+  const data7d = sevenDays.json.data || [];
   const summary = summariseThreatFoxData(data1d, data7d, exportResult.items, scoring, previousHistory);
-
-  return {
-    ok: true,
-    status: 'ok',
-    count: data1d.length,
-    count_7d: data7d.length,
-    botnet_cc_count: summary.botnet_c2_count_7d,
-    hash_1d: oneDay.hash,
-    hash_7d: sevenDays.hash,
-    export_status: exportResult.status,
-    export_count: exportResult.count ?? 0,
-    export_format: exportResult.format ?? null,
-    export_hash: exportResult.hash ?? null,
-    export_error: exportResult.error ?? null,
-    raw_files: [path.relative(ROOT, raw1d), path.relative(ROOT, raw7d)].concat(exportResult.raw_file ? [exportResult.raw_file] : []),
-    summary
-  };
+  return { ok: true, status: exportResult.ok ? 'ok' : 'partial',
+    count: data1d.length, count_7d: data7d.length, botnet_cc_count: summary.botnet_c2_count_7d,
+    hash_1d: oneDay.hash, hash_7d: sevenDays.hash, export_status: exportResult.status,
+    export_count: exportResult.count ?? 0, export_format: exportResult.format ?? null,
+    export_hash: exportResult.hash ?? null, export_error: exportResult.error ?? null,
+    raw_files: [path.relative(ROOT, raw1d), path.relative(ROOT, raw7d)].concat(exportResult.raw_file ? [exportResult.raw_file] : []), summary };
 }
 
 function summariseKev(kevVulns, epssByCve, scoring) {
-  const shortDays = scoring.windows.short_days;
-  const mediumDays = scoring.windows.medium_days;
-  const recent7 = kevVulns.filter(v => daysAgo(v.dateAdded) <= shortDays);
-  const recent30 = kevVulns.filter(v => daysAgo(v.dateAdded) <= mediumDays);
-
-  const epssValues = recent30
-    .map(v => Number.parseFloat(epssByCve.get(v.cveID)?.epss ?? '0'))
-    .filter(Number.isFinite);
-
-  const epssMeanRecentKev = epssValues.length
-    ? epssValues.reduce((a, b) => a + b, 0) / epssValues.length
-    : 0;
-
-  const highEpssRecentKev = recent30
-    .map(v => ({
-      cve: v.cveID,
-      vendor_project: v.vendorProject,
-      product: v.product,
-      vulnerability_name: v.vulnerabilityName,
-      date_added: v.dateAdded,
-      epss: Number.parseFloat(epssByCve.get(v.cveID)?.epss ?? '0'),
-      percentile: Number.parseFloat(epssByCve.get(v.cveID)?.percentile ?? '0')
-    }))
-    .sort((a, b) => b.epss - a.epss)
-    .slice(0, 12);
-
-  return {
-    total_kev: kevVulns.length,
-    recent_7d: recent7.length,
-    recent_30d: recent30.length,
-    epss_mean_recent_kev: Number(epssMeanRecentKev.toFixed(4)),
-    top_recent_kev_by_epss: highEpssRecentKev
-  };
+  const recent7 = kevVulns.filter(item => daysAgo(item.dateAdded) <= scoring.windows.short_days);
+  const recent30 = kevVulns.filter(item => daysAgo(item.dateAdded) <= scoring.windows.medium_days);
+  const epssValues = recent30.map(item => Number.parseFloat(epssByCve.get(item.cveID)?.epss)).filter(Number.isFinite);
+  return { total_kev: kevVulns.length, recent_7d: recent7.length, recent_30d: recent30.length,
+    epss_mean_recent_kev: epssValues.length ? Number((epssValues.reduce((a, b) => a + b, 0) / epssValues.length).toFixed(4)) : recent30.length ? null : 0,
+    epss_enriched_count: epssValues.length,
+    epss_enrichment_coverage: recent30.length ? epssValues.length / recent30.length : 1,
+    top_recent_kev_by_epss: recent30.map(item => ({ cve: item.cveID, vendor_project: item.vendorProject, product: item.product, vulnerability_name: item.vulnerabilityName,
+      date_added: item.dateAdded, epss: Number.isFinite(Number.parseFloat(epssByCve.get(item.cveID)?.epss)) ? Number.parseFloat(epssByCve.get(item.cveID)?.epss) : null }))
+      .sort((a, b) => (b.epss ?? -1) - (a.epss ?? -1)).slice(0, 12) };
 }
 
 function fallbackThreatFoxScore(value, cap, maxScore = 65) {
-  return Math.min(maxScore, scoreFromCount(value || 0, cap));
+  return Number.isFinite(value) ? Math.min(maxScore, scoreFromCount(value, cap)) : null;
 }
 
 function sourceHealthWeight(status, scoring) {
@@ -902,14 +843,15 @@ function sourceHealthWeight(status, scoring) {
 }
 
 function sourceCoverageScore(sourceHealth, scoring) {
-  const items = Array.isArray(sourceHealth) ? sourceHealth.filter(s => s && s.status !== 'disabled') : [];
+  const items = Array.isArray(sourceHealth) ? sourceHealth.filter(s => s && s.status !== 'disabled' && !s.derived) : [];
   if (!items.length) return 0;
   const total = items.reduce((sum, s) => sum + sourceHealthWeight(s.status, scoring), 0);
   return clamp((total / items.length) * 100);
 }
 
 function scoreBand(score) {
-  const s = Number(score) || 0;
+  if (!Number.isFinite(score)) return { label: 'not_assessable', color: 'grey', css: 'unknown', meaning: 'required source data unavailable' };
+  const s = score;
   if (s <= 20) return { label: 'normal', color: 'green', css: 'normal', meaning: 'low contextual pressure' };
   if (s <= 40) return { label: 'elevated', color: 'yellow', css: 'elevated', meaning: 'elevated contextual pressure' };
   if (s <= 60) return { label: 'watch', color: 'orange', css: 'watch', meaning: 'watch-level contextual pressure' };
@@ -933,7 +875,7 @@ function buildObscurationContext(latestLike, scoring) {
   if ((maritime.global_maritime_spillover_articles ?? 0) > 0) signals.push(`${maritime.global_maritime_spillover_articles} Global Maritime Spillover articles retained with lower weight`);
   if (partialSources.length) signals.push(`partial/degraded source access: ${partialSources.join(', ')}`);
 
-  let level = 'low';
+  let level = !Number.isFinite(latestLike.hat_score) && !Number.isFinite(fimi.score) ? 'not_assessable' : 'low';
   if (bot.primary_code === 'BAB' && ((maritime.core_mard_eu_articles ?? 0) > 0 || (fimi.score ?? 0) >= 45)) level = 'watch';
   if (score >= 80 && bot.primary_code === 'BAB' && (maritime.core_mard_eu_articles ?? 0) >= 8) level = 'high';
 
@@ -946,190 +888,76 @@ function buildObscurationContext(latestLike, scoring) {
   };
 }
 
-function computeScores(metrics, sourceHealth, scoring, previousHistory) {
-  const weights = scoring.weights;
-  const caps = scoring.caps;
-  const thresholds = scoring.thresholds;
+function computeScores(metrics, sourceHealth, scoring, previousHistory, configurationHash = null) {
+  const { weights, caps, thresholds } = scoring;
   const hist = metrics.threatfox?.historical || {};
-
-  const fallbackMax = caps.threatfox_fallback_max_score ?? 65;
-  const threatfoxCap = hist.status === 'active' ? 100 : fallbackMax;
-  const threatfoxIocRaw = Number.isFinite(hist.current_ioc_percentile)
-    ? hist.current_ioc_percentile
-    : fallbackThreatFoxScore(metrics.threatfox.ioc_count_1d || 0, caps.threatfox_ioc_1d_cap_fallback, fallbackMax);
-  const threatfoxIocCurrent = Math.min(threatfoxCap, threatfoxIocRaw);
-  const bot36Count = hist.current_36h_botnet_c2_count ?? metrics.threatfox.botnet_c2_count_1d ?? 0;
-  const threatfoxBotRaw = Number.isFinite(hist.trailing_36h_botnet_c2_percentile)
-    ? hist.trailing_36h_botnet_c2_percentile
-    : fallbackThreatFoxScore(bot36Count, caps.threatfox_botnet_c2_36h_cap_fallback, fallbackMax);
-  const threatfoxBot36 = Math.min(threatfoxCap, threatfoxBotRaw);
-
+  const bySource = name => sourceHealth.find(item => item.source === name);
+  const kevValid = bySource('cisa_kev')?.status === 'ok';
+  const threatfoxValid = ['ok', 'partial'].includes(bySource('threatfox_optional')?.status);
+  const epssValid = kevValid && Number.isFinite(metrics.kev.epss_mean_recent_kev) && metrics.kev.epss_enrichment_coverage >= 0.8;
+  const maximum = hist.status === 'active' ? 100 : caps.threatfox_fallback_max_score ?? 65;
+  const iocScore = Number.isFinite(hist.current_ioc_percentile) ? Math.min(maximum, hist.current_ioc_percentile)
+    : fallbackThreatFoxScore(metrics.threatfox.ioc_count_1d, caps.threatfox_ioc_1d_cap_fallback, maximum);
+  const botScore = Number.isFinite(hist.trailing_36h_botnet_c2_percentile) ? Math.min(maximum, hist.trailing_36h_botnet_c2_percentile)
+    : fallbackThreatFoxScore(hist.current_36h_botnet_c2_count, caps.threatfox_botnet_c2_36h_cap_fallback, maximum);
   const parts = {
-    kev_recent_7d: scoreFromCount(metrics.kev.recent_7d, caps.kev_recent_7d_cap),
-    kev_recent_30d: scoreFromCount(metrics.kev.recent_30d, caps.kev_recent_30d_cap),
-    kev_epss_mean: clamp(metrics.kev.epss_mean_recent_kev * 100),
-    threatfox_ioc_current: clamp(threatfoxIocCurrent),
-    threatfox_botnet_c2_36h: clamp(threatfoxBot36)
+    kev_recent_7d: kevValid ? scoreFromCount(metrics.kev.recent_7d, caps.kev_recent_7d_cap) : null,
+    kev_recent_30d: kevValid ? scoreFromCount(metrics.kev.recent_30d, caps.kev_recent_30d_cap) : null,
+    kev_epss_mean: epssValid ? clamp(metrics.kev.epss_mean_recent_kev * 100) : null,
+    threatfox_ioc_current: threatfoxValid ? iocScore : null,
+    threatfox_botnet_c2_36h: threatfoxValid ? botScore : null
   };
-
-  const contextParts = {
-    epss_hot_global: scoreFromCount(metrics.epss.hot_global_count, caps.epss_hot_count_cap),
-    source_coverage: sourceCoverageScore(sourceHealth, scoring)
-  };
-
-  const hatScore = clamp(
-    parts.kev_recent_7d * weights.kev_recent_7d +
-    parts.kev_recent_30d * weights.kev_recent_30d +
-    parts.kev_epss_mean * weights.kev_epss_mean +
-    parts.threatfox_ioc_current * weights.threatfox_ioc_current +
-    parts.threatfox_botnet_c2_36h * weights.threatfox_botnet_c2_36h +
-    contextParts.epss_hot_global * weights.epss_hot_global +
-    contextParts.source_coverage * weights.source_coverage
-  );
-
-  const historyScores = Array.isArray(previousHistory) ? previousHistory.map(h => h.hat_score).filter(Number.isFinite) : [];
-  const baselineReady = historyScores.length >= scoring.windows.history_points_for_baseline;
-  const baselineMean = historyScores.length ? historyScores.reduce((a, b) => a + b, 0) / historyScores.length : null;
-  const delta = baselineMean === null ? null : Number((hatScore - baselineMean).toFixed(1));
-
-  return {
-    hat_score: Math.round(hatScore),
-    level: levelFromScore(hatScore, thresholds),
-    score_interpretation: { percentage: Math.round(hatScore), ...scoreBand(hatScore), scale: '0-100 percent contextual pressure' },
-    confidence: baselineReady ? 'medium' : 'low',
-    baseline: {
-      status: baselineReady ? 'active' : 'warming_up',
-      points: historyScores.length,
-      mean_hat_score: baselineMean === null ? null : Number(baselineMean.toFixed(1)),
-      delta_from_mean: delta
-    },
-    score_parts: Object.fromEntries(Object.entries(parts).map(([k, v]) => [k, Math.round(v)])),
-    context_parts: Object.fromEntries(Object.entries(contextParts).map(([k, v]) => [k, Math.round(v)]))
-  };
+  const complete = Object.entries(parts).every(([key, value]) => !weights[key] || Number.isFinite(value));
+  const knownParts = Object.values(parts).filter(Number.isFinite).length;
+  const observed = Object.entries(parts).reduce((sum, [key, value]) => sum + (Number.isFinite(value) ? value * (weights[key] || 0) : 0), 0);
+  const score = complete ? Math.round(clamp(observed)) : null;
+  const contextParts = { epss_hot_global: bySource('first_epss_top')?.status === 'ok' ? scoreFromCount(metrics.epss.hot_global_count, caps.epss_hot_count_cap) : null,
+    source_coverage: sourceCoverageScore(sourceHealth, scoring) };
+  const history = historicalValues(previousHistory, 'hat_score', { configurationHash });
+  const mean = history.ready ? history.values.reduce((a, b) => a + b, 0) / history.values.length : null;
+  const delta = Number.isFinite(score) && Number.isFinite(mean) ? Number((score - mean).toFixed(1)) : null;
+  return { hat_score: score, observed_partial_score: complete || !knownParts ? null : Math.round(observed),
+    level: Number.isFinite(score) ? levelFromScore(score, thresholds) : 'not_assessable',
+    score_interpretation: { percentage: score, ...scoreBand(score), scale: '0-100 contextual pressure; not probability' },
+    confidence: complete && history.ready && hist.status === 'active' && metrics.kev.epss_enrichment_coverage === 1 ? 'medium' : 'low',
+    data_quality: { state: complete ? 'valid' : knownParts ? 'partial' : 'unavailable', cyber_score_valid: complete,
+      narrative_score_valid: Boolean(metrics.fimi_lite?.data_quality?.score_valid),
+      missing_score_parts: Object.keys(parts).filter(key => weights[key] && !Number.isFinite(parts[key])),
+      threatfox_baseline_limited: hist.status !== 'active' },
+    baseline: { status: history.ready ? 'active' : 'warming_up', points: history.days, minimum_days: 14,
+      mean_hat_score: mean === null ? null : Number(mean.toFixed(1)), delta_from_mean: delta },
+    score_parts: Object.fromEntries(Object.entries(parts).map(([key, value]) => [key, Number.isFinite(value) ? Math.round(value) : null])), context_parts: contextParts };
 }
 
 function buildBotActivityState(metrics, scoring) {
-  const h = metrics.threatfox?.historical || {};
-  const busy = scoring.bot_activity?.busy_percentile ?? 75;
-  const currentMax = Math.max(h.current_ioc_percentile ?? 0, h.current_botnet_c2_percentile ?? 0);
-  const trailingMax = Math.max(h.trailing_36h_ioc_percentile ?? 0, h.trailing_36h_botnet_c2_percentile ?? 0);
-  const currentBusy = currentMax >= busy;
-  const trailingBusy = trailingMax >= busy;
-
-  const primaryCode = currentBusy ? 'BAB' : trailingBusy ? 'BWB' : 'BIL';
-  const primaryNumber = currentBusy ? 2 : trailingBusy ? 1 : 0;
-
-  return {
-    schema: 'mard-hat-bot-state-v1',
-    primary_code: primaryCode,
-    primary_number: primaryNumber,
-    primary_label: primaryCode === 'BAB' ? 'Bots are busy' : primaryCode === 'BWB' ? 'Bots were busy' : 'Bots in Lurking Position',
-    current_code: currentBusy ? 'BAB' : 'BIL',
-    current_label: currentBusy ? 'Bots are busy' : 'Bots in Lurking Position',
-    trailing_36h_code: trailingBusy ? 'BWB' : 'BIL',
-    trailing_36h_label: trailingBusy ? 'Bots were busy' : 'Bots in Lurking Position',
-    confidence: h.status === 'active' ? 'medium' : 'low',
-    basis: {
-      threshold_percentile: busy,
-      ioc_current_percentile: h.current_ioc_percentile ?? null,
-      botnet_c2_current_percentile: h.current_botnet_c2_percentile ?? null,
-      ioc_36h_percentile: h.trailing_36h_ioc_percentile ?? null,
-      botnet_c2_36h_percentile: h.trailing_36h_botnet_c2_percentile ?? null,
-      ioc_36h_count: h.current_36h_ioc_count ?? null,
-      botnet_c2_36h_count: h.current_36h_botnet_c2_count ?? null
-    }
-  };
+  const history = metrics.threatfox?.historical || {};
+  const current = history.current_botnet_c2_percentile;
+  const trailing = history.trailing_36h_botnet_c2_percentile;
+  const threshold = scoring.bot_activity?.busy_percentile ?? 75;
+  const code = !Number.isFinite(current) || !Number.isFinite(trailing) ? 'UNRATED'
+    : current >= threshold ? 'BAB' : trailing >= threshold ? 'BWB' : 'BIL';
+  return { schema: 'mard-hat-c2-state-v2', primary_code: code,
+    primary_number: code === 'UNRATED' ? null : code === 'BAB' ? 2 : code === 'BWB' ? 1 : 0,
+    primary_label: { UNRATED: 'Baseline unavailable', BAB: 'Current C2 indicator pressure elevated', BWB: 'Recent C2 indicator pressure elevated', BIL: 'C2 indicators below threshold' }[code],
+    confidence: code === 'UNRATED' ? 'unavailable' : history.status === 'active' ? 'medium' : 'low',
+    finding: 'reported malware infrastructure indicators; no social-bot or attribution finding',
+    basis: { threshold_percentile: threshold, ioc_current_percentile: history.current_ioc_percentile ?? null,
+      botnet_c2_current_percentile: current ?? null, ioc_36h_percentile: history.trailing_36h_ioc_percentile ?? null,
+      botnet_c2_36h_percentile: trailing ?? null, ioc_36h_count: history.current_36h_ioc_count ?? null,
+      botnet_c2_36h_count: history.current_36h_botnet_c2_count ?? null, percentile_baselines: history.percentile_baselines || {} } };
 }
 
 function buildDisinformationAlert(botActivityState, score, scoring, fimiLite = null) {
-  const cfg = scoring.disinformation_alert || {};
-  const maxBasis = Math.max(
-    botActivityState.basis?.ioc_current_percentile ?? 0,
-    botActivityState.basis?.botnet_c2_current_percentile ?? 0,
-    botActivityState.basis?.ioc_36h_percentile ?? 0,
-    botActivityState.basis?.botnet_c2_36h_percentile ?? 0
-  );
-
-  const fimiScore = Number(fimiLite?.score ?? 0);
-  const euvsCount = Number(fimiLite?.euvsdisinfo?.candidate_count ?? 0);
-  const gdeltCount = Number(fimiLite?.gdelt?.unique_articles ?? 0);
-  const tagCount = Number(fimiLite?.disarm_aligned?.tag_count ?? 0);
-  const hasFimiSourceSignal = Boolean(fimiLite?.source_state?.source_signal_present) || euvsCount > 0 || gdeltCount > 0 || tagCount > 0;
-  const proxyElevated = botActivityState.primary_code === 'BAB' || botActivityState.primary_code === 'BWB' || maxBasis >= (cfg.level_1_percentile ?? 65) || ['watch', 'high', 'critical'].includes(score.level);
-
-  let level = 0;
-  if (
-    fimiScore >= (cfg.level_1_fimi_score ?? 25) ||
-    botActivityState.primary_code === 'BWB' ||
-    maxBasis >= (cfg.level_1_percentile ?? 65) ||
-    score.level === 'watch'
-  ) level = 1;
-
-  if (
-    fimiScore >= (cfg.level_2_fimi_score ?? 55) ||
-    botActivityState.primary_code === 'BAB' ||
-    maxBasis >= (cfg.level_2_percentile ?? 75) ||
-    ['high', 'critical'].includes(score.level)
-  ) level = 2;
-
-  if (
-    cfg.auto_level_3_enabled &&
-    fimiScore >= (cfg.level_3_fimi_score ?? 80) &&
-    euvsCount > 0 &&
-    tagCount >= 2 &&
-    (botActivityState.primary_code !== 'BIL' || gdeltCount >= 20)
-  ) level = 3;
-
-  const labels = ['none', 'low', 'elevated', 'high'];
-  let mode = 'fimi_lite_with_bot_ioc_proxy';
-  let note = 'FIMI-lite and bot/IOC proxy telemetry are contextual side signals only. Not attribution-grade.';
-  if (level === 0 && !hasFimiSourceSignal) {
-    mode = 'no_fimi_signal_no_proxy_elevation';
-    note = 'No matching FIMI-lite source signals were detected in this run, and bot/IOC proxy telemetry did not elevate the DAL. Not attribution-grade.';
-  } else if (!hasFimiSourceSignal && proxyElevated) {
-    mode = 'bot_ioc_proxy_only_no_fimi_signal';
-    note = `Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade.`;
-  } else if (hasFimiSourceSignal && proxyElevated) {
-    note = 'Derived from FIMI-lite source signals plus bot/IOC proxy telemetry. Contextual only; not attribution-grade.';
-  } else if (hasFimiSourceSignal) {
-    mode = 'fimi_lite_source_signal_only';
-    note = 'Derived from FIMI-lite source signals. Contextual only; not attribution-grade and not sufficient to prove coordination or attribution.';
-  }
-
-  return {
-    schema: 'mard-hat-dal-v2',
-    level,
-    label: labels[level],
-    scale: [0, 1, 2, 3],
-    mode,
-    fimi_lite_score: Math.round(fimiScore),
-    corroboration: {
-      gdelt_unique_articles: gdeltCount,
-      euvsdisinfo_candidates: euvsCount,
-      disarm_aligned_tags: tagCount,
-      bot_state: botActivityState.primary_code,
-      fimi_source_signal_present: hasFimiSourceSignal,
-      bot_ioc_proxy_elevated: proxyElevated
-    },
-    note
-  };
+  return narrativeAlert(fimiLite, scoring.disinformation_alert || {});
 }
 
 async function writeEvidenceCard(latest) {
-  const card = {
-    schema: 'mard-hat-evidence-card-v1',
-    generated_at: generatedAt,
-    title: 'Daily open-source exploit, IOC and bot-state snapshot',
-    claim_limit: latest.assessment.claim_limit,
-    score: latest.hat_score,
-    level: latest.level,
-    confidence: latest.confidence,
-    bot_activity_state: latest.bot_activity_state,
-    disinformation_alert_level: latest.disinformation_alert_level,
-    drivers: latest.drivers,
-    key_metrics: latest.metrics,
-    source_health: latest.source_health
-  };
+  const card = { schema: 'mard-hat-evidence-card-v2', generated_at: generatedAt,
+    scoring_version: SCORING_VERSION, title: 'Cyber/C2 and maritime narrative snapshot',
+    claim_limit: latest.assessment.claim_limit, score: latest.hat_score, level: latest.level,
+    confidence: latest.confidence, data_quality: latest.data_quality,
+    bot_activity_state: latest.bot_activity_state, narrative_alert_level: latest.narrative_alert_level,
+    drivers: latest.drivers, key_metrics: latest.metrics, source_health: latest.source_health };
   const file = path.join(EVIDENCE_DIR, `${stamp}_open_source_exploit_ioc_botstate_pressure.json`);
   await fs.writeFile(file, JSON.stringify(card, null, 2));
   return path.relative(PUBLIC_DIR, file);
@@ -1143,10 +971,12 @@ function csvEscape(value) {
 async function writeAnalystDownloads(latest) {
   await fs.mkdir(DOWNLOADS_DIR, { recursive: true });
   const fimi = latest.metrics?.fimi_lite || {};
-  const accepted = Array.isArray(fimi.gdelt?.sample) ? fimi.gdelt.sample : [];
+  const accepted = Array.isArray(fimi.gdelt?.articles) ? fimi.gdelt.articles : fimi.gdelt?.sample || [];
   const bundle = {
     schema: 'mard-hat-analyst-download-bundle-v1',
     generated_at: latest.generated_at,
+    scoring_version: SCORING_VERSION,
+    data_quality: latest.data_quality,
     created_for: 'analyst re-use; no secrets; no raw Auth-Key material',
     score: {
       hat_score: latest.hat_score,
@@ -1162,7 +992,9 @@ async function writeAnalystDownloads(latest) {
     disinformation_alert_level: latest.disinformation_alert_level,
     obscuration_context: latest.obscuration_context,
     maritime_fimi: {
-      score: fimi.score ?? 0,
+      score: fimi.score ?? null,
+      data_quality: fimi.data_quality,
+      last_successful: fimi.last_successful,
       confidence: fimi.confidence ?? 'low',
       mode: fimi.mode ?? null,
       maritime_filter: fimi.maritime_filter ?? null,
@@ -1206,7 +1038,7 @@ async function writeAnalystDownloads(latest) {
     'MARD-HAT analyst downloads',
     '',
     'hat_analyst_bundle_latest.json: compact machine-readable bundle for re-use.',
-    'fimi_maritime_articles_latest.csv/json: score-relevant maritime/FIMI articles after local post-filtering.',
+    'fimi_maritime_articles_latest.csv/json: all accepted sampled maritime narrative articles after local post-filtering.',
     'source_health_latest.csv: source status with partial/error details.',
     '',
     'Claim limit: contextual telemetry only. No attribution and no proof of sabotage, disinformation, hybrid activity, or state involvement by itself.'
@@ -1220,15 +1052,56 @@ async function writeAnalystDownloads(latest) {
   };
 }
 
+function createHistoryItem(latest) {
+  const health = latest.source_health || [];
+  const state = name => health.find(row => row.source === name)?.status;
+  const fox = ['ok', 'partial'].includes(state('threatfox_optional'));
+  const gdelt = state('gdelt_fimi') === 'ok';
+  const euvs = state('euvsdisinfo_case_watch') === 'ok';
+  const fimi = latest.metrics.fimi_lite;
+  const metrics = {
+    kev_recent_7d: latest.metrics.kev.recent_7d, kev_recent_30d: latest.metrics.kev.recent_30d,
+    epss_hot_global_count: latest.metrics.epss.hot_global_count, epss_mean_recent_kev: latest.metrics.kev.epss_mean_recent_kev,
+    threatfox_ioc_count_1d: latest.metrics.threatfox.ioc_count_1d ?? null,
+    threatfox_ioc_count_36h: latest.metrics.threatfox.historical?.current_36h_ioc_count ?? null,
+    threatfox_botnet_c2_count_1d: latest.metrics.threatfox.botnet_c2_count_1d ?? null,
+    threatfox_botnet_c2_count_7d: latest.metrics.threatfox.botnet_c2_count_7d ?? null,
+    threatfox_botnet_c2_36h: latest.metrics.threatfox.historical?.current_36h_botnet_c2_count ?? null,
+    threatfox_ioc_current_percentile: latest.metrics.threatfox.historical?.current_ioc_percentile ?? null,
+    threatfox_botnet_c2_36h_percentile: latest.metrics.threatfox.historical?.trailing_36h_botnet_c2_percentile ?? null,
+    fimi_lite_score: fimi.score, gdelt_unique_articles_36h: gdelt ? fimi.gdelt?.unique_articles_raw ?? null : null,
+    gdelt_mard_eu_weighted_articles_36h: gdelt ? fimi.gdelt?.weighted_articles ?? null : null,
+    gdelt_core_mard_eu_articles_36h: gdelt ? fimi.gdelt?.core_mard_eu_articles ?? null : null,
+    gdelt_global_spillover_articles_36h: gdelt ? fimi.gdelt?.global_maritime_spillover_articles ?? null : null,
+    euvsdisinfo_case_candidates_90d: euvs ? fimi.euvsdisinfo?.candidate_count ?? null : null,
+    disarm_aligned_tag_count: fimi.data_quality?.score_valid ? fimi.disarm_aligned?.tag_count ?? 0 : null
+  };
+  const valid = key => key.startsWith('threatfox_') ? fox : key.startsWith('gdelt_') ? gdelt
+    : key.startsWith('euvs') ? euvs : ['fimi_lite_score', 'disarm_aligned_tag_count'].includes(key) ? fimi.data_quality?.score_valid
+    : key.startsWith('kev_') ? state('cisa_kev') === 'ok' : key === 'epss_hot_global_count' ? state('first_epss_top') === 'ok'
+    : latest.metrics.kev.epss_enrichment_coverage >= 0.8;
+  return { generated_at: latest.generated_at, scoring_version: SCORING_VERSION,
+    configuration_hash: latest.configuration_hash, hat_score: latest.hat_score, level: latest.level,
+    confidence: latest.confidence, trend: latest.trend, data_quality: latest.data_quality,
+    source_health: health, metric_validity: Object.fromEntries(Object.keys(metrics).map(key => [key, valid(key) && Number.isFinite(metrics[key]) ? 'valid' : 'unavailable'])),
+    bot_activity_state: latest.bot_activity_state.primary_code,
+    disinformation_alert_level: latest.narrative_alert_level.level, metrics };
+}
+
 async function main() {
   await ensureDirs();
   const sources = await readJson(SOURCES_PATH);
   const scoring = await readJson(SCORING_PATH);
   const fimiConfig = await readJson(FIMI_CONFIG_PATH, { maritime_watch_queries: [], euvsdisinfo_queries: [], disarm_aligned_tags: [] });
   if (!sources || !scoring) throw new Error('Missing config files.');
+  const configurationHash = sha256(JSON.stringify({ sources, scoring, fimiConfig }));
 
   const previousHistoryPath = path.join(PUBLIC_DIR, 'hat_history.json');
-  const previousHistory = await readJson(previousHistoryPath, []);
+  const previousPublicHistory = await readJson(previousHistoryPath, []);
+  const archived = await fs.readFile(path.join(HISTORY_DIR, 'hat_history.jsonl'), 'utf8').catch(() => '');
+  const archivedHistory = archived.split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line));
+  const previousHistory = [...new Map([...archivedHistory, ...previousPublicHistory].map(row => [row.generated_at, annotateLegacyHistory(row)])).values()].sort((a, b) => a.generated_at.localeCompare(b.generated_at));
+  const previousLatest = await readJson(path.join(PUBLIC_DIR, 'hat_latest.json'), null);
 
   const sourceHealth = [];
 
@@ -1256,7 +1129,7 @@ async function main() {
   let epssKev = { ok: false, data: [] };
   try {
     epssKev = await fetchEpssForCves(sources, kevRecentCves);
-    sourceHealth.push({ source: 'first_epss_kev_enrichment', status: epssKev.ok ? 'ok' : 'empty_or_disabled', count: epssKev.count ?? 0 });
+    sourceHealth.push({ source: 'first_epss_kev_enrichment', status: epssKev.ok || (kev.ok && kevRecentCves.length === 0) ? 'ok' : 'empty_or_disabled', count: epssKev.count ?? 0 });
   } catch (err) {
     sourceHealth.push({ source: 'first_epss_kev_enrichment', status: 'error', error: String(err.message || err) });
   }
@@ -1266,7 +1139,8 @@ async function main() {
     threatfox = await fetchThreatFoxOptional(sources, scoring, previousHistory);
     sourceHealth.push({
       source: 'threatfox_optional',
-      status: threatfox.ok ? 'ok' : threatfox.status,
+      status: threatfox.status,
+      recent_api_status: threatfox.ok ? 'ok' : threatfox.status,
       count: threatfox.count ?? 0,
       count_7d: threatfox.count_7d ?? 0,
       botnet_cc_count: threatfox.botnet_cc_count ?? 0,
@@ -1283,17 +1157,20 @@ async function main() {
   }
 
 
-  let fimiLite = { enabled: false, status: 'disabled', score: 0, source_health: [] };
+  let fimiLite = { enabled: false, status: 'disabled', score: null, data_quality: { score_valid: false }, source_health: [] };
   try {
-    fimiLite = await fetchFimiLite(sources, scoring, fimiConfig, previousHistory);
+    fimiLite = await fetchFimiLite(sources, scoring, fimiConfig, previousHistory, previousLatest, { configurationHash });
     sourceHealth.push(...(fimiLite.source_health || []));
   } catch (err) {
-    fimiLite = { enabled: true, status: 'error', score: 0, source_health: [{ source: 'fimi_lite', status: 'error', error: String(err.message || err) }] };
+    fimiLite = { enabled: true, status: 'error', score: null, data_quality: { score_valid: false }, source_health: [{ source: 'fimi_lite', status: 'error', error: String(err.message || err) }] };
     sourceHealth.push(...fimiLite.source_health);
   }
 
   const epssByCve = new Map((epssKev.data || []).map(row => [row.cve, row]));
   const kevSummary = summariseKev(kev.vulnerabilities || [], epssByCve, scoring);
+  if (!kev.ok) Object.assign(kevSummary, { total_kev: null, recent_7d: null, recent_30d: null, epss_mean_recent_kev: null });
+  const enrichmentHealth = sourceHealth.find(row => row.source === 'first_epss_kev_enrichment');
+  if (enrichmentHealth) enrichmentHealth.coverage_ratio = kev.ok ? kevSummary.epss_enrichment_coverage : 0;
   const epssHotGlobal = (epssTop.data || []).length;
 
   const threatfoxSummary = {
@@ -1304,7 +1181,7 @@ async function main() {
   const metrics = {
     kev: kevSummary,
     epss: {
-      hot_global_count: epssHotGlobal,
+      hot_global_count: epssTop.ok ? epssHotGlobal : null,
       top_global: (epssTop.data || []).slice(0, 12).map(x => ({
         cve: x.cve,
         epss: Number.parseFloat(x.epss),
@@ -1322,14 +1199,15 @@ async function main() {
     fimi_lite: fimiLite
   };
 
-  const score = computeScores(metrics, sourceHealth, scoring, previousHistory);
+  const score = computeScores(metrics, sourceHealth, scoring, previousHistory, configurationHash);
   const botActivityState = buildBotActivityState(metrics, scoring);
   const disinfoAlert = buildDisinformationAlert(botActivityState, score, scoring, fimiLite);
 
   const drivers = [];
-  drivers.push(`${kevSummary.recent_7d} CISA KEV additions in the last ${scoring.windows.short_days} days`);
-  drivers.push(`${kevSummary.recent_30d} CISA KEV additions in the last ${scoring.windows.medium_days} days`);
-  drivers.push(`${epssHotGlobal} EPSS entries above the configured hot percentile query window (context only)`);
+  if (kev.ok) drivers.push(`${kevSummary.recent_7d} CISA KEV additions in the last ${scoring.windows.short_days} days`);
+  if (kev.ok) drivers.push(`${kevSummary.recent_30d} CISA KEV additions in the last ${scoring.windows.medium_days} days`);
+  if (!kev.ok) drivers.push('CISA KEV data unavailable; see source health');
+  if (epssTop.ok) drivers.push(`${epssHotGlobal} EPSS entries above the configured hot percentile query window (context only)`);
   if (kevSummary.epss_mean_recent_kev > 0) drivers.push(`Mean EPSS of recent KEV items: ${kevSummary.epss_mean_recent_kev}`);
   if (threatfox.ok) {
     drivers.push(`${threatfoxSummary.ioc_count_1d ?? 0} ThreatFox IOCs in the last 1 day`);
@@ -1340,7 +1218,7 @@ async function main() {
       drivers.push('ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously');
     }
     drivers.push(`Bot state: ${botActivityState.primary_code} — ${botActivityState.primary_label}`);
-    drivers.push(`Disinformation Alert Level proxy: ${disinfoAlert.level} (${disinfoAlert.label})`);
+    drivers.push(`Maritime narrative alert: ${disinfoAlert.level ?? 'not assessable'} (${disinfoAlert.label})`);
   } else if (threatfox.status === 'missing_ABUSECH_AUTH_KEY') {
     drivers.push('ThreatFox is enabled but ABUSECH_AUTH_KEY is missing');
   } else if (threatfox.status === 'error') {
@@ -1351,13 +1229,13 @@ async function main() {
     const euvsCount = Number(fimiLite.euvsdisinfo?.candidate_count ?? 0);
     const tagList = (fimiLite.disarm_aligned?.tags || []).slice(0, 3).map(t => t.label).join(', ');
     const hasFimiSourceSignal = Boolean(fimiLite.source_state?.source_signal_present) || gdeltCount > 0 || euvsCount > 0 || Boolean(tagList);
-    const sourceDegraded = String(fimiLite.status || '').startsWith('degraded');
+    const sourceDegraded = !fimiLite.data_quality?.score_valid;
     if (hasFimiSourceSignal) {
-      drivers.push(`FIMI-lite score: ${fimiLite.score ?? 0} (${fimiLite.confidence ?? 'low'} confidence)`);
+      drivers.push(`Maritime narrative pressure: ${fimiLite.score ?? 'not assessable'} (${fimiLite.confidence ?? 'low'} confidence)`);
       drivers.push(`GDELT maritime/FIMI watch: ${gdeltCount} score-relevant articles in ${fimiLite.gdelt?.timespan ?? '36h'} after local maritime filtering`);
       if (fimiLite.maritime_filter) drivers.push(`Maritime filter: ${fimiLite.maritime_filter.core_mard_eu_articles || 0} Core MARD-Eu, ${fimiLite.maritime_filter.global_maritime_spillover_articles || 0} Global Maritime Spillover, ${fimiLite.maritime_filter.rejected_as_noise_or_broad_context || 0} rejected as broad/noisy context`);
       drivers.push(`EUvsDisinfo case watch: ${euvsCount} maritime/FIMI candidate items in ${fimiLite.euvsdisinfo?.timespan ?? '90d'}`);
-      if (tagList) drivers.push(`DISARM-aligned tags observed: ${tagList}`);
+      if (tagList) drivers.push(`Narrative topic tags observed: ${tagList}`);
     } else if (sourceDegraded) {
       drivers.push('FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run');
     } else {
@@ -1367,7 +1245,11 @@ async function main() {
   if (score.baseline.status === 'warming_up') drivers.push(`Baseline warming up: ${score.baseline.points}/${scoring.windows.history_points_for_baseline} prior points available`);
 
   const latest = {
-    schema: 'mard-hat-v0.1.5',
+    schema: 'mard-hat-v0.2.0',
+    scoring_version: SCORING_VERSION,
+    configuration_hash: configurationHash,
+    data_quality: score.data_quality,
+    observed_partial_score: score.observed_partial_score,
     generated_at: generatedAt,
     window_days: scoring.windows.medium_days,
     hat_score: score.hat_score,
@@ -1380,6 +1262,7 @@ async function main() {
     context_parts: score.context_parts,
     bot_activity_state: botActivityState,
     disinformation_alert_level: disinfoAlert,
+    narrative_alert_level: disinfoAlert,
     metrics,
     drivers,
     source_health: sourceHealth,
@@ -1392,8 +1275,8 @@ async function main() {
       no_proof_by_itself: true
     },
     roadmap: {
-      next: 'v0.1.6: optional URLhaus, improved baselines, and stronger source-specific calibration',
-      active: 'v0.1.5 transparency and maritime relevance patch: partial source health, MARD-Eu FIMI filtering, score bands, downloads and obscuration context',
+      next: 'Accumulate valid source coverage for event comparisons',
+      active: 'v0.2.0 source validity, rate-limit handling, corrected baselines and separate narrative/influence telemetry',
       open_measures: 'later'
     },
     links: {
@@ -1416,45 +1299,20 @@ async function main() {
   latest.evidence_cards = [evidencePath];
   latest.downloads = await writeAnalystDownloads(latest);
 
-  const newHistoryItem = {
-    generated_at: latest.generated_at,
-    hat_score: latest.hat_score,
-    level: latest.level,
-    confidence: latest.confidence,
-    trend: latest.trend,
-    bot_activity_state: latest.bot_activity_state.primary_code,
-    disinformation_alert_level: latest.disinformation_alert_level.level,
-    metrics: {
-      kev_recent_7d: latest.metrics.kev.recent_7d,
-      kev_recent_30d: latest.metrics.kev.recent_30d,
-      epss_hot_global_count: latest.metrics.epss.hot_global_count,
-      epss_mean_recent_kev: latest.metrics.kev.epss_mean_recent_kev,
-      threatfox_ioc_count_1d: latest.metrics.threatfox.ioc_count_1d ?? 0,
-      threatfox_botnet_c2_count_7d: latest.metrics.threatfox.botnet_c2_count_7d ?? 0,
-      threatfox_botnet_c2_36h: latest.metrics.threatfox.historical?.current_36h_botnet_c2_count ?? 0,
-      threatfox_ioc_current_percentile: latest.metrics.threatfox.historical?.current_ioc_percentile ?? null,
-      threatfox_botnet_c2_36h_percentile: latest.metrics.threatfox.historical?.trailing_36h_botnet_c2_percentile ?? null,
-      fimi_lite_score: latest.metrics.fimi_lite?.score ?? 0,
-      gdelt_unique_articles_36h: latest.metrics.fimi_lite?.gdelt?.unique_articles_raw ?? latest.metrics.fimi_lite?.gdelt?.unique_articles ?? 0,
-      gdelt_mard_eu_weighted_articles_36h: latest.metrics.fimi_lite?.gdelt?.weighted_articles ?? null,
-      gdelt_core_mard_eu_articles_36h: latest.metrics.fimi_lite?.gdelt?.core_mard_eu_articles ?? 0,
-      gdelt_global_spillover_articles_36h: latest.metrics.fimi_lite?.gdelt?.global_maritime_spillover_articles ?? 0,
-      euvsdisinfo_case_candidates_90d: latest.metrics.fimi_lite?.euvsdisinfo?.candidate_count ?? 0,
-      disarm_aligned_tag_count: latest.metrics.fimi_lite?.disarm_aligned?.tag_count ?? 0
-    }
-  };
-
-  const history = [...(Array.isArray(previousHistory) ? previousHistory : []), newHistoryItem].slice(-120);
+  const newHistoryItem = createHistoryItem(latest);
+  const allHistory = [...previousHistory, newHistoryItem];
+  const history = allHistory.slice(-(scoring.windows.public_history_points || 720));
 
   await fs.writeFile(path.join(PUBLIC_DIR, 'hat_latest.json'), JSON.stringify(latest, null, 2));
   await fs.writeFile(path.join(PUBLIC_DIR, 'hat_history.json'), JSON.stringify(history, null, 2));
   await fs.writeFile(path.join(PUBLIC_DIR, 'hat_source_health.json'), JSON.stringify(sourceHealth, null, 2));
-  await fs.appendFile(path.join(HISTORY_DIR, 'hat_history.jsonl'), `${JSON.stringify(newHistoryItem)}\n`);
+  await fs.writeFile(path.join(HISTORY_DIR, 'hat_history.jsonl'), allHistory.map(row => JSON.stringify(row)).join('\n') + '\n');
 
   console.log(`HAT score: ${latest.hat_score} (${latest.level}), confidence: ${latest.confidence}`);
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+export { summariseThreatFoxData, buildBotActivityState, buildDisinformationAlert, computeScores, keywordMatches, fetchFimiLite, createHistoryItem, writeAnalystDownloads };
+
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main().catch(err => { console.error(err); process.exitCode = 1; });
+}

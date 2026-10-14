@@ -1,5 +1,5 @@
 {
-  "schema": "mard-hat-fimi-keywords-v2",
+  "schema": "mard-hat-narrative-keywords-v3",
   "maritime_watch_queries": [
     "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
     "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
@@ -11,8 +11,8 @@
   ],
   "disarm_aligned_tags": [
     {
-      "id": "false_attribution",
-      "label": "False attribution / blame shifting",
+      "id": "attribution_topics",
+      "label": "Attribution and responsibility topics",
       "keywords": [
         "false flag",
         "blame",
@@ -24,11 +24,12 @@
         "west",
         "anglo-saxon",
         "cia"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     },
     {
-      "id": "institutional_discrediting",
-      "label": "Discrediting institutions or alliances",
+      "id": "institutional_topics",
+      "label": "Institutions and alliances topics",
       "keywords": [
         "nato",
         "eu",
@@ -38,11 +39,12 @@
         "piracy",
         "illegal",
         "provocation"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     },
     {
-      "id": "infrastructure_fear",
-      "label": "Critical-infrastructure fear framing",
+      "id": "infrastructure_topics",
+      "label": "Critical infrastructure topics",
       "keywords": [
         "undersea cable",
         "submarine cable",
@@ -52,11 +54,12 @@
         "port",
         "blackout",
         "internet cable"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     },
     {
-      "id": "maritime_legal_framing",
-      "label": "Maritime legal or piracy framing",
+      "id": "maritime_legal_topics",
+      "label": "Maritime law and sanctions topics",
       "keywords": [
         "piracy",
         "seizure",
@@ -68,11 +71,12 @@
         "blockade",
         "inspection",
         "freedom of navigation"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     },
     {
-      "id": "conspiracy_framing",
-      "label": "Conspiracy or secret-plot framing",
+      "id": "conspiracy_claim_topics",
+      "label": "Conspiracy-related vocabulary",
       "keywords": [
         "secret",
         "plot",
@@ -81,11 +85,12 @@
         "provocation",
         "hidden",
         "fabricated"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     },
     {
-      "id": "narrative_amplification",
-      "label": "Narrative amplification / repetition",
+      "id": "repetition_topics",
+      "label": "Repetition and campaign vocabulary",
       "keywords": [
         "again",
         "recurring",
@@ -94,10 +99,11 @@
         "propaganda",
         "narrative",
         "disinformation"
-      ]
+      ],
+      "finding": "topic_keyword_match_only"
     }
   ],
-  "note": "This is a transparent DISARM-aligned local mapping for early FIMI-lite. It does not claim official DISARM technique IDs.",
+  "note": "The disarm_aligned_tags field is retained for compatibility. These are topic groups, not DISARM techniques, findings of falsehood or coordination. Words are matched on token boundaries.",
   "maritime_filter": {
     "core_mard_eu_region_anchors": [
       "baltic sea",
@@ -130,7 +136,32 @@
       "northern flank",
       "north atlantic",
       "arctic",
-      "barents"
+      "barents",
+      "baltic",
+      "baltic states",
+      "deutschland",
+      "dänemark",
+      "schweden",
+      "norwegen",
+      "finnland",
+      "polen",
+      "estland",
+      "lettland",
+      "litauen",
+      "балтийское море",
+      "северное море",
+      "балтика",
+      "германия",
+      "германии",
+      "дания",
+      "швеция",
+      "норвегия",
+      "финляндия",
+      "польша",
+      "эстония",
+      "латвия",
+      "литва",
+      "калининград"
     ],
     "maritime_anchors": [
       "ship",
@@ -166,7 +197,36 @@
       "gnss",
       "gps",
       "jamming",
-      "spoofing"
+      "spoofing",
+      "schiff",
+      "schiffe",
+      "schiffen",
+      "tankschiff",
+      "frachtschiff",
+      "hafen",
+      "häfen",
+      "schifffahrt",
+      "seekabel",
+      "unterseekabel",
+      "windpark",
+      "windparks",
+      "flotte",
+      "schattenflotte",
+      "судно",
+      "судна",
+      "судов",
+      "корабль",
+      "корабли",
+      "кораблей",
+      "танкер",
+      "танкеры",
+      "танкеров",
+      "порт",
+      "порта",
+      "порты",
+      "флот",
+      "морской",
+      "подводный кабель"
     ],
     "threat_fimi_anchors": [
       "sabotage",
@@ -199,7 +259,37 @@
       "provocation",
       "cover-up",
       "blame",
-      "accused"
+      "accused",
+      "attacked",
+      "attacking",
+      "sanctioned",
+      "seized",
+      "inspected",
+      "angriff",
+      "angegriffen",
+      "anschlag",
+      "drohne",
+      "drohnen",
+      "sanktionen",
+      "russland",
+      "russische",
+      "russischer",
+      "störung",
+      "störungen",
+      "россия",
+      "российский",
+      "российские",
+      "диверсия",
+      "диверсии",
+      "санкции",
+      "санкций",
+      "атака",
+      "атакован",
+      "дрон",
+      "дроны",
+      "пропаганда",
+      "дезинформация",
+      "нато"
     ],
     "global_maritime_spillover_anchors": [
       "hormuz",

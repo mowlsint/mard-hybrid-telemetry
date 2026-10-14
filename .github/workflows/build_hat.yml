@@ -2,6 +2,15 @@ name: Build HAT Index
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/build_hat.mjs
+      - scripts/lib/**
+      - config/scoring.json
+      - config/sources.json
+      - config/fimi_keywords.json
+      - .github/workflows/build_hat.yml
   schedule:
     # Cost-neutral/public-repo cadence: every 6 hours, offset from the hour.
     - cron: '17 */6 * * *'
@@ -31,6 +40,9 @@ jobs:
           # Optional only. Leave unset for the zero-secret public MVP.
           ABUSECH_AUTH_KEY: ${{ secrets.ABUSECH_AUTH_KEY }}
 
+      - name: Regression tests
+        run: npm test
+
       - name: Check outputs
         run: npm run check
 
@@ -40,16 +52,21 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/hat_latest.json public/hat_history.json public/hat_source_health.json public/evidence_cards/*.json data/history/hat_history.jsonl data/raw/*.json || true
+          git add public/hat_latest.json public/hat_history.json public/hat_source_health.json public/evidence_cards/*.json public/downloads/hat_analyst_bundle_latest.json public/downloads/fimi_maritime_articles_latest.csv public/downloads/fimi_maritime_articles_latest.json public/downloads/source_health_latest.csv public/downloads/README_downloads.txt data/history/hat_history.jsonl data/raw/*.json
           if [[ -n "$(git status --porcelain)" ]]; then
             git commit -m "Update HAT telemetry"
-            git push
+            for attempt in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}"
+              if git push; then exit 0; fi
+              sleep 2
+            done
+            exit 1
           else
             echo "No telemetry changes to commit."
           fi
 
       - name: Trigger Cloudflare Pages deploy
-        if: always()
+        if: success()
         shell: bash
         env:
           CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}

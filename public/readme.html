@@ -1,24 +1,86 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MARD-HAT README</title><style>
-:root{--bg:#0d1117;--panel:#151b23;--text:#f0f3f6;--muted:#a8b3bf;--line:#303946;--accent:#f0c36a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#182233 0,var(--bg) 42rem);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main,footer{max-width:960px;margin:0 auto;padding:1.2rem}main{padding-top:2rem}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:.3rem 0 1rem}h2{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--accent)}h3{color:var(--text);margin-top:1.5rem}p,li{color:var(--muted)}strong{color:var(--text)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}pre{background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem;overflow:auto;color:var(--text)}code{background:rgba(255,255,255,.06);border-radius:7px;padding:.1rem .35rem}pre code{background:none;padding:0}table{width:100%;border-collapse:collapse}td,th{border:1px solid var(--line);padding:.55rem;text-align:left}th{color:var(--accent)}.top{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.pill{display:inline-flex;border:1px solid var(--line);background:#1f2630;border-radius:999px;padding:.3rem .7rem;color:var(--muted);font-size:.9rem}.notice{border-left:4px solid var(--accent);padding:.8rem 1rem;background:rgba(240,195,106,.08);border-radius:12px;color:var(--text)}
-</style></head><body><main><div class="top"><a class="pill" href="index.html">← Dashboard</a><a class="pill" href="README.md">Raw README.md</a></div>
-<h1>MARD-HAT // Hybrid Activity Telemetry by MOwlSINT</h1>
-<p><strong>MARD-HAT</strong> is a public, lightweight OSINT telemetry layer for cyber/exploit, IOC, botnet/C2 and <strong>maritime FIMI-lite</strong> pressure. It is designed as contextual side input for maritime and hybrid-activity assessment, especially for downstream use in <strong>Magic Paws / MARD-Eu</strong>.</p>
-<p class="notice">MARD-HAT does <strong>not</strong> attribute activity to a state actor. It does <strong>not</strong> prove sabotage, disinformation, coordination, or hybrid activity by itself.</p>
-<h2>v0.1.5 evaluation and transparency patch</h2>
-<ul><li>Score shown as a 0–100% contextual pressure score.</li><li>Visible green/yellow/orange/red score bands.</li><li>Source health supports ok / partial / error.</li><li>GDELT FIMI-lite hits are post-filtered for maritime relevance.</li><li>Core MARD-Eu and Global Maritime Spillover are separated.</li><li>Obscuration / information-fog context is explained cautiously.</li><li>Analyst downloads are available under <code>public/downloads/</code>.</li></ul>
-<h2>Score interpretation</h2><table><thead><tr><th>Range</th><th>Band</th><th>Meaning</th></tr></thead><tbody><tr><td>0–20</td><td>green / normal</td><td>low contextual pressure</td></tr><tr><td>21–40</td><td>yellow / elevated</td><td>elevated background pressure</td></tr><tr><td>41–60</td><td>orange / watch</td><td>watch-level pressure</td></tr><tr><td>61–80</td><td>deep orange / high</td><td>high contextual pressure</td></tr><tr><td>81–100</td><td>red / critical</td><td>critical contextual pressure</td></tr></tbody></table>
-<p>The score is a percentage-style contextual pressure score, not a probability.</p>
-<h2>Maritime FIMI-lite filter</h2><p>GDELT is a narrative/media-volume sensor, not a disinformation classifier. v0.1.5 therefore applies a local post-filter:</p><pre><code>An article counts only if it contains:
-1. at least one maritime anchor
-2. at least one threat/FIMI anchor
-3. for Core MARD-Eu, at least one North/Baltic/Northern-Europe regional anchor</code></pre>
-<p>Global maritime spillover such as Hormuz, Iran, Red Sea, Suez or global oil blockade narratives is retained separately and down-weighted.</p>
-<h2>Obscuration / information-fog context</h2><p>MARD-HAT does <strong>not</strong> claim that botnets or maritime disinformation are intentionally hiding maritime events. It can only mark conditions compatible with information fog or obscuration.</p><p>Technically, this matters because botnet/C2 infrastructure can support access, spam, amplification, credential theft, staging or disruption; broad narrative volume can bury or blur maritime/security signals; and partial source access can create analytical blind spots.</p>
-<h2>Analyst downloads</h2><pre><code>public/downloads/hat_analyst_bundle_latest.json
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MARD-HAT methodology</title><style>body{max-width:1000px;margin:2rem auto;padding:1rem;background:#0d1117;color:#f0f3f6;font:16px/1.6 system-ui}a{color:#f0c36a}pre{white-space:pre-wrap;font:inherit}</style><a href="index.html">Return to dashboard</a><pre># MARD-HAT // Hybrid Activity Telemetry by MOwlSINT
+
+MARD-HAT combines contextual cyber/exploit and malware-infrastructure indicators, maritime narrative pressure, and a separate Influence Watch. None of these measurements alone establishes automation, falsehood, coordination, attribution, sabotage or causation.
+
+## v0.2.0: data quality and comparable observations
+
+- Failed source access is **unavailable**, not zero activity. Nullable scores and per-metric validity are exported to the history and downloads.
+- GDELT queries are serialized, retried within a bounded budget, and respect `Retry-After`. An invalid JSON/schema response is an error.
+- A previous complete narrative observation remains available with its original timestamp; it is never scored as current data.
+- ThreatFox percentiles compare matching rolling time windows. An unavailable export never supplies an artificial all-zero baseline. Local fallbacks require at least 14 distinct valid days under the current scoring version.
+- Cyber/C2 pressure cannot raise the maritime narrative alert. Topic keyword matches are descriptive groups; they are not DISARM technique findings or determinations of disinformation.
+- The Influence Watch runs every six hours and records actual collection coverage. X/Nitter remains best-effort; unavailable sources do not become zero publishing activity.
+- Event comparisons use a stable cohort of sufficiently collected sources on both sides. The dashboard and CLI share the same comparison code.
+- Analyst downloads are committed and deployed with the corresponding outputs. All accepted sampled articles are exported rather than only the 20 display examples.
+
+## Interpretation
+
+The HAT score is a 0–100 contextual cyber-pressure index, not a probability. It uses recent CISA KEV additions, EPSS enrichment and ThreatFox IOC/C2 reporting. Missing required score inputs produce a null score. Source access and baseline limitations affect confidence.
+
+| Score | Band |
+|---:|---|
+| 0–20 | normal |
+| 21–40 | elevated |
+| 41–60 | watch |
+| 61–80 | high |
+| 81–100 | critical |
+| null | not assessable |
+
+ThreatFox counts are reports of malware infrastructure indicators, not numbers of social accounts, running bots, active connections or propaganda posts. An IOC&#x27;s first-seen time is not its shutdown time. A quiet reporting period is not evidence that infrastructure disappeared.
+
+GDELT measures retrieved media/topic exposure. Headline and URL-path hints are post-filtered for maritime, threat and regional relevance, with English, German and Russian terms. ArticleList sampling limits are reported. Search results and topic tags do not establish falsehood. EUvsDisinfo domain-restricted search candidates are not automatically verified individual cases.
+
+The existing `metrics.fimi_lite` and `disinformation_alert_level` names remain compatibility aliases. In v0.2.0 their meaning is **maritime narrative pressure**, and their score/level may be null. New consumers should use `narrative_alert_level` and inspect `data_quality`.
+
+## Data quality and history
+
+Source states distinguish `ok`, `partial`, `error`, `unavailable` and `disabled`. Derived topic mapping is not counted as an independent evidence source.
+
+Each new HAT history entry includes `scoring_version`, `configuration_hash`, `data_quality`, `source_health` and `metric_validity`. Valid observed zero counts remain zero. Missing measurements remain null. Old records keep their original numeric values and receive `legacy_unverified` flags; old zero values and percentiles are excluded from new baselines. The public HAT history retains up to 720 points; the archive is preserved in `data/history/hat_history.jsonl`.
+
+Influence item history retains up to 90 days, subject to configured item/byte limits. Collection-coverage history begins when coverage is actually recorded. Earlier coverage is never invented from retained posts or today&#x27;s source health. Changed registries, sample caps, pruned history, failed sources and incomplete days remain visible.
+
+## Event comparison
+
+The comparison counts **published posts**, using publication timestamps in UTC. Website snapshots and undated observations are excluded. Repeat collection is deduplicated; identical content in different sources remains distinct observed publication.
+
+For each date on both sides, a source needs at least three successful, distinct six-hour collection slots. The comparison requires at least five sources meeting that condition throughout both periods, and uses only that intersection. Missing days, unfinished windows, insufficient coverage or known truncation return an unassessable result. A zero baseline does not yield an infinite percentage change.
+
+Country filters describe the registry&#x27;s source-country classification. They do not attribute operations to a government. Results describe observed publication and shared fingerprints; they do not prove bots, disinformation or an effect caused by the reference event. Undetected feed truncation and deleted posts can still produce undercounting.
+
+```bash
+npm run compare:event -- 2026-10-08 7 RU
+```
+
+The date above is an example reference date, not an independently established event timestamp. Choose the date and window in the dashboard, or use the command above. The same-source comparison needs newly accumulated coverage; earlier gaps may prevent a historical assessment.
+
+## Outputs
+
+```text
+public/hat_latest.json
+public/hat_history.json
+public/hat_source_health.json
+public/influence_watch_latest.json
+public/influence_activity_daily.json
+public/downloads/hat_analyst_bundle_latest.json
 public/downloads/fimi_maritime_articles_latest.csv
 public/downloads/fimi_maritime_articles_latest.json
 public/downloads/source_health_latest.csv
-public/downloads/README_downloads.txt</code></pre>
-<h2>Claim limit</h2><p>MARD-HAT is a contextual digital-pressure and FIMI-lite indicator only. It is not attribution-grade and is not sufficient to prove hybrid activity, sabotage, disinformation, coordination or state involvement on its own.</p>
-</main><footer><main><a href="index.html">Dashboard</a> · <a href="hat_latest.json">latest JSON</a> · <a href="downloads/hat_analyst_bundle_latest.json">analyst bundle</a></main></footer></body></html>
+public/downloads/influence_activity_daily.json
+public/downloads/influence_activity_daily.csv
+```
+
+## Run and validate
+
+```bash
+npm test
+npm run build
+npm run check
+node scripts/influence/build_influence_stage3.mjs
+node scripts/influence/check_influence_stage3.mjs
+```
+
+Node.js &gt;=22 is required; the existing Influence workflows use `.node-version`. `ABUSECH_AUTH_KEY` remains optional for deployment, but enabled ThreatFox measurements are unavailable without it. Never publish keys. Regression tests use synthetic fixtures and do not call external sources.
+
+`Build HAT Index` runs every six hours. `Build Influence Watch Stage 3` collects the existing website/RSS/Telegram, Bluesky/YouTube and best-effort X sources every six hours, then builds histories and clusters. Source changes trigger fresh runs on main. Separate HAT and Influence writer groups, with bounded push/rebase retries, protect generated commits without cancelling each other’s pending runs. Cloudflare deployment hooks run after successful builds when configured.
+</pre></html>

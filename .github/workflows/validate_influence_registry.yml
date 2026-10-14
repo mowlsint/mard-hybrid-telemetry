@@ -67,4 +67,9 @@ jobs:
           fi
 
           git commit -m "Update influence registry validation outputs"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            if git push; then exit 0; fi
+            sleep 2
+          done
+          exit 1

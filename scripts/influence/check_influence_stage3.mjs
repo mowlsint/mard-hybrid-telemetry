@@ -89,6 +89,18 @@ async function main() {
     }
   }
 
+  const daily = await readJson("public/influence_activity_daily.json");
+  if (!Array.isArray(daily.days) || !publicLatest.data_quality || publicLatest.history?.timestamp_basis !== "published_at_only; website snapshots retained as context") {
+    errors.push("Missing daily collection coverage or publication timestamp basis");
+  }
+  for (const file of ["public/downloads/influence_activity_daily.json", "public/downloads/influence_activity_daily.csv", "data/influence/history/coverage_history.jsonl"]) {
+    const stat = await fs.stat(file).catch(() => null);
+    if (!stat || stat.size === 0) errors.push("Missing coverage/download output: " + file);
+  }
+  if (publicLatest.data_quality?.state === "unavailable" && publicLatest.level !== "not_assessable") {
+    errors.push("Unavailable collection cannot produce an assessed Influence level");
+  }
+
   if (errors.length) {
     for (const error of errors) console.error(`ERROR: ${error}`);
     process.exit(1);

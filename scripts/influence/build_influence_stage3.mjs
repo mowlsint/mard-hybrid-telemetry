@@ -6,6 +6,7 @@ import {
   createRegistryIndexes,
   loadInfluenceRegistry,
 } from "./load_influence_registry.mjs";
+import { recordInfluenceActivity } from "./activity_daily.mjs";
 import { validateInfluenceRegistry } from "./validate_influence_registry.mjs";
 
 const CURRENT_ITEMS_PATH =
@@ -29,7 +30,7 @@ const PUBLIC_HISTORY_PATH =
 
 const RETENTION_DAYS = Math.max(
   7,
-  Number(process.env.MARD_INFLUENCE_RETENTION_DAYS || 35),
+  Number(process.env.MARD_INFLUENCE_RETENTION_DAYS || 90),
 );
 const MAX_HISTORY_ITEMS = Math.max(
   1000,
@@ -53,7 +54,7 @@ const MAX_INTERNAL_CLUSTERS = Math.max(
 );
 const PUBLIC_HISTORY_SNAPSHOTS = Math.max(
   24,
-  Number(process.env.MARD_INFLUENCE_PUBLIC_HISTORY_SNAPSHOTS || 180),
+  Number(process.env.MARD_INFLUENCE_PUBLIC_HISTORY_SNAPSHOTS || 720),
 );
 
 function sha256(value) {
@@ -438,14 +439,20 @@ function buildClusters(items) {
     .slice(0, MAX_INTERNAL_CLUSTERS);
 }
 
+function hasPublishedTimestamp(item) {
+  const at = Date.parse(item?.published_at);
+  return item?.item_type !== "website_snapshot" && Number.isFinite(at) && at <= Date.now();
+}
+
 function timeWindowItems(items, hours) {
   const cutoff = Date.now() - hours * 60 * 60 * 1000;
   return items.filter((item) => itemTimestamp(item) >= cutoff);
 }
 
 function buildActorActivity(history, entityById, policy) {
-  const last7d = timeWindowItems(history, 7 * 24);
-  const last28d = timeWindowItems(history, 28 * 24);
+  const published = history.filter(hasPublishedTimestamp);
+  const last7d = timeWindowItems(published, 7 * 24);
+  const last28d = timeWindowItems(published, 28 * 24);
   const byActor7d = new Map();
   const byActor28d = new Map();
 
@@ -536,7 +543,7 @@ async function main() {
   const pruned = pruneHistoryByBytes(retained);
   const history = pruned.items;
 
-  const clusterItems = timeWindowItems(history, CLUSTER_WINDOW_HOURS);
+  const clusterItems = timeWindowItems(history.filter(hasPublishedTimestamp), CLUSTER_WINDOW_HOURS);
   const clusters = buildClusters(clusterItems);
 
   const { entityById } = createRegistryIndexes(registry);
@@ -547,17 +554,20 @@ async function main() {
   );
 
   const generatedAt = new Date().toISOString();
+  const { quality: collectionQuality } = await recordInfluenceActivity({ registry, items: history, generatedAt, retainedDays: RETENTION_DAYS, itemsTruncated: retained.length > history.length });
   const historyStats = {
     total_items: history.length,
     current_run_items: currentBundle.items.length,
-    items_24h: timeWindowItems(history, 24).length,
-    items_7d: timeWindowItems(history, 7 * 24).length,
-    items_28d: timeWindowItems(history, 28 * 24).length,
+    items_24h: timeWindowItems(history.filter(hasPublishedTimestamp), 24).length,
+    items_7d: timeWindowItems(history.filter(hasPublishedTimestamp), 7 * 24).length,
+    items_28d: timeWindowItems(history.filter(hasPublishedTimestamp), 28 * 24).length,
+    timestamp_basis: "published_at_only; website snapshots retained as context",
+    undated_observations: history.filter(item => !hasPublishedTimestamp(item)).length,
     oldest_item_at: history.length
-      ? new Date(Math.min(...history.map(itemTimestamp))).toISOString()
+      ? new Date(history.reduce((value, item) => Math.min(value, itemTimestamp(item)), Infinity)).toISOString()
       : null,
     newest_item_at: history.length
-      ? new Date(Math.max(...history.map(itemTimestamp))).toISOString()
+      ? new Date(history.reduce((value, item) => Math.max(value, itemTimestamp(item)), 0)).toISOString()
       : null,
     retained_days: RETENTION_DAYS,
     max_items: MAX_HISTORY_ITEMS,
@@ -617,11 +627,13 @@ async function main() {
             )
           ? "watch"
           : "baseline",
-    confidence: clusters.length ? "low_medium" : "low",
+    confidence: collectionQuality.state === "unavailable" ? "unavailable" : "low",
+    data_quality: collectionQuality,
+    downloads: { daily_json: "downloads/influence_activity_daily.json", daily_csv: "downloads/influence_activity_daily.csv" },
     assessment_limit:
       "Early-warning context only. Similarity and synchronisation do not prove coordination, automation, attribution or disinformation.",
     score_integration: false,
-    source_stage: "website_rss_telegram_metadata",
+    source_stage: "website_rss_telegram_bluesky_youtube_and_best_effort_x",
     history: historyStats,
     activity: {
       active_actors_7d: activity.filter(
@@ -647,6 +659,8 @@ async function main() {
     },
   };
 
+  if (collectionQuality.state === "unavailable") publicLatest.level = "not_assessable";
+
   const previousPublicHistory = await readJsonIfExists(
     PUBLIC_HISTORY_PATH,
     { schema_version: "1.0.0", snapshots: [] },
@@ -655,6 +669,7 @@ async function main() {
     generated_at: generatedAt,
     level: publicLatest.level,
     confidence: publicLatest.confidence,
+    data_quality: collectionQuality,
     history_items: historyStats.total_items,
     items_24h: historyStats.items_24h,
     active_actors_7d: publicLatest.activity.active_actors_7d,
@@ -674,6 +689,7 @@ async function main() {
           (candidate) => candidate.generated_at === item.generated_at,
         ) === index,
     )
+    .map(row => row.data_quality ? row : { ...row, data_quality: { state: "legacy_unverified", comparable: false } })
     .slice(0, PUBLIC_HISTORY_SNAPSHOTS);
 
   await fs.mkdir(path.dirname(HISTORY_PATH), { recursive: true });

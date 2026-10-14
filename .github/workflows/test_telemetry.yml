@@ -1,0 +1,21 @@
+name: Test telemetry semantics
+on:
+  pull_request:
+    paths: ['scripts/**', 'tests/**', 'config/**', 'public/index.html', 'public/activity_compare.mjs', 'package.json', '.github/workflows/**']
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'tests/**', 'config/**', 'public/index.html', 'public/activity_compare.mjs', 'package.json', '.github/workflows/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: node scripts/influence/validate_influence_registry.mjs
+      - run: node scripts/influence/test_influence_stage5_x_parser.mjs

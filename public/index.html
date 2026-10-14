@@ -13,11 +13,12 @@
     header,main,footer{max-width:1180px;margin:0 auto;padding:1.2rem} header{padding-top:2rem}.eyebrow{color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;font-weight:800}h1{margin:.25rem 0 .5rem;font-size:clamp(2rem,5vw,4rem);line-height:1.05}.lead{color:var(--muted);max-width:920px;font-size:1.05rem}.grid{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}.card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:18px;padding:1rem;box-shadow:0 12px 40px rgba(0,0,0,.22)}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}@media(max-width:860px){.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}}
     .score{font-size:clamp(4rem,14vw,8rem);line-height:.9;font-weight:900;letter-spacing:-.075em}.label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;font-weight:750}.pill{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:.25rem .65rem;color:var(--muted);font-size:.86rem}.small{font-size:.9rem}.muted{color:var(--muted)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}.kv{display:grid;grid-template-columns:minmax(12rem,1fr) 1fr;gap:.45rem .8rem}.kv div:nth-child(odd){color:var(--muted)}@media(max-width:640px){.kv{grid-template-columns:1fr}.kv div:nth-child(even){margin-bottom:.4rem}}ul{padding-left:1.15rem}.bands{display:grid;grid-template-columns:repeat(5,1fr);gap:.35rem;margin-top:.8rem}.band{border:1px solid var(--line);border-radius:10px;padding:.45rem .4rem;text-align:center;font-size:.8rem;color:var(--muted)}.band.active{color:var(--text);box-shadow:0 0 0 2px rgba(240,195,106,.42)}.b-normal.active{background:rgba(100,215,138,.17);border-color:var(--green)}.b-elevated.active{background:rgba(255,209,102,.17);border-color:var(--yellow)}.b-watch.active{background:rgba(255,159,90,.16);border-color:var(--orange)}.b-high.active{background:rgba(255,159,90,.25);border-color:var(--orange)}.b-critical.active{background:rgba(255,107,107,.22);border-color:var(--red)}.gauge{height:1rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:.75rem 0}.gaugeFill{height:100%;width:0%;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 35%,var(--orange) 65%,var(--red) 100%)}
     .parts{display:grid;gap:.85rem}.bar{height:.62rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange),var(--red))}.fillCtx{background:linear-gradient(90deg,#6d7890,var(--accent))}.health{display:grid;gap:.45rem}.healthItem{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:12px;padding:.55rem .65rem;background:rgba(255,255,255,.025)}.status-ok{color:var(--green)}.status-partial,.status-degraded_no_source_signal,.status-degraded_with_partial_source_signal{color:var(--yellow)}.status-error{color:var(--red)}.status-disabled,.status-empty_or_disabled{color:var(--muted)}.downloads{display:flex;gap:.55rem;flex-wrap:wrap}.download{display:inline-flex;border:1px solid var(--line);border-radius:12px;padding:.55rem .7rem;background:rgba(240,195,106,.08)}svg{width:100%;height:160px;display:block}.chip{display:inline-flex;flex-direction:column;gap:.1rem;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:16px;padding:.65rem .75rem;min-width:8.2rem}.chip strong{font-size:1.8rem;line-height:1}.chip span{color:var(--muted);font-size:.82rem}.chip-active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(240,195,106,.35) inset}pre{white-space:pre-wrap;overflow:auto;background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem}.notice{border-left:4px solid var(--accent);padding:.75rem .9rem;background:rgba(240,195,106,.08);border-radius:12px}.footer-line{display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:space-between;border-top:1px solid var(--line);padding-top:1rem}
+    input,select,button{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem}label{display:grid;gap:.25rem}button{cursor:pointer;align-self:end}button:disabled{opacity:.5;cursor:default}#eventResult{margin-top:1rem}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.4rem;border-bottom:1px solid var(--line)}
   </style>
 </head>
 <body>
 <header>
-  <div class="eyebrow">MARD-HAT v0.1.5 // Public OSINT telemetry</div>
+  <div class="eyebrow">MARD-HAT v0.2.0 // Public OSINT telemetry</div>
   <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
   <p class="lead">Cyber/exploit, IOC, botnet/C2 and maritime FIMI-lite telemetry for contextual maritime risk assessment. The score is a percentage of contextual pressure, not proof of attribution or a hybrid operation.</p>
 </header>
@@ -45,13 +46,13 @@
     </article>
 
     <article class="card span6">
-      <div class="label">Bot activity state</div>
+      <div class="label">Malware / C2 indicator pressure</div>
       <div id="botstate" style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.8rem"></div>
       <p id="botbasis" class="muted small">Loading bot-state basis.</p>
     </article>
 
     <article class="card span6">
-      <div class="label">Maritime FIMI-lite filter</div>
+      <div class="label">Maritime narrative pressure</div>
       <div id="fimi" class="small muted" style="margin-top:.7rem">Loading FIMI-lite crawl results.</div>
     </article>
 
@@ -61,7 +62,7 @@
     </article>
 
     <article class="card span6">
-      <div class="label">Disinformation Alert Level</div>
+      <div class="label">Maritime narrative alert</div>
       <div id="dal" style="display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;margin-top:.75rem"></div>
       <p id="dalnote" class="muted small">Loading FIMI-lite level.</p>
     </article>
@@ -83,6 +84,22 @@
     </article>
 
     <article class="card span12">
+      <div class="label">Observed publishing and amplification patterns</div>
+      <div id="influence" class="small muted">Loading Influence Watch.</div>
+    </article>
+    <article class="card span12">
+      <div class="label">Before / after event comparison</div>
+      <p class="muted small">Compare observed published posts in the same sources, with at least three successful collection slots per UTC day on both sides. Collection gaps remain visible.</p>
+      <div class="downloads">
+        <label>Reference date (UTC) <input type="date" id="eventDate" /></label>
+        <label>Days each side <select id="eventDays"><option>1</option><option>3</option><option selected>7</option><option>14</option><option>30</option></select></label>
+        <label>Source country <select id="eventCountry"><option value="all">All</option><option>RU</option><option>CN</option><option>IR</option><option>DE</option></select></label>
+        <button id="compareEvent">Compare</button><button id="exportEvent" disabled>Download comparison JSON</button>
+      </div>
+      <div id="eventResult" class="small muted" aria-live="polite"></div>
+    </article>
+
+    <article class="card span12">
       <div class="label">Downloads for own analysis</div>
       <p class="muted small">These files are deliberately machine-readable and contain no secrets. Use them for your own scoring tests, source checks, charts or customer-facing extracts.</p>
       <div id="downloads" class="downloads"></div>
@@ -96,40 +113,91 @@
   </section>
 </main>
 <footer class="muted small"><div class="footer-line"><span>MARD-HAT is experimental public telemetry. Do not use a high score alone as evidence of a state actor, sabotage, or hybrid operation.</span><span>© <span id="year">YYYY</span> MOwlSINT.de</span></div></footer>
-<script>
+<script type="module">
+import { compareActivity } from "./activity_compare.mjs";
 const $ = id => document.getElementById(id);
 const esc = v => String(v ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+const shown = v => Number.isFinite(v) ? String(v) : 'Not assessable';
 const pct = v => `${Math.round(Number(v)||0)}%`;
 const age = iso => { if(!iso) return '--'; const m=Math.max(0,Math.round((Date.now()-new Date(iso).getTime())/60000)); return m<90?`${m} min`:`${Math.round(m/60)} h${m>=2880?` (${Math.round(m/1440)} d)`:''}`; };
 const fmtDate = iso => iso ? new Date(iso).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}) : '--';
 function bandKey(score){ const s=Number(score)||0; return s<=20?'normal':s<=40?'elevated':s<=60?'watch':s<=80?'high':'critical'; }
-function renderBands(score){ const active=bandKey(score); const bands=[['normal','0–20','green'],['elevated','21–40','yellow'],['watch','41–60','orange'],['high','61–80','orange'],['critical','81–100','red']]; $('bands').innerHTML=bands.map(([k,r,c])=>`<div class="band b-${k} ${k===active?'active':''}"><b>${esc(k)}</b><br><span>${r}</span></div>`).join(''); }
-function renderBar(name,value,context=false){ const v=Math.max(0,Math.min(100,Number(value)||0)); return `<div><div class="row"><span>${esc(name)}</span><b>${Math.round(v)}%</b></div><div class="bar"><div class="fill ${context?'fillCtx':''}" style="width:${v}%"></div></div></div>`; }
-function renderChart(history){ const svg=$('chart'); const data=(history||[]).slice(-60).filter(x=>Number.isFinite(x.hat_score)); if(!data.length){svg.innerHTML='';return;} const w=800,h=160,p=8; const pts=data.map((d,i)=>[p+i*((w-p*2)/Math.max(1,data.length-1)), h-p-(d.hat_score/100)*(h-p*2)]); const poly=pts.map(p=>p.join(',')).join(' '); const last=pts[pts.length-1]; svg.innerHTML=`<rect x="0" y="0" width="800" height="160" fill="rgba(255,255,255,.02)"/><line x1="0" x2="800" y1="128" y2="128" stroke="rgba(100,215,138,.35)"/><line x1="0" x2="800" y1="96" y2="96" stroke="rgba(255,209,102,.32)"/><line x1="0" x2="800" y1="64" y2="64" stroke="rgba(255,159,90,.32)"/><line x1="0" x2="800" y1="32" y2="32" stroke="rgba(255,107,107,.32)"/><polyline points="${poly}" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="${last[0]}" cy="${last[1]}" r="5" fill="var(--accent)"/>`; }
+function renderBands(score){ const active=Number.isFinite(score)?bandKey(score):'unknown'; const bands=[['normal','0–20','green'],['elevated','21–40','yellow'],['watch','41–60','orange'],['high','61–80','orange'],['critical','81–100','red']]; $('bands').innerHTML=bands.map(([k,r,c])=>`<div class="band b-${k} ${k===active?'active':''}"><b>${esc(k)}</b><br><span>${r}</span></div>`).join(''); }
+function renderBar(name,value,context=false){ const valid=Number.isFinite(value); const v=valid?Math.max(0,Math.min(100,value)):0; return `<div><div class="row"><span>${esc(name)}</span><b>${valid?Math.round(v)+'%':'Not assessable'}</b></div><div class="bar"><div class="fill ${context?'fillCtx':''}" style="width:${v}%"></div></div></div>`; }
+function renderChart(history){
+  const rows=(history||[]).slice(-120), svg=$('chart');
+  if(!rows.length){svg.innerHTML='';return;}
+  const times=rows.map(row=>Date.parse(row.generated_at)); const first=Math.min(...times), last=Math.max(...times);
+  let paths=[], points=[];
+  for(let i=0;i<rows.length;i++){
+    const row=rows[i];
+    if(!Number.isFinite(row.hat_score)||!row.data_quality?.cyber_score_valid){if(points.length)paths.push(points);points=[];continue;}
+    points.push(`${8+((times[i]-first)/Math.max(1,last-first))*784},${152-(row.hat_score/100)*144}`);
+  }
+  if(points.length)paths.push(points);
+  svg.innerHTML=paths.length?paths.map(points=>`<polyline points="${points.join(' ')}" fill="none" stroke="var(--accent)" stroke-width="3"/>`).join(''):'<text x="16" y="80" fill="var(--muted)" font-size="18">Valid history is warming up; legacy values remain in downloads.</text>';
+}
 function statusClass(s){ return 'status-'+String(s||'').toLowerCase().replace(/[^a-z0-9_]+/g,'_'); }
+async function loadInfluence(){
+  let series=null,result=null;
+  try{
+    const response=await fetch('influence_watch_latest.json?ts='+Date.now());
+    if(!response.ok)throw new Error('Influence Watch unavailable');
+    const watch=await response.json();
+    const fresh=Date.now()-Date.parse(watch.generated_at)<12*3600000;
+    const quality=watch.data_quality||{};
+    const usable=fresh&&quality.successful_sources>0;
+    const platforms=Object.entries(quality.platforms||{}).map(([platform,data])=>`<li>${esc(platform)}: ${data.successful_sources}/${data.expected_sources} sources collected · ${esc(data.state)}</li>`).join('');
+    $('influence').innerHTML=`<p><b>${usable?'Best-effort observations':'Not assessable / stale'}</b> · Updated ${esc(fmtDate(watch.generated_at))} (${esc(age(watch.generated_at))})</p><p>Successful sources: ${quality.successful_sources ?? 'unrecorded'}/${quality.expected_sources ?? 'unrecorded'} · Observed clusters: ${usable?watch.clusters?.total ?? 0:'Not assessable'}</p><ul>${platforms}</ul><p>Publishing, repetition and similarity observations remain separate from automation and disinformation findings.</p><div class="downloads"><a href="downloads/influence_activity_daily.json">Daily activity JSON</a><a href="downloads/influence_activity_daily.csv">Daily activity CSV</a></div>`;
+    const activityResponse=await fetch('influence_activity_daily.json?ts='+Date.now());
+    if(activityResponse.ok)series=await activityResponse.json();
+  }catch(error){$('influence').textContent='Influence observations are currently unavailable.';}
+  $('eventDate').value=new Date(Date.now()-7*86400000).toISOString().slice(0,10);
+  const compare=()=>{
+    $('exportEvent').disabled=true;
+    if(!series){$('eventResult').textContent='Activity coverage is not available yet.';return;}
+    try{
+      result=compareActivity(series,$('eventDate').value,Number($('eventDays').value),$('eventCountry').value);
+      if(result.status==='comparable_observations'){
+        $('eventResult').innerHTML=`<p><b>${result.stable_sources} stable sources</b> · Change ${result.change_percent===null?'undefined from a zero baseline':result.change_percent+'%'}</p><table><tr><th></th><th>Before</th><th>After</th></tr><tr><td>Observed published posts</td><td>${result.before.observed_posts}</td><td>${result.after.observed_posts}</td></tr><tr><td>Posts / source / day</td><td>${result.before.posts_per_source_per_day}</td><td>${result.after.posts_per_source_per_day}</td></tr><tr><td>Shared-fingerprint posts</td><td>${result.before.shared_fingerprint_posts}</td><td>${result.after.shared_fingerprint_posts}</td></tr></table><p>${esc(result.note)}</p>${result.registry_changed?'<p>Registry changed; only sources collected throughout both periods are compared.</p>':''}`;
+      }else $('eventResult').textContent='Not assessable: '+(result.status==='insufficient_data'?'missing or incomplete collection days ('+result.missing_or_incomplete_days.join(', ')+').':'fewer than '+result.minimum_sources+' sources with sufficient coverage throughout both periods.')+' Earlier unrecorded coverage cannot be reconstructed as zero activity.';
+      $('exportEvent').disabled=false;
+    }catch(error){$('eventResult').textContent=error.message;}
+  };
+  $('compareEvent').addEventListener('click',compare);
+  $('exportEvent').addEventListener('click',()=>{
+    if(!result)return;
+    const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));
+    const link=document.createElement('a');link.href=url;link.download='influence_event_'+result.event_date+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  compare();
+}
+
 async function main(){
   const [latest,history,health]=await Promise.all([fetch('hat_latest.json?ts='+Date.now()).then(r=>r.json()),fetch('hat_history.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[]),fetch('hat_source_health.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[])]);
   $('year').textContent=new Date().getFullYear();
-  $('score').textContent=Math.round(latest.hat_score ?? 0); $('scoreFill').style.width=pct(latest.hat_score);
-  $('level').textContent=`${latest.level || '--'} · ${latest.score_interpretation?.color || bandKey(latest.hat_score)}`; $('confidence').textContent=`confidence ${latest.confidence || '--'}`; $('trend').textContent=`trend ${latest.trend || '--'}`; renderBands(latest.hat_score);
+  $('score').textContent=Number.isFinite(latest.hat_score)?Math.round(latest.hat_score):'—'; $('scoreFill').style.width=pct(latest.hat_score);
+  $('level').textContent=`${latest.level || 'not assessable'} · ${latest.score_interpretation?.color || 'grey'}`; $('confidence').textContent=`confidence ${latest.confidence || '--'}`; $('trend').textContent=`trend ${latest.trend || '--'}`; renderBands(latest.hat_score);
   $('generated').textContent=`Generated: ${fmtDate(latest.generated_at)} · Workflow age: ${age(latest.generated_at)}`;
   $('baseline').textContent=`baseline ${latest.baseline?.status || '--'} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
   renderChart(history);
   const labels={kev_recent_7d:'Recent KEV 7d',kev_recent_30d:'Recent KEV 30d',kev_epss_mean:'Mean EPSS recent KEV',threatfox_ioc_current:'ThreatFox IOC current',threatfox_botnet_c2_36h:'ThreatFox botnet/C2 36h',epss_hot_global:'Global EPSS hot set',source_coverage:'Source health coverage'};
   $('parts').innerHTML=Object.entries(latest.score_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v)).join('')+Object.entries(latest.context_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v,true)).join('');
-  $('scoreExplain').textContent='ThreatFox score parts are capped when the long historical export is unavailable; raw bot-state percentiles remain visible in the bot-state basis.';
-  const bot=latest.bot_activity_state||{}; const codes=[['BIL','Bots in Lurking Position'],['BWB','Bots were busy'],['BAB','Bots are busy']];
+  $('scoreExplain').textContent='Cyber pressure is separate from narrative and influence observations. Missing score inputs are not zero. Historical percentiles require valid, matching time windows; a limited baseline lowers confidence.';
+  const bot=latest.bot_activity_state||{}; const codes=[['UNRATED','Baseline unavailable'],['BIL','Below threshold'],['BWB','Recent C2 pressure elevated'],['BAB','Current C2 pressure elevated']];
   $('botstate').innerHTML=codes.map(([c,t])=>`<span class="chip ${bot.primary_code===c?'chip-active':''}"><strong>${c}</strong><span>${t}</span></span>`).join('');
   $('botbasis').textContent=`Current IOC percentile ${bot.basis?.ioc_current_percentile ?? '--'}, current bot/C2 percentile ${bot.basis?.botnet_c2_current_percentile ?? '--'}, 36h bot/C2 count ${bot.basis?.botnet_c2_36h_count ?? '--'} · confidence ${bot.confidence || '--'}`;
   const f=latest.metrics?.fimi_lite||{}; const mf=f.maritime_filter||{};
-  $('fimi').innerHTML=`<div class="kv"><div>FIMI-lite score</div><div><b>${f.score ?? 0}%</b> · ${esc(f.confidence||'low')} · ${esc(f.status||'--')}</div><div>Raw GDELT articles</div><div>${mf.raw_unique_articles ?? f.gdelt?.unique_articles_raw ?? '--'}</div><div>Score-relevant articles</div><div>${mf.accepted_articles ?? f.gdelt?.unique_articles ?? '--'}</div><div>Core MARD-Eu</div><div>${mf.core_mard_eu_articles ?? '--'}</div><div>Global Maritime Spillover</div><div>${mf.global_maritime_spillover_articles ?? '--'}</div><div>Rejected broad/noisy context</div><div>${mf.rejected_as_noise_or_broad_context ?? '--'}</div><div>DISARM tags</div><div>${f.disarm_aligned?.tag_count ?? 0}</div></div><p class="notice small">${esc(mf.rule || 'Maritime/FIMI relevance filter active.')}</p>`;
+  const narrativeValid=f.data_quality?.score_valid===true;
+  $('fimi').innerHTML=`<div class="kv"><div>Narrative pressure</div><div><b>${narrativeValid?shown(f.score)+'%':'Not assessable'}</b> · ${esc(f.confidence||'low')} · ${esc(f.status||'--')}</div><div>Raw GDELT articles</div><div>${f.gdelt?.unique_articles_raw ?? 'Not assessable'}</div><div>Score-relevant articles</div><div>${f.gdelt?.unique_articles ?? 'Not assessable'}</div><div>Core MARD-Eu</div><div>${narrativeValid?mf.core_mard_eu_articles ?? '--':'Not assessable'}</div><div>Global Maritime Spillover</div><div>${narrativeValid?mf.global_maritime_spillover_articles ?? '--':'Not assessable'}</div><div>Rejected broad/noisy context</div><div>${narrativeValid?mf.rejected_as_noise_or_broad_context ?? '--':'Not assessable'}</div><div>Topic groups</div><div>${narrativeValid?f.disarm_aligned?.tag_count ?? 0:'Not assessable'}</div></div><p class="notice small">${esc(mf.rule || 'Maritime relevance filter active.')} Topic words do not determine disinformation.</p><p class="muted small">Coverage: ${f.data_quality?.successful_queries ?? 0}/${f.data_quality?.expected_queries ?? '--'} queries${f.data_quality?.sample_limited?' · Article sampling limit reached':''}. ${f.last_successful?'Last complete observation: '+esc(fmtDate(f.last_successful.generated_at))+' ('+esc(age(f.last_successful.generated_at))+').':''}</p>`;
   const ob=latest.obscuration_context||{}; $('obscuration').innerHTML=`<p><b>Level: ${esc(ob.level||'--')}</b></p><p>${esc(ob.explanation||'Context not available.')}</p><ul>${(ob.signals||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="muted small">${esc(ob.claim_limit||'Context only.')}</p>`;
-  const dal=latest.disinformation_alert_level||{}; $('dal').innerHTML=[0,1,2,3].map(n=>`<span class="chip ${dal.level===n?'chip-active':''}"><strong>${n}</strong><span>${n===0?'none':n===1?'low':n===2?'elevated':'high'}</span></span>`).join(''); $('dalnote').textContent=dal.note||'';
-  $('sources').innerHTML=(health.length?health:latest.source_health||[]).map(s=>`<div class="healthItem"><div><b>${esc(s.source)}</b><br><span class="muted">count ${s.count ?? '--'}${s.raw_count!==undefined?` · raw ${s.raw_count}`:''}${s.ok_queries!==undefined?` · queries ok ${s.ok_queries}/${s.queries}`:''}${s.errors?.length?` · ${esc(s.errors.join(' | '))}`:''}</span></div><b class="${statusClass(s.status)}">${esc(s.status)}</b></div>`).join('');
+  const dal=latest.narrative_alert_level||latest.disinformation_alert_level||{}; $('dal').innerHTML=Number.isFinite(dal.level)?[0,1,2,3].map(n=>`<span class="chip ${dal.level===n?'chip-active':''}"><strong>${n}</strong><span>${n===0?'none':n===1?'low':n===2?'elevated':'high'}</span></span>`).join(''):'<span class="pill">Not assessable</span>'; $('dalnote').textContent=dal.note||'';
+  $('sources').innerHTML=(health.length?health:latest.source_health||[]).map(s=>`<div class="healthItem"><div><b>${esc(s.source)}</b><br><span class="muted">count ${s.status==='ok'||s.status==='partial'?s.count ?? '--':'Not assessable'}${s.raw_count!==undefined?` · raw ${s.raw_count}`:''}${s.ok_queries!==undefined?` · queries ok ${s.ok_queries}/${s.queries}`:''}${s.errors?.length?` · ${esc(s.errors.join(' | '))}`:''}${s.export_error?` · Historical export unavailable`:''}</span></div><b class="${statusClass(s.status)}">${esc(s.status)}</b></div>`).join('');
   $('drivers').innerHTML=(latest.drivers||[]).map(d=>`<li>${esc(d)}</li>`).join('');
   $('metrics').innerHTML=`<div class="kv"><div>Total KEV</div><div>${latest.metrics?.kev?.total_kev ?? '--'}</div><div>Recent KEV 7d / 30d</div><div>${latest.metrics?.kev?.recent_7d ?? '--'} / ${latest.metrics?.kev?.recent_30d ?? '--'}</div><div>ThreatFox IOCs 1d / 7d</div><div>${latest.metrics?.threatfox?.ioc_count_1d ?? '--'} / ${latest.metrics?.threatfox?.ioc_count_7d ?? '--'}</div><div>Botnet/C2 1d / 7d</div><div>${latest.metrics?.threatfox?.botnet_c2_count_1d ?? '--'} / ${latest.metrics?.threatfox?.botnet_c2_count_7d ?? '--'}</div><div>ThreatFox history</div><div>${esc(latest.metrics?.threatfox?.historical?.status || '--')} ${latest.metrics?.threatfox?.historical?.fallback_limited?'· fallback-limited':''}</div></div>`;
   const links=latest.downloads || latest.links || {}; const dl=[['Analyst JSON',links.analyst_bundle],['FIMI CSV',links.fimi_maritime_csv],['FIMI JSON',links.fimi_maritime_json],['Source health CSV',links.source_health_csv],['Download README',links.download_readme]];
   $('downloads').innerHTML=dl.filter(x=>x[1]).map(([label,href])=>`<a class="download" href="${esc(href)}">${esc(label)}</a>`).join('');
+  await loadInfluence();
   $('claim').textContent=latest.assessment?.claim_limit || 'Contextual telemetry only. Not attribution-grade.';
 }
 main().catch(err=>{document.body.insertAdjacentHTML('afterbegin',`<pre>${esc(err.stack||err)}</pre>`);});

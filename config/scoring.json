@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-scoring-v1",
-  "label": "MARD Hybrid Activity Telemetry v0.1.5",
+  "label": "MARD Hybrid Activity Telemetry v0.2.0",
   "windows": {
     "short_days": 7,
     "medium_days": 30,
@@ -8,7 +8,8 @@
     "threatfox_historical_days": 180,
     "bot_activity_hours": 36,
     "fimi_narrative_hours": 36,
-    "euvsdisinfo_case_days": 90
+    "euvsdisinfo_case_days": 90,
+    "public_history_points": 720
   },
   "weights": {
     "kev_recent_7d": 0.25,
@@ -56,7 +57,7 @@
     "high_max": 80
   },
   "claim_limit": "Contextual digital-pressure and FIMI-lite indicator only. Not attribution-grade and not sufficient to prove hybrid activity, sabotage, or state involvement on its own.",
-  "note": "v0.1.5: Evaluated transparency patch. Adds partial source health, Maritime/FIMI post-filtering, Core MARD-Eu vs Global Maritime Spillover split, visible score bands, analyst downloads, and cautious obscuration-context wording.",
+  "note": "v0.2.0: missing data is nullable; valid same-window baselines; narrative alerts independent from cyber/C2; topic tags do not establish falsehood.",
   "health_weights": {
     "ok": 1.0,
     "partial": 0.5,
@@ -78,5 +79,5 @@
     "fimi_article_limit": 500,
     "include_rejected_samples": true
   },
-  "roadmap_note": "v0.1.5: maritime relevance filter, partial source health, transparent score bands, analyst downloads, and obscuration-context explanation."
+  "roadmap_note": "Accumulate valid source coverage before event comparisons."
 }

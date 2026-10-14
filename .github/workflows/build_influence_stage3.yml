@@ -1,6 +1,15 @@
 name: Build Influence Watch Stage 3
 
 on:
+  schedule:
+    - cron: "47 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/influence/**
+      - public/activity_compare.mjs
+      - config/influence/**
+      - .github/workflows/build_influence_stage3.yml
   workflow_dispatch:
     inputs:
       max_endpoints:
@@ -34,7 +43,7 @@ on:
       retention_days:
         description: "History retention in days"
         required: false
-        default: "35"
+        default: "90"
       cluster_window_hours:
         description: "Recent window used for cluster detection"
         required: false
@@ -63,18 +72,18 @@ jobs:
       MARD_INFLUENCE_X_STRICT: "false"
       MARD_INFLUENCE_REQUEST_TIMEOUT_MS: "15000"
       MARD_INFLUENCE_X_REQUEST_TIMEOUT_MS: "18000"
-      MARD_INFLUENCE_MAX_ITEMS_PER_SOURCE: "12"
+      MARD_INFLUENCE_MAX_ITEMS_PER_SOURCE: "50"
       MARD_INFLUENCE_MAX_ITEMS_PER_SOCIAL_SOURCE: "30"
       MARD_INFLUENCE_MAX_ITEMS_PER_X_SOURCE: "30"
       MARD_INFLUENCE_MAX_BODY_BYTES: "3000000"
       MARD_INFLUENCE_X_MAX_BODY_BYTES: "3000000"
-      MARD_INFLUENCE_RETENTION_DAYS: ${{ inputs.retention_days || '35' }}
-      MARD_INFLUENCE_MAX_HISTORY_ITEMS: "50000"
-      MARD_INFLUENCE_MAX_HISTORY_BYTES: "32000000"
+      MARD_INFLUENCE_RETENTION_DAYS: ${{ inputs.retention_days || '90' }}
+      MARD_INFLUENCE_MAX_HISTORY_ITEMS: "100000"
+      MARD_INFLUENCE_MAX_HISTORY_BYTES: "64000000"
       MARD_INFLUENCE_CLUSTER_WINDOW_HOURS: ${{ inputs.cluster_window_hours || '72' }}
       MARD_INFLUENCE_MAX_INTERNAL_CLUSTERS: "400"
       MARD_INFLUENCE_MAX_PUBLIC_CLUSTERS: "30"
-      MARD_INFLUENCE_PUBLIC_HISTORY_SNAPSHOTS: "300"
+      MARD_INFLUENCE_PUBLIC_HISTORY_SNAPSHOTS: "720"
 
     steps:
       - name: Checkout repository
@@ -144,6 +153,7 @@ jobs:
             data/influence/ingest/x_source_health_latest.json \
             data/influence/ingest/nitter_preflight_latest.json \
             data/influence/history/items_history.jsonl \
+            data/influence/history/coverage_history.jsonl \
             data/influence/analysis/clusters_latest.json \
             data/influence/analysis/actor_activity_latest.json \
             public/influence_ingest_status.json \
@@ -154,6 +164,9 @@ jobs:
             public/influence_x_source_health.json \
             public/influence_nitter_preflight.json \
             public/influence_watch_latest.json \
+            public/influence_activity_daily.json \
+            public/downloads/influence_activity_daily.json \
+            public/downloads/influence_activity_daily.csv \
             public/influence_watch_history.json
 
           if git diff --cached --quiet; then
@@ -162,4 +175,18 @@ jobs:
           fi
 
           git commit -m "Update Influence Watch Stage 5 X/Nitter and clustering outputs"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            if git push; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+
+      - name: Trigger Cloudflare Pages deploy
+        if: success()
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [[ -n "${CLOUDFLARE_DEPLOY_HOOK:-}" ]]; then
+            curl -fsS -X POST "$CLOUDFLARE_DEPLOY_HOOK"
+          fi

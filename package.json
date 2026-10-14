@@ -1,11 +1,13 @@
 {
   "name": "mard-hybrid-telemetry",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "scripts": {
     "build": "node scripts/build_hat.mjs",
-    "check": "node scripts/check_outputs.mjs"
+    "check": "node scripts/check_outputs.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "compare:event": "node scripts/influence/compare_influence_event.mjs"
   },
   "engines": {
     "node": ">=22"
