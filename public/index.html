@@ -13,7 +13,7 @@
     header,main,footer{max-width:1180px;margin:0 auto;padding:1.2rem} header{padding-top:2rem}.eyebrow{color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;font-weight:800}h1{margin:.25rem 0 .5rem;font-size:clamp(2rem,5vw,4rem);line-height:1.05}.lead{color:var(--muted);max-width:920px;font-size:1.05rem}.grid{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}.card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:18px;padding:1rem;box-shadow:0 12px 40px rgba(0,0,0,.22)}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}@media(max-width:860px){.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}}
     .score{font-size:clamp(4rem,14vw,8rem);line-height:.9;font-weight:900;letter-spacing:-.075em}.label{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;font-weight:750}.pill{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:.25rem .65rem;color:var(--muted);font-size:.86rem}.small{font-size:.9rem}.muted{color:var(--muted)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}.kv{display:grid;grid-template-columns:minmax(12rem,1fr) 1fr;gap:.45rem .8rem}.kv div:nth-child(odd){color:var(--muted)}@media(max-width:640px){.kv{grid-template-columns:1fr}.kv div:nth-child(even){margin-bottom:.4rem}}ul{padding-left:1.15rem}.bands{display:grid;grid-template-columns:repeat(5,1fr);gap:.35rem;margin-top:.8rem}.band{border:1px solid var(--line);border-radius:10px;padding:.45rem .4rem;text-align:center;font-size:.8rem;color:var(--muted)}.band.active{color:var(--text);box-shadow:0 0 0 2px rgba(240,195,106,.42)}.b-normal.active{background:rgba(100,215,138,.17);border-color:var(--green)}.b-elevated.active{background:rgba(255,209,102,.17);border-color:var(--yellow)}.b-watch.active{background:rgba(255,159,90,.16);border-color:var(--orange)}.b-high.active{background:rgba(255,159,90,.25);border-color:var(--orange)}.b-critical.active{background:rgba(255,107,107,.22);border-color:var(--red)}.gauge{height:1rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:.75rem 0}.gaugeFill{height:100%;width:0%;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 35%,var(--orange) 65%,var(--red) 100%)}
     .parts{display:grid;gap:.85rem}.bar{height:.62rem;background:#0b0f15;border:1px solid var(--line);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow),var(--orange),var(--red))}.fillCtx{background:linear-gradient(90deg,#6d7890,var(--accent))}.health{display:grid;gap:.45rem}.healthItem{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:1px solid var(--line);border-radius:12px;padding:.55rem .65rem;background:rgba(255,255,255,.025)}.status-ok{color:var(--green)}.status-partial,.status-degraded_no_source_signal,.status-degraded_with_partial_source_signal{color:var(--yellow)}.status-error{color:var(--red)}.status-disabled,.status-empty_or_disabled{color:var(--muted)}.downloads{display:flex;gap:.55rem;flex-wrap:wrap}.download{display:inline-flex;border:1px solid var(--line);border-radius:12px;padding:.55rem .7rem;background:rgba(240,195,106,.08)}svg{width:100%;height:160px;display:block}.chip{display:inline-flex;flex-direction:column;gap:.1rem;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:16px;padding:.65rem .75rem;min-width:8.2rem}.chip strong{font-size:1.8rem;line-height:1}.chip span{color:var(--muted);font-size:.82rem}.chip-active{border-color:var(--accent);box-shadow:0 0 0 1px rgba(240,195,106,.35) inset}pre{white-space:pre-wrap;overflow:auto;background:#0b0f15;border:1px solid var(--line);border-radius:14px;padding:1rem}.notice{border-left:4px solid var(--accent);padding:.75rem .9rem;background:rgba(240,195,106,.08);border-radius:12px}.footer-line{display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:space-between;border-top:1px solid var(--line);padding-top:1rem}
-    input,select,button{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem}label{display:grid;gap:.25rem}button{cursor:pointer;align-self:end}button:disabled{opacity:.5;cursor:default}#eventResult{margin-top:1rem}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.4rem;border-bottom:1px solid var(--line)}
+    input,select,button{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem}label{display:grid;gap:.25rem}button{cursor:pointer;align-self:end}button:disabled{opacity:.5;cursor:default}#eventResult{margin-top:1rem}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.4rem;border-bottom:1px solid var(--line)}article[id]{scroll-margin-top:1rem}h2.label{margin:0}#chartStatus{margin:.4rem 0}
   </style>
 </head>
 <body>
@@ -21,6 +21,7 @@
   <div class="eyebrow">MARD-HAT v0.2.0 // Public OSINT telemetry</div>
   <h1>Hybrid Activity Telemetry by MOwlSINT</h1>
   <p class="lead">Cyber/exploit, IOC, botnet/C2 and maritime FIMI-lite telemetry for contextual maritime risk assessment. The score is a percentage of contextual pressure, not proof of attribution or a hybrid operation.</p>
+  <nav class="downloads" aria-label="Dashboard sections"><a class="download" href="#trend-section">Trend</a><a class="download" href="#influence-watch">Influence Watch</a><a class="download" href="#event-comparison">Event comparison</a></nav>
 </header>
 <main>
   <section class="grid">
@@ -33,9 +34,11 @@
       <p id="generated" class="muted small">Generated: -- · Workflow age: --</p>
     </article>
 
-    <article class="card span8">
+    <article class="card span8" id="trend-section">
       <div class="row"><div class="label">Trend and baseline</div><span id="baseline" class="pill">baseline --</span></div>
       <svg id="chart" viewBox="0 0 800 160" preserveAspectRatio="none" aria-label="HAT score history"></svg>
+      <p id="chartStatus" class="small muted" aria-live="polite"></p>
+      <p id="trendNote" class="small muted"></p>
       <p class="muted small">Bands: green 0–20 normal, yellow 21–40 elevated, orange 41–60 watch, deep orange 61–80 high, red 81–100 critical. The score is a percentage of open-source contextual pressure, not a probability.</p>
     </article>
 
@@ -83,11 +86,12 @@
       <div id="metrics" class="small"></div>
     </article>
 
-    <article class="card span12">
-      <div class="label">Observed publishing and amplification patterns</div>
+    <article class="card span12" id="influence-watch" aria-labelledby="influenceHeading">
+      <h2 id="influenceHeading" class="label">Influence Watch</h2>
+      <p class="small muted">Observed publishing and amplification patterns. This watch updates every six hours.</p>
       <div id="influence" class="small muted">Loading Influence Watch.</div>
     </article>
-    <article class="card span12">
+    <article class="card span12" id="event-comparison">
       <div class="label">Before / after event comparison</div>
       <p class="muted small">Compare observed published posts in the same sources, with at least three successful collection slots per UTC day on both sides. Collection gaps remain visible.</p>
       <div class="downloads">
@@ -124,18 +128,24 @@ const fmtDate = iso => iso ? new Date(iso).toLocaleString(undefined,{dateStyle:'
 function bandKey(score){ const s=Number(score)||0; return s<=20?'normal':s<=40?'elevated':s<=60?'watch':s<=80?'high':'critical'; }
 function renderBands(score){ const active=Number.isFinite(score)?bandKey(score):'unknown'; const bands=[['normal','0–20','green'],['elevated','21–40','yellow'],['watch','41–60','orange'],['high','61–80','orange'],['critical','81–100','red']]; $('bands').innerHTML=bands.map(([k,r,c])=>`<div class="band b-${k} ${k===active?'active':''}"><b>${esc(k)}</b><br><span>${r}</span></div>`).join(''); }
 function renderBar(name,value,context=false){ const valid=Number.isFinite(value); const v=valid?Math.max(0,Math.min(100,value)):0; return `<div><div class="row"><span>${esc(name)}</span><b>${valid?Math.round(v)+'%':'Not assessable'}</b></div><div class="bar"><div class="fill ${context?'fillCtx':''}" style="width:${v}%"></div></div></div>`; }
-function renderChart(history){
-  const rows=(history||[]).slice(-120), svg=$('chart');
-  if(!rows.length){svg.innerHTML='';return;}
-  const times=rows.map(row=>Date.parse(row.generated_at)); const first=Math.min(...times), last=Math.max(...times);
-  let paths=[], points=[];
-  for(let i=0;i<rows.length;i++){
-    const row=rows[i];
-    if(!Number.isFinite(row.hat_score)||!row.data_quality?.cyber_score_valid){if(points.length)paths.push(points);points=[];continue;}
-    points.push(`${8+((times[i]-first)/Math.max(1,last-first))*784},${152-(row.hat_score/100)*144}`);
-  }
-  if(points.length)paths.push(points);
-  svg.innerHTML=paths.length?paths.map(points=>`<polyline points="${points.join(' ')}" fill="none" stroke="var(--accent)" stroke-width="3"/>`).join(''):'<text x="16" y="80" fill="var(--muted)" font-size="18">Valid history is warming up; legacy values remain in downloads.</text>';
+function renderChart(history,latest){
+  const rows=(Array.isArray(history)?history:[]).filter(row=>Number.isFinite(Date.parse(row.generated_at))).sort((a,b)=>Date.parse(a.generated_at)-Date.parse(b.generated_at)).slice(-120), svg=$('chart');
+  const valid=row=>Number.isFinite(row.hat_score)&&row.data_quality?.cyber_score_valid===true&&row.scoring_version===latest.scoring_version&&row.configuration_hash===latest.configuration_hash;
+  const legacy=row=>Number.isFinite(row.hat_score)&&row.data_quality?.state==='legacy_unverified';
+  if(!rows.length){svg.innerHTML='';$('chartStatus').textContent='No score history is available yet.';return;}
+  const first=Date.parse(rows[0].generated_at), last=Date.parse(rows.at(-1).generated_at);
+  const position=row=>[first===last?400:12+((Date.parse(row.generated_at)-first)/(last-first))*776,152-(Math.max(0,Math.min(100,row.hat_score))/100)*144];
+  const draw=(accept,archived)=>{
+    let paths=[],points=[];
+    for(const row of rows){if(accept(row))points.push(row);else if(points.length){paths.push(points);points=[];}}
+    if(points.length)paths.push(points);
+    const series=archived?'archived-unverified':'current-valid',color=archived?'var(--muted)':'var(--accent)';
+    return paths.map(segment=>(segment.length>1?`<polyline data-series="${series}" points="${segment.map(row=>position(row).join(',')).join(' ')}" fill="none" stroke="${color}" stroke-width="${archived?2:3}"${archived?' stroke-dasharray="6 5" opacity="0.65"':''}/>`:'')+segment.filter(()=>!archived||segment.length===1).map(row=>{const [x,y]=position(row);return `<circle data-series="${series}" cx="${x}" cy="${y}" r="${archived?3:5}" fill="${color}"><title>${archived?'Archived, unverified':'Current valid score'}: ${row.hat_score}% · ${esc(row.generated_at)}</title></circle>`;}).join('')).join('');
+  };
+  svg.innerHTML=draw(legacy,true)+draw(valid,false);
+  const current=rows.filter(valid).length, archived=rows.filter(legacy).length;
+  $('chartStatus').textContent=`${current} current valid measurement${current===1?'':'s'} shown in gold${current===1?' as a point':''}. ${archived?`${archived} older stored scores are grey and dashed; their source validity is unverified and their scoring differs. They are excluded from the current trend.`:''} Dates (UTC): ${rows[0].generated_at.slice(0,10)} to ${rows.at(-1).generated_at.slice(0,10)}.`;
+  if(!svg.innerHTML)svg.innerHTML='<text x="16" y="80" fill="var(--muted)" font-size="18">No valid measurements in the displayed period.</text>';
 }
 function statusClass(s){ return 'status-'+String(s||'').toLowerCase().replace(/[^a-z0-9_]+/g,'_'); }
 async function loadInfluence(){
@@ -177,10 +187,12 @@ async function main(){
   const [latest,history,health]=await Promise.all([fetch('hat_latest.json?ts='+Date.now()).then(r=>r.json()),fetch('hat_history.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[]),fetch('hat_source_health.json?ts='+Date.now()).then(r=>r.json()).catch(()=>[])]);
   $('year').textContent=new Date().getFullYear();
   $('score').textContent=Number.isFinite(latest.hat_score)?Math.round(latest.hat_score):'—'; $('scoreFill').style.width=pct(latest.hat_score);
-  $('level').textContent=`${latest.level || 'not assessable'} · ${latest.score_interpretation?.color || 'grey'}`; $('confidence').textContent=`confidence ${latest.confidence || '--'}`; $('trend').textContent=`trend ${latest.trend || '--'}`; renderBands(latest.hat_score);
+  const warming=latest.baseline?.status==='warming_up';
+  $('level').textContent=`${latest.level || 'not assessable'} · ${latest.score_interpretation?.color || 'grey'}`; $('confidence').textContent=`confidence ${latest.confidence || '--'}`; $('trend').textContent=`trend ${warming?'collecting baseline':latest.trend || 'not assessable'}`; renderBands(latest.hat_score);
   $('generated').textContent=`Generated: ${fmtDate(latest.generated_at)} · Workflow age: ${age(latest.generated_at)}`;
-  $('baseline').textContent=`baseline ${latest.baseline?.status || '--'} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
-  renderChart(history);
+  $('baseline').textContent=warming?`baseline ${latest.baseline.points ?? 0}/${latest.baseline.minimum_days ?? 14} prior measurement days`:`baseline ${latest.baseline?.status || '--'} · mean ${latest.baseline?.mean_hat_score ?? '--'} · delta ${latest.baseline?.delta_from_mean ?? '--'}`;
+  $('trendNote').textContent=warming?`Trend assessment needs ${latest.baseline.minimum_days ?? 14} prior days with valid measurements under the current scoring and configuration. ${latest.baseline.points ?? 0} such days are recorded in the latest baseline. Collection continues automatically; older records remain available separately.`:'The trend compares the current score with the mean of prior valid measurement days under the same scoring and configuration.';
+  renderChart(history,latest);
   const labels={kev_recent_7d:'Recent KEV 7d',kev_recent_30d:'Recent KEV 30d',kev_epss_mean:'Mean EPSS recent KEV',threatfox_ioc_current:'ThreatFox IOC current',threatfox_botnet_c2_36h:'ThreatFox botnet/C2 36h',epss_hot_global:'Global EPSS hot set',source_coverage:'Source health coverage'};
   $('parts').innerHTML=Object.entries(latest.score_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v)).join('')+Object.entries(latest.context_parts||{}).map(([k,v])=>renderBar(labels[k]||k,v,true)).join('');
   $('scoreExplain').textContent='Cyber pressure is separate from narrative and influence observations. Missing score inputs are not zero. Historical percentiles require valid, matching time windows; a limited baseline lowers confidence.';

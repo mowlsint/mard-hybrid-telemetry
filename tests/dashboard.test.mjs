@@ -16,6 +16,7 @@ test('The dashboard renders unavailable signals without a false zero or active a
   elements.get('eventDays').value = '7';
   elements.get('eventCountry').value = 'all';
   const latest = { generated_at: new Date().toISOString(), hat_score: null, level: 'not_assessable', data_quality: { cyber_score_valid: false },
+    baseline: { status: 'warming_up', points: 0, minimum_days: 14 }, trend: 'unknown',
     bot_activity_state: { primary_code: 'UNRATED', basis: {} }, metrics: { fimi_lite: { score: null, status: 'unavailable', data_quality: { score_valid: false } } },
     narrative_alert_level: { level: null, note: 'Narrative observations unavailable' } };
   const responses = {
@@ -34,4 +35,39 @@ test('The dashboard renders unavailable signals without a false zero or active a
   assert.match(elements.get('dal').innerHTML, /Not assessable/);
   assert.match(elements.get('influence').innerHTML, /Not assessable \/ stale/);
   assert.match(elements.get('eventResult').textContent, /Not assessable/);
+  assert.equal(elements.get('trend').textContent, 'trend collecting baseline');
+  assert.match(elements.get('baseline').textContent, /0\/14 prior measurement days/);
+  assert.match(elements.get('trendNote').textContent, /14 prior days with valid measurements/);
+});
+
+test('The history chart shows isolated valid measurements and keeps unverified scores separate', async () => {
+  const html = await fs.readFile(new URL('../public/index.html', import.meta.url), 'utf8');
+  const script = html.split('<script type="module">')[1].split('</script>')[0]
+    .replace('import { compareActivity } from "./activity_compare.mjs";', '')
+    .replace(/main\(\)\.catch\(err=>\{document\.body[\s\S]*?\}\);/, '')
+    + '\nglobalThis.drawHistory = renderChart;';
+  const chart = { innerHTML: '' }, status = { textContent: '' };
+  const context = vm.createContext({ document: { getElementById: id => id === 'chart' ? chart : status } });
+  vm.runInContext(script, context);
+  const latest = { scoring_version: '0.2.0', configuration_hash: 'current' };
+  const valid = (date,score=66) => ({ ...latest, generated_at: date, hat_score: score, data_quality: { cyber_score_valid: true } });
+  const observed = valid('2026-10-14T07:35:16Z');
+  context.drawHistory([observed], latest);
+  assert.match(chart.innerHTML, /<circle[^>]+data-series="current-valid"[^>]+cx="400"/);
+  assert.doesNotMatch(chart.innerHTML, /<polyline/);
+  assert.match(status.textContent, /1 current valid measurement shown in gold as a point/);
+
+  const archive = date => ({ generated_at: date, hat_score: 90, data_quality: { state: 'legacy_unverified' } });
+  context.drawHistory([archive('2026-10-12T00:00:00Z'),archive('2026-10-13T00:00:00Z'),observed], latest);
+  assert.match(chart.innerHTML, /<polyline data-series="archived-unverified"[^>]+stroke-dasharray/);
+  assert.match(chart.innerHTML, /<circle data-series="current-valid"/);
+  assert.doesNotMatch(chart.innerHTML, /<polyline data-series="current-valid"/);
+  assert.match(status.textContent, /2 older stored scores/);
+
+  context.drawHistory([observed, { ...valid('2026-10-14T12:00:00Z'), hat_score: null },
+    valid('2026-10-14T18:00:00Z',0), { ...valid('2026-10-15T00:00:00Z'),configuration_hash:'old' },
+    valid('2026-10-15T06:00:00Z'), valid('invalid date')],latest);
+  assert.equal((chart.innerHTML.match(/<circle data-series="current-valid"/g)||[]).length,3);
+  assert.doesNotMatch(chart.innerHTML, /<polyline|NaN/);
+  assert.match(chart.innerHTML, /Current valid score: 0%/);
 });
