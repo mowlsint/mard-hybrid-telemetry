@@ -1,0 +1,43 @@
+name: Deploy Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - public/index.html
+      - public/activity_compare.mjs
+      - public/readme.html
+      - public/_headers
+      - public/_redirects
+      - .github/workflows/deploy_dashboard.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-dashboard-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check dashboard and telemetry semantics
+        run: npm test
+      - name: Trigger Cloudflare Pages deploy
+        shell: bash
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${CLOUDFLARE_DEPLOY_HOOK:-}" ]]; then
+            echo "Cloudflare deploy hook is not configured."
+            exit 1
+          fi
+          curl --fail --silent --show-error --max-time 60 --request POST "$CLOUDFLARE_DEPLOY_HOOK"
+          echo "Cloudflare Pages deploy hook triggered."
