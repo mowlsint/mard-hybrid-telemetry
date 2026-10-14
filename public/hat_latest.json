@@ -1,6 +1,16 @@
 {
-  "schema": "mard-hat-v0.1.5",
-  "generated_at": "2026-10-14T06:44:17.043Z",
+  "schema": "mard-hat-v0.2.0",
+  "scoring_version": "0.2.0",
+  "configuration_hash": "9d093ed13954c678e61465ef66172d5d3bcae06ef1235ffb74c9fb135fd92124",
+  "data_quality": {
+    "state": "valid",
+    "cyber_score_valid": true,
+    "narrative_score_valid": false,
+    "missing_score_parts": [],
+    "threatfox_baseline_limited": true
+  },
+  "observed_partial_score": null,
+  "generated_at": "2026-10-14T07:35:16.028Z",
   "window_days": 30,
   "hat_score": 66,
   "level": "high",
@@ -10,75 +20,91 @@
     "color": "deep orange",
     "css": "high",
     "meaning": "high contextual pressure",
-    "scale": "0-100 percent contextual pressure"
+    "scale": "0-100 contextual pressure; not probability"
   },
-  "confidence": "medium",
-  "trend": "stable",
+  "confidence": "low",
+  "trend": "unknown",
   "baseline": {
-    "status": "active",
-    "points": 120,
-    "mean_hat_score": 61.7,
-    "delta_from_mean": 4
+    "status": "warming_up",
+    "points": 0,
+    "minimum_days": 14,
+    "mean_hat_score": null,
+    "delta_from_mean": null
   },
   "score_parts": {
     "kev_recent_7d": 88,
     "kev_recent_30d": 97,
-    "kev_epss_mean": 17,
+    "kev_epss_mean": 18,
     "threatfox_ioc_current": 65,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 79
+    "source_coverage": 58.333333333333336
   },
   "bot_activity_state": {
-    "schema": "mard-hat-bot-state-v1",
-    "primary_code": "BAB",
-    "primary_number": 2,
-    "primary_label": "Bots are busy",
-    "current_code": "BAB",
-    "current_label": "Bots are busy",
-    "trailing_36h_code": "BWB",
-    "trailing_36h_label": "Bots were busy",
-    "confidence": "low",
+    "schema": "mard-hat-c2-state-v2",
+    "primary_code": "UNRATED",
+    "primary_number": null,
+    "primary_label": "Baseline unavailable",
+    "confidence": "unavailable",
+    "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 78,
-      "botnet_c2_current_percentile": 99,
-      "ioc_36h_percentile": 100,
-      "botnet_c2_36h_percentile": 100,
+      "ioc_current_percentile": null,
+      "botnet_c2_current_percentile": null,
+      "ioc_36h_percentile": null,
+      "botnet_c2_36h_percentile": null,
       "ioc_36h_count": 3097,
-      "botnet_c2_36h_count": 1882
+      "botnet_c2_36h_count": 1901,
+      "percentile_baselines": {
+        "current_ioc_percentile": {
+          "source": "unavailable",
+          "days": 0,
+          "window_hours": 24
+        },
+        "current_botnet_c2_percentile": {
+          "source": "unavailable",
+          "days": 0,
+          "window_hours": 24
+        },
+        "trailing_36h_ioc_percentile": {
+          "source": "unavailable",
+          "days": 0,
+          "window_hours": 36
+        },
+        "trailing_36h_botnet_c2_percentile": {
+          "source": "unavailable",
+          "days": 0,
+          "window_hours": 36
+        }
+      }
     }
   },
   "disinformation_alert_level": {
-    "schema": "mard-hat-dal-v2",
-    "level": 2,
-    "label": "elevated",
-    "scale": [
-      0,
-      1,
-      2,
-      3
-    ],
-    "mode": "bot_ioc_proxy_only_no_fimi_signal",
-    "fimi_lite_score": 0,
-    "corroboration": {
-      "gdelt_unique_articles": 0,
-      "euvsdisinfo_candidates": 0,
-      "disarm_aligned_tags": 0,
-      "bot_state": "BAB",
-      "fimi_source_signal_present": false,
-      "bot_ioc_proxy_elevated": true
-    },
-    "note": "Driven primarily by bot/IOC proxy telemetry. FIMI-lite crawls did not add corroborating narrative or curated-case signals in this run. Not attribution-grade."
+    "schema": "mard-hat-narrative-alert-v3",
+    "level": null,
+    "label": "not_assessable",
+    "mode": "insufficient_source_coverage",
+    "fimi_lite_score": null,
+    "note": "Narrative pressure is not assessable for this run. Cyber/IOC activity does not set this alert."
+  },
+  "narrative_alert_level": {
+    "schema": "mard-hat-narrative-alert-v3",
+    "level": null,
+    "label": "not_assessable",
+    "mode": "insufficient_source_coverage",
+    "fimi_lite_score": null,
+    "note": "Narrative pressure is not assessable for this run. Cyber/IOC activity does not set this alert."
   },
   "metrics": {
     "kev": {
       "total_kev": 1741,
       "recent_7d": 7,
       "recent_30d": 31,
-      "epss_mean_recent_kev": 0.1652,
+      "epss_mean_recent_kev": 0.1765,
+      "epss_enriched_count": 29,
+      "epss_enrichment_coverage": 0.9354838709677419,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2015-3306",
@@ -86,8 +112,7 @@
           "product": "ProFTPD",
           "vulnerability_name": "ProFTPD Improper Access Control Vulnerability",
           "date_added": "2026-10-08",
-          "epss": 0.99497,
-          "percentile": 0.99945
+          "epss": 0.99497
         },
         {
           "cve": "CVE-2015-5477",
@@ -95,8 +120,7 @@
           "product": "BIND",
           "vulnerability_name": " ISC BIND Data Processing Errors Vulnerability",
           "date_added": "2026-10-08",
-          "epss": 0.99409,
-          "percentile": 0.99941
+          "epss": 0.99409
         },
         {
           "cve": "CVE-2016-3081",
@@ -104,8 +128,7 @@
           "product": "Struts",
           "vulnerability_name": "Apache Struts Command Injection Vulnerability",
           "date_added": "2026-10-08",
-          "epss": 0.96052,
-          "percentile": 0.99877
+          "epss": 0.96052
         },
         {
           "cve": "CVE-2026-71362",
@@ -113,8 +136,7 @@
           "product": "Commerce and Magento ",
           "vulnerability_name": "Adobe Commerce and Magento Incorrect Authorization Vulnerability ",
           "date_added": "2026-09-24",
-          "epss": 0.87507,
-          "percentile": 0.99756
+          "epss": 0.87507
         },
         {
           "cve": "CVE-2026-87902",
@@ -122,8 +144,7 @@
           "product": "Core",
           "vulnerability_name": "WordPress Core Remote File Inclusion Vulnerability",
           "date_added": "2026-09-25",
-          "epss": 0.39979,
-          "percentile": 0.98603
+          "epss": 0.39979
         },
         {
           "cve": "CVE-2026-93616",
@@ -131,8 +152,7 @@
           "product": "Multiple Products",
           "vulnerability_name": "Check Point Multiple Products Path Traversal Vulnerability",
           "date_added": "2026-09-22",
-          "epss": 0.19654,
-          "percentile": 0.97343
+          "epss": 0.19654
         },
         {
           "cve": "CVE-2021-3199",
@@ -140,8 +160,7 @@
           "product": "Docs",
           "vulnerability_name": "ONLYOFFICE Docs Server Path Traversal Vulnerability",
           "date_added": "2026-10-08",
-          "epss": 0.19352,
-          "percentile": 0.97301
+          "epss": 0.19352
         },
         {
           "cve": "CVE-2026-76460",
@@ -149,8 +168,7 @@
           "product": "Identity Services Engine",
           "vulnerability_name": "Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability",
           "date_added": "2026-09-16",
-          "epss": 0.14026,
-          "percentile": 0.96489
+          "epss": 0.14026
         },
         {
           "cve": "CVE-2026-85102",
@@ -158,8 +176,7 @@
           "product": "Multiple Products",
           "vulnerability_name": "Check Point Multiple Products Improper Certificate Validation Vulnerability",
           "date_added": "2026-09-22",
-          "epss": 0.07546,
-          "percentile": 0.94395
+          "epss": 0.07546
         },
         {
           "cve": "CVE-2023-22894",
@@ -167,8 +184,7 @@
           "product": "Strapi",
           "vulnerability_name": "Strapi Cleartext Storage of Sensitive Information Vulnerability",
           "date_added": "2026-10-08",
-          "epss": 0.03609,
-          "percentile": 0.8923
+          "epss": 0.03609
         },
         {
           "cve": "CVE-2025-39682",
@@ -176,8 +192,7 @@
           "product": "Kernel",
           "vulnerability_name": "Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability",
           "date_added": "2026-09-18",
-          "epss": 0.0288,
-          "percentile": 0.86508
+          "epss": 0.0288
         },
         {
           "cve": "CVE-2026-7273",
@@ -185,8 +200,7 @@
           "product": "GS1900 Series Switches",
           "vulnerability_name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability",
           "date_added": "2026-09-21",
-          "epss": 0.02501,
-          "percentile": 0.84308
+          "epss": 0.02501
         }
       ]
     },
@@ -269,22 +283,22 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 2258,
-      "ioc_count_7d": 8802,
-      "botnet_c2_count_1d": 1377,
-      "botnet_c2_count_7d": 3638,
+      "ioc_count_1d": 2243,
+      "ioc_count_7d": 8838,
+      "botnet_c2_count_1d": 1375,
+      "botnet_c2_count_7d": 3671,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1377
+          "count": 1375
         },
         {
           "name": "payload_delivery",
-          "count": 489
+          "count": 491
         },
         {
           "name": "payload",
-          "count": 387
+          "count": 372
         },
         {
           "name": "cc_skimming",
@@ -294,7 +308,7 @@
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 1035
+          "count": 1034
         },
         {
           "name": "Unknown Loader",
@@ -302,11 +316,11 @@
         },
         {
           "name": "Mirai",
-          "count": 161
+          "count": 146
         },
         {
           "name": "ClearFake",
-          "count": 98
+          "count": 100
         },
         {
           "name": "Coruna",
@@ -318,25 +332,25 @@
         },
         {
           "name": "Unknown malware",
-          "count": 56
+          "count": 59
         },
         {
           "name": "Unknown Stealer",
-          "count": 55
+          "count": 54
         },
         {
           "name": "php.shin_webshell",
-          "count": 43
+          "count": 41
         },
         {
           "name": "AMOS",
-          "count": 32
+          "count": 31
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 1864
+          "count": 1899
         },
         {
           "name": "Unknown Stealer",
@@ -344,7 +358,7 @@
         },
         {
           "name": "Cobalt Strike",
-          "count": 138
+          "count": 141
         },
         {
           "name": "Unknown malware",
@@ -360,7 +374,7 @@
         },
         {
           "name": "Remcos",
-          "count": 113
+          "count": 116
         },
         {
           "name": "Coruna",
@@ -377,34 +391,72 @@
       ],
       "historical": {
         "status": "warming_up_or_unavailable",
-        "method": "recent_7d_api_plus_local_history_limited_fallback",
+        "method": "recent_7d_api_plus_valid_local_history",
         "fallback_limited": true,
         "window_days": 180,
         "source_items": 0,
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
+        "time_filter_valid": true,
         "current_36h_ioc_count": 3097,
-        "current_36h_botnet_c2_count": 1882,
-        "current_ioc_percentile": 78,
-        "current_botnet_c2_percentile": 99,
-        "trailing_36h_ioc_percentile": 100,
-        "trailing_36h_botnet_c2_percentile": 100
+        "current_36h_botnet_c2_count": 1901,
+        "current_ioc_percentile": null,
+        "current_botnet_c2_percentile": null,
+        "trailing_36h_ioc_percentile": null,
+        "trailing_36h_botnet_c2_percentile": null,
+        "percentile_baselines": {
+          "current_ioc_percentile": {
+            "source": "unavailable",
+            "days": 0,
+            "window_hours": 24
+          },
+          "current_botnet_c2_percentile": {
+            "source": "unavailable",
+            "days": 0,
+            "window_hours": 24
+          },
+          "trailing_36h_ioc_percentile": {
+            "source": "unavailable",
+            "days": 0,
+            "window_hours": 36
+          },
+          "trailing_36h_botnet_c2_percentile": {
+            "source": "unavailable",
+            "days": 0,
+            "window_hours": 36
+          }
+        }
       }
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 2258,
-      "botnet_cc_count": 3638,
+      "threatfox_count": 2243,
+      "botnet_cc_count": 3671,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "degraded_no_source_signal",
-      "score": 0,
+      "status": "unavailable",
+      "score": null,
+      "observed_partial_score": null,
+      "data_quality": {
+        "state": "unavailable",
+        "score_valid": false,
+        "successful_queries": 0,
+        "expected_queries": 5,
+        "coverage_ratio": 0,
+        "sources": {
+          "gdelt_fimi": "error",
+          "euvsdisinfo_case_watch": "error"
+        },
+        "sample_limited": false
+      },
+      "last_successful": null,
+      "last_successful_age_hours": null,
       "confidence": "low",
-      "mode": "fimi_lite_degraded_no_source_signal",
+      "mode": "maritime_narrative_pressure; not a disinformation determination",
       "source_state": {
-        "external_ok": true,
+        "external_ok": false,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -416,7 +468,7 @@
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
-        "rule": "score only if article text contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
+        "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
         "raw_unique_articles": 0,
         "accepted_articles": 0,
         "core_mard_eu_articles": 0,
@@ -429,20 +481,24 @@
         "timespan": "36h",
         "query_count": 3,
         "article_count": 0,
-        "unique_articles_raw": 0,
-        "unique_articles": 0,
+        "unique_articles_raw": null,
+        "unique_articles": null,
+        "observed_articles": 0,
+        "sample_limited": false,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
         "rejected_articles": 0,
-        "weighted_articles": 0,
-        "historical_percentile": 96,
+        "weighted_articles": null,
+        "historical_percentile": null,
         "top_domains": [],
-        "sample": []
+        "sample": [],
+        "articles": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
         "query_count": 2,
-        "candidate_count": 0,
+        "candidate_count": null,
+        "observed_candidates": 0,
         "method": "GDELT domain-restricted ArticleList query for euvsdisinfo.eu",
         "sample": []
       },
@@ -468,47 +524,51 @@
           "errors": [
             "gdelt_fimi_1: HTTP 429",
             "gdelt_fimi_2: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_3: missing ArticleList articles array"
           ]
         },
         {
           "source": "euvsdisinfo_case_watch",
-          "status": "partial",
+          "status": "error",
           "count": 0,
           "queries": 2,
-          "ok_queries": 1,
-          "failed_queries": 1,
+          "ok_queries": 0,
+          "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: HTTP 429"
+            "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
           "source": "disarm_aligned_taxonomy",
-          "status": "ok",
+          "status": "partial",
+          "derived": true,
+          "independent_evidence": false,
           "count": 0,
-          "method": "local_keyword_mapping",
+          "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
           "applied_to_articles": 0
         }
       ],
       "history": {
-        "gdelt_points": 120,
-        "fimi_score_points": 120
+        "gdelt_points": 0,
+        "fimi_score_points": 0
       },
-      "note": "FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
+      "note": "FIMI-lite is a legacy field name for maritime narrative pressure. Topic tags do not determine falsehood or DISARM techniques. FIMI-lite is a contextual signal. GDELT measures media/narrative volume after a local maritime relevance filter; EUvsDisinfo provides curated case exposure; DISARM-aligned tags structure observations. This is not attribution-grade."
     }
   },
   "drivers": [
     "7 CISA KEV additions in the last 7 days",
     "31 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1652",
-    "2258 ThreatFox IOCs in the last 1 day",
-    "3638 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1765",
+    "2243 ThreatFox IOCs in the last 1 day",
+    "3671 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
-    "Bot state: BAB — Bots are busy",
-    "Disinformation Alert Level proxy: 2 (elevated)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
+    "Bot state: UNRATED — Baseline unavailable",
+    "Maritime narrative alert: not assessable (not_assessable)",
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
+    "Baseline warming up: 0/14 prior points available"
   ],
   "source_health": [
     {
@@ -526,19 +586,21 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 29
+      "count": 29,
+      "coverage_ratio": 0.9354838709677419
     },
     {
       "source": "threatfox_optional",
-      "status": "ok",
-      "count": 2258,
-      "count_7d": 8802,
-      "botnet_cc_count": 3638,
+      "status": "partial",
+      "recent_api_status": "ok",
+      "count": 2243,
+      "count_7d": 8838,
+      "botnet_cc_count": 3671,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "49df7bc0ef9b07947715599ea8c129cf6e6c257926a81596a1f0cd8306f1d35a",
-      "hash_7d": "45097ec31ceffbba2e3aaa9c34e7bac2575c092dac0b8790b97456078f33e80b",
+      "hash_1d": "18876a6f34647f907d39632d619d3c970ea3418923887e4648d6febb8b5fd9a2",
+      "hash_7d": "66ad21916e52ac2caaa15e923b428981e4a2b24f32424d4f4534bafb231fd958",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -557,26 +619,29 @@
       "errors": [
         "gdelt_fimi_1: HTTP 429",
         "gdelt_fimi_2: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_3: missing ArticleList articles array"
       ]
     },
     {
       "source": "euvsdisinfo_case_watch",
-      "status": "partial",
+      "status": "error",
       "count": 0,
       "queries": 2,
-      "ok_queries": 1,
-      "failed_queries": 1,
+      "ok_queries": 0,
+      "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429"
+        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
       "source": "disarm_aligned_taxonomy",
-      "status": "ok",
+      "status": "partial",
+      "derived": true,
+      "independent_evidence": false,
       "count": 0,
-      "method": "local_keyword_mapping",
+      "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
       "applied_to_articles": 0
     }
   ],
@@ -584,10 +649,10 @@
     "cisa_kev": "ok",
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
-    "threatfox_optional": "ok",
+    "threatfox_optional": "partial",
     "gdelt_fimi": "error",
-    "euvsdisinfo_case_watch": "partial",
-    "disarm_aligned_taxonomy": "ok"
+    "euvsdisinfo_case_watch": "error",
+    "disarm_aligned_taxonomy": "partial"
   },
   "assessment": {
     "label": "open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry",
@@ -597,8 +662,8 @@
     "no_proof_by_itself": true
   },
   "roadmap": {
-    "next": "v0.1.6: optional URLhaus, improved baselines, and stronger source-specific calibration",
-    "active": "v0.1.5 transparency and maritime relevance patch: partial source health, MARD-Eu FIMI filtering, score bands, downloads and obscuration context",
+    "next": "Accumulate valid source coverage for event comparisons",
+    "active": "v0.2.0 source validity, rate-limit handling, corrected baselines and separate narrative/influence telemetry",
     "open_measures": "later"
   },
   "links": {
@@ -614,15 +679,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1882 botnet/C2-like indicators in the current 36h window",
-      "partial/degraded source access: gdelt_fimi, euvsdisinfo_case_watch"
+      "1901 botnet/C2-like indicators in the current 36h window",
+      "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261014T064417_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261014T073516_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
