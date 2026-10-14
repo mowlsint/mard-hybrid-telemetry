@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-14T12:39:26.422Z",
+  "generated_at": "2026-10-14T18:35:40.139Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -33,7 +33,7 @@
     "score_parts": {
       "kev_recent_7d": 88,
       "kev_recent_30d": 97,
-      "kev_epss_mean": 18,
+      "kev_epss_mean": 17,
       "threatfox_ioc_current": 65,
       "threatfox_botnet_c2_36h": 65
     },
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 2946,
-      "botnet_c2_36h_count": 1948,
+      "ioc_36h_count": 3012,
+      "botnet_c2_36h_count": 1998,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,7 +93,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "1948 botnet/C2-like indicators in the current 36h window",
+      "1998 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -160,64 +160,60 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 2229,
-    "ioc_count_7d": 9012,
-    "botnet_c2_count_1d": 1375,
-    "botnet_c2_count_7d": 3856,
+    "ioc_count_1d": 2076,
+    "ioc_count_7d": 9050,
+    "botnet_c2_count_1d": 1417,
+    "botnet_c2_count_7d": 4073,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 1375
+        "count": 1417
       },
       {
         "name": "payload_delivery",
-        "count": 486
+        "count": 354
       },
       {
         "name": "payload",
-        "count": 363
-      },
-      {
-        "name": "cc_skimming",
-        "count": 5
+        "count": 305
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 1027
+        "count": 1033
       },
       {
         "name": "Unknown Loader",
-        "count": 283
-      },
-      {
-        "name": "Mirai",
-        "count": 133
-      },
-      {
-        "name": "ClearFake",
-        "count": 102
+        "count": 202
       },
       {
         "name": "Coruna",
         "count": 97
       },
       {
-        "name": "SalatStealer",
+        "name": "Mirai",
         "count": 70
       },
       {
-        "name": "Unknown malware",
-        "count": 58
+        "name": "SalatStealer",
+        "count": 69
       },
       {
-        "name": "Unknown Stealer",
+        "name": "ClearFake",
         "count": 56
       },
       {
+        "name": "Unknown malware",
+        "count": 56
+      },
+      {
+        "name": "Unknown Stealer",
+        "count": 54
+      },
+      {
         "name": "php.shin_webshell",
-        "count": 39
+        "count": 45
       },
       {
         "name": "AMOS",
@@ -227,18 +223,22 @@
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 2098
+        "count": 2344
       },
       {
         "name": "Unknown Stealer",
-        "count": 185
+        "count": 158
       },
       {
         "name": "Cobalt Strike",
-        "count": 150
+        "count": 155
       },
       {
         "name": "Unknown malware",
+        "count": 136
+      },
+      {
+        "name": "Remcos",
         "count": 135
       },
       {
@@ -246,24 +246,20 @@
         "count": 130
       },
       {
-        "name": "Remcos",
-        "count": 123
-      },
-      {
         "name": "PureRAT",
         "count": 109
+      },
+      {
+        "name": "AsyncRAT",
+        "count": 97
       },
       {
         "name": "Coruna",
         "count": 97
       },
       {
-        "name": "AsyncRAT",
-        "count": 94
-      },
-      {
         "name": "Aisuru",
-        "count": 75
+        "count": 71
       }
     ],
     "historical": {
@@ -275,8 +271,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2946,
-      "current_36h_botnet_c2_count": 1948,
+      "current_36h_ioc_count": 3012,
+      "current_36h_botnet_c2_count": 1998,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -309,9 +305,9 @@
     "total_kev": 1741,
     "recent_7d": 7,
     "recent_30d": 31,
-    "epss_mean_recent_kev": 0.1765,
-    "epss_enriched_count": 29,
-    "epss_enrichment_coverage": 0.9354838709677419,
+    "epss_mean_recent_kev": 0.174,
+    "epss_enriched_count": 31,
+    "epss_enrichment_coverage": 1,
     "top_recent_kev_by_epss": [
       {
         "cve": "CVE-2015-3306",
@@ -352,6 +348,14 @@
         "vulnerability_name": "WordPress Core Remote File Inclusion Vulnerability",
         "date_added": "2026-09-25",
         "epss": 0.39979
+      },
+      {
+        "cve": "CVE-2026-104935",
+        "vendor_project": "Ivanti",
+        "product": "Connect Secure",
+        "vulnerability_name": "Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability",
+        "date_added": "2026-10-13",
+        "epss": 0.25982
       },
       {
         "cve": "CVE-2026-93616",
@@ -400,14 +404,6 @@
         "vulnerability_name": "Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability",
         "date_added": "2026-09-18",
         "epss": 0.0288
-      },
-      {
-        "cve": "CVE-2026-7273",
-        "vendor_project": "Zyxel",
-        "product": "GS1900 Series Switches",
-        "vulnerability_name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability",
-        "date_added": "2026-09-21",
-        "epss": 0.02501
       }
     ]
   },
@@ -422,26 +418,26 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "553d82ded5346d02638aae0c9665358947a4b9d9bb16fa47d4c2139a31057a8c"
+      "hash": "9747b5fd1d9168bbf7fcd7d48a2c041193d599a5a42c67b2711e379871a28fb9"
     },
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 29,
-      "coverage_ratio": 0.9354838709677419
+      "count": 31,
+      "coverage_ratio": 1
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2229,
-      "count_7d": 9012,
-      "botnet_cc_count": 3856,
+      "count": 2076,
+      "count_7d": 9050,
+      "botnet_cc_count": 4073,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "f2c4515d5ccc3822dbe716a75e091e19f279ed7436ce34865d17f5230353362e",
-      "hash_7d": "b0bd3142f25fb0fca0cd1926e1c4927d10930636761f7f3777c63831b949aa14",
+      "hash_1d": "0f72e8028eaa9c675c719f7984e38647648c15cca3b82e335c8eeb0be5a67623",
+      "hash_7d": "5e6412b9bd22d148f967af5299df03c9e3f4250ee67daab9d2946365ce0c91de",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -459,7 +455,7 @@
       "failed_queries": 3,
       "errors": [
         "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: request failed (TypeError)",
+        "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
@@ -490,9 +486,9 @@
     "7 CISA KEV additions in the last 7 days",
     "31 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1765",
-    "2229 ThreatFox IOCs in the last 1 day",
-    "3856 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.174",
+    "2076 ThreatFox IOCs in the last 1 day",
+    "4073 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -507,6 +503,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261014T123926_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261014T183540_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
