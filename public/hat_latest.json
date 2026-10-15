@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-10-14T18:35:40.139Z",
+  "generated_at": "2026-10-15T00:57:18.010Z",
   "window_days": 30,
-  "hat_score": 66,
+  "hat_score": 63,
   "level": "high",
   "score_interpretation": {
-    "percentage": 66,
+    "percentage": 63,
     "label": "high",
     "color": "deep orange",
     "css": "high",
@@ -32,9 +32,9 @@
     "delta_from_mean": null
   },
   "score_parts": {
-    "kev_recent_7d": 88,
-    "kev_recent_30d": 97,
-    "kev_epss_mean": 17,
+    "kev_recent_7d": 75,
+    "kev_recent_30d": 100,
+    "kev_epss_mean": 16,
     "threatfox_ioc_current": 65,
     "threatfox_botnet_c2_36h": 65
   },
@@ -55,7 +55,7 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3012,
+      "ioc_36h_count": 3196,
       "botnet_c2_36h_count": 1998,
       "percentile_baselines": {
         "current_ioc_percentile": {
@@ -99,12 +99,12 @@
   },
   "metrics": {
     "kev": {
-      "total_kev": 1741,
-      "recent_7d": 7,
-      "recent_30d": 31,
-      "epss_mean_recent_kev": 0.174,
-      "epss_enriched_count": 31,
-      "epss_enrichment_coverage": 1,
+      "total_kev": 1745,
+      "recent_7d": 6,
+      "recent_30d": 35,
+      "epss_mean_recent_kev": 0.1642,
+      "epss_enriched_count": 33,
+      "epss_enrichment_coverage": 0.9428571428571428,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2015-3306",
@@ -283,32 +283,28 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 2076,
-      "ioc_count_7d": 9050,
-      "botnet_c2_count_1d": 1417,
-      "botnet_c2_count_7d": 4073,
+      "ioc_count_1d": 1857,
+      "ioc_count_7d": 9444,
+      "botnet_c2_count_1d": 1372,
+      "botnet_c2_count_7d": 4343,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1417
-        },
-        {
-          "name": "payload_delivery",
-          "count": 354
+          "count": 1372
         },
         {
           "name": "payload",
-          "count": 305
+          "count": 300
+        },
+        {
+          "name": "payload_delivery",
+          "count": 185
         }
       ],
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 1033
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 202
+          "count": 1002
         },
         {
           "name": "Coruna",
@@ -316,37 +312,41 @@
         },
         {
           "name": "Mirai",
-          "count": 70
-        },
-        {
-          "name": "SalatStealer",
-          "count": 69
-        },
-        {
-          "name": "ClearFake",
-          "count": 56
+          "count": 66
         },
         {
           "name": "Unknown malware",
-          "count": 56
-        },
-        {
-          "name": "Unknown Stealer",
-          "count": 54
+          "count": 55
         },
         {
           "name": "php.shin_webshell",
-          "count": 45
+          "count": 49
+        },
+        {
+          "name": "ClearFake",
+          "count": 41
         },
         {
           "name": "AMOS",
-          "count": 37
+          "count": 40
+        },
+        {
+          "name": "Formbook",
+          "count": 40
+        },
+        {
+          "name": "Remcos",
+          "count": 38
+        },
+        {
+          "name": "Unknown Loader",
+          "count": 32
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 2344
+          "count": 2592
         },
         {
           "name": "Unknown Stealer",
@@ -354,35 +354,35 @@
         },
         {
           "name": "Cobalt Strike",
-          "count": 155
+          "count": 154
+        },
+        {
+          "name": "Remcos",
+          "count": 140
         },
         {
           "name": "Unknown malware",
           "count": 136
         },
         {
-          "name": "Remcos",
-          "count": 135
-        },
-        {
           "name": "DanaBot",
-          "count": 130
+          "count": 131
         },
         {
           "name": "PureRAT",
-          "count": 109
-        },
-        {
-          "name": "AsyncRAT",
-          "count": 97
+          "count": 104
         },
         {
           "name": "Coruna",
           "count": 97
         },
         {
+          "name": "AsyncRAT",
+          "count": 96
+        },
+        {
           "name": "Aisuru",
-          "count": 71
+          "count": 83
         }
       ],
       "historical": {
@@ -394,7 +394,7 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 3012,
+        "current_36h_ioc_count": 3196,
         "current_36h_botnet_c2_count": 1998,
         "current_ioc_percentile": null,
         "current_botnet_c2_percentile": null,
@@ -426,8 +426,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 2076,
-      "botnet_cc_count": 4073,
+      "threatfox_count": 1857,
+      "botnet_cc_count": 4343,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -518,8 +518,8 @@
           "ok_queries": 0,
           "failed_queries": 3,
           "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_2: HTTP 429",
+            "gdelt_fimi_1: request failed (TypeError)",
+            "gdelt_fimi_2: missing ArticleList articles array",
             "gdelt_fimi_3: HTTP 429"
           ]
         },
@@ -533,7 +533,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: HTTP 429",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_2: request failed (TypeError)"
           ]
         },
         {
@@ -554,12 +554,12 @@
     }
   },
   "drivers": [
-    "7 CISA KEV additions in the last 7 days",
-    "31 CISA KEV additions in the last 30 days",
+    "6 CISA KEV additions in the last 7 days",
+    "35 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.174",
-    "2076 ThreatFox IOCs in the last 1 day",
-    "4073 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1642",
+    "1857 ThreatFox IOCs in the last 1 day",
+    "4343 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -570,8 +570,8 @@
     {
       "source": "cisa_kev",
       "status": "ok",
-      "count": 1741,
-      "hash": "136904f12e4c6762e526352e3a67ed7b28cd21b4d82bed9c91719ff2e94f2f28"
+      "count": 1745,
+      "hash": "47b463a136b8e0956756cfbcdbc2e4b4ccb60c96b4ca7a1ca9f507817cc83045"
     },
     {
       "source": "first_epss_top",
@@ -582,21 +582,21 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 31,
-      "coverage_ratio": 1
+      "count": 33,
+      "coverage_ratio": 0.9428571428571428
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2076,
-      "count_7d": 9050,
-      "botnet_cc_count": 4073,
+      "count": 1857,
+      "count_7d": 9444,
+      "botnet_cc_count": 4343,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "0f72e8028eaa9c675c719f7984e38647648c15cca3b82e335c8eeb0be5a67623",
-      "hash_7d": "5e6412b9bd22d148f967af5299df03c9e3f4250ee67daab9d2946365ce0c91de",
+      "hash_1d": "c8b87579d9781321c477db448c48ccd554c44f22fad318468c8e27654f663905",
+      "hash_7d": "7ba87122d8552278a75fd665a618ac23081dbf961bd9a19e84a04a2cab985cbe",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -613,8 +613,8 @@
       "ok_queries": 0,
       "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_1: request failed (TypeError)",
+        "gdelt_fimi_2: missing ArticleList articles array",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
@@ -628,7 +628,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_2: request failed (TypeError)"
       ]
     },
     {
@@ -682,7 +682,7 @@
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261014T183540_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261015T005718_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
