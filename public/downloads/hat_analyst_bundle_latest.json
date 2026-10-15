@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-15T12:40:16.365Z",
+  "generated_at": "2026-10-15T18:34:05.168Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 63,
+    "hat_score": 66,
     "level": "high",
     "interpretation": {
-      "percentage": 63,
+      "percentage": 66,
       "label": "high",
       "color": "deep orange",
       "css": "high",
@@ -31,9 +31,9 @@
       "delta_from_mean": null
     },
     "score_parts": {
-      "kev_recent_7d": 75,
+      "kev_recent_7d": 88,
       "kev_recent_30d": 100,
-      "kev_epss_mean": 16,
+      "kev_epss_mean": 18,
       "threatfox_ioc_current": 65,
       "threatfox_botnet_c2_36h": 65
     },
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3003,
-      "botnet_c2_36h_count": 2162,
+      "ioc_36h_count": 2966,
+      "botnet_c2_36h_count": 2005,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,7 +93,8 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "2162 botnet/C2-like indicators in the current 36h window",
+      "2005 botnet/C2-like indicators in the current 36h window",
+      "4 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -120,30 +121,15 @@
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
       "raw_unique_articles": 75,
-      "accepted_articles": 0,
+      "accepted_articles": 4,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 75,
-      "weighted_article_count": 0,
+      "global_maritime_spillover_articles": 4,
+      "rejected_as_noise_or_broad_context": 71,
+      "weighted_article_count": 1.6,
       "rejected_samples": [
         {
-          "title": "Ukraine resumes attacks on Russian oil refineries , officials say , after brief truce",
-          "domain": "tspr.org",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "attacks",
-              "russian",
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "AP News in Brief at 6 : 04 a . m . EDT",
-          "domain": "thegazette.com",
+          "title": "美促俄乌 能源停火 ， 北约盟国 不同步",
+          "domain": "baijiahao.baidu.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -153,8 +139,21 @@
           }
         },
         {
-          "title": "Due navi in fiamme nel Mar Nero in acque rumene | una ha bandiera di San Marino sette dispersi",
-          "domain": "zazoom.it",
+          "title": "След атаките в Черно море : Радев и Никушор Дан поискаха спешна намеса на НАТО , Алиансът свиква кризисна среща",
+          "domain": "burgasinfo.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "нато"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Selenskyjs Kritik an Trump : EU - Regierungschefs wollen ihn bremsen",
+          "domain": "berliner-zeitung.de",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -164,51 +163,23 @@
           }
         },
         {
-          "title": "Ukraine resumes attacks on Russian oil refineries , officials say , after brief truce",
-          "domain": "krcu.org",
+          "title": "Saudis Accuse Iran Of Encouraging Houthi Attacks On Riyadh",
+          "domain": "britainnews.net",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "attacks",
-              "russian",
-              "ukraine"
+              "attacks"
             ],
             "region": [],
-            "global_spillover": []
+            "global_spillover": [
+              "iran"
+            ]
           }
         },
         {
-          "title": "Trotz Drohung von Trump – Selenskyj will wieder russische Raffinerien angreifen",
-          "domain": "heute.at",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "russische"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ukraine resumes attacks on Russian oil refineries as tensions deepen with US",
-          "domain": "hertsad.co.uk",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "attacks",
-              "russian",
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "В России предложили возводить дата - центры в карьерах",
-          "domain": "lenta.ru",
+          "title": "Рютте обсудил с лидерами Болгарии и Румынии атаки дронов в Черном море | MigNews - Новости Израиля и Мира на русском языке",
+          "domain": "mignews.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -218,12 +189,40 @@
           }
         },
         {
-          "title": "Применение поршневых « Гераней » связали с плохой погодой",
-          "domain": "lenta.ru",
+          "title": "Γκιουλέρ : Σε εξέλιξη συνομιλίες με τις ΗΠΑ για την παράδοση έξι F - 35",
+          "domain": "kathimerini.com.cy",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Saudis Accuse Iran Of Encouraging Houthi Attacks On Riyadh",
+          "domain": "arabherald.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "attacks"
+            ],
+            "region": [],
+            "global_spillover": [
+              "iran"
+            ]
+          }
+        },
+        {
+          "title": "Trump Admin Floats Unfreezing Russian Assets In Big Move To Restart Talks",
+          "domain": "zerohedge.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "russian"
+            ],
             "region": [],
             "global_spillover": []
           }
@@ -239,13 +238,264 @@
       "observed_articles": 75,
       "sample_limited": true,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 0,
-      "rejected_articles": 75,
+      "global_maritime_spillover_articles": 4,
+      "rejected_articles": 71,
       "weighted_articles": null,
       "historical_percentile": null,
-      "top_domains": [],
-      "sample": [],
-      "articles": []
+      "top_domains": [
+        {
+          "name": "aol.co.uk",
+          "count": 1
+        },
+        {
+          "name": "israelherald.com",
+          "count": 1
+        },
+        {
+          "name": "sofiaglobe.com",
+          "count": 1
+        },
+        {
+          "name": "theuknews.com",
+          "count": 1
+        }
+      ],
+      "sample": [
+        {
+          "title": "Seven sailors missing after drones strike tankers near Romania Black Sea coast",
+          "url": "https://www.aol.co.uk/articles/seven-sailors-missing-drones-strike-165741000.html",
+          "domain": "aol.co.uk",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261015T173000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers"
+              ],
+              "threat_fimi": [
+                "strike",
+                "drones"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "World Insights : Black Sea drone attacks add to global energy , shipping strains",
+          "url": "http://www.theuknews.com/news/279376600/world-insights-black-sea-drone-attacks-add-to-global-energy-shipping-strains",
+          "domain": "theuknews.com",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "drone"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Nato chief meets Romanian President and Bulgarian PM on attacks on commercial shipping in Black Sea",
+          "url": "https://sofiaglobe.com/2026/10/15/nato-chief-meets-romanian-president-and-bulgarian-pm-on-attacks-on-commercial-shipping-in-black-sea/",
+          "domain": "sofiaglobe.com",
+          "language": "English",
+          "source_country": "Bulgaria",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "nato"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Black Sea drone attacks add to global energy , shipping strains",
+          "url": "http://www.israelherald.com/news/279376879/black-sea-drone-attacks-add-to-global-energy-shipping-strains",
+          "domain": "israelherald.com",
+          "language": "English",
+          "source_country": "Israel",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "drone"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        }
+      ],
+      "articles": [
+        {
+          "title": "Seven sailors missing after drones strike tankers near Romania Black Sea coast",
+          "url": "https://www.aol.co.uk/articles/seven-sailors-missing-drones-strike-165741000.html",
+          "domain": "aol.co.uk",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261015T173000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers"
+              ],
+              "threat_fimi": [
+                "strike",
+                "drones"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "World Insights : Black Sea drone attacks add to global energy , shipping strains",
+          "url": "http://www.theuknews.com/news/279376600/world-insights-black-sea-drone-attacks-add-to-global-energy-shipping-strains",
+          "domain": "theuknews.com",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "drone"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Nato chief meets Romanian President and Bulgarian PM on attacks on commercial shipping in Black Sea",
+          "url": "https://sofiaglobe.com/2026/10/15/nato-chief-meets-romanian-president-and-bulgarian-pm-on-attacks-on-commercial-shipping-in-black-sea/",
+          "domain": "sofiaglobe.com",
+          "language": "English",
+          "source_country": "Bulgaria",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "nato"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Black Sea drone attacks add to global energy , shipping strains",
+          "url": "http://www.israelherald.com/news/279376879/black-sea-drone-attacks-add-to-global-energy-shipping-strains",
+          "domain": "israelherald.com",
+          "language": "English",
+          "source_country": "Israel",
+          "seen_date": "20261015T170000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "shipping"
+              ],
+              "threat_fimi": [
+                "attacks",
+                "drone"
+              ],
+              "region": [],
+              "global_spillover": [
+                "black sea"
+              ]
+            }
+          }
+        }
+      ]
     },
     "euvsdisinfo_summary": {
       "timespan": "90d",
@@ -257,57 +507,90 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 0,
-      "tags": []
+      "tag_count": 3,
+      "tags": [
+        {
+          "id": "attribution_topics",
+          "label": "Attribution and responsibility topics",
+          "count": 1,
+          "matched_keywords": [
+            "nato"
+          ]
+        },
+        {
+          "id": "infrastructure_topics",
+          "label": "Critical infrastructure topics",
+          "count": 1,
+          "matched_keywords": [
+            "energy"
+          ]
+        },
+        {
+          "id": "institutional_topics",
+          "label": "Institutions and alliances topics",
+          "count": 1,
+          "matched_keywords": [
+            "nato"
+          ]
+        }
+      ]
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 2115,
-    "ioc_count_7d": 10158,
-    "botnet_c2_count_1d": 1416,
-    "botnet_c2_count_7d": 5020,
+    "ioc_count_1d": 2201,
+    "ioc_count_7d": 10067,
+    "botnet_c2_count_1d": 1375,
+    "botnet_c2_count_7d": 5238,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 1416
+        "count": 1375
       },
       {
         "name": "payload",
-        "count": 545
+        "count": 560
       },
       {
         "name": "payload_delivery",
-        "count": 154
+        "count": 203
+      },
+      {
+        "name": "cc_skimming",
+        "count": 63
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 1005
+        "count": 988
       },
       {
         "name": "VShell",
-        "count": 302
+        "count": 300
       },
       {
         "name": "IClickFix",
         "count": 159
       },
       {
-        "name": "Mirai",
-        "count": 55
+        "name": "Unknown Loader",
+        "count": 89
       },
       {
         "name": "AMOS",
+        "count": 71
+      },
+      {
+        "name": "vSkimmer",
+        "count": 63
+      },
+      {
+        "name": "Mirai",
         "count": 52
       },
       {
         "name": "php.shin_webshell",
-        "count": 47
-      },
-      {
-        "name": "ClearFake",
         "count": 43
       },
       {
@@ -315,22 +598,22 @@
         "count": 39
       },
       {
-        "name": "Remcos",
-        "count": 37
-      },
-      {
-        "name": "Unknown Loader",
-        "count": 28
+        "name": "ClearFake",
+        "count": 34
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 3067
+        "count": 3294
+      },
+      {
+        "name": "Remcos",
+        "count": 155
       },
       {
         "name": "Cobalt Strike",
-        "count": 161
+        "count": 154
       },
       {
         "name": "Unknown Stealer",
@@ -341,12 +624,8 @@
         "count": 151
       },
       {
-        "name": "Remcos",
-        "count": 147
-      },
-      {
         "name": "Unknown malware",
-        "count": 132
+        "count": 133
       },
       {
         "name": "DanaBot",
@@ -362,7 +641,7 @@
       },
       {
         "name": "VShell",
-        "count": 96
+        "count": 97
       }
     ],
     "historical": {
@@ -374,8 +653,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3003,
-      "current_36h_botnet_c2_count": 2162,
+      "current_36h_ioc_count": 2966,
+      "current_36h_botnet_c2_count": 2005,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -405,12 +684,12 @@
     }
   },
   "kev_summary": {
-    "total_kev": 1745,
-    "recent_7d": 6,
-    "recent_30d": 35,
-    "epss_mean_recent_kev": 0.1642,
-    "epss_enriched_count": 33,
-    "epss_enrichment_coverage": 0.9428571428571428,
+    "total_kev": 1746,
+    "recent_7d": 7,
+    "recent_30d": 36,
+    "epss_mean_recent_kev": 0.18,
+    "epss_enriched_count": 36,
+    "epss_enrichment_coverage": 1,
     "top_recent_kev_by_epss": [
       {
         "cve": "CVE-2015-3306",
@@ -445,6 +724,22 @@
         "epss": 0.87507
       },
       {
+        "cve": "CVE-2026-93616",
+        "vendor_project": "Check Point",
+        "product": "Multiple Products",
+        "vulnerability_name": "Check Point Multiple Products Path Traversal Vulnerability",
+        "date_added": "2026-09-22",
+        "epss": 0.75872
+      },
+      {
+        "cve": "CVE-2026-85102",
+        "vendor_project": "Check Point",
+        "product": "Multiple Products",
+        "vulnerability_name": "Check Point Multiple Products Improper Certificate Validation Vulnerability",
+        "date_added": "2026-09-22",
+        "epss": 0.504
+      },
+      {
         "cve": "CVE-2026-87902",
         "vendor_project": "WordPress",
         "product": "Core",
@@ -459,14 +754,6 @@
         "vulnerability_name": "Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability",
         "date_added": "2026-10-13",
         "epss": 0.25982
-      },
-      {
-        "cve": "CVE-2026-93616",
-        "vendor_project": "Check Point",
-        "product": "Multiple Products",
-        "vulnerability_name": "Check Point Multiple Products Path Traversal Vulnerability",
-        "date_added": "2026-09-22",
-        "epss": 0.19654
       },
       {
         "cve": "CVE-2021-3199",
@@ -485,14 +772,6 @@
         "epss": 0.14026
       },
       {
-        "cve": "CVE-2026-85102",
-        "vendor_project": "Check Point",
-        "product": "Multiple Products",
-        "vulnerability_name": "Check Point Multiple Products Improper Certificate Validation Vulnerability",
-        "date_added": "2026-09-22",
-        "epss": 0.07546
-      },
-      {
         "cve": "CVE-2023-22894",
         "vendor_project": "Strapi",
         "product": "Strapi",
@@ -501,12 +780,12 @@
         "epss": 0.03609
       },
       {
-        "cve": "CVE-2025-39682",
-        "vendor_project": "Linux",
-        "product": "Kernel",
-        "vulnerability_name": "Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability",
-        "date_added": "2026-09-18",
-        "epss": 0.0288
+        "cve": "CVE-2026-105134",
+        "vendor_project": "Ahsay",
+        "product": "AhsayCBS",
+        "vulnerability_name": "Ahsay AhsayCBS Command Injection Vulnerability",
+        "date_added": "2026-10-14",
+        "epss": 0.03237
       }
     ]
   },
@@ -514,51 +793,51 @@
     {
       "source": "cisa_kev",
       "status": "ok",
-      "count": 1745,
-      "hash": "47b463a136b8e0956756cfbcdbc2e4b4ccb60c96b4ca7a1ca9f507817cc83045"
+      "count": 1746,
+      "hash": "0a4807c44c302e6c3f8ba5adbcd45f8163514f52059f636ad9048728cf0c57b8"
     },
     {
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "9747b5fd1d9168bbf7fcd7d48a2c041193d599a5a42c67b2711e379871a28fb9"
+      "hash": "d3097b80b9e6445f1a22468d4e120b9f72a049444634546f81a249c1211c0322"
     },
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 33,
-      "coverage_ratio": 0.9428571428571428
+      "count": 36,
+      "coverage_ratio": 1
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2115,
-      "count_7d": 10158,
-      "botnet_cc_count": 5020,
+      "count": 2201,
+      "count_7d": 10067,
+      "botnet_cc_count": 5238,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "c78f971d2c4ba5566a26c662d26ff1a8187eb60ebc1145cdcb5fcc2d41b13951",
-      "hash_7d": "856e30e313b16e1d58917769b1725ad63053dd98a5b3436b0a7a43e910787163",
+      "hash_1d": "c0f783c4b785d9f034ee857ded294c44dd3b2db9623301345298a03703877c46",
+      "hash_7d": "6eb0a6e5364ced7f15308b1c884a4f4f416d715fa434177974acdfd4659ca045",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 0,
+      "count": 4,
       "raw_count": 75,
       "core_count": 0,
-      "global_spillover_count": 0,
-      "rejected_count": 75,
-      "weighted_count": 0,
+      "global_spillover_count": 4,
+      "rejected_count": 71,
+      "weighted_count": 1.6,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: HTTP 429"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -571,7 +850,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -579,22 +858,26 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 0,
+      "count": 3,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 0
+      "applied_to_articles": 4
     }
   ],
   "drivers": [
-    "6 CISA KEV additions in the last 7 days",
-    "35 CISA KEV additions in the last 30 days",
+    "7 CISA KEV additions in the last 7 days",
+    "36 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1642",
-    "2115 ThreatFox IOCs in the last 1 day",
-    "5020 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.18",
+    "2201 ThreatFox IOCs in the last 1 day",
+    "5238 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
+    "Maritime narrative pressure: not assessable (low confidence)",
+    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
+    "Maritime filter: 0 Core MARD-Eu, 4 Global Maritime Spillover, 71 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "Narrative topic tags observed: Attribution and responsibility topics, Critical infrastructure topics, Institutions and alliances topics",
     "Baseline warming up: 2/14 prior points available"
   ],
   "assessment": {
@@ -605,6 +888,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261015T124016_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261015T183405_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
