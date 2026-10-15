@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-14T18:56:13.572Z",
+  "generated_at": "2026-10-15T01:12:59.739Z",
   "coverage_complete": false,
   "status": "provisional_stage2_sources_only",
   "methodology_note": "The 10-post/week and 40-post/28-day rules cannot make a final account-selection decision until the social-platform ingest is complete.",
@@ -11,8 +11,8 @@
       "actor_class": "state_media",
       "country": "RU",
       "counts": {
-        "items_7d": 150,
-        "items_28d": 150,
+        "items_7d": 200,
+        "items_28d": 200,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -28,10 +28,61 @@
       "actor_class": "known_fimi_infrastructure",
       "country": "RU",
       "counts": {
-        "items_7d": 119,
-        "items_28d": 119,
+        "items_7d": 128,
+        "items_28d": 128,
         "platforms_28d": 1,
         "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "ir_sepah_news",
+      "display_name": "Sepah News / IRGC media family",
+      "actor_class": "military_state_media",
+      "country": "IR",
+      "counts": {
+        "items_7d": 96,
+        "items_28d": 96,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "tr_trt_world",
+      "display_name": "TRT World",
+      "actor_class": "state_media",
+      "country": "TR",
+      "counts": {
+        "items_7d": 92,
+        "items_28d": 92,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_apollo_news",
+      "display_name": "Apollo News",
+      "actor_class": "bridge_media",
+      "country": "DE",
+      "counts": {
+        "items_7d": 90,
+        "items_28d": 90,
+        "platforms_28d": 2,
+        "endpoints_28d": 2
       },
       "provisional_thresholds": {
         "meets_10_per_week_observed": true,
@@ -57,10 +108,10 @@
       }
     },
     {
-      "actor_id": "tr_trt_world",
-      "display_name": "TRT World",
-      "actor_class": "state_media",
-      "country": "TR",
+      "actor_id": "ye_almasirah",
+      "display_name": "Al-Masirah",
+      "actor_class": "armed_group_media",
+      "country": "YE",
       "counts": {
         "items_7d": 80,
         "items_28d": 80,
@@ -74,15 +125,15 @@
       }
     },
     {
-      "actor_id": "ir_sepah_news",
-      "display_name": "Sepah News / IRGC media family",
-      "actor_class": "military_state_media",
+      "actor_id": "ir_irna",
+      "display_name": "IRNA",
+      "actor_class": "state_media",
       "country": "IR",
       "counts": {
-        "items_7d": 78,
-        "items_28d": 78,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
+        "items_7d": 77,
+        "items_28d": 77,
+        "platforms_28d": 2,
+        "endpoints_28d": 2
       },
       "provisional_thresholds": {
         "meets_10_per_week_observed": true,
@@ -96,8 +147,8 @@
       "actor_class": "official_state_source",
       "country": "RU",
       "counts": {
-        "items_7d": 70,
-        "items_28d": 70,
+        "items_7d": 75,
+        "items_28d": 75,
         "platforms_28d": 1,
         "endpoints_28d": 2
       },
@@ -113,8 +164,25 @@
       "actor_class": "state_media",
       "country": "TR",
       "counts": {
-        "items_7d": 69,
-        "items_28d": 69,
+        "items_7d": 70,
+        "items_28d": 70,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_junge_welt",
+      "display_name": "Junge Welt",
+      "actor_class": "media_outlet",
+      "country": "DE",
+      "counts": {
+        "items_7d": 66,
+        "items_28d": 66,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -142,13 +210,13 @@
       }
     },
     {
-      "actor_id": "ye_almasirah",
-      "display_name": "Al-Masirah",
-      "actor_class": "armed_group_media",
-      "country": "YE",
+      "actor_id": "ru_colonelcassad",
+      "display_name": "Colonelcassad",
+      "actor_class": "milblogger",
+      "country": "RU",
       "counts": {
-        "items_7d": 60,
-        "items_28d": 60,
+        "items_7d": 63,
+        "items_28d": 63,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -159,15 +227,15 @@
       }
     },
     {
-      "actor_id": "de_apollo_news",
-      "display_name": "Apollo News",
-      "actor_class": "bridge_media",
+      "actor_id": "de_deutschland_kurier",
+      "display_name": "Deutschland-Kurier",
+      "actor_class": "party_aligned_media",
       "country": "DE",
       "counts": {
-        "items_7d": 58,
-        "items_28d": 58,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
+        "items_7d": 63,
+        "items_28d": 63,
+        "platforms_28d": 2,
+        "endpoints_28d": 2
       },
       "provisional_thresholds": {
         "meets_10_per_week_observed": true,
@@ -183,6 +251,57 @@
       "counts": {
         "items_7d": 54,
         "items_28d": 56,
+        "platforms_28d": 2,
+        "endpoints_28d": 2
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_tichys_einblick",
+      "display_name": "Tichys Einblick",
+      "actor_class": "independent_media",
+      "country": "DE",
+      "counts": {
+        "items_7d": 54,
+        "items_28d": 54,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "ru_southfront",
+      "display_name": "SouthFront",
+      "actor_class": "known_fimi_infrastructure",
+      "country": "RU",
+      "counts": {
+        "items_7d": 54,
+        "items_28d": 54,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "ru_mfa",
+      "display_name": "Ministry of Foreign Affairs of Russia",
+      "actor_class": "official_state_source",
+      "country": "RU",
+      "counts": {
+        "items_7d": 54,
+        "items_28d": 54,
         "platforms_28d": 2,
         "endpoints_28d": 2
       },
@@ -227,27 +346,10 @@
       }
     },
     {
-      "actor_id": "de_tichys_einblick",
-      "display_name": "Tichys Einblick",
+      "actor_id": "de_nachdenkseiten",
+      "display_name": "NachDenkSeiten",
       "actor_class": "independent_media",
       "country": "DE",
-      "counts": {
-        "items_7d": 53,
-        "items_28d": 53,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "ir_irna",
-      "display_name": "IRNA",
-      "actor_class": "state_media",
-      "country": "IR",
       "counts": {
         "items_7d": 51,
         "items_28d": 51,
@@ -278,98 +380,13 @@
       }
     },
     {
-      "actor_id": "ru_colonelcassad",
-      "display_name": "Colonelcassad",
-      "actor_class": "milblogger",
-      "country": "RU",
-      "counts": {
-        "items_7d": 49,
-        "items_28d": 49,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
       "actor_id": "ir_mehr",
       "display_name": "Mehr News Agency",
       "actor_class": "state_media",
       "country": "IR",
       "counts": {
-        "items_7d": 48,
-        "items_28d": 48,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "ru_mfa",
-      "display_name": "Ministry of Foreign Affairs of Russia",
-      "actor_class": "official_state_source",
-      "country": "RU",
-      "counts": {
-        "items_7d": 45,
-        "items_28d": 45,
-        "platforms_28d": 2,
-        "endpoints_28d": 2
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_nachdenkseiten",
-      "display_name": "NachDenkSeiten",
-      "actor_class": "independent_media",
-      "country": "DE",
-      "counts": {
-        "items_7d": 45,
-        "items_28d": 45,
-        "platforms_28d": 2,
-        "endpoints_28d": 2
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_deutschland_kurier",
-      "display_name": "Deutschland-Kurier",
-      "actor_class": "party_aligned_media",
-      "country": "DE",
-      "counts": {
-        "items_7d": 43,
-        "items_28d": 43,
-        "platforms_28d": 2,
-        "endpoints_28d": 2
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": true,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "ru_southfront",
-      "display_name": "SouthFront",
-      "actor_class": "known_fimi_infrastructure",
-      "country": "RU",
-      "counts": {
-        "items_7d": 42,
-        "items_28d": 42,
+        "items_7d": 49,
+        "items_28d": 49,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -385,8 +402,8 @@
       "actor_class": "official_state_source",
       "country": "BY",
       "counts": {
-        "items_7d": 28,
-        "items_28d": 41,
+        "items_7d": 34,
+        "items_28d": 47,
         "platforms_28d": 3,
         "endpoints_28d": 3
       },
@@ -402,8 +419,8 @@
       "actor_class": "official_state_source",
       "country": "RU",
       "counts": {
-        "items_7d": 40,
-        "items_28d": 40,
+        "items_7d": 41,
+        "items_28d": 41,
         "platforms_28d": 1,
         "endpoints_28d": 2
       },
@@ -414,13 +431,64 @@
       }
     },
     {
+      "actor_id": "ir_press_tv",
+      "display_name": "Press TV",
+      "actor_class": "state_media",
+      "country": "IR",
+      "counts": {
+        "items_7d": 40,
+        "items_28d": 40,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": true,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_bsw_bund",
+      "display_name": "Bündnis Sahra Wagenknecht — Bundespartei",
+      "actor_class": "party_channel",
+      "country": "DE",
+      "counts": {
+        "items_7d": 20,
+        "items_28d": 38,
+        "platforms_28d": 2,
+        "endpoints_28d": 2
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "ru_two_majors",
+      "display_name": "Two Majors",
+      "actor_class": "milblogger",
+      "country": "RU",
+      "counts": {
+        "items_7d": 36,
+        "items_28d": 36,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
       "actor_id": "ru_readovka",
       "display_name": "Readovka",
       "actor_class": "state_aligned_media",
       "country": "RU",
       "counts": {
-        "items_7d": 34,
-        "items_28d": 34,
+        "items_7d": 35,
+        "items_28d": 35,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -448,13 +516,13 @@
       }
     },
     {
-      "actor_id": "de_junge_welt",
-      "display_name": "Junge Welt",
-      "actor_class": "media_outlet",
-      "country": "DE",
+      "actor_id": "cn_cgtn",
+      "display_name": "CGTN",
+      "actor_class": "state_media",
+      "country": "CN",
       "counts": {
-        "items_7d": 34,
-        "items_28d": 34,
+        "items_7d": 31,
+        "items_28d": 31,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -465,30 +533,13 @@
       }
     },
     {
-      "actor_id": "de_bsw_bund",
-      "display_name": "Bündnis Sahra Wagenknecht — Bundespartei",
-      "actor_class": "party_channel",
-      "country": "DE",
-      "counts": {
-        "items_7d": 16,
-        "items_28d": 34,
-        "platforms_28d": 2,
-        "endpoints_28d": 2
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "ru_two_majors",
-      "display_name": "Two Majors",
+      "actor_id": "ru_rybar",
+      "display_name": "Rybar",
       "actor_class": "milblogger",
       "country": "RU",
       "counts": {
-        "items_7d": 32,
-        "items_28d": 32,
+        "items_7d": 30,
+        "items_28d": 30,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -516,13 +567,13 @@
       }
     },
     {
-      "actor_id": "de_anti_spiegel",
-      "display_name": "Anti-Spiegel",
-      "actor_class": "bridge_media",
+      "actor_id": "de_roderich_kiesewetter",
+      "display_name": "Roderich Kiesewetter",
+      "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 29,
-        "items_28d": 29,
+        "items_7d": 30,
+        "items_28d": 30,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -533,13 +584,13 @@
       }
     },
     {
-      "actor_id": "ru_rybar",
-      "display_name": "Rybar",
-      "actor_class": "milblogger",
-      "country": "RU",
+      "actor_id": "de_anti_spiegel",
+      "display_name": "Anti-Spiegel",
+      "actor_class": "bridge_media",
+      "country": "DE",
       "counts": {
-        "items_7d": 28,
-        "items_28d": 28,
+        "items_7d": 29,
+        "items_28d": 29,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -589,10 +640,78 @@
       "actor_class": "party_channel",
       "country": "DE",
       "counts": {
-        "items_7d": 12,
-        "items_28d": 23,
+        "items_7d": 16,
+        "items_28d": 27,
         "platforms_28d": 2,
         "endpoints_28d": 2
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_hans_georg_maassen",
+      "display_name": "Hans-Georg Maaßen",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 27,
+        "items_28d": 27,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "cn_peoples_daily",
+      "display_name": "People's Daily",
+      "actor_class": "state_media",
+      "country": "CN",
+      "counts": {
+        "items_7d": 26,
+        "items_28d": 26,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_alice_weidel",
+      "display_name": "Alice Weidel",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 24,
+        "items_28d": 24,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_auswaertiges_amt",
+      "display_name": "Auswärtiges Amt",
+      "actor_class": "government_source",
+      "country": "DE",
+      "counts": {
+        "items_7d": 20,
+        "items_28d": 24,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
       },
       "provisional_thresholds": {
         "meets_10_per_week_observed": true,
@@ -606,10 +725,129 @@
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 9,
-        "items_28d": 22,
+        "items_7d": 10,
+        "items_28d": 23,
         "platforms_28d": 2,
         "endpoints_28d": 2
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_cdu_bund",
+      "display_name": "CDU Deutschlands",
+      "actor_class": "party_channel",
+      "country": "DE",
+      "counts": {
+        "items_7d": 10,
+        "items_28d": 23,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_markus_soeder",
+      "display_name": "Markus Söder",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 23,
+        "items_28d": 23,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_maximilian_krah",
+      "display_name": "Maximilian Krah",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 22,
+        "items_28d": 22,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "ru_wargonzo",
+      "display_name": "WarGonzo",
+      "actor_class": "milblogger",
+      "country": "RU",
+      "counts": {
+        "items_7d": 22,
+        "items_28d": 22,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_joana_cotar",
+      "display_name": "Joana Cotar",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 22,
+        "items_28d": 22,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_karl_lauterbach",
+      "display_name": "Karl Lauterbach",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 22,
+        "items_28d": 22,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_omid_nouripour",
+      "display_name": "Omid Nouripour",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 5,
+        "items_28d": 22,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
       },
       "provisional_thresholds": {
         "meets_10_per_week_observed": false,
@@ -635,13 +873,98 @@
       }
     },
     {
-      "actor_id": "ru_wargonzo",
-      "display_name": "WarGonzo",
-      "actor_class": "milblogger",
-      "country": "RU",
+      "actor_id": "cn_xinhua",
+      "display_name": "Xinhua News Agency",
+      "actor_class": "state_media",
+      "country": "CN",
       "counts": {
-        "items_7d": 21,
-        "items_28d": 21,
+        "items_7d": 20,
+        "items_28d": 20,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "cn_global_times",
+      "display_name": "Global Times",
+      "actor_class": "state_aligned_media",
+      "country": "CN",
+      "counts": {
+        "items_7d": 20,
+        "items_28d": 20,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_fabio_de_masi",
+      "display_name": "Fabio De Masi",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 17,
+        "items_28d": 20,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "cn_embassy_germany",
+      "display_name": "Embassy of China in Germany",
+      "actor_class": "official_state_source",
+      "country": "CN",
+      "counts": {
+        "items_7d": 13,
+        "items_28d": 20,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_epoch_times",
+      "display_name": "Epoch Times Deutsch",
+      "actor_class": "bridge_media",
+      "country": "DE",
+      "counts": {
+        "items_7d": 20,
+        "items_28d": 20,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_fdp_bund",
+      "display_name": "Freie Demokratische Partei",
+      "actor_class": "party_channel",
+      "country": "DE",
+      "counts": {
+        "items_7d": 11,
+        "items_28d": 20,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
@@ -669,46 +992,12 @@
       }
     },
     {
-      "actor_id": "cn_cgtn",
-      "display_name": "CGTN",
-      "actor_class": "state_media",
-      "country": "CN",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "cn_peoples_daily",
-      "display_name": "People's Daily",
-      "actor_class": "state_media",
-      "country": "CN",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
       "actor_id": "de_beatrix_von_storch",
       "display_name": "Beatrix von Storch",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 9,
+        "items_7d": 8,
         "items_28d": 20,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -720,128 +1009,26 @@
       }
     },
     {
-      "actor_id": "de_markus_soeder",
-      "display_name": "Markus Söder",
+      "actor_id": "de_ricarda_lang",
+      "display_name": "Ricarda Lang",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 20,
+        "items_7d": 5,
         "items_28d": 20,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
       "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
+        "meets_10_per_week_observed": false,
         "meets_40_per_28d_observed": false,
         "final_selection_decision": false
       }
     },
     {
-      "actor_id": "ir_press_tv",
-      "display_name": "Press TV",
-      "actor_class": "state_media",
-      "country": "IR",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_maximilian_krah",
-      "display_name": "Maximilian Krah",
+      "actor_id": "de_friedrich_puerner",
+      "display_name": "Friedrich Pürner",
       "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_alice_weidel",
-      "display_name": "Alice Weidel",
-      "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_roderich_kiesewetter",
-      "display_name": "Roderich Kiesewetter",
-      "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_karl_lauterbach",
-      "display_name": "Karl Lauterbach",
-      "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 20,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_auswaertiges_amt",
-      "display_name": "Auswärtiges Amt",
-      "actor_class": "government_source",
-      "country": "DE",
-      "counts": {
-        "items_7d": 16,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_cdu_bund",
-      "display_name": "CDU Deutschlands",
-      "actor_class": "party_channel",
       "country": "DE",
       "counts": {
         "items_7d": 7,
@@ -862,23 +1049,6 @@
       "country": "DE",
       "counts": {
         "items_7d": 8,
-        "items_28d": 20,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": false,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
-      "actor_id": "de_omid_nouripour",
-      "display_name": "Omid Nouripour",
-      "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 3,
         "items_28d": 20,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -941,6 +1111,40 @@
       }
     },
     {
+      "actor_id": "cn_china_daily",
+      "display_name": "China Daily",
+      "actor_class": "state_media",
+      "country": "CN",
+      "counts": {
+        "items_7d": 19,
+        "items_28d": 19,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_csu_bund",
+      "display_name": "Christlich-Soziale Union",
+      "actor_class": "party_channel",
+      "country": "DE",
+      "counts": {
+        "items_7d": 18,
+        "items_28d": 19,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": true,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
       "actor_id": "de_ulrich_siegmund",
       "display_name": "Ulrich Siegmund",
       "actor_class": "political_actor",
@@ -958,29 +1162,12 @@
       }
     },
     {
-      "actor_id": "de_hans_georg_maassen",
-      "display_name": "Hans-Georg Maaßen",
-      "actor_class": "political_actor",
-      "country": "DE",
-      "counts": {
-        "items_7d": 19,
-        "items_28d": 19,
-        "platforms_28d": 1,
-        "endpoints_28d": 1
-      },
-      "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
-        "meets_40_per_28d_observed": false,
-        "final_selection_decision": false
-      }
-    },
-    {
       "actor_id": "de_marie_agnes_strack_zimmermann",
       "display_name": "Marie-Agnes Strack-Zimmermann",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 13,
+        "items_7d": 12,
         "items_28d": 19,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -992,12 +1179,12 @@
       }
     },
     {
-      "actor_id": "de_norbert_roettgen",
-      "display_name": "Norbert Röttgen",
+      "actor_id": "de_bjoern_hoecke",
+      "display_name": "Björn Höcke",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 6,
+        "items_7d": 8,
         "items_28d": 19,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -1009,12 +1196,12 @@
       }
     },
     {
-      "actor_id": "de_ricarda_lang",
-      "display_name": "Ricarda Lang",
+      "actor_id": "de_norbert_roettgen",
+      "display_name": "Norbert Röttgen",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 4,
+        "items_7d": 6,
         "items_28d": 19,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -1043,18 +1230,18 @@
       }
     },
     {
-      "actor_id": "de_joana_cotar",
-      "display_name": "Joana Cotar",
+      "actor_id": "de_amira_mohamed_ali",
+      "display_name": "Amira Mohamed Ali",
       "actor_class": "political_actor",
       "country": "DE",
       "counts": {
-        "items_7d": 16,
-        "items_28d": 16,
+        "items_7d": 3,
+        "items_28d": 12,
         "platforms_28d": 1,
         "endpoints_28d": 1
       },
       "provisional_thresholds": {
-        "meets_10_per_week_observed": true,
+        "meets_10_per_week_observed": false,
         "meets_40_per_28d_observed": false,
         "final_selection_decision": false
       }
@@ -1082,7 +1269,7 @@
       "actor_class": "known_fimi_infrastructure",
       "country": "RU",
       "counts": {
-        "items_7d": 4,
+        "items_7d": 3,
         "items_28d": 10,
         "platforms_28d": 1,
         "endpoints_28d": 1
@@ -1202,6 +1389,23 @@
       "country": "DE",
       "counts": {
         "items_7d": 1,
+        "items_28d": 2,
+        "platforms_28d": 1,
+        "endpoints_28d": 1
+      },
+      "provisional_thresholds": {
+        "meets_10_per_week_observed": false,
+        "meets_40_per_28d_observed": false,
+        "final_selection_decision": false
+      }
+    },
+    {
+      "actor_id": "de_christian_lindner",
+      "display_name": "Christian Lindner",
+      "actor_class": "political_actor",
+      "country": "DE",
+      "counts": {
+        "items_7d": 0,
         "items_28d": 2,
         "platforms_28d": 1,
         "endpoints_28d": 1
