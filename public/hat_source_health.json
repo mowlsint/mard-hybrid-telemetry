@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "d3097b80b9e6445f1a22468d4e120b9f72a049444634546f81a249c1211c0322"
+    "hash": "7fb21fcb0cbe3a82aa0b78ab92f790d14ebd4c234e53222e8ff72d4d13e1377d"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -21,32 +21,33 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 2059,
-    "count_7d": 11160,
-    "botnet_cc_count": 6026,
+    "count": 2246,
+    "count_7d": 11205,
+    "botnet_cc_count": 6191,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "f2560b6b7d4b989a5746ce37d356f0ff418208a4a920cfdd70ac44ea995e0fa6",
-    "hash_7d": "64e8e12ba5e295bb6d396513a8d41e659f9d36f84f81a384803633ffef92677f",
+    "hash_1d": "feb57d93dc933183b5983d721efe682fbf21a8a416afd7c46c4144d2cd516aec",
+    "hash_7d": "0356e823e45f31ccd3a05e7df97d8c574e6dee4eb90bccc4e409fa91c6f9b2c8",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
-    "raw_count": 75,
+    "raw_count": 0,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 75,
+    "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
+      "gdelt_fimi_1: HTTP 429",
       "gdelt_fimi_2: HTTP 429",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_3: request failed (TypeError)"
     ]
   },
   {
@@ -58,7 +59,7 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+      "euvsdisinfo_case_watch_1: HTTP 429",
       "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
