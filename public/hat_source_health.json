@@ -21,31 +21,31 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 2242,
-    "count_7d": 10437,
-    "botnet_cc_count": 5497,
+    "count": 2392,
+    "count_7d": 10795,
+    "botnet_cc_count": 5735,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "849c37ac68e39652f9940a546ddc05b52a8e069d3cb324a6a12c691a110323ab",
-    "hash_7d": "ebef0bbe80e3fbc683bb0ed917b98ca3ae1fb1fc6db4b57d8ea0ce2b0c0867df",
+    "hash_1d": "b5e607dc4b8cd56c3c176871949927589ff015c305b3828166ca709c17701a04",
+    "hash_7d": "8738ff5cfd272c3b5d24bca0d466656feddb9169e096b58884a4d2c2ab5b6619",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 6,
-    "raw_count": 75,
+    "count": 0,
+    "raw_count": 55,
     "core_count": 0,
-    "global_spillover_count": 6,
-    "rejected_count": 69,
-    "weighted_count": 2.4,
+    "global_spillover_count": 0,
+    "rejected_count": 55,
+    "weighted_count": 0,
     "queries": 3,
     "ok_queries": 1,
     "failed_queries": 2,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
@@ -59,7 +59,7 @@
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
       "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_2: request failed (TypeError)"
     ]
   },
   {
@@ -67,8 +67,8 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 6
+    "applied_to_articles": 0
   }
 ]

@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-16T00:56:41.943Z",
+  "generated_at": "2026-10-16T06:44:09.497Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -25,7 +25,7 @@
     "confidence": "low",
     "baseline": {
       "status": "warming_up",
-      "points": 2,
+      "points": 3,
       "minimum_days": 14,
       "mean_hat_score": null,
       "delta_from_mean": null
@@ -55,27 +55,27 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3212,
-      "botnet_c2_36h_count": 2061,
+      "ioc_36h_count": 3268,
+      "botnet_c2_36h_count": 2034,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 36
         }
       }
@@ -93,8 +93,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "2061 botnet/C2-like indicators in the current 36h window",
-      "6 Global Maritime Spillover articles retained with lower weight",
+      "2034 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -112,7 +111,7 @@
         "gdelt_fimi": "partial",
         "euvsdisinfo_case_watch": "error"
       },
-      "sample_limited": true
+      "sample_limited": false
     },
     "last_successful": null,
     "confidence": "low",
@@ -120,42 +119,16 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 75,
-      "accepted_articles": 6,
+      "raw_unique_articles": 55,
+      "accepted_articles": 0,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 6,
-      "rejected_as_noise_or_broad_context": 69,
-      "weighted_article_count": 2.4,
+      "global_maritime_spillover_articles": 0,
+      "rejected_as_noise_or_broad_context": 55,
+      "weighted_article_count": 0,
       "rejected_samples": [
         {
-          "title": "Streeting reassured by Hegseth that Ukraine access to Starlink restored",
-          "domain": "borehamwoodtimes.co.uk",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ukraine - Krieg : Selenskyj beim EU - Gipfel : Finanzen , Trump und Starlink",
-          "domain": "wiwo.de",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Selenskyj beim EU - Gipfel : Finanzen , Trump und Starlink",
-          "domain": "schwaebische.de",
+          "title": "Судебный фарс . Как в Гамбурге хоронят правду о взрыве на « Северных потоках » Фонд стратегической культуры",
+          "domain": "fondsk.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -165,8 +138,8 @@
           }
         },
         {
-          "title": "Selenskyj beim EU - Gipfel : Finanzen , Trump und Starlink",
-          "domain": "fnp.de",
+          "title": "Ölpreise leicht im Minus - Zweiter Wochengewinn in Folge möglich",
+          "domain": "finanznachrichten.de",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -176,8 +149,8 @@
           }
         },
         {
-          "title": "Selenskyj beim EU - Gipfel : Finanzen , Trump und Starlink",
-          "domain": "tageblatt.de",
+          "title": "Ölpreis unter Spannung : Eskalation im Nahen Osten droht die Versorgung zu treffen",
+          "domain": "finanzen.net",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -187,43 +160,59 @@
           }
         },
         {
-          "title": "Streeting reassured by Hegseth that Ukraine access to Starlink restored",
-          "domain": "hexham-courant.co.uk",
+          "title": "Ölpreise leicht im Minus - Zweiter Wochengewinn in Folge möglich",
+          "domain": "finanzen.net",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
+            "threat_fimi": [],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Ukraine - Krieg : Selenskyj beim EU - Gipfel : Finanzen , Trump und Starlink",
-          "domain": "mz.de",
+          "title": "Кремль предупреждал : Запад нарвался на зеркальный ответ , захватив русский танкер",
+          "domain": "mk.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
+            "maritime": [
+              "tanker",
+              "танкер"
             ],
-            "region": [
-              "deutschland"
-            ],
+            "threat_fimi": [],
+            "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Росія вдарила по танкерах у Румунії - НАТО збереться на засідання",
-          "domain": "rbc.ua",
+          "title": "Procurement : Post - War Ukrainian Defense Industries",
+          "domain": "strategypage.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
-            "threat_fimi": [
-              "nato",
-              "нато"
-            ],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "« Северный поток »: Кузнецову грозит 15 лет суд Гамбурга начал процесс",
+          "domain": "runews24.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "帕沃 • 雅尔维 ： 人口只有一百多万的爱沙尼亚 ， 如何向世界发声 ？",
+          "domain": "ftchinese.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
             "region": [],
             "global_spillover": []
           }
@@ -233,384 +222,19 @@
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 75,
+      "article_count": 55,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 75,
-      "sample_limited": true,
+      "observed_articles": 55,
+      "sample_limited": false,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 6,
-      "rejected_articles": 69,
+      "global_maritime_spillover_articles": 0,
+      "rejected_articles": 55,
       "weighted_articles": null,
       "historical_percentile": null,
-      "top_domains": [
-        {
-          "name": "bordermail.com.au",
-          "count": 1
-        },
-        {
-          "name": "canberratimes.com.au",
-          "count": 1
-        },
-        {
-          "name": "illawarramercury.com.au",
-          "count": 1
-        },
-        {
-          "name": "standard.net.au",
-          "count": 1
-        },
-        {
-          "name": "theuknews.com",
-          "count": 1
-        },
-        {
-          "name": "westernadvocate.com.au",
-          "count": 1
-        }
-      ],
-      "sample": [
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.illawarramercury.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "illawarramercury.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.bordermail.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "bordermail.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.standard.net.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "standard.net.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.westernadvocate.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "westernadvocate.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.canberratimes.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "canberratimes.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Black Sea drone attacks add to global energy , shipping strains",
-          "url": "http://www.theuknews.com/news/279376879/black-sea-drone-attacks-add-to-global-energy-shipping-strains",
-          "domain": "theuknews.com",
-          "language": "English",
-          "source_country": "United Kingdom",
-          "seen_date": "20261015T214500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "shipping"
-              ],
-              "threat_fimi": [
-                "attacks",
-                "drone"
-              ],
-              "region": [],
-              "global_spillover": [
-                "black sea"
-              ]
-            }
-          }
-        }
-      ],
-      "articles": [
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.illawarramercury.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "illawarramercury.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.bordermail.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "bordermail.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.standard.net.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "standard.net.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.westernadvocate.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "westernadvocate.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Two ships sink near Hormuz amid surge in attacks",
-          "url": "https://www.canberratimes.com.au/story/9369667/two-ships-sink-near-hormuz-amid-surge-in-attacks/",
-          "domain": "canberratimes.com.au",
-          "language": "English",
-          "source_country": "Australia",
-          "seen_date": "20261016T001500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "ships"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Black Sea drone attacks add to global energy , shipping strains",
-          "url": "http://www.theuknews.com/news/279376879/black-sea-drone-attacks-add-to-global-energy-shipping-strains",
-          "domain": "theuknews.com",
-          "language": "English",
-          "source_country": "United Kingdom",
-          "seen_date": "20261015T214500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "shipping"
-              ],
-              "threat_fimi": [
-                "attacks",
-                "drone"
-              ],
-              "region": [],
-              "global_spillover": [
-                "black sea"
-              ]
-            }
-          }
-        }
-      ]
+      "top_domains": [],
+      "sample": [],
+      "articles": []
     },
     "euvsdisinfo_summary": {
       "timespan": "90d",
@@ -622,37 +246,28 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 1,
-      "tags": [
-        {
-          "id": "infrastructure_topics",
-          "label": "Critical infrastructure topics",
-          "count": 1,
-          "matched_keywords": [
-            "energy"
-          ]
-        }
-      ]
+      "tag_count": 0,
+      "tags": []
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 2242,
-    "ioc_count_7d": 10437,
-    "botnet_c2_count_1d": 1435,
-    "botnet_c2_count_7d": 5497,
+    "ioc_count_1d": 2392,
+    "ioc_count_7d": 10795,
+    "botnet_c2_count_1d": 1445,
+    "botnet_c2_count_7d": 5735,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 1435
+        "count": 1445
       },
       {
         "name": "payload",
-        "count": 554
+        "count": 695
       },
       {
         "name": "payload_delivery",
-        "count": 190
+        "count": 189
       },
       {
         "name": "cc_skimming",
@@ -662,57 +277,57 @@
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 1005
+        "count": 1013
       },
       {
         "name": "VShell",
-        "count": 299
+        "count": 301
       },
       {
         "name": "IClickFix",
         "count": 159
       },
       {
-        "name": "Unknown Loader",
-        "count": 90
+        "name": "AMOS",
+        "count": 91
       },
       {
-        "name": "AMOS",
-        "count": 79
+        "name": "Unknown Loader",
+        "count": 90
       },
       {
         "name": "vSkimmer",
         "count": 63
       },
       {
+        "name": "Mirai",
+        "count": 55
+      },
+      {
         "name": "Remus",
         "count": 50
       },
       {
-        "name": "Mirai",
-        "count": 45
-      },
-      {
         "name": "Unknown malware",
-        "count": 44
+        "count": 46
       },
       {
         "name": "php.shin_webshell",
-        "count": 43
+        "count": 44
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 3558
+        "count": 3793
       },
       {
         "name": "Remcos",
-        "count": 161
+        "count": 159
       },
       {
         "name": "Cobalt Strike",
-        "count": 153
+        "count": 156
       },
       {
         "name": "IClickFix",
@@ -752,8 +367,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3212,
-      "current_36h_botnet_c2_count": 2061,
+      "current_36h_ioc_count": 3268,
+      "current_36h_botnet_c2_count": 2034,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -761,22 +376,22 @@
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 2,
+          "days": 3,
           "window_hours": 36
         }
       }
@@ -911,31 +526,31 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2242,
-      "count_7d": 10437,
-      "botnet_cc_count": 5497,
+      "count": 2392,
+      "count_7d": 10795,
+      "botnet_cc_count": 5735,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "849c37ac68e39652f9940a546ddc05b52a8e069d3cb324a6a12c691a110323ab",
-      "hash_7d": "ebef0bbe80e3fbc683bb0ed917b98ca3ae1fb1fc6db4b57d8ea0ce2b0c0867df",
+      "hash_1d": "b5e607dc4b8cd56c3c176871949927589ff015c305b3828166ca709c17701a04",
+      "hash_7d": "8738ff5cfd272c3b5d24bca0d466656feddb9169e096b58884a4d2c2ab5b6619",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 6,
-      "raw_count": 75,
+      "count": 0,
+      "raw_count": 55,
       "core_count": 0,
-      "global_spillover_count": 6,
-      "rejected_count": 69,
-      "weighted_count": 2.4,
+      "global_spillover_count": 0,
+      "rejected_count": 55,
+      "weighted_count": 0,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
@@ -949,7 +564,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: request failed (TypeError)"
       ]
     },
     {
@@ -957,9 +572,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 6
+      "applied_to_articles": 0
     }
   ],
   "drivers": [
@@ -967,17 +582,13 @@
     "33 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1919",
-    "2242 ThreatFox IOCs in the last 1 day",
-    "5497 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "2392 ThreatFox IOCs in the last 1 day",
+    "5735 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "Maritime narrative pressure: not assessable (low confidence)",
-    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 6 Global Maritime Spillover, 69 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Critical infrastructure topics",
-    "Baseline warming up: 2/14 prior points available"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
+    "Baseline warming up: 3/14 prior points available"
   ],
   "assessment": {
     "label": "open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry",
@@ -987,6 +598,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261016T005641_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261016T064409_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
