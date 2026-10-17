@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-17T07:48:06.058Z",
+  "generated_at": "2026-10-17T07:54:31.604Z",
   "mode": "hash_simhash_domain_time_clustering",
   "assessment_limit": "Clusters are analytical indicators of similar or synchronized public content. They are not attribution findings or bot determinations.",
   "parameters": {
@@ -9,15 +9,178 @@
     "maximum_internal_clusters": 400
   },
   "counts": {
-    "analysed_items": 4288,
-    "clusters": 36,
-    "elevated_clusters": 22,
-    "strong_clusters": 15
+    "analysed_items": 4405,
+    "clusters": 42,
+    "elevated_clusters": 27,
+    "strong_clusters": 19
   },
   "clusters": [
     {
+      "cluster_id": "d58630c96d4f310825a3b513",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-16T19:45:05.000Z",
+        "end_at": "2026-10-16T19:45:05.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_cdu_bund",
+        "de_friedrich_merz"
+      ],
+      "endpoint_ids": [
+        "de_cdu_bund__x__cdu",
+        "de_friedrich_merz__x__friedrichmerz"
+      ],
+      "item_ids": [
+        "1f92e65e55ec4ea7bfe76aefb8d8f4f8",
+        "183a1681ef35586056b026c2544db013"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "9a1c8871b954d977d0ce24bd",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-16T09:24:06.000Z",
+        "end_at": "2026-10-16T09:24:06.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_csu_bund",
+        "de_markus_soeder"
+      ],
+      "endpoint_ids": [
+        "de_csu_bund__x__csu",
+        "de_markus_soeder__x__markus_soeder"
+      ],
+      "item_ids": [
+        "3af686b546a4b1234923953dee7911b8",
+        "e93266726f186afb2176f55660e1ad1c"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "1f7715ab33c6d54ad724995c",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-16T06:40:32.000Z",
+        "end_at": "2026-10-16T06:40:32.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_fdp_bund",
+        "de_wolfgang_kubicki"
+      ],
+      "endpoint_ids": [
+        "de_fdp_bund__x__fdp",
+        "de_wolfgang_kubicki__x__kubickiwo"
+      ],
+      "item_ids": [
+        "61336002f5e23bf465eed0898712face",
+        "089e178ba3e4f4e551b8dcdf5d384cd8"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "berliner-zeitung.de": 1,
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "2397446d5047409035961d28",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -71,7 +234,7 @@
     },
     {
       "cluster_id": "ef7b13bb7282738ba889e29a",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -124,8 +287,62 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "57004bf5a286851271053115",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-15T15:30:42.000Z",
+        "end_at": "2026-10-15T15:30:42.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_sahra_wagenknecht"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_sahra_wagenknecht__x__swagenknecht"
+      ],
+      "item_ids": [
+        "7bd3443feb01c68de8e9facdf5490838",
+        "6c22fbb06454578a4843e1b6d7facc44"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "0609a4fdc57013680e3513e0",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -179,7 +396,7 @@
     },
     {
       "cluster_id": "4f7fade220add99b5f1eb79c",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -233,7 +450,7 @@
     },
     {
       "cluster_id": "73d41a02d5776b26dd08a6a3",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -287,7 +504,7 @@
     },
     {
       "cluster_id": "fc97012dc603dbeaf2a94538",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -341,7 +558,7 @@
     },
     {
       "cluster_id": "72452456cabebe687aa3b6fa",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -400,7 +617,7 @@
     },
     {
       "cluster_id": "4bd8dccd47e4b45ac4991b28",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -454,7 +671,7 @@
     },
     {
       "cluster_id": "2419706f7b48476c37c59abd",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -508,7 +725,7 @@
     },
     {
       "cluster_id": "652871e3cea07a64b58fe60f",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -562,7 +779,7 @@
     },
     {
       "cluster_id": "5fe26ecd0d0ec1ff9ce1a887",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -616,7 +833,7 @@
     },
     {
       "cluster_id": "2140e01f66998566897c82af",
-      "generated_at": "2026-10-17T07:48:06.046Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -670,7 +887,7 @@
     },
     {
       "cluster_id": "567f03acc8106ee94a29f3e1",
-      "generated_at": "2026-10-17T07:48:06.046Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -724,7 +941,7 @@
     },
     {
       "cluster_id": "051c68023b5d9f99443eb637",
-      "generated_at": "2026-10-17T07:48:06.046Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -778,7 +995,7 @@
     },
     {
       "cluster_id": "e8270f6d39d6af0160d61d50",
-      "generated_at": "2026-10-17T07:48:06.046Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -832,7 +1049,7 @@
     },
     {
       "cluster_id": "d1678940f323189108594b42",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 77,
@@ -883,7 +1100,7 @@
     },
     {
       "cluster_id": "648e6d4f20314f4a1960c1f1",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 77,
@@ -933,8 +1150,67 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "f4710e70a6b45407bb05e01c",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "elevated_amplification_pattern",
+        "coordination_indicator_score": 73,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 3,
+        "actors": 3,
+        "endpoints": 3,
+        "unique_content_hashes": 2,
+        "pair_edges": 3
+      },
+      "time": {
+        "start_at": "2026-10-16T15:54:00.000Z",
+        "end_at": "2026-10-16T16:09:48.000Z",
+        "span_minutes": 16
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes",
+        "weak_text_similarity",
+        "within_90_minutes"
+      ],
+      "actor_ids": [
+        "de_beatrix_von_storch",
+        "de_rene_springer",
+        "de_ulrich_siegmund"
+      ],
+      "endpoint_ids": [
+        "de_beatrix_von_storch__x__beatrix_vstorch",
+        "de_rene_springer__x__rene_springer",
+        "de_ulrich_siegmund__x__ulrichsiegmund"
+      ],
+      "item_ids": [
+        "51ae038cba5b895415b3ba43465dac95",
+        "5e04cc94344c0c4ee7677c28f8d9b3a2",
+        "0c3f2d190235149d75a54c54e30f77f2"
+      ],
+      "platforms": {
+        "x": 3
+      },
+      "countries": {
+        "DE": 3
+      },
+      "actor_classes": {
+        "political_actor": 3
+      },
+      "shared_referenced_domains": {
+        "nius.de": 3,
+        "pbs.twimg.com": 3
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "b84d62b394d2563a0c82f13c",
-      "generated_at": "2026-10-17T07:48:06.043Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -992,7 +1268,7 @@
     },
     {
       "cluster_id": "a2fe81d86f9cf972bb015d97",
-      "generated_at": "2026-10-17T07:48:06.043Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -1047,7 +1323,7 @@
     },
     {
       "cluster_id": "1da671d468db121786587cc0",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -1106,7 +1382,7 @@
     },
     {
       "cluster_id": "62ee8d589914483396b2bb64",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -1161,7 +1437,7 @@
     },
     {
       "cluster_id": "4fecee821ac5e8e8fa985cbc",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -1216,7 +1492,7 @@
     },
     {
       "cluster_id": "2440420b1b9b1297ac0b9f08",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 61,
@@ -1271,7 +1547,7 @@
     },
     {
       "cluster_id": "6b2f4839a9ea4d64e3e3156a",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 61,
@@ -1323,62 +1599,8 @@
       "restricted_item_count": 0
     },
     {
-      "cluster_id": "129e6cc720b8668d5be87bdd",
-      "generated_at": "2026-10-17T07:48:06.044Z",
-      "assessment": {
-        "label": "possible_amplification_pattern",
-        "coordination_indicator_score": 60,
-        "confidence": "low",
-        "attribution_grade": false,
-        "automation_finding": false
-      },
-      "counts": {
-        "items": 2,
-        "actors": 2,
-        "endpoints": 2,
-        "unique_content_hashes": 2,
-        "pair_edges": 1
-      },
-      "time": {
-        "start_at": "2026-10-16T15:54:00.000Z",
-        "end_at": "2026-10-16T16:09:48.000Z",
-        "span_minutes": 16
-      },
-      "signals": [
-        "weak_text_similarity",
-        "shared_referenced_domain",
-        "within_90_minutes"
-      ],
-      "actor_ids": [
-        "de_beatrix_von_storch",
-        "de_ulrich_siegmund"
-      ],
-      "endpoint_ids": [
-        "de_beatrix_von_storch__x__beatrix_vstorch",
-        "de_ulrich_siegmund__x__ulrichsiegmund"
-      ],
-      "item_ids": [
-        "51ae038cba5b895415b3ba43465dac95",
-        "0c3f2d190235149d75a54c54e30f77f2"
-      ],
-      "platforms": {
-        "x": 2
-      },
-      "countries": {
-        "DE": 2
-      },
-      "actor_classes": {
-        "political_actor": 2
-      },
-      "shared_referenced_domains": {
-        "nius.de": 1,
-        "pbs.twimg.com": 1
-      },
-      "restricted_item_count": 0
-    },
-    {
       "cluster_id": "7fb13377d7abe616fd9d7b5d",
-      "generated_at": "2026-10-17T07:48:06.043Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -1429,7 +1651,7 @@
     },
     {
       "cluster_id": "37121ccc58afe0bd019ac8ae",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -1480,7 +1702,7 @@
     },
     {
       "cluster_id": "c54d2eb47feaec75d3b02595",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -1531,7 +1753,7 @@
     },
     {
       "cluster_id": "686f55110c31af604e6d41d2",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -1582,7 +1804,7 @@
     },
     {
       "cluster_id": "b03180294c2c38890d313667",
-      "generated_at": "2026-10-17T07:48:06.036Z",
+      "generated_at": "2026-10-17T07:54:31.588Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 55,
@@ -1673,8 +1895,65 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "a8f353baffea0ec24af6f1f1",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "possible_amplification_pattern",
+        "coordination_indicator_score": 54,
+        "confidence": "low",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 3,
+        "actors": 1,
+        "endpoints": 3,
+        "unique_content_hashes": 3,
+        "pair_edges": 3
+      },
+      "time": {
+        "start_at": "2026-10-15T09:54:22.000Z",
+        "end_at": "2026-10-15T09:59:55.000Z",
+        "span_minutes": 6
+      },
+      "signals": [
+        "similar_text",
+        "within_15_minutes",
+        "near_duplicate_text",
+        "shared_referenced_domain"
+      ],
+      "actor_ids": [
+        "de_reitschuster"
+      ],
+      "endpoint_ids": [
+        "de_reitschuster__x__reitschuster",
+        "de_reitschuster__telegram__reitschusterde",
+        "de_reitschuster__website__reitschuster_de"
+      ],
+      "item_ids": [
+        "f86e9f4b244a6c015ad42f100b20fd9d",
+        "117d8b3784027de9e8431de45b647a1c",
+        "0f021906bba6ea78a89046b380bbcd5f"
+      ],
+      "platforms": {
+        "telegram": 1,
+        "website": 1,
+        "x": 1
+      },
+      "countries": {
+        "DE": 3
+      },
+      "actor_classes": {
+        "independent_media": 3
+      },
+      "shared_referenced_domains": {
+        "reitschuster.de": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "d9e933410c8a718c92938507",
-      "generated_at": "2026-10-17T07:48:06.043Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 50,
@@ -1725,7 +2004,7 @@
     },
     {
       "cluster_id": "4b46d91affc9fdffd240da9f",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 50,
@@ -1776,7 +2055,7 @@
     },
     {
       "cluster_id": "bdebb7db24dd3f4b73a7345a",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 50,
@@ -1827,7 +2106,7 @@
     },
     {
       "cluster_id": "6d6f7739a7cc08f0382e890f",
-      "generated_at": "2026-10-17T07:48:06.044Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 48,
@@ -1890,7 +2169,7 @@
     },
     {
       "cluster_id": "6bce5a1564bf26095e1b23fa",
-      "generated_at": "2026-10-17T07:48:06.046Z",
+      "generated_at": "2026-10-17T07:54:31.594Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 44,
@@ -1944,8 +2223,61 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "99710e554f6c2752837dcb04",
+      "generated_at": "2026-10-17T07:54:31.593Z",
+      "assessment": {
+        "label": "possible_amplification_pattern",
+        "coordination_indicator_score": 43,
+        "confidence": "low",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 2,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-15T09:00:03.000Z",
+        "end_at": "2026-10-15T16:49:46.000Z",
+        "span_minutes": 470
+      },
+      "signals": [
+        "similar_text",
+        "shared_referenced_domain"
+      ],
+      "actor_ids": [
+        "de_karl_lauterbach",
+        "de_alice_weidel"
+      ],
+      "endpoint_ids": [
+        "de_karl_lauterbach__x__karl_lauterbach",
+        "de_alice_weidel__x__alice_weidel"
+      ],
+      "item_ids": [
+        "61754795df5b2802eaa5302b43d51f99",
+        "4d5a6d987398a896fb50c50ee30ee26f"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "political_actor": 2
+      },
+      "shared_referenced_domains": {
+        "apollo-news.net": 1,
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "6aa9c0733f933e407b716e79",
-      "generated_at": "2026-10-17T07:48:06.045Z",
+      "generated_at": "2026-10-17T07:54:31.593Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 36,
