@@ -85,3 +85,16 @@ jobs:
             sleep 2
           done
           exit 1
+
+      - name: Save source diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: influence-source-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/influence/validation_report.json
+            data/influence/ingest/*source_health_latest.json
+            data/influence/ingest/nitter_preflight_latest.json
+            public/influence*ingest_status.json
+          retention-days: 30
+          if-no-files-found: warn

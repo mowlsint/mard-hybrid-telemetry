@@ -8,6 +8,7 @@ import {
   loadInfluenceRegistry,
 } from "./load_influence_registry.mjs";
 import { validateInfluenceRegistry } from "./validate_influence_registry.mjs";
+import { logSourceFailures } from "./source_diagnostics.mjs";
 
 const ITEMS_PATH =
   process.env.MARD_INFLUENCE_CURRENT_ITEMS ||
@@ -726,6 +727,7 @@ async function main() {
         processEndpoint(endpoint, entityById.get(endpoint.actor_id), instances),
       );
   const health = results.map((result) => result.health);
+  logSourceFailures("influence-stage5", health);
   const xItems = results.flatMap((result) => result.items);
 
   const existing = JSON.parse(await fs.readFile(ITEMS_PATH, "utf8"));

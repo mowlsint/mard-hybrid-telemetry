@@ -26,7 +26,7 @@ The HAT score is a 0–100 contextual cyber-pressure index, not a probability. I
 | 81–100 | critical |
 | null | not assessable |
 
-ThreatFox counts are reports of malware infrastructure indicators, not numbers of social accounts, running bots, active connections or propaganda posts. An IOC&#x27;s first-seen time is not its shutdown time. A quiet reporting period is not evidence that infrastructure disappeared.
+ThreatFox counts are reports of malware infrastructure indicators, not numbers of social accounts, running bots, active connections or propaganda posts. An IOC's first-seen time is not its shutdown time. A quiet reporting period is not evidence that infrastructure disappeared.
 
 GDELT measures retrieved media/topic exposure. Headline and URL-path hints are post-filtered for maritime, threat and regional relevance, with English, German and Russian terms. ArticleList sampling limits are reported. Search results and topic tags do not establish falsehood. EUvsDisinfo domain-restricted search candidates are not automatically verified individual cases.
 
@@ -38,7 +38,7 @@ Source states distinguish `ok`, `partial`, `error`, `unavailable` and `disabled`
 
 Each new HAT history entry includes `scoring_version`, `configuration_hash`, `data_quality`, `source_health` and `metric_validity`. Valid observed zero counts remain zero. Missing measurements remain null. Old records keep their original numeric values and receive `legacy_unverified` flags; old zero values and percentiles are excluded from new baselines. The public HAT history retains up to 720 points; the archive is preserved in `data/history/hat_history.jsonl`.
 
-Influence item history retains up to 90 days, subject to configured item/byte limits. Collection-coverage history begins when coverage is actually recorded. Earlier coverage is never invented from retained posts or today&#x27;s source health. Changed registries, sample caps, pruned history, failed sources and incomplete days remain visible.
+Influence item history retains up to 90 days, subject to configured item/byte limits. Collection-coverage history begins when coverage is actually recorded. Earlier coverage is never invented from retained posts or today's source health. Changed registries, sample caps, pruned history, failed sources and incomplete days remain visible.
 
 ## Event comparison
 
@@ -46,7 +46,7 @@ The comparison counts **published posts**, using publication timestamps in UTC. 
 
 For each date on both sides, a source needs at least three successful, distinct six-hour collection slots. The comparison requires at least five sources meeting that condition throughout both periods, and uses only that intersection. Missing days, unfinished windows, insufficient coverage or known truncation return an unassessable result. A zero baseline does not yield an infinite percentage change.
 
-Country filters describe the registry&#x27;s source-country classification. They do not attribute operations to a government. Results describe observed publication and shared fingerprints; they do not prove bots, disinformation or an effect caused by the reference event. Undetected feed truncation and deleted posts can still produce undercounting.
+Country filters describe the registry's source-country classification. They do not attribute operations to a government. Results describe observed publication and shared fingerprints; they do not prove bots, disinformation or an effect caused by the reference event. Undetected feed truncation and deleted posts can still produce undercounting.
 
 ```bash
 npm run compare:event -- 2026-10-08 7 RU
@@ -83,4 +83,6 @@ node scripts/influence/check_influence_stage3.mjs
 Node.js &gt;=22 is required; the existing Influence workflows use `.node-version`. `ABUSECH_AUTH_KEY` remains optional for deployment, but enabled ThreatFox measurements are unavailable without it. Never publish keys. Regression tests use synthetic fixtures and do not call external sources.
 
 `Build HAT Index` runs every six hours. `Build Influence Watch Stage 3` collects the existing website/RSS/Telegram, Bluesky/YouTube and best-effort X sources every six hours, then builds histories and clusters. Source changes trigger fresh runs on main. Separate HAT and Influence writer groups, with bounded push/rebase retries, protect generated commits without cancelling each other’s pending runs. Cloudflare deployment hooks run after successful builds when configured.
+
+Influence source access failures are recorded per endpoint and do not stop collection of other platforms. Unavailable platforms remain explicit coverage gaps; a run with no usable sources is published as not assessable. Registry, schema and file errors still fail the workflow. Each collection workflow logs endpoint errors and always attempts to save source-health and ingest-status JSON as an `influence-source-diagnostics` Actions artifact for 30 days, including after a later step fails. The JSON timestamps identify the original observations when a step failed before producing fresh health data. Successful publication also preserves detailed source health in Git history.
 </pre></html>

@@ -7,6 +7,7 @@ import {
   loadInfluenceRegistry,
 } from "./load_influence_registry.mjs";
 import { validateInfluenceRegistry } from "./validate_influence_registry.mjs";
+import { logSourceFailures } from "./source_diagnostics.mjs";
 
 const ITEMS_PATH =
   process.env.MARD_INFLUENCE_CURRENT_ITEMS ||
@@ -516,6 +517,7 @@ async function main() {
     processEndpoint(endpoint, entityById.get(endpoint.actor_id)),
   );
   const health = results.map((result) => result.health);
+  logSourceFailures("influence-stage4", health);
   const socialItems = results.flatMap((result) => result.items);
 
   const existing = JSON.parse(await fs.readFile(ITEMS_PATH, "utf8"));
@@ -619,7 +621,7 @@ async function main() {
   );
 
   if (health.length > 0 && okCount === 0) {
-    throw new Error("No Bluesky or YouTube endpoint completed successfully.");
+    console.warn("[influence-stage4] No Bluesky or YouTube endpoint completed successfully. Social sources remain unavailable; continuing with observations from other platforms.");
   }
 }
 

@@ -7,6 +7,7 @@ import {
   loadInfluenceRegistry,
 } from "./load_influence_registry.mjs";
 import { validateInfluenceRegistry } from "./validate_influence_registry.mjs";
+import { logSourceFailures } from "./source_diagnostics.mjs";
 
 const USER_AGENT =
   process.env.MARD_INFLUENCE_USER_AGENT ||
@@ -582,6 +583,7 @@ async function main() {
   );
 
   const health = results.map((result) => result.health);
+  logSourceFailures("influence-stage2", health);
   const items = results.flatMap((result) => result.items);
   const deduplicatedItems = [...new Map(items.map((item) => [item.item_id, item])).values()];
   const generatedAt = new Date().toISOString();
@@ -711,7 +713,7 @@ async function main() {
   );
 
   if (!health.some((item) => item.status === "ok")) {
-    throw new Error("No influence source completed successfully.");
+    console.warn("[influence-stage2] No fully successful website, RSS or Telegram source. Source gaps are recorded; continuing the remaining collection stages.");
   }
 }
 
