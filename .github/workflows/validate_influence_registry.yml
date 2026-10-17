@@ -27,6 +27,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
+          # Queued data jobs must start from the current branch, not an older trigger commit.
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Set up Node.js
