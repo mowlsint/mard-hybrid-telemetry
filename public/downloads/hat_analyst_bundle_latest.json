@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-18T06:40:02.886Z",
+  "generated_at": "2026-10-18T12:34:50.021Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 67,
+    "hat_score": 68,
     "level": "high",
     "interpretation": {
-      "percentage": 67,
+      "percentage": 68,
       "label": "high",
       "color": "deep orange",
       "css": "high",
@@ -34,12 +34,12 @@
       "kev_recent_7d": 100,
       "kev_recent_30d": 100,
       "kev_epss_mean": 20,
-      "threatfox_ioc_current": 65,
-      "threatfox_botnet_c2_36h": 50
+      "threatfox_ioc_current": 61,
+      "threatfox_botnet_c2_36h": 60
     },
     "context_parts": {
       "epss_hot_global": 100,
-      "source_coverage": 66.66666666666666
+      "source_coverage": 58.333333333333336
     }
   },
   "bot_activity_state": {
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 2122,
-      "botnet_c2_36h_count": 596,
+      "ioc_36h_count": 2054,
+      "botnet_c2_36h_count": 718,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,7 +93,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "596 botnet/C2-like indicators in the current 36h window",
+      "718 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -102,16 +102,16 @@
   "maritime_fimi": {
     "score": null,
     "data_quality": {
-      "state": "partial",
+      "state": "unavailable",
       "score_valid": false,
-      "successful_queries": 2,
+      "successful_queries": 0,
       "expected_queries": 5,
-      "coverage_ratio": 0.4,
+      "coverage_ratio": 0,
       "sources": {
-        "gdelt_fimi": "partial",
+        "gdelt_fimi": "error",
         "euvsdisinfo_case_watch": "error"
       },
-      "sample_limited": true
+      "sample_limited": false
     },
     "last_successful": null,
     "confidence": "low",
@@ -119,125 +119,25 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 141,
+      "raw_unique_articles": 0,
       "accepted_articles": 0,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 141,
+      "rejected_as_noise_or_broad_context": 0,
       "weighted_article_count": 0,
-      "rejected_samples": [
-        {
-          "title": "Drei Jahre nach dem BILD - Manifest : Deutschland , wir haben immer noch ein Problem !",
-          "domain": "bild.de",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "deutschland"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "В Питере после атаки эффектные пожары : куда попали",
-          "domain": "korrespondent.net",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "russia"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "У Санкт - Петербурзі атаковано нафтоналивний порт та центр обробки даних « Вконтакте »",
-          "domain": "glavcom.ua",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [
-              "port",
-              "порт"
-            ],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "МИД Польши подтвердил нападение израильских поселенцев на дипломатов",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "ТАСС : Финляндия ограничила полеты над восточной частью Финского залива",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "финляндия"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Финляндия ввела ограничения на полеты над восточной частью Финского залива",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "финляндия"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Der Komponist und sein Himmel - Peteris Vasks - Kultur & Musik - Musikerporträt , ARTE , 18 . 10 . 2026 , 00 : 40 Uhr - Sendung im TV - Programm - TV & Radio",
-          "domain": "tele.at",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Покупатели курортного жилья переключились с Сочи на другие города",
-          "domain": "iz.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        }
-      ]
+      "rejected_samples": []
     },
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 142,
+      "article_count": 0,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 141,
-      "sample_limited": true,
+      "observed_articles": 0,
+      "sample_limited": false,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_articles": 141,
+      "rejected_articles": 0,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [],
@@ -260,51 +160,47 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1366,
-    "ioc_count_7d": 11773,
-    "botnet_c2_count_1d": 476,
-    "botnet_c2_count_7d": 6489,
+    "ioc_count_1d": 1228,
+    "ioc_count_7d": 11817,
+    "botnet_c2_count_1d": 467,
+    "botnet_c2_count_7d": 6525,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 476
-      },
-      {
-        "name": "payload_delivery",
-        "count": 470
+        "count": 467
       },
       {
         "name": "payload",
-        "count": 420
+        "count": 443
+      },
+      {
+        "name": "payload_delivery",
+        "count": 318
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 334
-      },
-      {
-        "name": "IClickFix",
-        "count": 275
+        "count": 326
       },
       {
         "name": "Unknown malware",
-        "count": 138
+        "count": 148
+      },
+      {
+        "name": "IClickFix",
+        "count": 124
       },
       {
         "name": "AMOS",
-        "count": 94
+        "count": 97
       },
       {
         "name": "Mirai",
-        "count": 79
+        "count": 84
       },
       {
         "name": "php.shin_webshell",
-        "count": 40
-      },
-      {
-        "name": "Hermes",
         "count": 32
       },
       {
@@ -317,21 +213,25 @@
       },
       {
         "name": "ClearFake",
-        "count": 21
+        "count": 23
+      },
+      {
+        "name": "Unknown Loader",
+        "count": 23
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 4428
+        "count": 4491
       },
       {
         "name": "Unknown malware",
-        "count": 187
+        "count": 182
       },
       {
         "name": "Remcos",
-        "count": 180
+        "count": 171
       },
       {
         "name": "IClickFix",
@@ -339,19 +239,19 @@
       },
       {
         "name": "Cobalt Strike",
-        "count": 134
+        "count": 133
+      },
+      {
+        "name": "VShell",
+        "count": 132
       },
       {
         "name": "PureRAT",
         "count": 130
       },
       {
-        "name": "VShell",
-        "count": 129
-      },
-      {
         "name": "DanaBot",
-        "count": 100
+        "count": 99
       },
       {
         "name": "Coruna",
@@ -359,7 +259,7 @@
       },
       {
         "name": "Remus",
-        "count": 85
+        "count": 84
       }
     ],
     "historical": {
@@ -371,8 +271,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2122,
-      "current_36h_botnet_c2_count": 596,
+      "current_36h_ioc_count": 2054,
+      "current_36h_botnet_c2_count": 718,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -530,31 +430,33 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1366,
-      "count_7d": 11773,
-      "botnet_cc_count": 6489,
+      "count": 1228,
+      "count_7d": 11817,
+      "botnet_cc_count": 6525,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "3d99a63b33ae856955789db984dfc9552e8a055792ac49c4ee0cdcc6b89fc24f",
-      "hash_7d": "2812ca782a8000ba1bd19c782bb4a9e5d9a9553e1b10b50d5a2b03ccae2d5329",
+      "hash_1d": "4c8986b71534357b4f31a35fc5b9ad07d8b39a0177b6063b5d600085194a640c",
+      "hash_7d": "68af59142759f74f867788fa8eab21a9651b5066b0b62b0ebfc9a336f4ebbde5",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "partial",
+      "status": "error",
       "count": 0,
-      "raw_count": 141,
+      "raw_count": 0,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 141,
+      "rejected_count": 0,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 2,
-      "failed_queries": 1,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_2: HTTP 429"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: request failed (TypeError)",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -566,7 +468,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -585,8 +487,8 @@
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2003",
-    "1366 ThreatFox IOCs in the last 1 day",
-    "6489 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1228 ThreatFox IOCs in the last 1 day",
+    "6525 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -601,6 +503,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261018T064002_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261018T123450_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
