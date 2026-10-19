@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-10-19T06:56:53.082Z",
+  "generated_at": "2026-10-19T12:42:04.841Z",
   "window_days": 30,
   "hat_score": 70,
   "level": "high",
@@ -40,7 +40,7 @@
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 58.333333333333336
+    "source_coverage": 75
   },
   "bot_activity_state": {
     "schema": "mard-hat-c2-state-v2",
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 2119,
-      "botnet_c2_36h_count": 944,
+      "ioc_36h_count": 2151,
+      "botnet_c2_36h_count": 961,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -283,94 +283,94 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1498,
-      "ioc_count_7d": 12369,
-      "botnet_c2_count_1d": 739,
-      "botnet_c2_count_7d": 6679,
+      "ioc_count_1d": 1585,
+      "ioc_count_7d": 12401,
+      "botnet_c2_count_1d": 691,
+      "botnet_c2_count_7d": 6627,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 739
+          "count": 691
         },
         {
           "name": "payload_delivery",
-          "count": 533
+          "count": 526
         },
         {
           "name": "payload",
-          "count": 226
+          "count": 368
         }
       ],
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 340
+          "count": 308
         },
         {
           "name": "Unknown Loader",
-          "count": 244
+          "count": 237
         },
         {
           "name": "IClickFix",
-          "count": 172
+          "count": 173
         },
         {
           "name": "Mirai",
-          "count": 152
+          "count": 138
         },
         {
           "name": "AMOS",
-          "count": 114
+          "count": 108
         },
         {
           "name": "Unknown malware",
-          "count": 109
+          "count": 100
         },
         {
           "name": "Sliver",
-          "count": 48
+          "count": 54
         },
         {
           "name": "Remcos",
-          "count": 42
-        },
-        {
-          "name": "Cobalt Strike",
-          "count": 32
+          "count": 41
         },
         {
           "name": "php.shin_webshell",
-          "count": 31
+          "count": 32
+        },
+        {
+          "name": "ClearFake",
+          "count": 27
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 4524
+          "count": 4527
         },
         {
           "name": "Unknown malware",
-          "count": 194
+          "count": 193
         },
         {
           "name": "Remcos",
-          "count": 192
+          "count": 183
         },
         {
           "name": "IClickFix",
           "count": 151
         },
         {
-          "name": "Cobalt Strike",
+          "name": "VShell",
           "count": 140
+        },
+        {
+          "name": "Cobalt Strike",
+          "count": 138
         },
         {
           "name": "PureRAT",
-          "count": 140
-        },
-        {
-          "name": "VShell",
-          "count": 133
+          "count": 132
         },
         {
           "name": "Mirai",
@@ -378,7 +378,7 @@
         },
         {
           "name": "Sliver",
-          "count": 105
+          "count": 113
         },
         {
           "name": "Coruna",
@@ -394,8 +394,8 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 2119,
-        "current_36h_botnet_c2_count": 944,
+        "current_36h_ioc_count": 2151,
+        "current_36h_botnet_c2_count": 961,
         "current_ioc_percentile": null,
         "current_botnet_c2_percentile": null,
         "trailing_36h_ioc_percentile": null,
@@ -426,69 +426,233 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1498,
-      "botnet_cc_count": 6679,
+      "threatfox_count": 1585,
+      "botnet_cc_count": 6627,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "unavailable",
+      "status": "partial",
       "score": null,
-      "observed_partial_score": null,
+      "observed_partial_score": 3,
       "data_quality": {
-        "state": "unavailable",
+        "state": "partial",
         "score_valid": false,
-        "successful_queries": 0,
+        "successful_queries": 3,
         "expected_queries": 5,
-        "coverage_ratio": 0,
+        "coverage_ratio": 0.6,
         "sources": {
-          "gdelt_fimi": "error",
+          "gdelt_fimi": "ok",
           "euvsdisinfo_case_watch": "error"
         },
-        "sample_limited": false
+        "sample_limited": true
       },
       "last_successful": null,
       "last_successful_age_hours": null,
       "confidence": "low",
       "mode": "maritime_narrative_pressure; not a disinformation determination",
       "source_state": {
-        "external_ok": false,
+        "external_ok": true,
         "external_errors": true,
-        "source_signal_present": false,
-        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
+        "source_signal_present": true,
+        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 0,
+        "gdelt_narrative_pressure": 1,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 0
+        "disarm_tag_relevance": 13
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 0,
-        "accepted_articles": 0,
-        "core_mard_eu_articles": 0,
+        "raw_unique_articles": 212,
+        "accepted_articles": 1,
+        "core_mard_eu_articles": 1,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 0,
-        "weighted_article_count": 0,
-        "rejected_samples": []
+        "rejected_as_noise_or_broad_context": 211,
+        "weighted_article_count": 1,
+        "rejected_samples": [
+          {
+            "title": "Prasa : Rosja odbudowuje potęgę wojskową nad Bałtykiem",
+            "domain": "dw.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "kaliningrad"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Swedish appeals court fines ex - national security adviser for gross negligence",
+            "domain": "internazionale.it",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "swedish"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Häkkänen : Yhdysvaltain merijalkaväki saapuu Itämeren valvontaan",
+            "domain": "demokraatti.fi",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Стальной рынок : 13 - 19 октября",
+            "domain": "metalbulletin.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Россия тайно перевозит оружие в Африку - СМИ",
+            "domain": "korrespondent.net",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "россия"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "德国以战争罪庭审乌克兰炸北溪管道军官 - 博客",
+            "domain": "blog.wenxuecity.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "РЖД скорочує перевезення вугілля на Балтику на 80 % через перевантаження портів",
+            "domain": "facenews.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "порт"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Rügen : Tanker mit russischem Rohöl treibt in der Ostsee",
+            "domain": "t-online.de",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "tanker"
+              ],
+              "threat_fimi": [],
+              "region": [
+                "ostsee"
+              ],
+              "global_spillover": []
+            }
+          }
+        ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
-        "unique_articles_raw": null,
-        "unique_articles": null,
-        "observed_articles": 0,
-        "sample_limited": false,
-        "core_mard_eu_articles": 0,
+        "article_count": 225,
+        "unique_articles_raw": 212,
+        "unique_articles": 1,
+        "observed_articles": 212,
+        "sample_limited": true,
+        "core_mard_eu_articles": 1,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 0,
-        "weighted_articles": null,
+        "rejected_articles": 211,
+        "weighted_articles": 1,
         "historical_percentile": null,
-        "top_domains": [],
-        "sample": [],
-        "articles": []
+        "top_domains": [
+          {
+            "name": "bild.de",
+            "count": 1
+          }
+        ],
+        "sample": [
+          {
+            "title": "Zwischenfall vor Rügen : Tanker mit Öl aus Russland treibt auf der Ostsee",
+            "url": "https://www.bild.de/politik/inland/zwischenfall-vor-ruegen-tanker-mit-oel-aus-russland-treibt-auf-der-ostsee-6ad597f551e5094f7a57133c",
+            "domain": "bild.de",
+            "language": "German",
+            "source_country": "Germany",
+            "seen_date": "20261019T044500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "tanker"
+                ],
+                "threat_fimi": [
+                  "russland"
+                ],
+                "region": [
+                  "ostsee"
+                ],
+                "global_spillover": []
+              }
+            }
+          }
+        ],
+        "articles": [
+          {
+            "title": "Zwischenfall vor Rügen : Tanker mit Öl aus Russland treibt auf der Ostsee",
+            "url": "https://www.bild.de/politik/inland/zwischenfall-vor-ruegen-tanker-mit-oel-aus-russland-treibt-auf-der-ostsee-6ad597f551e5094f7a57133c",
+            "domain": "bild.de",
+            "language": "German",
+            "source_country": "Germany",
+            "seen_date": "20261019T044500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "tanker"
+                ],
+                "threat_fimi": [
+                  "russland"
+                ],
+                "region": [
+                  "ostsee"
+                ],
+                "global_spillover": []
+              }
+            }
+          }
+        ]
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -500,28 +664,33 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 0,
-        "tags": []
+        "tag_count": 1,
+        "tags": [
+          {
+            "id": "maritime_legal_topics",
+            "label": "Maritime law and sanctions topics",
+            "count": 1,
+            "matched_keywords": [
+              "tanker"
+            ]
+          }
+        ]
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
-          "count": 0,
-          "raw_count": 0,
-          "core_count": 0,
+          "status": "ok",
+          "count": 1,
+          "raw_count": 212,
+          "core_count": 1,
           "global_spillover_count": 0,
-          "rejected_count": 0,
-          "weighted_count": 0,
+          "rejected_count": 211,
+          "weighted_count": 1,
           "queries": 3,
-          "ok_queries": 0,
-          "failed_queries": 3,
-          "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_2: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
-          ]
+          "ok_queries": 3,
+          "failed_queries": 0,
+          "errors": []
         },
         {
           "source": "euvsdisinfo_case_watch",
@@ -532,8 +701,8 @@
           "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_1: HTTP 429",
+            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
           ]
         },
         {
@@ -541,9 +710,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 0,
+          "count": 1,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 0
+          "applied_to_articles": 1
         }
       ],
       "history": {
@@ -558,12 +727,16 @@
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2033",
-    "1498 ThreatFox IOCs in the last 1 day",
-    "6679 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1585 ThreatFox IOCs in the last 1 day",
+    "6627 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
+    "Maritime narrative pressure: not assessable (low confidence)",
+    "GDELT maritime/FIMI watch: 1 score-relevant articles in 36h after local maritime filtering",
+    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 211 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "Narrative topic tags observed: Maritime law and sanctions topics",
     "Baseline warming up: 6/14 prior points available"
   ],
   "source_health": [
@@ -589,34 +762,30 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1498,
-      "count_7d": 12369,
-      "botnet_cc_count": 6679,
+      "count": 1585,
+      "count_7d": 12401,
+      "botnet_cc_count": 6627,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "e9424feef3c39d4a659da744b15cd102b2038f361eb5f0e6f24a26864c1cede1",
-      "hash_7d": "da82e982e4189c39ebd6edce23160b622a86a543c3c96e6a162fb29e7f43217e",
+      "hash_1d": "c0e5783a31dbd1787e540044ae156ce935067a54f0739d1a9bbeabfd8df5d348",
+      "hash_7d": "c438b49824bf3d6036753af1715b9bb8c20a75a36869eab04bd3021fc00ba521",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
-      "count": 0,
-      "raw_count": 0,
-      "core_count": 0,
+      "status": "ok",
+      "count": 1,
+      "raw_count": 212,
+      "core_count": 1,
       "global_spillover_count": 0,
-      "rejected_count": 0,
-      "weighted_count": 0,
+      "rejected_count": 211,
+      "weighted_count": 1,
       "queries": 3,
-      "ok_queries": 0,
-      "failed_queries": 3,
-      "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
-      ]
+      "ok_queries": 3,
+      "failed_queries": 0,
+      "errors": []
     },
     {
       "source": "euvsdisinfo_case_watch",
@@ -627,8 +796,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -636,9 +805,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 0,
+      "count": 1,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 0
+      "applied_to_articles": 1
     }
   ],
   "source_health_map": {
@@ -646,7 +815,7 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "partial",
-    "gdelt_fimi": "error",
+    "gdelt_fimi": "ok",
     "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "partial"
   },
@@ -675,14 +844,15 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "944 botnet/C2-like indicators in the current 36h window",
-      "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
+      "961 botnet/C2-like indicators in the current 36h window",
+      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
+      "partial/degraded source access: threatfox_optional, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261019T065653_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261019T124204_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
