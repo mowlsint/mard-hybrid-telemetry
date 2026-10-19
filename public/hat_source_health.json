@@ -9,7 +9,7 @@
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "3d9fbd1357df43b8ea5829ad43542ed01ccfe8a442d1828ff1e428527442ab97"
+    "hash": "df86d5f4f46c71f5ac8d352ec52c04092687d079cba3d1213272df7e242dad35"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -21,14 +21,14 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1585,
-    "count_7d": 12401,
-    "botnet_cc_count": 6627,
+    "count": 1061,
+    "count_7d": 12424,
+    "botnet_cc_count": 6659,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "c0e5783a31dbd1787e540044ae156ce935067a54f0739d1a9bbeabfd8df5d348",
-    "hash_7d": "c438b49824bf3d6036753af1715b9bb8c20a75a36869eab04bd3021fc00ba521",
+    "hash_1d": "b6fb214e87b14283bbfdb98ee92dba744c22b569c4d70e5a54da650b977a0f24",
+    "hash_7d": "a343d5cbab2fd36021bf6c05d9900e5b92aeefbf0f8dff8119defeabb2ae66d4",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -36,11 +36,11 @@
     "source": "gdelt_fimi",
     "status": "ok",
     "count": 1,
-    "raw_count": 212,
-    "core_count": 1,
-    "global_spillover_count": 0,
-    "rejected_count": 211,
-    "weighted_count": 1,
+    "raw_count": 194,
+    "core_count": 0,
+    "global_spillover_count": 1,
+    "rejected_count": 193,
+    "weighted_count": 0.4,
     "queries": 3,
     "ok_queries": 3,
     "failed_queries": 0,
@@ -56,7 +56,7 @@
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
       "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
@@ -64,7 +64,7 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
     "applied_to_articles": 1
   }

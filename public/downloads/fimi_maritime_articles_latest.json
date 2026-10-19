@@ -1,29 +1,32 @@
 [
   {
-    "title": "Zwischenfall vor Rügen : Tanker mit Öl aus Russland treibt auf der Ostsee",
-    "url": "https://www.bild.de/politik/inland/zwischenfall-vor-ruegen-tanker-mit-oel-aus-russland-treibt-auf-der-ostsee-6ad597f551e5094f7a57133c",
-    "domain": "bild.de",
-    "language": "German",
-    "source_country": "Germany",
-    "seen_date": "20261019T044500Z",
-    "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+    "title": "Iran blames US for Strait of Hormuz insecurity as Russia reaffirms strategic ties with Tehran",
+    "url": "https://www.moneycontrol.com/world/iran-blames-us-for-strait-of-hormuz-insecurity-as-russia-reaffirms-strategic-ties-with-tehran-article-14055743.html",
+    "domain": "moneycontrol.com",
+    "language": "English",
+    "source_country": "India",
+    "seen_date": "20261019T174500Z",
+    "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
     "maritime_relevance": {
       "accepted": true,
       "classification_basis": "headline_and_url_path_only",
-      "classification": "core_mard_eu",
-      "weight": 1,
-      "reason": "maritime+threat+regional_anchor",
+      "classification": "global_maritime_spillover",
+      "weight": 0.4,
+      "reason": "maritime+threat+global_spillover_anchor",
       "matched": {
         "maritime": [
-          "tanker"
+          "strait"
         ],
         "threat_fimi": [
-          "russland"
+          "russia"
         ],
-        "region": [
-          "ostsee"
-        ],
-        "global_spillover": []
+        "region": [],
+        "global_spillover": [
+          "hormuz",
+          "iran",
+          "tehran",
+          "strait"
+        ]
       }
     }
   }

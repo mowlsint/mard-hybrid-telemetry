@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-19T12:42:04.841Z",
+  "generated_at": "2026-10-19T18:35:50.779Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 70,
+    "hat_score": 68,
     "level": "high",
     "interpretation": {
-      "percentage": 70,
+      "percentage": 68,
       "label": "high",
       "color": "deep orange",
       "css": "high",
@@ -34,7 +34,7 @@
       "kev_recent_7d": 100,
       "kev_recent_30d": 100,
       "kev_epss_mean": 20,
-      "threatfox_ioc_current": 65,
+      "threatfox_ioc_current": 53,
       "threatfox_botnet_c2_36h": 65
     },
     "context_parts": {
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 2151,
-      "botnet_c2_36h_count": 961,
+      "ioc_36h_count": 2104,
+      "botnet_c2_36h_count": 1007,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,8 +93,8 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "961 botnet/C2-like indicators in the current 36h window",
-      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
+      "1007 botnet/C2-like indicators in the current 36h window",
+      "1 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -120,77 +120,30 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 212,
+      "raw_unique_articles": 194,
       "accepted_articles": 1,
-      "core_mard_eu_articles": 1,
-      "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 211,
-      "weighted_article_count": 1,
+      "core_mard_eu_articles": 0,
+      "global_maritime_spillover_articles": 1,
+      "rejected_as_noise_or_broad_context": 193,
+      "weighted_article_count": 0.4,
       "rejected_samples": [
         {
-          "title": "Prasa : Rosja odbudowuje potęgę wojskową nad Bałtykiem",
-          "domain": "dw.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "kaliningrad"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Swedish appeals court fines ex - national security adviser for gross negligence",
-          "domain": "internazionale.it",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "swedish"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Häkkänen : Yhdysvaltain merijalkaväki saapuu Itämeren valvontaan",
-          "domain": "demokraatti.fi",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Стальной рынок : 13 - 19 октября",
-          "domain": "metalbulletin.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Россия тайно перевозит оружие в Африку - СМИ",
-          "domain": "korrespondent.net",
+          "title": "Europe Weighs More Ukraine Support as Trump Waives Sanctions",
+          "domain": "kyivpost.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "россия"
+              "sanctions",
+              "ukraine"
             ],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "德国以战争罪庭审乌克兰炸北溪管道军官 - 博客",
-          "domain": "blog.wenxuecity.com",
+          "title": "Русија го зголемува извозот на нафта преку Арктикот",
+          "domain": "makfax.com.mk",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -200,29 +153,79 @@
           }
         },
         {
-          "title": "РЖД скорочує перевезення вугілля на Балтику на 80 % через перевантаження портів",
-          "domain": "facenews.ua",
+          "title": "Аналитик предсказал цены на нефть",
+          "domain": "lenta.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
-            "maritime": [
-              "порт"
-            ],
+            "maritime": [],
             "threat_fimi": [],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Rügen : Tanker mit russischem Rohöl treibt in der Ostsee",
-          "domain": "t-online.de",
+          "title": "Выплаты в бюджет за добычу нефти могут достичь рекорда . Подсчеты экспертов РГ",
+          "domain": "rg.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Американские морпехи примут участие в миссии НАТО в Финском заливе",
+          "domain": "flot.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "нато"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Интересные факты о Германии подборка фактов",
+          "domain": "glavpost.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [
+              "германии"
+            ],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Американские морпехи примут участие в миссии НАТО в Финском заливе",
+          "domain": "flot.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "нато"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Удержание танкера из теневого флота РФ может стоить Германии до 8 тыс . евро в день",
+          "domain": "ru.euronews.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [
-              "tanker"
+              "tanker",
+              "fleet"
             ],
             "threat_fimi": [],
             "region": [
-              "ostsee"
+              "germany",
+              "германии"
             ],
             "global_spillover": []
           }
@@ -233,77 +236,83 @@
       "timespan": "36h",
       "query_count": 3,
       "article_count": 225,
-      "unique_articles_raw": 212,
+      "unique_articles_raw": 194,
       "unique_articles": 1,
-      "observed_articles": 212,
+      "observed_articles": 194,
       "sample_limited": true,
-      "core_mard_eu_articles": 1,
-      "global_maritime_spillover_articles": 0,
-      "rejected_articles": 211,
-      "weighted_articles": 1,
+      "core_mard_eu_articles": 0,
+      "global_maritime_spillover_articles": 1,
+      "rejected_articles": 193,
+      "weighted_articles": 0.4,
       "historical_percentile": null,
       "top_domains": [
         {
-          "name": "bild.de",
+          "name": "moneycontrol.com",
           "count": 1
         }
       ],
       "sample": [
         {
-          "title": "Zwischenfall vor Rügen : Tanker mit Öl aus Russland treibt auf der Ostsee",
-          "url": "https://www.bild.de/politik/inland/zwischenfall-vor-ruegen-tanker-mit-oel-aus-russland-treibt-auf-der-ostsee-6ad597f551e5094f7a57133c",
-          "domain": "bild.de",
-          "language": "German",
-          "source_country": "Germany",
-          "seen_date": "20261019T044500Z",
-          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "title": "Iran blames US for Strait of Hormuz insecurity as Russia reaffirms strategic ties with Tehran",
+          "url": "https://www.moneycontrol.com/world/iran-blames-us-for-strait-of-hormuz-insecurity-as-russia-reaffirms-strategic-ties-with-tehran-article-14055743.html",
+          "domain": "moneycontrol.com",
+          "language": "English",
+          "source_country": "India",
+          "seen_date": "20261019T174500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "core_mard_eu",
-            "weight": 1,
-            "reason": "maritime+threat+regional_anchor",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
             "matched": {
               "maritime": [
-                "tanker"
+                "strait"
               ],
               "threat_fimi": [
-                "russland"
+                "russia"
               ],
-              "region": [
-                "ostsee"
-              ],
-              "global_spillover": []
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "tehran",
+                "strait"
+              ]
             }
           }
         }
       ],
       "articles": [
         {
-          "title": "Zwischenfall vor Rügen : Tanker mit Öl aus Russland treibt auf der Ostsee",
-          "url": "https://www.bild.de/politik/inland/zwischenfall-vor-ruegen-tanker-mit-oel-aus-russland-treibt-auf-der-ostsee-6ad597f551e5094f7a57133c",
-          "domain": "bild.de",
-          "language": "German",
-          "source_country": "Germany",
-          "seen_date": "20261019T044500Z",
-          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "title": "Iran blames US for Strait of Hormuz insecurity as Russia reaffirms strategic ties with Tehran",
+          "url": "https://www.moneycontrol.com/world/iran-blames-us-for-strait-of-hormuz-insecurity-as-russia-reaffirms-strategic-ties-with-tehran-article-14055743.html",
+          "domain": "moneycontrol.com",
+          "language": "English",
+          "source_country": "India",
+          "seen_date": "20261019T174500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "core_mard_eu",
-            "weight": 1,
-            "reason": "maritime+threat+regional_anchor",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
             "matched": {
               "maritime": [
-                "tanker"
+                "strait"
               ],
               "threat_fimi": [
-                "russland"
+                "russia"
               ],
-              "region": [
-                "ostsee"
-              ],
-              "global_spillover": []
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "tehran",
+                "strait"
+              ]
             }
           }
         }
@@ -319,55 +328,34 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 1,
-      "tags": [
-        {
-          "id": "maritime_legal_topics",
-          "label": "Maritime law and sanctions topics",
-          "count": 1,
-          "matched_keywords": [
-            "tanker"
-          ]
-        }
-      ]
+      "tag_count": 0,
+      "tags": []
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1585,
-    "ioc_count_7d": 12401,
-    "botnet_c2_count_1d": 691,
-    "botnet_c2_count_7d": 6627,
+    "ioc_count_1d": 1061,
+    "ioc_count_7d": 12424,
+    "botnet_c2_count_1d": 554,
+    "botnet_c2_count_7d": 6659,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 691
-      },
-      {
-        "name": "payload_delivery",
-        "count": 526
+        "count": 554
       },
       {
         "name": "payload",
-        "count": 368
+        "count": 371
+      },
+      {
+        "name": "payload_delivery",
+        "count": 136
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 308
-      },
-      {
-        "name": "Unknown Loader",
-        "count": 237
-      },
-      {
-        "name": "IClickFix",
-        "count": 173
-      },
-      {
-        "name": "Mirai",
-        "count": 138
+        "count": 322
       },
       {
         "name": "AMOS",
@@ -375,37 +363,49 @@
       },
       {
         "name": "Unknown malware",
-        "count": 100
+        "count": 57
       },
       {
-        "name": "Sliver",
-        "count": 54
+        "name": "Mirai",
+        "count": 51
       },
       {
-        "name": "Remcos",
-        "count": 41
+        "name": "Unknown Loader",
+        "count": 43
       },
       {
         "name": "php.shin_webshell",
-        "count": 32
+        "count": 36
       },
       {
         "name": "ClearFake",
+        "count": 31
+      },
+      {
+        "name": "SMSspy",
         "count": 27
+      },
+      {
+        "name": "Aisuru",
+        "count": 22
+      },
+      {
+        "name": "Hermes",
+        "count": 22
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 4527
+        "count": 4579
       },
       {
         "name": "Unknown malware",
-        "count": 193
+        "count": 199
       },
       {
         "name": "Remcos",
-        "count": 183
+        "count": 186
       },
       {
         "name": "IClickFix",
@@ -413,23 +413,23 @@
       },
       {
         "name": "VShell",
-        "count": 140
-      },
-      {
-        "name": "Cobalt Strike",
-        "count": 138
+        "count": 141
       },
       {
         "name": "PureRAT",
         "count": 132
       },
       {
+        "name": "Cobalt Strike",
+        "count": 125
+      },
+      {
         "name": "Mirai",
-        "count": 116
+        "count": 115
       },
       {
         "name": "Sliver",
-        "count": 113
+        "count": 99
       },
       {
         "name": "Coruna",
@@ -445,8 +445,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2151,
-      "current_36h_botnet_c2_count": 961,
+      "current_36h_ioc_count": 2104,
+      "current_36h_botnet_c2_count": 1007,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -592,7 +592,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "3d9fbd1357df43b8ea5829ad43542ed01ccfe8a442d1828ff1e428527442ab97"
+      "hash": "df86d5f4f46c71f5ac8d352ec52c04092687d079cba3d1213272df7e242dad35"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -604,14 +604,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1585,
-      "count_7d": 12401,
-      "botnet_cc_count": 6627,
+      "count": 1061,
+      "count_7d": 12424,
+      "botnet_cc_count": 6659,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "c0e5783a31dbd1787e540044ae156ce935067a54f0739d1a9bbeabfd8df5d348",
-      "hash_7d": "c438b49824bf3d6036753af1715b9bb8c20a75a36869eab04bd3021fc00ba521",
+      "hash_1d": "b6fb214e87b14283bbfdb98ee92dba744c22b569c4d70e5a54da650b977a0f24",
+      "hash_7d": "a343d5cbab2fd36021bf6c05d9900e5b92aeefbf0f8dff8119defeabb2ae66d4",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -619,11 +619,11 @@
       "source": "gdelt_fimi",
       "status": "ok",
       "count": 1,
-      "raw_count": 212,
-      "core_count": 1,
-      "global_spillover_count": 0,
-      "rejected_count": 211,
-      "weighted_count": 1,
+      "raw_count": 194,
+      "core_count": 0,
+      "global_spillover_count": 1,
+      "rejected_count": 193,
+      "weighted_count": 0.4,
       "queries": 3,
       "ok_queries": 3,
       "failed_queries": 0,
@@ -639,7 +639,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -647,7 +647,7 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
       "applied_to_articles": 1
     }
@@ -657,16 +657,15 @@
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2033",
-    "1585 ThreatFox IOCs in the last 1 day",
-    "6627 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1061 ThreatFox IOCs in the last 1 day",
+    "6659 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 1 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 211 rejected as broad/noisy context",
+    "Maritime filter: 0 Core MARD-Eu, 1 Global Maritime Spillover, 193 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics",
     "Baseline warming up: 6/14 prior points available"
   ],
   "assessment": {
@@ -677,6 +676,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261019T124204_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261019T183550_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
