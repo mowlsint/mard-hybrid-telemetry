@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-20T00:59:17.220Z",
+  "generated_at": "2026-10-20T06:43:45.286Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 65,
+    "hat_score": 66,
     "level": "high",
     "interpretation": {
-      "percentage": 65,
+      "percentage": 66,
       "label": "high",
       "color": "deep orange",
       "css": "high",
@@ -25,7 +25,7 @@
     "confidence": "low",
     "baseline": {
       "status": "warming_up",
-      "points": 6,
+      "points": 7,
       "minimum_days": 14,
       "mean_hat_score": null,
       "delta_from_mean": null
@@ -34,7 +34,7 @@
       "kev_recent_7d": 88,
       "kev_recent_30d": 100,
       "kev_epss_mean": 20,
-      "threatfox_ioc_current": 57,
+      "threatfox_ioc_current": 58,
       "threatfox_botnet_c2_36h": 65
     },
     "context_parts": {
@@ -55,27 +55,27 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 2087,
-      "botnet_c2_36h_count": 988,
+      "ioc_36h_count": 1650,
+      "botnet_c2_36h_count": 861,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 36
         }
       }
@@ -93,7 +93,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "988 botnet/C2-like indicators in the current 36h window",
+      "861 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -127,85 +127,24 @@
       "weighted_article_count": 0,
       "rejected_samples": [
         {
-          "title": "Iran Installs Missile - Program Veteran as Defense Chief , Puts $2T Gulf AI Network in Crosshairs",
-          "domain": "techtimes.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "Борьба за Арктику : заявление Каллас , противостояние России и Китаю",
-          "domain": "lenta.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "New Oil Fields Should Have to Build the Carbon Storage Market",
-          "domain": "oilprice.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Граждане Украины активно покидают страну на фоне наступающей зимы : вот чего они опасаются",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Литва запросит у НАТО разрешение сбивать БПЛА без визуального подтверждения",
-          "domain": "life.ru",
+          "title": "Russian Foreign Minister Visits Tehran After Trump Diesel Sanctions Break",
+          "domain": "breitbart.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "nato",
-              "нато"
+              "sanctions",
+              "russian"
             ],
-            "region": [
-              "литва"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Offshore wind farm survey work finds shipwrecks in Sinclair Bay",
-          "domain": "johnogroat-journal.co.uk",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [
-              "offshore",
-              "wind farm",
-              "offshore wind"
-            ],
-            "threat_fimi": [],
             "region": [],
-            "global_spillover": []
+            "global_spillover": [
+              "tehran"
+            ]
           }
         },
         {
-          "title": "ЕС намерен вместе с США и Канадой соперничать за Севморпуть : заявление Каллас",
-          "domain": "iz.ru",
+          "title": "росія атакувала Україну 165 дронами , понад 60 % реактивні : скільки знищили",
+          "domain": "unn.ua",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -215,8 +154,65 @@
           }
         },
         {
-          "title": "Каллас объявила о планах ЕС добиваться доступа к Северному морскому пути",
-          "domain": "vesti.ru",
+          "title": "Dramatično upozorenje Zelenskog : Rusi su odbili Trampovo primirje i spremaju brutalan udar",
+          "domain": "telegraf.rs",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Адміністрація Трампа стримує постачання ракет до Patriot для України - WP",
+          "domain": "unn.ua",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Tramp odjavio Zelenskog , uveden policijski čas u Francuskoj , gori Tirana : Šta se desilo juče u svetu ?",
+          "domain": "telegraf.rs",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "La Russia conduce una guerra ibrida contro lItalia",
+          "domain": "zazoom.it",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "russia"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Alert za alertem do mieszkańców Lubelszczyzny . Brak zagrożenia ...",
+          "domain": "wpolityce.pl",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "BBC u tajnom svetu boraca protiv Putina u Rusiji",
+          "domain": "blic.rs",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -260,22 +256,22 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1132,
-    "ioc_count_7d": 12179,
-    "botnet_c2_count_1d": 583,
-    "botnet_c2_count_7d": 6564,
+    "ioc_count_1d": 1167,
+    "ioc_count_7d": 12176,
+    "botnet_c2_count_1d": 572,
+    "botnet_c2_count_7d": 6462,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 583
+        "count": 560
       },
       {
         "name": "payload",
-        "count": 411
+        "count": 494
       },
       {
         "name": "payload_delivery",
-        "count": 137
+        "count": 112
       },
       {
         "name": "cc_skimming",
@@ -285,27 +281,23 @@
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 335
+        "count": 323
       },
       {
         "name": "AMOS",
-        "count": 110
-      },
-      {
-        "name": "Unknown malware",
-        "count": 59
+        "count": 135
       },
       {
         "name": "Mirai",
-        "count": 50
+        "count": 100
+      },
+      {
+        "name": "Unknown malware",
+        "count": 92
       },
       {
         "name": "ClearFake",
-        "count": 38
-      },
-      {
-        "name": "Unknown Loader",
-        "count": 38
+        "count": 42
       },
       {
         "name": "Coruna",
@@ -313,29 +305,33 @@
       },
       {
         "name": "php.shin_webshell",
-        "count": 33
-      },
-      {
-        "name": "SMSspy",
-        "count": 27
+        "count": 31
       },
       {
         "name": "Aisuru",
-        "count": 23
+        "count": 26
+      },
+      {
+        "name": "VShell",
+        "count": 24
+      },
+      {
+        "name": "RN Stealer",
+        "count": 21
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 4483
+        "count": 4349
       },
       {
         "name": "Unknown malware",
-        "count": 188
+        "count": 237
       },
       {
         "name": "Remcos",
-        "count": 185
+        "count": 183
       },
       {
         "name": "IClickFix",
@@ -343,7 +339,7 @@
       },
       {
         "name": "VShell",
-        "count": 141
+        "count": 138
       },
       {
         "name": "PureRAT",
@@ -355,7 +351,7 @@
       },
       {
         "name": "Mirai",
-        "count": 115
+        "count": 114
       },
       {
         "name": "Coruna",
@@ -375,8 +371,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2087,
-      "current_36h_botnet_c2_count": 988,
+      "current_36h_ioc_count": 1650,
+      "current_36h_botnet_c2_count": 861,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -384,22 +380,22 @@
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 6,
+          "days": 7,
           "window_hours": 36
         }
       }
@@ -534,14 +530,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1132,
-      "count_7d": 12179,
-      "botnet_cc_count": 6564,
+      "count": 1167,
+      "count_7d": 12176,
+      "botnet_cc_count": 6462,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "2909f83cef8076ee12aa35443daf3a80cee1762baa399924ba11f2e927d1c777",
-      "hash_7d": "ffc7aa8e230afadecf47c37acdd49c40766b4019f40a78579793142ffeab76e9",
+      "hash_1d": "78c102ad87e6dbb9058ae48c05bb3d3e46d4fca77c83340f3475166777ba50aa",
+      "hash_7d": "ccd288b77946270e639f625f980dd0d58fe7185aa9d431fb66a802f3bb7c51ac",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -558,8 +554,8 @@
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_2: request failed (TypeError)",
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: HTTP 429"
       ]
     },
     {
@@ -571,8 +567,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: request failed (TypeError)",
-        "euvsdisinfo_case_watch_2: request failed (TypeError)"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -590,13 +586,13 @@
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2033",
-    "1132 ThreatFox IOCs in the last 1 day",
-    "6564 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1167 ThreatFox IOCs in the last 1 day",
+    "6462 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
     "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
-    "Baseline warming up: 6/14 prior points available"
+    "Baseline warming up: 7/14 prior points available"
   ],
   "assessment": {
     "label": "open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry",
@@ -606,6 +602,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261020T005917_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261020T064345_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
