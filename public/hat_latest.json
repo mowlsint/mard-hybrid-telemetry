@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-10-20T06:43:45.286Z",
+  "generated_at": "2026-10-20T12:40:12.865Z",
   "window_days": 30,
-  "hat_score": 66,
+  "hat_score": 67,
   "level": "high",
   "score_interpretation": {
-    "percentage": 66,
+    "percentage": 67,
     "label": "high",
     "color": "deep orange",
     "css": "high",
@@ -35,7 +35,7 @@
     "kev_recent_7d": 88,
     "kev_recent_30d": 100,
     "kev_epss_mean": 20,
-    "threatfox_ioc_current": 58,
+    "threatfox_ioc_current": 65,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 1650,
-      "botnet_c2_36h_count": 861,
+      "ioc_36h_count": 2075,
+      "botnet_c2_36h_count": 960,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -283,22 +283,22 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1167,
-      "ioc_count_7d": 12176,
-      "botnet_c2_count_1d": 572,
-      "botnet_c2_count_7d": 6462,
+      "ioc_count_1d": 1455,
+      "ioc_count_7d": 12414,
+      "botnet_c2_count_1d": 684,
+      "botnet_c2_count_7d": 6379,
       "threat_types_1d": [
         {
-          "name": "botnet_cc",
-          "count": 560
+          "name": "payload",
+          "count": 669
         },
         {
-          "name": "payload",
-          "count": 494
+          "name": "botnet_cc",
+          "count": 665
         },
         {
           "name": "payload_delivery",
-          "count": 112
+          "count": 120
         },
         {
           "name": "cc_skimming",
@@ -308,57 +308,57 @@
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 323
-        },
-        {
-          "name": "AMOS",
-          "count": 135
-        },
-        {
-          "name": "Mirai",
-          "count": 100
+          "count": 369
         },
         {
           "name": "Unknown malware",
-          "count": 92
+          "count": 240
+        },
+        {
+          "name": "AMOS",
+          "count": 140
+        },
+        {
+          "name": "Mirai",
+          "count": 136
+        },
+        {
+          "name": "Remus",
+          "count": 51
         },
         {
           "name": "ClearFake",
           "count": 42
         },
         {
+          "name": "Unknown Loader",
+          "count": 38
+        },
+        {
+          "name": "php.shin_webshell",
+          "count": 36
+        },
+        {
           "name": "Coruna",
           "count": 35
         },
         {
-          "name": "php.shin_webshell",
-          "count": 31
-        },
-        {
           "name": "Aisuru",
-          "count": 26
-        },
-        {
-          "name": "VShell",
-          "count": 24
-        },
-        {
-          "name": "RN Stealer",
-          "count": 21
+          "count": 29
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 4349
+          "count": 4179
         },
         {
           "name": "Unknown malware",
-          "count": 237
+          "count": 272
         },
         {
           "name": "Remcos",
-          "count": 183
+          "count": 175
         },
         {
           "name": "IClickFix",
@@ -366,27 +366,27 @@
         },
         {
           "name": "VShell",
-          "count": 138
+          "count": 142
         },
         {
-          "name": "PureRAT",
-          "count": 132
+          "name": "Remus",
+          "count": 131
         },
         {
           "name": "Cobalt Strike",
-          "count": 123
+          "count": 126
+        },
+        {
+          "name": "PureRAT",
+          "count": 124
         },
         {
           "name": "Mirai",
           "count": 114
         },
         {
-          "name": "Coruna",
-          "count": 102
-        },
-        {
           "name": "Sliver",
-          "count": 102
+          "count": 105
         }
       ],
       "historical": {
@@ -398,8 +398,8 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 1650,
-        "current_36h_botnet_c2_count": 861,
+        "current_36h_ioc_count": 2075,
+        "current_36h_botnet_c2_count": 960,
         "current_ioc_percentile": null,
         "current_botnet_c2_percentile": null,
         "trailing_36h_ioc_percentile": null,
@@ -430,8 +430,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1167,
-      "botnet_cc_count": 6462,
+      "threatfox_count": 1455,
+      "botnet_cc_count": 6379,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -477,92 +477,87 @@
         "weighted_article_count": 0,
         "rejected_samples": [
           {
-            "title": "Russian Foreign Minister Visits Tehran After Trump Diesel Sanctions Break",
-            "domain": "breitbart.com",
+            "title": "이란 혁명수비대 호르무즈서 유조선 2척 기뢰 폭발로 운항 중단",
+            "domain": "heraldk.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
-              "threat_fimi": [
-                "sanctions",
-                "russian"
-              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Нагло нарушает закон США : юристы объяснили важный нюанс дизельного соглашения Трампа с РФ",
+            "domain": "focus.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Огонь войны перекинулся на поджигателей : США и Франция в хаосе и беспорядках ( Kayhan , Иран )",
+            "domain": "inosmi.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "MHP Lideri Bahçeli : Milliyetçilik evvel emirde duruş ve şahsiyet meselesidir",
+            "domain": "etikhaber.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "OJK tegaskan pemberian sanksi di pasar modal dilakukan secara terukur",
+            "domain": "antaranews.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "OJK Periksa 31 Saham HSC , Usut Indikasi Pelanggaran Pidana : Okezone Economy",
+            "domain": "economy.okezone.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Iran prolongs talks in stalemate to influence US midterms , officials say",
+            "domain": "al-monitor.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
               "region": [],
               "global_spillover": [
-                "tehran"
+                "iran"
               ]
             }
           },
           {
-            "title": "росія атакувала Україну 165 дронами , понад 60 % реактивні : скільки знищили",
-            "domain": "unn.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Dramatično upozorenje Zelenskog : Rusi su odbili Trampovo primirje i spremaju brutalan udar",
-            "domain": "telegraf.rs",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Адміністрація Трампа стримує постачання ракет до Patriot для України - WP",
-            "domain": "unn.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Tramp odjavio Zelenskog , uveden policijski čas u Francuskoj , gori Tirana : Šta se desilo juče u svetu ?",
-            "domain": "telegraf.rs",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "La Russia conduce una guerra ibrida contro lItalia",
-            "domain": "zazoom.it",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "russia"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Alert za alertem do mieszkańców Lubelszczyzny . Brak zagrożenia ...",
-            "domain": "wpolityce.pl",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "BBC u tajnom svetu boraca protiv Putina u Rusiji",
-            "domain": "blic.rs",
+            "title": "Democratic Sen . Jeanne Shaheen Reflects on Congress and U . S . Foreign Policy Under Trump",
+            "domain": "foreignpolicy.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -619,7 +614,7 @@
           "failed_queries": 2,
           "errors": [
             "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_2: HTTP 429"
+            "gdelt_fimi_3: request failed (TypeError)"
           ]
         },
         {
@@ -632,7 +627,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: HTTP 429",
-            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
@@ -657,8 +652,8 @@
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2033",
-    "1167 ThreatFox IOCs in the last 1 day",
-    "6462 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1455 ThreatFox IOCs in the last 1 day",
+    "6379 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -688,14 +683,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1167,
-      "count_7d": 12176,
-      "botnet_cc_count": 6462,
+      "count": 1455,
+      "count_7d": 12414,
+      "botnet_cc_count": 6379,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "78c102ad87e6dbb9058ae48c05bb3d3e46d4fca77c83340f3475166777ba50aa",
-      "hash_7d": "ccd288b77946270e639f625f980dd0d58fe7185aa9d431fb66a802f3bb7c51ac",
+      "hash_1d": "3d78f2944d2c35c9da7facb2ff902a01a29d4597095a42321c9091b75c087223",
+      "hash_7d": "8d13e2be392662daca42f157c44bc699088657a51a78c699a31620bd0dbfa246",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -713,7 +708,7 @@
       "failed_queries": 2,
       "errors": [
         "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: HTTP 429"
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -726,7 +721,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -773,14 +768,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "861 botnet/C2-like indicators in the current 36h window",
+      "960 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261020T064345_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261020T124012_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
