@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-10-21T12:40:17.096Z",
+  "generated_at": "2026-10-21T18:34:09.023Z",
   "window_days": 30,
   "hat_score": 69,
   "level": "high",
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3377,
-      "botnet_c2_36h_count": 1212,
+      "ioc_36h_count": 3457,
+      "botnet_c2_36h_count": 1185,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -102,7 +102,7 @@
       "total_kev": 1754,
       "recent_7d": 9,
       "recent_30d": 37,
-      "epss_mean_recent_kev": 0.1736,
+      "epss_mean_recent_kev": 0.1741,
       "epss_enriched_count": 37,
       "epss_enrichment_coverage": 1,
       "top_recent_kev_by_epss": [
@@ -211,162 +211,162 @@
           "cve": "CVE-2014-0160",
           "epss": 0.99999,
           "percentile": 0.99997,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2014-3566",
           "epss": 0.99999,
           "percentile": 0.99999,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2014-6271",
           "epss": 0.99999,
           "percentile": 0.99993,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2015-1635",
           "epss": 0.99999,
           "percentile": 0.99998,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2017-5638",
           "epss": 0.99999,
           "percentile": 0.99995,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2017-9841",
           "epss": 0.99999,
           "percentile": 0.99994,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2019-0708",
           "epss": 0.99999,
           "percentile": 0.99999,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2020-5902",
           "epss": 0.99999,
           "percentile": 1,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2021-1498",
           "epss": 0.99999,
           "percentile": 0.99991,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2023-0669",
           "epss": 0.99999,
           "percentile": 0.99996,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2023-1389",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         },
         {
           "cve": "CVE-2023-1671",
           "epss": 0.99999,
           "percentile": 0.99992,
-          "date": "2026-10-20"
+          "date": "2026-10-21"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 2515,
-      "ioc_count_7d": 12550,
-      "botnet_c2_count_1d": 848,
-      "botnet_c2_count_7d": 5819,
+      "ioc_count_1d": 2329,
+      "ioc_count_7d": 12620,
+      "botnet_c2_count_1d": 726,
+      "botnet_c2_count_7d": 5649,
       "threat_types_1d": [
         {
           "name": "payload_delivery",
-          "count": 982
+          "count": 1032
         },
         {
           "name": "botnet_cc",
-          "count": 839
+          "count": 723
         },
         {
           "name": "payload",
-          "count": 694
+          "count": 574
         }
       ],
       "malware_families_1d": [
         {
           "name": "IClickFix",
-          "count": 637
+          "count": 644
         },
         {
           "name": "Vidar",
-          "count": 419
-        },
-        {
-          "name": "Mirai",
-          "count": 268
+          "count": 402
         },
         {
           "name": "Unknown Loader",
-          "count": 252
+          "count": 258
         },
         {
           "name": "AMOS",
-          "count": 233
+          "count": 234
         },
         {
-          "name": "Unknown malware",
-          "count": 208
-        },
-        {
-          "name": "Remus",
-          "count": 141
+          "name": "Mirai",
+          "count": 125
         },
         {
           "name": "VShell",
-          "count": 78
+          "count": 100
+        },
+        {
+          "name": "Coinminer",
+          "count": 90
+        },
+        {
+          "name": "Unknown malware",
+          "count": 66
+        },
+        {
+          "name": "Remus",
+          "count": 56
         },
         {
           "name": "ClearFake",
-          "count": 39
-        },
-        {
-          "name": "php.shin_webshell",
-          "count": 35
+          "count": 47
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 3595
+          "count": 3416
         },
         {
           "name": "Remus",
-          "count": 268
+          "count": 273
         },
         {
           "name": "Unknown malware",
-          "count": 263
+          "count": 259
         },
         {
           "name": "VShell",
-          "count": 216
-        },
-        {
-          "name": "Remcos",
-          "count": 178
+          "count": 238
         },
         {
           "name": "IClickFix",
-          "count": 172
+          "count": 179
+        },
+        {
+          "name": "Remcos",
+          "count": 169
         },
         {
           "name": "PureRAT",
@@ -374,15 +374,15 @@
         },
         {
           "name": "Mirai",
-          "count": 110
+          "count": 117
         },
         {
           "name": "Sliver",
-          "count": 109
+          "count": 107
         },
         {
           "name": "Cobalt Strike",
-          "count": 108
+          "count": 102
         }
       ],
       "historical": {
@@ -394,8 +394,8 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 3377,
-        "current_36h_botnet_c2_count": 1212,
+        "current_36h_ioc_count": 3457,
+        "current_36h_botnet_c2_count": 1185,
         "current_ioc_percentile": null,
         "current_botnet_c2_percentile": null,
         "trailing_36h_ioc_percentile": null,
@@ -426,15 +426,15 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 2515,
-      "botnet_cc_count": 5819,
+      "threatfox_count": 2329,
+      "botnet_cc_count": 5649,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 3,
+      "observed_partial_score": 0,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
@@ -454,115 +454,110 @@
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 1,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 13
+        "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
         "raw_unique_articles": 75,
-        "accepted_articles": 1,
+        "accepted_articles": 0,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 1,
-        "rejected_as_noise_or_broad_context": 74,
-        "weighted_article_count": 0.4,
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 75,
+        "weighted_article_count": 0,
         "rejected_samples": [
           {
-            "title": "Britain issued horror NATO warning as Russia steps up WW3 threats",
-            "domain": "express.co.uk",
+            "title": "Стубб назвал « самый сложный » вопрос в украинском урегулировании",
+            "domain": "news.mail.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "UK approves a natural gas project off Scotland despite environmental concerns",
+            "domain": "orovillemr.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Moscow and Beijing could seal major gas pipeline deal by year - end",
+            "domain": "shanghainews.net",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "pipeline"
+              ],
               "threat_fimi": [
-                "nato",
-                "russia"
+                "russian"
               ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Nord - Stream - Prozess : Gericht entscheidet über Einstellung",
-            "domain": "shz.de",
+            "title": "Belize Geopolitics 2026 , US , Taiwan , China and Guatemala",
+            "domain": "riotimesonline.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "瑞典急购FDI护卫舰多维透视 - 中国军网",
+            "domain": "81.cn",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "As Miatta ignites the speaker gas - fuelled inferno , Reform show up as snowflakes | John Crace",
+            "domain": "theguardian.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Польша приостановила поставки пакета военной помощи Киеву , пишут СМИ",
+            "domain": "news.mail.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [],
               "region": [
-                "deutschland"
+                "польша"
               ],
               "global_spillover": []
             }
           },
           {
-            "title": "Путін та Віткофф зустрілися в Санкт - Петербурзі - деталі переговорів",
-            "domain": "news.telegraf.com.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Hidden Holocausts As Inconvenient Truths",
-            "domain": "countercurrents.org",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Nicuşor Dan , editorial în „ The Daily Signal : România este astăzi mai sigură datorită alianţei sale cu Statele Unite",
-            "domain": "romaniatv.net",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Ukraine - Krieg im Liveticker : +++ 13 : 31 EU fordert SpaceX zur Wiederherstellung von Starlink - Diensten in Ukraine auf +++",
-            "domain": "n-tv.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Thêm tàu dầu bị tấn công tại eo biển Hormuz",
-            "domain": "vov.vn",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": [
-                "hormuz"
-              ]
-            }
-          },
-          {
-            "title": "Nicușor Dan a publicat un nou editorial în presa din SUA : România , dispusă să își asume costuri pentru prezența militară americană",
-            "domain": "antena3.ro",
+            "title": "Львовский облсовет удалил публикацию о чествовании УПА * после критики Польши",
+            "domain": "news.mail.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -582,82 +577,13 @@
         "observed_articles": 75,
         "sample_limited": true,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 1,
-        "rejected_articles": 74,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 75,
         "weighted_articles": null,
         "historical_percentile": null,
-        "top_domains": [
-          {
-            "name": "vaartha.com",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "Crude Oil Price : హార్ముజ్ జలసంధిలో నౌకలపై దాడులతో పెరిగిన ముడిచమురు ధరలు",
-            "url": "https://vaartha.com/national/crude-oil-prices-rise-hormuz-strait-ship-attacks/793737/",
-            "domain": "vaartha.com",
-            "language": "Telugu",
-            "source_country": "India",
-            "seen_date": "20261021T084500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ship",
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "attacks"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait",
-                  "oil price"
-                ]
-              }
-            }
-          }
-        ],
-        "articles": [
-          {
-            "title": "Crude Oil Price : హార్ముజ్ జలసంధిలో నౌకలపై దాడులతో పెరిగిన ముడిచమురు ధరలు",
-            "url": "https://vaartha.com/national/crude-oil-prices-rise-hormuz-strait-ship-attacks/793737/",
-            "domain": "vaartha.com",
-            "language": "Telugu",
-            "source_country": "India",
-            "seen_date": "20261021T084500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ship",
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "attacks"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait",
-                  "oil price"
-                ]
-              }
-            }
-          }
-        ]
+        "top_domains": [],
+        "sample": [],
+        "articles": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -669,35 +595,26 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 1,
-        "tags": [
-          {
-            "id": "maritime_legal_topics",
-            "label": "Maritime law and sanctions topics",
-            "count": 1,
-            "matched_keywords": [
-              "ship"
-            ]
-          }
-        ]
+        "tag_count": 0,
+        "tags": []
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 1,
+          "count": 0,
           "raw_count": 75,
           "core_count": 0,
-          "global_spillover_count": 1,
-          "rejected_count": 74,
-          "weighted_count": 0.4,
+          "global_spillover_count": 0,
+          "rejected_count": 75,
+          "weighted_count": 0,
           "queries": 3,
           "ok_queries": 1,
           "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_2: HTTP 429",
+            "gdelt_fimi_3: request failed (TypeError)"
           ]
         },
         {
@@ -709,8 +626,8 @@
           "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+            "euvsdisinfo_case_watch_1: HTTP 429",
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
@@ -718,9 +635,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 1,
+          "count": 0,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 1
+          "applied_to_articles": 0
         }
       ],
       "history": {
@@ -734,17 +651,13 @@
     "9 CISA KEV additions in the last 7 days",
     "37 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1736",
-    "2515 ThreatFox IOCs in the last 1 day",
-    "5819 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1741",
+    "2329 ThreatFox IOCs in the last 1 day",
+    "5649 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "Maritime narrative pressure: not assessable (low confidence)",
-    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 1 Global Maritime Spillover, 74 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics",
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
     "Baseline warming up: 8/14 prior points available"
   ],
   "source_health": [
@@ -752,13 +665,13 @@
       "source": "cisa_kev",
       "status": "ok",
       "count": 1754,
-      "hash": "a3591cd3f9b803d7ba43782fdbc9c89feb66bca6d6ae3dc73689667e77645a7f"
+      "hash": "ef8fffede5c472001da046c7751beb2a3242458896d0ce08da52b30968b8b56b"
     },
     {
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "c495e7cd903d8bb4ab0f15fde2faad88358de4d580590f6d405f9c764f5581fc"
+      "hash": "8cbf7e3089416d2ee7dc754a7c1e98e8c545479eec609592ea26ba70abf618dc"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -770,32 +683,32 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2515,
-      "count_7d": 12550,
-      "botnet_cc_count": 5819,
+      "count": 2329,
+      "count_7d": 12620,
+      "botnet_cc_count": 5649,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "49091838cdb0870d664e2701bae9ec6ca70a3cdf7012d5c8e1441368ee6e0368",
-      "hash_7d": "9fca86d88df2265ce134545668a4ce302cfa4bf15e16d443ed0c140d5e25cc21",
+      "hash_1d": "a5bb891f629538856af8369e6539bbc84586aa6783ab74307347527a58ce1155",
+      "hash_7d": "26679cda075cd5061361ed374cbbbdbdceddefa33950ad1c7945f13e2265e2b0",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 1,
+      "count": 0,
       "raw_count": 75,
       "core_count": 0,
-      "global_spillover_count": 1,
-      "rejected_count": 74,
-      "weighted_count": 0.4,
+      "global_spillover_count": 0,
+      "rejected_count": 75,
+      "weighted_count": 0,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -807,8 +720,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -816,9 +729,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 1
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -855,15 +768,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "1212 botnet/C2-like indicators in the current 36h window",
-      "1 Global Maritime Spillover articles retained with lower weight",
+      "1185 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261021T124017_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261021T183409_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",

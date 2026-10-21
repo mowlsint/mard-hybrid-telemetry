@@ -3,13 +3,13 @@
     "source": "cisa_kev",
     "status": "ok",
     "count": 1754,
-    "hash": "a3591cd3f9b803d7ba43782fdbc9c89feb66bca6d6ae3dc73689667e77645a7f"
+    "hash": "ef8fffede5c472001da046c7751beb2a3242458896d0ce08da52b30968b8b56b"
   },
   {
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "c495e7cd903d8bb4ab0f15fde2faad88358de4d580590f6d405f9c764f5581fc"
+    "hash": "8cbf7e3089416d2ee7dc754a7c1e98e8c545479eec609592ea26ba70abf618dc"
   },
   {
     "source": "first_epss_kev_enrichment",
@@ -21,32 +21,32 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 2515,
-    "count_7d": 12550,
-    "botnet_cc_count": 5819,
+    "count": 2329,
+    "count_7d": 12620,
+    "botnet_cc_count": 5649,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "49091838cdb0870d664e2701bae9ec6ca70a3cdf7012d5c8e1441368ee6e0368",
-    "hash_7d": "9fca86d88df2265ce134545668a4ce302cfa4bf15e16d443ed0c140d5e25cc21",
+    "hash_1d": "a5bb891f629538856af8369e6539bbc84586aa6783ab74307347527a58ce1155",
+    "hash_7d": "26679cda075cd5061361ed374cbbbdbdceddefa33950ad1c7945f13e2265e2b0",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 1,
+    "count": 0,
     "raw_count": 75,
     "core_count": 0,
-    "global_spillover_count": 1,
-    "rejected_count": 74,
-    "weighted_count": 0.4,
+    "global_spillover_count": 0,
+    "rejected_count": 75,
+    "weighted_count": 0,
     "queries": 3,
     "ok_queries": 1,
     "failed_queries": 2,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_2: HTTP 429",
+      "gdelt_fimi_3: request failed (TypeError)"
     ]
   },
   {
@@ -58,8 +58,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_1: HTTP 429",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
@@ -67,8 +67,8 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 1
+    "applied_to_articles": 0
   }
 ]
