@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-22T12:40:59.780Z",
+  "generated_at": "2026-10-22T18:33:20.765Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -33,7 +33,7 @@
     "score_parts": {
       "kev_recent_7d": 100,
       "kev_recent_30d": 100,
-      "kev_epss_mean": 16,
+      "kev_epss_mean": 17,
       "threatfox_ioc_current": 65,
       "threatfox_botnet_c2_36h": 65
     },
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3207,
-      "botnet_c2_36h_count": 1049,
+      "ioc_36h_count": 3505,
+      "botnet_c2_36h_count": 1081,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,8 +93,8 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "1049 botnet/C2-like indicators in the current 36h window",
-      "1 Global Maritime Spillover articles retained with lower weight",
+      "1081 botnet/C2-like indicators in the current 36h window",
+      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -122,14 +122,27 @@
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
       "raw_unique_articles": 75,
       "accepted_articles": 1,
-      "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 1,
+      "core_mard_eu_articles": 1,
+      "global_maritime_spillover_articles": 0,
       "rejected_as_noise_or_broad_context": 74,
-      "weighted_article_count": 0.4,
+      "weighted_article_count": 1,
       "rejected_samples": [
         {
-          "title": "Rusyanın 17 balıkçı gemisiyle İngiltere kablolarında istihbarat topladığı öne sürüldü",
-          "domain": "haberler.com",
+          "title": "Польша опровергла информацию о приостановке военной помощи Украине",
+          "domain": "news.mail.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [
+              "польша"
+            ],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "В Финляндии обвинили Google в появлении волков возле жилых домов",
+          "domain": "news.mail.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -139,80 +152,67 @@
           }
         },
         {
-          "title": "Putin Says Iran Deal Still Possible After Talks With US Envoy",
-          "domain": "iraqsun.com",
+          "title": "Rosyjskie kutry rybackie mogą szpiegować kable na dnie Atlantyku . „ The Telegraph ujawnia skalę działań",
+          "domain": "rp.pl",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [],
             "region": [],
-            "global_spillover": [
-              "iran"
-            ]
+            "global_spillover": []
           }
         },
         {
-          "title": "Russia frees American Stephen Hubbard after over 4 years behind bars",
-          "domain": "texarkanagazette.com",
+          "title": "Dette er guffent",
+          "domain": "dagbladet.no",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "На дне Черного моря у Одессы образовалась свалка из остатков сбитых дронов и ракет . То , что там можно увидеть , вызывает ужас , – эколог Владислав Балинский",
+          "domain": "unian.net",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Ölpreise bauen Gewinne aus - Angriff auf Ölfeld in Saudi Arabien",
+          "domain": "wallstreet-online.de",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "russia"
+              "angriff"
             ],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Haftbefehl gegen Raúl Castro : China fordert Ende der Kuba - Blockade",
-          "domain": "berliner-zeitung.de",
+          "title": "TCG Anadolu da katýldý ! MSBden Neptune Strike 2026 paylam",
+          "domain": "star.com.tr",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "blockade"
+              "strike"
             ],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Disdik Akui Kelalaian Pengawasan di SMAN 4 Batam , Orang Tua Korban Tempuh Jalur Hukum – Metropolis",
-          "domain": "metropolis.batampos.co.id",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Elon Musk SpaceX - Tesla merger math doesnt add up",
-          "domain": "fortune.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "遭美封鎖海上庫存耗盡 伊朗 「 影子油輪 」 沒油可賣中國 - 國際",
-          "domain": "news.ltn.com.tw",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Leak Exposes Trump Team Plans for Post - Election Shock",
-          "domain": "thedailybeast.com",
+          "title": "Europejski kraj kończy z potrójną blokadą żołnierzy . To wytrąca Rosji i Chinom oręż z ręki",
+          "domain": "wnp.pl",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -231,75 +231,73 @@
       "unique_articles": null,
       "observed_articles": 75,
       "sample_limited": true,
-      "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 1,
+      "core_mard_eu_articles": 1,
+      "global_maritime_spillover_articles": 0,
       "rejected_articles": 74,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [
         {
-          "name": "peakoil.com",
+          "name": "technews.tw",
           "count": 1
         }
       ],
       "sample": [
         {
-          "title": "Iran floating oil reserves in Asia run dry under US naval blockade , WSJ reports | Peak Oil News and Message Boards",
-          "url": "https://peakoil.com/production/irans-floating-oil-reserves-in-asia-run-dry-under-us-naval-blockade-wsj-reports",
-          "domain": "peakoil.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261022T091500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "title": "北極融冰打開北極航道 ， 俄羅斯石油出口大增近五成",
+          "url": "https://technews.tw/2026/10/22/melting-arctic-ice-opens-up-arctic-shipping-routes-leading-to-a-nearly-50-surge-in-russian-oil-exports/",
+          "domain": "technews.tw",
+          "language": "Chinese",
+          "source_country": "Taiwan",
+          "seen_date": "20261022T024500Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
             "matched": {
               "maritime": [
-                "naval"
+                "shipping"
               ],
               "threat_fimi": [
-                "blockade"
+                "russian"
               ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "naval blockade"
-              ]
+              "region": [
+                "arctic"
+              ],
+              "global_spillover": []
             }
           }
         }
       ],
       "articles": [
         {
-          "title": "Iran floating oil reserves in Asia run dry under US naval blockade , WSJ reports | Peak Oil News and Message Boards",
-          "url": "https://peakoil.com/production/irans-floating-oil-reserves-in-asia-run-dry-under-us-naval-blockade-wsj-reports",
-          "domain": "peakoil.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261022T091500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "title": "北極融冰打開北極航道 ， 俄羅斯石油出口大增近五成",
+          "url": "https://technews.tw/2026/10/22/melting-arctic-ice-opens-up-arctic-shipping-routes-leading-to-a-nearly-50-surge-in-russian-oil-exports/",
+          "domain": "technews.tw",
+          "language": "Chinese",
+          "source_country": "Taiwan",
+          "seen_date": "20261022T024500Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
             "matched": {
               "maritime": [
-                "naval"
+                "shipping"
               ],
               "threat_fimi": [
-                "blockade"
+                "russian"
               ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "naval blockade"
-              ]
+              "region": [
+                "arctic"
+              ],
+              "global_spillover": []
             }
           }
         }
@@ -315,51 +313,46 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 1,
-      "tags": [
-        {
-          "id": "maritime_legal_topics",
-          "label": "Maritime law and sanctions topics",
-          "count": 1,
-          "matched_keywords": [
-            "blockade"
-          ]
-        }
-      ]
+      "tag_count": 0,
+      "tags": []
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1765,
-    "ioc_count_7d": 12205,
-    "botnet_c2_count_1d": 659,
-    "botnet_c2_count_7d": 5062,
+    "ioc_count_1d": 1965,
+    "ioc_count_7d": 12414,
+    "botnet_c2_count_1d": 725,
+    "botnet_c2_count_7d": 5007,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 657
-      },
-      {
-        "name": "payload",
-        "count": 581
+        "count": 721
       },
       {
         "name": "payload_delivery",
-        "count": 527
+        "count": 685
+      },
+      {
+        "name": "payload",
+        "count": 559
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 341
+        "count": 361
       },
       {
         "name": "AMOS",
-        "count": 297
+        "count": 315
       },
       {
         "name": "StrelaStealer",
-        "count": 192
+        "count": 193
+      },
+      {
+        "name": "ClearFake",
+        "count": 169
       },
       {
         "name": "Unknown Loader",
@@ -367,49 +360,45 @@
       },
       {
         "name": "Mirai",
-        "count": 118
-      },
-      {
-        "name": "VShell",
-        "count": 104
-      },
-      {
-        "name": "ClearFake",
-        "count": 99
-      },
-      {
-        "name": "Coinminer",
-        "count": 91
-      },
-      {
-        "name": "php.shin_webshell",
-        "count": 42
+        "count": 119
       },
       {
         "name": "IClickFix",
-        "count": 35
+        "count": 113
+      },
+      {
+        "name": "Coinminer",
+        "count": 106
+      },
+      {
+        "name": "VShell",
+        "count": 99
+      },
+      {
+        "name": "Unknown malware",
+        "count": 68
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 2933
-      },
-      {
-        "name": "Remus",
-        "count": 285
-      },
-      {
-        "name": "VShell",
-        "count": 268
+        "count": 2800
       },
       {
         "name": "Unknown malware",
-        "count": 252
+        "count": 288
+      },
+      {
+        "name": "Remus",
+        "count": 287
+      },
+      {
+        "name": "VShell",
+        "count": 287
       },
       {
         "name": "Remcos",
-        "count": 159
+        "count": 150
       },
       {
         "name": "PureRAT",
@@ -417,7 +406,7 @@
       },
       {
         "name": "Mirai",
-        "count": 111
+        "count": 129
       },
       {
         "name": "Sliver",
@@ -429,7 +418,7 @@
       },
       {
         "name": "AsyncRAT",
-        "count": 58
+        "count": 57
       }
     ],
     "historical": {
@@ -441,8 +430,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3207,
-      "current_36h_botnet_c2_count": 1049,
+      "current_36h_ioc_count": 3505,
+      "current_36h_botnet_c2_count": 1081,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -475,7 +464,7 @@
     "total_kev": 1754,
     "recent_7d": 8,
     "recent_30d": 33,
-    "epss_mean_recent_kev": 0.1559,
+    "epss_mean_recent_kev": 0.1676,
     "epss_enriched_count": 33,
     "epss_enrichment_coverage": 1,
     "top_recent_kev_by_epss": [
@@ -520,6 +509,14 @@
         "epss": 0.39979
       },
       {
+        "cve": "CVE-2026-105134",
+        "vendor_project": "Ahsay",
+        "product": "AhsayCBS",
+        "vulnerability_name": "Ahsay AhsayCBS Command Injection Vulnerability",
+        "date_added": "2026-10-14",
+        "epss": 0.3831
+      },
+      {
         "cve": "CVE-2026-104935",
         "vendor_project": "Ivanti",
         "product": "Connect Secure",
@@ -544,12 +541,12 @@
         "epss": 0.12711
       },
       {
-        "cve": "CVE-2026-105134",
+        "cve": "CVE-2026-105133",
         "vendor_project": "Ahsay",
         "product": "AhsayCBS",
-        "vulnerability_name": "Ahsay AhsayCBS Command Injection Vulnerability",
+        "vulnerability_name": "Ahsay AhsayCBS Improper Authentication Vulnerability",
         "date_added": "2026-10-14",
-        "epss": 0.04782
+        "epss": 0.05794
       },
       {
         "cve": "CVE-2023-22894",
@@ -566,14 +563,6 @@
         "vulnerability_name": "Fortinet FortiMail Path Traversal Vulnerability",
         "date_added": "2026-10-01",
         "epss": 0.02201
-      },
-      {
-        "cve": "CVE-2026-65660",
-        "vendor_project": "Microsoft",
-        "product": "SharePoint",
-        "vulnerability_name": "Microsoft SharePoint Code Injection Vulnerability",
-        "date_added": "2026-09-25",
-        "epss": 0.02101
       }
     ]
   },
@@ -588,7 +577,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "8cbf7e3089416d2ee7dc754a7c1e98e8c545479eec609592ea26ba70abf618dc"
+      "hash": "41f457671df01828ef6389de2a7f97fd19abb6468be2ddf1ba37055109f2f9f8"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -600,14 +589,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1765,
-      "count_7d": 12205,
-      "botnet_cc_count": 5062,
+      "count": 1965,
+      "count_7d": 12414,
+      "botnet_cc_count": 5007,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "4169b04363e646c0dada55df10892017bab36d06b35c4e5cbfa469deaeb18ed1",
-      "hash_7d": "52b6cf76293d0140083b4d3558432247b626e46a9503a98ae6b48dc382efa244",
+      "hash_1d": "2384a347108f84cf07a8dfb316342c06af4bdda56da0bf8856fb463b21b952d7",
+      "hash_7d": "e8be3301b62f4ef7672e1ec25fd4a9d0e87a77890df9b27fbc70ae61fea8c479",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -616,16 +605,16 @@
       "status": "partial",
       "count": 1,
       "raw_count": 75,
-      "core_count": 0,
-      "global_spillover_count": 1,
+      "core_count": 1,
+      "global_spillover_count": 0,
       "rejected_count": 74,
-      "weighted_count": 0.4,
+      "weighted_count": 1,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -637,8 +626,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -646,7 +635,7 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
       "applied_to_articles": 1
     }
@@ -655,17 +644,16 @@
     "8 CISA KEV additions in the last 7 days",
     "33 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1559",
-    "1765 ThreatFox IOCs in the last 1 day",
-    "5062 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.1676",
+    "1965 ThreatFox IOCs in the last 1 day",
+    "5007 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 1 Global Maritime Spillover, 74 rejected as broad/noisy context",
+    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 74 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics",
     "Baseline warming up: 9/14 prior points available"
   ],
   "assessment": {
@@ -676,6 +664,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261022T124059_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261022T183320_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
