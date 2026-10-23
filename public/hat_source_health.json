@@ -21,32 +21,31 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1877,
-    "count_7d": 12156,
-    "botnet_cc_count": 4735,
+    "count": 1836,
+    "count_7d": 11997,
+    "botnet_cc_count": 4559,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "d16a4554dd9190aad1af7823fbf77f3b7042c875f3e3d1068542088d5cdd1892",
-    "hash_7d": "a7554ddbedeeb52891d0b22b740a559b8661bbcd1e0a02d69ad5ca0900aafac4",
+    "hash_1d": "9bb08a58da83db931a8879a330fcbd678430aec0fd976892e3f0b07d1b69f85e",
+    "hash_7d": "b5181909c974ba0b61065ec83624263254d353aba7457387b216475ae48d5506",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
     "status": "partial",
-    "count": 6,
-    "raw_count": 75,
+    "count": 3,
+    "raw_count": 147,
     "core_count": 0,
-    "global_spillover_count": 6,
-    "rejected_count": 69,
-    "weighted_count": 2.4,
+    "global_spillover_count": 3,
+    "rejected_count": 144,
+    "weighted_count": 1.2,
     "queries": 3,
-    "ok_queries": 1,
-    "failed_queries": 2,
+    "ok_queries": 2,
+    "failed_queries": 1,
     "errors": [
-      "gdelt_fimi_1: request failed (TypeError)",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_1: HTTP 429"
     ]
   },
   {
@@ -58,8 +57,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_1: request failed (TypeError)",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
@@ -69,6 +68,6 @@
     "independent_evidence": false,
     "count": 1,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 6
+    "applied_to_articles": 3
   }
 ]
