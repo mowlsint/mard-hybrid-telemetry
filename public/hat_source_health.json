@@ -2,50 +2,52 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1754,
-    "hash": "ef8fffede5c472001da046c7751beb2a3242458896d0ce08da52b30968b8b56b"
+    "count": 1755,
+    "hash": "07789ad3d7fd68ab0f8fa61d10f0f1dd79753e4ec3f3c1f68fa07bc44679f682"
   },
   {
     "source": "first_epss_top",
     "status": "ok",
     "count": 250,
-    "hash": "41f457671df01828ef6389de2a7f97fd19abb6468be2ddf1ba37055109f2f9f8"
+    "hash": "b5584180d02339e5225c64fe756bb97768fc229c0c092012935c649e9a76c299"
   },
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 33,
+    "count": 34,
     "coverage_ratio": 1
   },
   {
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1836,
-    "count_7d": 11997,
-    "botnet_cc_count": 4559,
+    "count": 1585,
+    "count_7d": 11795,
+    "botnet_cc_count": 4462,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "9bb08a58da83db931a8879a330fcbd678430aec0fd976892e3f0b07d1b69f85e",
-    "hash_7d": "b5181909c974ba0b61065ec83624263254d353aba7457387b216475ae48d5506",
+    "hash_1d": "7f814ae7f3a160bf2668082924d2eeb47c1150b8488feb04a456453452927383",
+    "hash_7d": "4c823bade0461a7d206394653f9def95b8074413b88e97d169461e4c2c32a449",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 3,
-    "raw_count": 147,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
     "core_count": 0,
-    "global_spillover_count": 3,
-    "rejected_count": 144,
-    "weighted_count": 1.2,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 2,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429"
+      "gdelt_fimi_1: request failed (TypeError)",
+      "gdelt_fimi_2: request failed (TypeError)",
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -57,7 +59,7 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: request failed (TypeError)",
+      "euvsdisinfo_case_watch_1: HTTP 429",
       "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
@@ -66,8 +68,8 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 3
+    "applied_to_articles": 0
   }
 ]
