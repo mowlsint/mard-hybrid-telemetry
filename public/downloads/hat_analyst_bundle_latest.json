@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-22T18:33:20.765Z",
+  "generated_at": "2026-10-23T01:01:09.747Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 69,
+    "hat_score": 63,
     "level": "high",
     "interpretation": {
-      "percentage": 69,
+      "percentage": 63,
       "label": "high",
       "color": "deep orange",
       "css": "high",
@@ -31,7 +31,7 @@
       "delta_from_mean": null
     },
     "score_parts": {
-      "kev_recent_7d": 100,
+      "kev_recent_7d": 75,
       "kev_recent_30d": 100,
       "kev_epss_mean": 17,
       "threatfox_ioc_current": 65,
@@ -55,8 +55,8 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 3505,
-      "botnet_c2_36h_count": 1081,
+      "ioc_36h_count": 2841,
+      "botnet_c2_36h_count": 996,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
@@ -93,8 +93,8 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "1081 botnet/C2-like indicators in the current 36h window",
-      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
+      "996 botnet/C2-like indicators in the current 36h window",
+      "6 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -121,27 +121,14 @@
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
       "raw_unique_articles": 75,
-      "accepted_articles": 1,
-      "core_mard_eu_articles": 1,
-      "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 74,
-      "weighted_article_count": 1,
+      "accepted_articles": 6,
+      "core_mard_eu_articles": 0,
+      "global_maritime_spillover_articles": 6,
+      "rejected_as_noise_or_broad_context": 69,
+      "weighted_article_count": 2.4,
       "rejected_samples": [
         {
-          "title": "Польша опровергла информацию о приостановке военной помощи Украине",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "польша"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "В Финляндии обвинили Google в появлении волков возле жилых домов",
+          "title": "The Telegraph : В ЕС обсуждают пять кандидатов на роль переговорщика с Россией",
           "domain": "news.mail.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
@@ -152,67 +139,82 @@
           }
         },
         {
-          "title": "Rosyjskie kutry rybackie mogą szpiegować kable na dnie Atlantyku . „ The Telegraph ujawnia skalę działań",
-          "domain": "rp.pl",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Dette er guffent",
-          "domain": "dagbladet.no",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "На дне Черного моря у Одессы образовалась свалка из остатков сбитых дронов и ракет . То , что там можно увидеть , вызывает ужас , – эколог Владислав Балинский",
-          "domain": "unian.net",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ölpreise bauen Gewinne aus - Angriff auf Ölfeld in Saudi Arabien",
-          "domain": "wallstreet-online.de",
+          "title": "Russia bombs Kyiv and Ukraine fires drones towards Moscow , despite talk of renewing negotiations",
+          "domain": "internazionale.it",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "angriff"
+              "strike",
+              "drones",
+              "russia",
+              "ukraine"
             ],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "TCG Anadolu da katýldý ! MSBden Neptune Strike 2026 paylam",
-          "domain": "star.com.tr",
+          "title": "Savaşlar , isyanlar yeni Yalta zirvesi | Nilgün Tekfidan GÜMÜŞ Köşe Yazısı",
+          "domain": "hurriyet.com.tr",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
-            "threat_fimi": [
-              "strike"
-            ],
+            "threat_fimi": [],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Europejski kraj kończy z potrójną blokadą żołnierzy . To wytrąca Rosji i Chinom oręż z ręki",
-          "domain": "wnp.pl",
+          "title": "Κίεβο και Βρυξέλλες σε επιφυλακή : « Τρόμος » για την συμπόρευση Τραμπ - Πούτιν",
+          "domain": "gr.euronews.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Экономическая цена милитаризации Европы составляет около €18 трлн : заявление Грушко",
+          "domain": "iz.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Зеленський : Україні потрібні ракети ППО та збереження санкцій · h . ua",
+          "domain": "h.ua",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Iran tuyên bố bắn hạ Ác điểu MQ - 9 , buộc tàu chiến Mỹ lùi cách xa Hormuz 700 km",
+          "domain": "baomoi.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": [
+              "hormuz",
+              "iran"
+            ]
+          }
+        },
+        {
+          "title": "Američki kongresmen traži sankcije za četvoricu biznismena iz Srbije : Na listi Mitrović , Macura , Bošnjak i Vujko",
+          "domain": "autonomija.info",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -231,73 +233,399 @@
       "unique_articles": null,
       "observed_articles": 75,
       "sample_limited": true,
-      "core_mard_eu_articles": 1,
-      "global_maritime_spillover_articles": 0,
-      "rejected_articles": 74,
+      "core_mard_eu_articles": 0,
+      "global_maritime_spillover_articles": 6,
+      "rejected_articles": 69,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [
         {
-          "name": "technews.tw",
+          "name": "abccolumbia.com",
+          "count": 1
+        },
+        {
+          "name": "hellenicshippingnews.com",
+          "count": 1
+        },
+        {
+          "name": "japantoday.com",
+          "count": 1
+        },
+        {
+          "name": "nbcnews.com",
+          "count": 1
+        },
+        {
+          "name": "theuknews.com",
+          "count": 1
+        },
+        {
+          "name": "voachinese.com",
           "count": 1
         }
       ],
       "sample": [
         {
-          "title": "北極融冰打開北極航道 ， 俄羅斯石油出口大增近五成",
-          "url": "https://technews.tw/2026/10/22/melting-arctic-ice-opens-up-arctic-shipping-routes-leading-to-a-nearly-50-surge-in-russian-oil-exports/",
-          "domain": "technews.tw",
-          "language": "Chinese",
-          "source_country": "Taiwan",
-          "seen_date": "20261022T024500Z",
-          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "title": "Iran reports ship fires , mine strikes , threatens wider response against US | Hellenic Shipping News Worldwide",
+          "url": "https://www.hellenicshippingnews.com/iran-reports-ship-fires-mine-strikes-threatens-wider-response-against-us/",
+          "domain": "hellenicshippingnews.com",
+          "language": "English",
+          "source_country": "China",
+          "seen_date": "20261022T233000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "core_mard_eu",
-            "weight": 1,
-            "reason": "maritime+threat+regional_anchor",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
             "matched": {
               "maritime": [
+                "ship",
                 "shipping"
               ],
               "threat_fimi": [
-                "russian"
+                "strikes"
               ],
-              "region": [
-                "arctic"
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          }
+        },
+        {
+          "title": "特朗普总统指责伊朗在美国中期选举前诈称袭船以为 推高 油价",
+          "url": "https://www.voachinese.com/a/president-trump-accuses-iran-of-faking-attacks-on-ships-to-drive-up-oil-prices-ahead-of-us-midterm-elections-20261022/8214234.html",
+          "domain": "voachinese.com",
+          "language": "Chinese",
+          "source_country": "China",
+          "seen_date": "20261022T233000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "ships"
               ],
-              "global_spillover": []
+              "threat_fimi": [
+                "attacks"
+              ],
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "http://www.theuknews.com/news/279392884/iran-says-7-oil-tankers-attacked-in-the-strait-of-hormuz-as-fears-grow-of-a-return-to-war",
+          "domain": "theuknews.com",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261022T231500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in Strait of Hormuz",
+          "url": "https://japantoday.com/category/world/iran-says-7-oil-tankers-are-on-fire-or-damaged-in-a-key-strait-as-fears-grow-of-a-return-to-war",
+          "domain": "japantoday.com",
+          "language": "English",
+          "source_country": "Japan",
+          "seen_date": "20261022T224500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "https://www.nbcnews.com/world/iran/iran-says-7-oil-tankers-attacked-strait-hormuz-fears-grow-return-war-rcna605108",
+          "domain": "nbcnews.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261022T220000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "https://www.abccolumbia.com/2026/10/22/iran-says-7-oil-tankers-attacked-in-the-strait-of-hormuz-as-fears-grow-of-a-return-to-war/",
+          "domain": "abccolumbia.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261022T191500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
             }
           }
         }
       ],
       "articles": [
         {
-          "title": "北極融冰打開北極航道 ， 俄羅斯石油出口大增近五成",
-          "url": "https://technews.tw/2026/10/22/melting-arctic-ice-opens-up-arctic-shipping-routes-leading-to-a-nearly-50-surge-in-russian-oil-exports/",
-          "domain": "technews.tw",
-          "language": "Chinese",
-          "source_country": "Taiwan",
-          "seen_date": "20261022T024500Z",
-          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "title": "Iran reports ship fires , mine strikes , threatens wider response against US | Hellenic Shipping News Worldwide",
+          "url": "https://www.hellenicshippingnews.com/iran-reports-ship-fires-mine-strikes-threatens-wider-response-against-us/",
+          "domain": "hellenicshippingnews.com",
+          "language": "English",
+          "source_country": "China",
+          "seen_date": "20261022T233000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
           "maritime_relevance": {
             "accepted": true,
             "classification_basis": "headline_and_url_path_only",
-            "classification": "core_mard_eu",
-            "weight": 1,
-            "reason": "maritime+threat+regional_anchor",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
             "matched": {
               "maritime": [
+                "ship",
                 "shipping"
               ],
               "threat_fimi": [
-                "russian"
+                "strikes"
               ],
-              "region": [
-                "arctic"
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          }
+        },
+        {
+          "title": "特朗普总统指责伊朗在美国中期选举前诈称袭船以为 推高 油价",
+          "url": "https://www.voachinese.com/a/president-trump-accuses-iran-of-faking-attacks-on-ships-to-drive-up-oil-prices-ahead-of-us-midterm-elections-20261022/8214234.html",
+          "domain": "voachinese.com",
+          "language": "Chinese",
+          "source_country": "China",
+          "seen_date": "20261022T233000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "ships"
               ],
-              "global_spillover": []
+              "threat_fimi": [
+                "attacks"
+              ],
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "http://www.theuknews.com/news/279392884/iran-says-7-oil-tankers-attacked-in-the-strait-of-hormuz-as-fears-grow-of-a-return-to-war",
+          "domain": "theuknews.com",
+          "language": "English",
+          "source_country": "United Kingdom",
+          "seen_date": "20261022T231500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in Strait of Hormuz",
+          "url": "https://japantoday.com/category/world/iran-says-7-oil-tankers-are-on-fire-or-damaged-in-a-key-strait-as-fears-grow-of-a-return-to-war",
+          "domain": "japantoday.com",
+          "language": "English",
+          "source_country": "Japan",
+          "seen_date": "20261022T224500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "https://www.nbcnews.com/world/iran/iran-says-7-oil-tankers-attacked-strait-hormuz-fears-grow-return-war-rcna605108",
+          "domain": "nbcnews.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261022T220000Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Iran says 7 oil tankers attacked in the Strait of Hormuz as fears grow of a return to war",
+          "url": "https://www.abccolumbia.com/2026/10/22/iran-says-7-oil-tankers-attacked-in-the-strait-of-hormuz-as-fears-grow-of-a-return-to-war/",
+          "domain": "abccolumbia.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261022T191500Z",
+          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "global_maritime_spillover",
+            "weight": 0.4,
+            "reason": "maritime+threat+global_spillover_anchor",
+            "matched": {
+              "maritime": [
+                "tankers",
+                "strait"
+              ],
+              "threat_fimi": [
+                "attacked"
+              ],
+              "region": [],
+              "global_spillover": [
+                "hormuz",
+                "iran",
+                "strait"
+              ]
             }
           }
         }
@@ -313,112 +641,121 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 0,
-      "tags": []
+      "tag_count": 1,
+      "tags": [
+        {
+          "id": "maritime_legal_topics",
+          "label": "Maritime law and sanctions topics",
+          "count": 1,
+          "matched_keywords": [
+            "ship"
+          ]
+        }
+      ]
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1965,
-    "ioc_count_7d": 12414,
-    "botnet_c2_count_1d": 725,
-    "botnet_c2_count_7d": 5007,
+    "ioc_count_1d": 1868,
+    "ioc_count_7d": 12207,
+    "botnet_c2_count_1d": 697,
+    "botnet_c2_count_7d": 4756,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 721
+        "count": 693
       },
       {
         "name": "payload_delivery",
-        "count": 685
+        "count": 610
       },
       {
         "name": "payload",
-        "count": 559
+        "count": 565
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 361
+        "count": 370
       },
       {
         "name": "AMOS",
-        "count": 315
+        "count": 320
       },
       {
         "name": "StrelaStealer",
-        "count": 193
+        "count": 196
       },
       {
         "name": "ClearFake",
-        "count": 169
-      },
-      {
-        "name": "Unknown Loader",
-        "count": 127
-      },
-      {
-        "name": "Mirai",
-        "count": 119
-      },
-      {
-        "name": "IClickFix",
-        "count": 113
+        "count": 151
       },
       {
         "name": "Coinminer",
+        "count": 107
+      },
+      {
+        "name": "Mirai",
         "count": 106
       },
       {
+        "name": "IClickFix",
+        "count": 101
+      },
+      {
         "name": "VShell",
-        "count": 99
+        "count": 93
+      },
+      {
+        "name": "Unknown Loader",
+        "count": 74
       },
       {
         "name": "Unknown malware",
-        "count": 68
+        "count": 71
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 2800
-      },
-      {
-        "name": "Unknown malware",
-        "count": 288
-      },
-      {
-        "name": "Remus",
-        "count": 287
+        "count": 2614
       },
       {
         "name": "VShell",
-        "count": 287
+        "count": 307
+      },
+      {
+        "name": "Unknown malware",
+        "count": 279
+      },
+      {
+        "name": "Remus",
+        "count": 238
       },
       {
         "name": "Remcos",
-        "count": 150
-      },
-      {
-        "name": "PureRAT",
-        "count": 133
+        "count": 144
       },
       {
         "name": "Mirai",
         "count": 129
       },
       {
-        "name": "Sliver",
-        "count": 103
+        "name": "PureRAT",
+        "count": 128
       },
       {
         "name": "Cobalt Strike",
-        "count": 99
+        "count": 100
       },
       {
-        "name": "AsyncRAT",
-        "count": 57
+        "name": "Sliver",
+        "count": 94
+      },
+      {
+        "name": "Hermes",
+        "count": 54
       }
     ],
     "historical": {
@@ -430,8 +767,8 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3505,
-      "current_36h_botnet_c2_count": 1081,
+      "current_36h_ioc_count": 2841,
+      "current_36h_botnet_c2_count": 996,
       "current_ioc_percentile": null,
       "current_botnet_c2_percentile": null,
       "trailing_36h_ioc_percentile": null,
@@ -462,7 +799,7 @@
   },
   "kev_summary": {
     "total_kev": 1754,
-    "recent_7d": 8,
+    "recent_7d": 6,
     "recent_30d": 33,
     "epss_mean_recent_kev": 0.1676,
     "epss_enriched_count": 33,
@@ -589,31 +926,31 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1965,
-      "count_7d": 12414,
-      "botnet_cc_count": 5007,
+      "count": 1868,
+      "count_7d": 12207,
+      "botnet_cc_count": 4756,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "2384a347108f84cf07a8dfb316342c06af4bdda56da0bf8856fb463b21b952d7",
-      "hash_7d": "e8be3301b62f4ef7672e1ec25fd4a9d0e87a77890df9b27fbc70ae61fea8c479",
+      "hash_1d": "6ec861d5a667495cfb10491ad1bdc0798a3727abb8a7634acf84949081b7ce2e",
+      "hash_7d": "7ca868c3e0ea0b61d065f94db1408356b01ba26e56829affbca098b6f53e8a00",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 1,
+      "count": 6,
       "raw_count": 75,
-      "core_count": 1,
-      "global_spillover_count": 0,
-      "rejected_count": 74,
-      "weighted_count": 1,
+      "core_count": 0,
+      "global_spillover_count": 6,
+      "rejected_count": 69,
+      "weighted_count": 2.4,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_1: request failed (TypeError)",
         "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
@@ -627,7 +964,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -635,25 +972,26 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 0,
+      "count": 1,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 1
+      "applied_to_articles": 6
     }
   ],
   "drivers": [
-    "8 CISA KEV additions in the last 7 days",
+    "6 CISA KEV additions in the last 7 days",
     "33 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1676",
-    "1965 ThreatFox IOCs in the last 1 day",
-    "5007 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1868 ThreatFox IOCs in the last 1 day",
+    "4756 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 74 rejected as broad/noisy context",
+    "Maritime filter: 0 Core MARD-Eu, 6 Global Maritime Spillover, 69 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "Narrative topic tags observed: Maritime law and sanctions topics",
     "Baseline warming up: 9/14 prior points available"
   ],
   "assessment": {
@@ -664,6 +1002,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261022T183320_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261023T010109_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
