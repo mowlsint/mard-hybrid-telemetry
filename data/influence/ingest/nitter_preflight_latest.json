@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-23T18:55:18.052Z",
-  "state": "unavailable",
+  "generated_at": "2026-10-24T01:11:15.123Z",
+  "state": "ok",
   "configured_instances": 10,
-  "usable_instances": 0,
+  "usable_instances": 1,
   "test_handles": [
     "XDevelopers",
     "Alice_Weidel"
@@ -157,7 +157,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 7392,
-          "body_sha256": "d82821933a4bbeb77098450dc3ef56e9bfeb7d9699701df6eeafc96b5605d73e"
+          "body_sha256": "6ec1f8139bd7fbd9ae082b7698df80530a555305dbc00c374edf74d72ae270f0"
         },
         {
           "handle": "XDevelopers",
@@ -172,7 +172,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 8030,
-          "body_sha256": "29bb3185d4e4b7ef0f984a48734008ed08661a3e67e2e769a2c1116fea9b4f0b"
+          "body_sha256": "1110b3a410b3a6ef361476944d8944ccf6304ad2668c401675f501249dbadb28"
         },
         {
           "handle": "Alice_Weidel",
@@ -187,7 +187,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 7392,
-          "body_sha256": "0aa394e92e08fd772677a4c65f5dd8f664ea05c6f8bdd4c0c37f650f536ec035"
+          "body_sha256": "01d10b04c492c4cdb9a9eef47f8ec56c8ba15f205bf90908dc407a9913ed2a88"
         },
         {
           "handle": "Alice_Weidel",
@@ -202,7 +202,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 7992,
-          "body_sha256": "799ed14a1fbc19329aabc3e40f5e40a0e1c456758594a5da3eea1d7c64cd882d"
+          "body_sha256": "b89836e369e2a3ffe5094aa4063f90981091a262a09360e3ed26bc8d129c1a13"
         }
       ]
     },
@@ -271,68 +271,23 @@
     },
     {
       "instance_hash": "9b145327d6a5e9ef",
-      "usable": false,
+      "usable": true,
       "rss_enabled": true,
       "attempts": [
         {
           "handle": "XDevelopers",
           "mode": "rss",
-          "status": "unusable",
-          "http_status": 404,
-          "content_type": "text/html;charset=utf-8",
+          "status": "usable",
+          "http_status": 200,
+          "content_type": "application/rss+xml; charset=utf-8",
           "final_domain": "nitter.kareem.one",
           "blocked": false,
-          "rss_items": 0,
+          "rss_items": 20,
           "html_items": 0,
-          "status_links": 0,
-          "usable": false,
-          "body_bytes": 5175,
-          "body_sha256": "c6fcc7b29cddc172b6d183e473b03c356b0293a3ab1f94fae9b5842e2c4d5e66"
-        },
-        {
-          "handle": "XDevelopers",
-          "mode": "html",
-          "status": "unusable",
-          "http_status": 403,
-          "content_type": "text/html; charset=UTF-8",
-          "final_domain": "nitter.kareem.one",
-          "blocked": true,
-          "rss_items": 0,
-          "html_items": 0,
-          "status_links": 0,
-          "usable": false,
-          "body_bytes": 5707,
-          "body_sha256": "d03d282fc5695a0c6c85da7f7b27653c6f2198608516d4bf425473c9a1d796cd"
-        },
-        {
-          "handle": "Alice_Weidel",
-          "mode": "rss",
-          "status": "unusable",
-          "http_status": 404,
-          "content_type": "text/html;charset=utf-8",
-          "final_domain": "nitter.kareem.one",
-          "blocked": false,
-          "rss_items": 0,
-          "html_items": 0,
-          "status_links": 0,
-          "usable": false,
-          "body_bytes": 5179,
-          "body_sha256": "0c23b421852e1c4baf0a1d024b275018089600ddbd7ea6e59822f9b1e5a8f68c"
-        },
-        {
-          "handle": "Alice_Weidel",
-          "mode": "html",
-          "status": "unusable",
-          "http_status": 403,
-          "content_type": "text/html; charset=UTF-8",
-          "final_domain": "nitter.kareem.one",
-          "blocked": true,
-          "rss_items": 0,
-          "html_items": 0,
-          "status_links": 0,
-          "usable": false,
-          "body_bytes": 5710,
-          "body_sha256": "d3d865348773db6242e32a2dc95048538a2910b2e3742c015725e82d561fca3b"
+          "status_links": 53,
+          "usable": true,
+          "body_bytes": 29217,
+          "body_sha256": "d387466ff0011d05fe14fcecc8d342c2383e32865f94e44e1497ae914717ca2c"
         }
       ]
     },
@@ -354,7 +309,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5487,
-          "body_sha256": "ad39dadb762f729f224c697456bff7bdf5f7f9192b6e35615927ec166a9ab17b"
+          "body_sha256": "5b23b79045f78cb0ee107aff9279d17382e7d6938cd23c2b17b913f0a6937374"
         },
         {
           "handle": "XDevelopers",
@@ -369,7 +324,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5681,
-          "body_sha256": "3d0ec60dc0591fac64e7903337f19dd10c29235e2d00870ae00d6477d7be3a8b"
+          "body_sha256": "a7b448105a5e7da9faa3cc878883d6879631e3e9efee6846fe09b16d3697047d"
         },
         {
           "handle": "Alice_Weidel",
@@ -384,7 +339,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5487,
-          "body_sha256": "8c5b2519102e19d4256e56ddfe9986b2f962bb23c0d37c95c8ead6b467a9c587"
+          "body_sha256": "3a5c6309c2fb29241f8cefcfbfec82cf08975671ee3037e06a52a7f81c0ec605"
         },
         {
           "handle": "Alice_Weidel",
@@ -399,7 +354,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5684,
-          "body_sha256": "1cc62f9b2ca960f46984a8b7f9232207850302950ca8395392c315cb0481a3e4"
+          "body_sha256": "8ff9b80eda2a2e01aef0dfc007603127cc9dd5f78d0e0c27f34320afbbe23772"
         }
       ]
     },
@@ -421,7 +376,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5487,
-          "body_sha256": "8ca2729dea70b03d0d53467015b3cd5a273049eb4ee8e6c43a7f484a29196c8c"
+          "body_sha256": "ee264c9ead2d5e9bbc125be10d4e776f4f7a44af2de3a349fce75789d03c8a7e"
         },
         {
           "handle": "XDevelopers",
@@ -435,8 +390,8 @@
           "html_items": 0,
           "status_links": 0,
           "usable": false,
-          "body_bytes": 5660,
-          "body_sha256": "34993f2e08e078e750407bd791bc1271c1d07bd0c3611445dfe33425bc5151df"
+          "body_bytes": 5681,
+          "body_sha256": "1d8d2709d1c1c08ea892e08626ff9330e4adc28f3d2d652ab9a28ce4d5604a91"
         },
         {
           "handle": "Alice_Weidel",
@@ -451,7 +406,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5487,
-          "body_sha256": "5c4dc4f413c37553781c19ad753b8dba71bfa48df345c0af2a6cc013707e9dd9"
+          "body_sha256": "45ecb700ff92448b090be2cdc84f541131faf405fe537bb7a87d4a850c211c90"
         },
         {
           "handle": "Alice_Weidel",
@@ -465,8 +420,8 @@
           "html_items": 0,
           "status_links": 0,
           "usable": false,
-          "body_bytes": 5663,
-          "body_sha256": "9b80b9b65fd95ac59d06ee547f2d43ee95b2efe0ef9372bb0b52df57c6eb7c7d"
+          "body_bytes": 5684,
+          "body_sha256": "e2977efb35409b47baca9de07bf34d2611b34562263e2c16dd797bb7f6b75d89"
         }
       ]
     },
@@ -488,7 +443,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5717,
-          "body_sha256": "4af266085c6c5fb789ddae09590e7e42e213c1449e1058904badc0254131d402"
+          "body_sha256": "96fc76216c0dda919355196a1c6926cc01852e94fe3548a34ea0d9d031e062cf"
         },
         {
           "handle": "XDevelopers",
@@ -503,7 +458,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5705,
-          "body_sha256": "64319661551e01494504c678cee923a5fb99744e5b6ba44ddefeccfad342922c"
+          "body_sha256": "afeaa4d7673c0ec67a0e7a92f8039bc2089a7f905c468c5b970453b5180f1997"
         },
         {
           "handle": "Alice_Weidel",
@@ -518,7 +473,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5741,
-          "body_sha256": "a5450d02a4bc48c2ef988f631bd0509a049fa6490232bdeea3fe1874401ac8e8"
+          "body_sha256": "fd67cead0c31fd03da05d4a7a802e7602f606a447d5c181613df5c973860d91b"
         },
         {
           "handle": "Alice_Weidel",
@@ -533,7 +488,7 @@
           "status_links": 0,
           "usable": false,
           "body_bytes": 5708,
-          "body_sha256": "abe56ff00792b1f16fed9dca1932f910df716ded02f885dd85bb8b11a9c38516"
+          "body_sha256": "340daa33de13d7261ded3be3d325e885c6305af729d3a1292dac1ad32a9a92a8"
         }
       ]
     },
