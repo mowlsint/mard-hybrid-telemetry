@@ -24944,5 +24944,138 @@
       "euvsdisinfo_case_candidates_90d": null,
       "disarm_aligned_tag_count": null
     }
+  },
+  {
+    "generated_at": "2026-10-25T01:03:37.251Z",
+    "scoring_version": "0.2.0",
+    "configuration_hash": "9d093ed13954c678e61465ef66172d5d3bcae06ef1235ffb74c9fb135fd92124",
+    "hat_score": 63,
+    "level": "high",
+    "confidence": "low",
+    "trend": "unknown",
+    "data_quality": {
+      "state": "valid",
+      "cyber_score_valid": true,
+      "narrative_score_valid": false,
+      "missing_score_parts": [],
+      "threatfox_baseline_limited": true
+    },
+    "source_health": [
+      {
+        "source": "cisa_kev",
+        "status": "ok",
+        "count": 1756,
+        "hash": "97a6e54bc74c651ab3c55657191db9adec6c63b05ca54e4205327cfd97a8fb70"
+      },
+      {
+        "source": "first_epss_top",
+        "status": "ok",
+        "count": 250,
+        "hash": "b21e315fdff31b7fcb945a1462a2e02132e27cc39416b8083418a739d5354381"
+      },
+      {
+        "source": "first_epss_kev_enrichment",
+        "status": "ok",
+        "count": 30,
+        "coverage_ratio": 1
+      },
+      {
+        "source": "threatfox_optional",
+        "status": "partial",
+        "recent_api_status": "ok",
+        "count": 1595,
+        "count_7d": 11723,
+        "botnet_cc_count": 4404,
+        "historical_export_status": "error",
+        "historical_export_count": 0,
+        "historical_export_format": null,
+        "hash_1d": "c142b8dcf759e27666e87ce54f9d65f5249101cc242ac7d52a622dcc5217f919",
+        "hash_7d": "0b7eb7b9ef0f46a0953a178168692c3f71110b3c7b3165f783eba43c1d776958",
+        "export_hash": null,
+        "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
+      },
+      {
+        "source": "gdelt_fimi",
+        "status": "error",
+        "count": 0,
+        "raw_count": 0,
+        "core_count": 0,
+        "global_spillover_count": 0,
+        "rejected_count": 0,
+        "weighted_count": 0,
+        "queries": 3,
+        "ok_queries": 0,
+        "failed_queries": 3,
+        "errors": [
+          "gdelt_fimi_1: request failed (TypeError)",
+          "gdelt_fimi_2: request failed (TypeError)",
+          "gdelt_fimi_3: HTTP 429"
+        ]
+      },
+      {
+        "source": "euvsdisinfo_case_watch",
+        "status": "error",
+        "count": 0,
+        "queries": 2,
+        "ok_queries": 0,
+        "failed_queries": 2,
+        "method": "gdelt_domain_restricted_artlist",
+        "errors": [
+          "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+          "euvsdisinfo_case_watch_2: HTTP 429"
+        ]
+      },
+      {
+        "source": "disarm_aligned_taxonomy",
+        "status": "partial",
+        "derived": true,
+        "independent_evidence": false,
+        "count": 0,
+        "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
+        "applied_to_articles": 0
+      }
+    ],
+    "metric_validity": {
+      "kev_recent_7d": "valid",
+      "kev_recent_30d": "valid",
+      "epss_hot_global_count": "valid",
+      "epss_mean_recent_kev": "valid",
+      "threatfox_ioc_count_1d": "valid",
+      "threatfox_ioc_count_36h": "valid",
+      "threatfox_botnet_c2_count_1d": "valid",
+      "threatfox_botnet_c2_count_7d": "valid",
+      "threatfox_botnet_c2_36h": "valid",
+      "threatfox_ioc_current_percentile": "unavailable",
+      "threatfox_botnet_c2_36h_percentile": "unavailable",
+      "fimi_lite_score": "unavailable",
+      "gdelt_unique_articles_36h": "unavailable",
+      "gdelt_mard_eu_weighted_articles_36h": "unavailable",
+      "gdelt_core_mard_eu_articles_36h": "unavailable",
+      "gdelt_global_spillover_articles_36h": "unavailable",
+      "euvsdisinfo_case_candidates_90d": "unavailable",
+      "disarm_aligned_tag_count": "unavailable"
+    },
+    "bot_activity_state": "UNRATED",
+    "disinformation_alert_level": null,
+    "metrics": {
+      "kev_recent_7d": 8,
+      "kev_recent_30d": 30,
+      "epss_hot_global_count": 250,
+      "epss_mean_recent_kev": 0.1443,
+      "threatfox_ioc_count_1d": 1595,
+      "threatfox_ioc_count_36h": 2166,
+      "threatfox_botnet_c2_count_1d": 392,
+      "threatfox_botnet_c2_count_7d": 4404,
+      "threatfox_botnet_c2_36h": 511,
+      "threatfox_ioc_current_percentile": null,
+      "threatfox_botnet_c2_36h_percentile": null,
+      "fimi_lite_score": null,
+      "gdelt_unique_articles_36h": null,
+      "gdelt_mard_eu_weighted_articles_36h": null,
+      "gdelt_core_mard_eu_articles_36h": null,
+      "gdelt_global_spillover_articles_36h": null,
+      "euvsdisinfo_case_candidates_90d": null,
+      "disarm_aligned_tag_count": null
+    }
   }
 ]

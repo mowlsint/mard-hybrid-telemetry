@@ -14,21 +14,21 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 33,
+    "count": 30,
     "coverage_ratio": 1
   },
   {
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1270,
-    "count_7d": 11536,
-    "botnet_cc_count": 4446,
+    "count": 1595,
+    "count_7d": 11723,
+    "botnet_cc_count": 4404,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "39e606f54b85229327af46a6ba0f807d47a257ffac318074babb05173d12c558",
-    "hash_7d": "ad167ac908c35ed8a9a17a4551d2428280688dcec8dc98b8a2d8141bfd92ea50",
+    "hash_1d": "c142b8dcf759e27666e87ce54f9d65f5249101cc242ac7d52a622dcc5217f919",
+    "hash_7d": "0b7eb7b9ef0f46a0953a178168692c3f71110b3c7b3165f783eba43c1d776958",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -47,7 +47,7 @@
     "errors": [
       "gdelt_fimi_1: request failed (TypeError)",
       "gdelt_fimi_2: request failed (TypeError)",
-      "gdelt_fimi_3: request failed (TypeError)"
+      "gdelt_fimi_3: HTTP 429"
     ]
   },
   {
@@ -59,7 +59,7 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
+      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
       "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
