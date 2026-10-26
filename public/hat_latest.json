@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-10-26T01:02:56.528Z",
+  "generated_at": "2026-10-26T06:58:13.591Z",
   "window_days": 30,
   "hat_score": 72,
   "level": "high",
@@ -26,7 +26,7 @@
   "trend": "unknown",
   "baseline": {
     "status": "warming_up",
-    "points": 12,
+    "points": 13,
     "minimum_days": 14,
     "mean_hat_score": null,
     "delta_from_mean": null
@@ -40,7 +40,7 @@
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 58.333333333333336
+    "source_coverage": 66.66666666666666
   },
   "bot_activity_state": {
     "schema": "mard-hat-c2-state-v2",
@@ -55,27 +55,27 @@
       "botnet_c2_current_percentile": null,
       "ioc_36h_percentile": null,
       "botnet_c2_36h_percentile": null,
-      "ioc_36h_count": 6880,
-      "botnet_c2_36h_count": 2100,
+      "ioc_36h_count": 6774,
+      "botnet_c2_36h_count": 2168,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "unavailable",
-          "days": 12,
+          "days": 13,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 12,
+          "days": 13,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "unavailable",
-          "days": 12,
+          "days": 13,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "unavailable",
-          "days": 12,
+          "days": 13,
           "window_hours": 36
         }
       }
@@ -283,90 +283,90 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 5964,
-      "ioc_count_7d": 16080,
-      "botnet_c2_count_1d": 2012,
-      "botnet_c2_count_7d": 5720,
+      "ioc_count_1d": 5885,
+      "ioc_count_7d": 16178,
+      "botnet_c2_count_1d": 2060,
+      "botnet_c2_count_7d": 5660,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 2360
+          "count": 2442
         },
         {
           "name": "botnet_cc",
-          "count": 2012
+          "count": 2060
         },
         {
           "name": "payload_delivery",
-          "count": 1592
+          "count": 1383
         }
       ],
       "malware_families_1d": [
         {
           "name": "VShell",
-          "count": 1804
+          "count": 1797
         },
         {
           "name": "Unknown malware",
-          "count": 1400
+          "count": 1466
         },
         {
           "name": "IClickFix",
-          "count": 738
+          "count": 724
         },
         {
           "name": "Mirai",
-          "count": 369
-        },
-        {
-          "name": "ClearFake",
-          "count": 286
+          "count": 343
         },
         {
           "name": "AMOS",
-          "count": 275
+          "count": 292
         },
         {
           "name": "Cobalt Strike",
-          "count": 208
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 159
+          "count": 199
         },
         {
           "name": "SalatStealer",
-          "count": 129
+          "count": 195
+        },
+        {
+          "name": "Unknown Loader",
+          "count": 158
+        },
+        {
+          "name": "ClearFake",
+          "count": 125
         },
         {
           "name": "Sliver",
-          "count": 110
+          "count": 115
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 1665
+          "count": 1572
         },
         {
           "name": "Unknown malware",
-          "count": 1433
+          "count": 1470
         },
         {
           "name": "VShell",
-          "count": 362
+          "count": 363
         },
         {
           "name": "Mirai",
-          "count": 361
+          "count": 362
         },
         {
           "name": "Cobalt Strike",
-          "count": 336
+          "count": 345
         },
         {
           "name": "Remus",
-          "count": 249
+          "count": 246
         },
         {
           "name": "IClickFix",
@@ -374,15 +374,15 @@
         },
         {
           "name": "Sliver",
-          "count": 146
+          "count": 154
         },
         {
           "name": "PureRAT",
-          "count": 112
+          "count": 117
         },
         {
           "name": "Remcos",
-          "count": 85
+          "count": 82
         }
       ],
       "historical": {
@@ -394,8 +394,8 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 6880,
-        "current_36h_botnet_c2_count": 2100,
+        "current_36h_ioc_count": 6774,
+        "current_36h_botnet_c2_count": 2168,
         "current_ioc_percentile": null,
         "current_botnet_c2_percentile": null,
         "trailing_36h_ioc_percentile": null,
@@ -403,22 +403,22 @@
         "percentile_baselines": {
           "current_ioc_percentile": {
             "source": "unavailable",
-            "days": 12,
+            "days": 13,
             "window_hours": 24
           },
           "current_botnet_c2_percentile": {
             "source": "unavailable",
-            "days": 12,
+            "days": 13,
             "window_hours": 24
           },
           "trailing_36h_ioc_percentile": {
             "source": "unavailable",
-            "days": 12,
+            "days": 13,
             "window_hours": 36
           },
           "trailing_36h_botnet_c2_percentile": {
             "source": "unavailable",
-            "days": 12,
+            "days": 13,
             "window_hours": 36
           }
         }
@@ -426,23 +426,23 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 5964,
-      "botnet_cc_count": 5720,
+      "threatfox_count": 5885,
+      "botnet_cc_count": 5660,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "unavailable",
+      "status": "partial",
       "score": null,
-      "observed_partial_score": null,
+      "observed_partial_score": 0,
       "data_quality": {
-        "state": "unavailable",
+        "state": "partial",
         "score_valid": false,
-        "successful_queries": 0,
+        "successful_queries": 1,
         "expected_queries": 5,
-        "coverage_ratio": 0,
+        "coverage_ratio": 0.2,
         "sources": {
-          "gdelt_fimi": "error",
+          "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
         },
         "sample_limited": false
@@ -452,7 +452,7 @@
       "confidence": "low",
       "mode": "maritime_narrative_pressure; not a disinformation determination",
       "source_state": {
-        "external_ok": false,
+        "external_ok": true,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -465,25 +465,122 @@
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 0,
+        "raw_unique_articles": 16,
         "accepted_articles": 0,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 0,
+        "rejected_as_noise_or_broad_context": 16,
         "weighted_article_count": 0,
-        "rejected_samples": []
+        "rejected_samples": [
+          {
+            "title": "Hofreiter will Bundeswehr - Einsatz gegen Russlands Schattenflotte",
+            "domain": "finanznachrichten.de",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "schattenflotte"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "В Москве заявили , что Запад уловил сигнал об ответе на задержания судов",
+            "domain": "news.mail.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "судов"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Один из претендентов на золото РПЛ - столичное Динамо сенсационно проиграло в Самаре",
+            "domain": "rg.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Может ли Дональд Трамп вернуть российский газ в Европу ?",
+            "domain": "rus.delfi.lv",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "российский"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "中國熱議 》 現實版 《 周處除三害 》！ 傳銷頭目出獄變 「 國學大師 」 開書院打學員 陸UP主11天扳倒 、 影片播放破235萬 | 江勳紘 | 風生活",
+            "domain": "storm.mg",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Iran prepares to plunge the planet into the 19th century with a 37T dollar weapon",
+            "domain": "bankingnews.gr",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": [
+                "iran"
+              ]
+            }
+          },
+          {
+            "title": "Чи може Дональд Трамп повернути російський газ до Європи ?",
+            "domain": "bbc.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "The Central Role of Energy in the Geopolitics of Late Capitalism",
+            "domain": "countercurrents.org",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          }
+        ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
+        "article_count": 16,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 0,
+        "observed_articles": 16,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 0,
+        "rejected_articles": 16,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [],
@@ -507,20 +604,19 @@
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
+          "status": "partial",
           "count": 0,
-          "raw_count": 0,
+          "raw_count": 16,
           "core_count": 0,
           "global_spillover_count": 0,
-          "rejected_count": 0,
+          "rejected_count": 16,
           "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 0,
-          "failed_queries": 3,
+          "ok_queries": 1,
+          "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
-            "gdelt_fimi_2: request failed (TypeError)",
-            "gdelt_fimi_3: request failed (TypeError)"
+            "gdelt_fimi_2: HTTP 429",
+            "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
@@ -558,13 +654,13 @@
     "30 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.3284",
-    "5964 ThreatFox IOCs in the last 1 day",
-    "5720 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "5885 ThreatFox IOCs in the last 1 day",
+    "5660 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: UNRATED — Baseline unavailable",
     "Maritime narrative alert: not assessable (not_assessable)",
     "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run",
-    "Baseline warming up: 12/14 prior points available"
+    "Baseline warming up: 13/14 prior points available"
   ],
   "source_health": [
     {
@@ -589,33 +685,32 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 5964,
-      "count_7d": 16080,
-      "botnet_cc_count": 5720,
+      "count": 5885,
+      "count_7d": 16178,
+      "botnet_cc_count": 5660,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "fe0c98af1a72f003b774452979f30856bb09c5fff90874d5903ac7f33107508a",
-      "hash_7d": "43a139e72c52a0c56dcaea99e29b949cb76179ad6e902035f24a9a76153d4fcd",
+      "hash_1d": "08fa2361ad6d3d35b913bb6ec217b76958f7e61d112b5512fa835a4d2fc9f8ac",
+      "hash_7d": "472103b329beb6f547e9b004bd9e4d522d34c5b9f32de1f9cab2d1273ab35f58",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
+      "status": "partial",
       "count": 0,
-      "raw_count": 0,
+      "raw_count": 16,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 0,
+      "rejected_count": 16,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 0,
-      "failed_queries": 3,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)",
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -646,7 +741,7 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "partial",
-    "gdelt_fimi": "error",
+    "gdelt_fimi": "partial",
     "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "partial"
   },
@@ -675,14 +770,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "2100 botnet/C2-like indicators in the current 36h window",
+      "2168 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261026T010256_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261026T065813_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
