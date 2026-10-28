@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1758,
-    "hash": "653c72ea869cbca7a9198b5e17b97bef516b67494e89bb919a9639d4eedbfa13"
+    "count": 1760,
+    "hash": "2d9931c086e42d05425c2da924299c8d9b7ff836de373f981668b7ef5f6f0fd7"
   },
   {
     "source": "first_epss_top",
@@ -14,21 +14,21 @@
   {
     "source": "first_epss_kev_enrichment",
     "status": "ok",
-    "count": 30,
+    "count": 32,
     "coverage_ratio": 1
   },
   {
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1714,
-    "count_7d": 16146,
-    "botnet_cc_count": 5545,
+    "count": 1724,
+    "count_7d": 16251,
+    "botnet_cc_count": 5487,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "75c9d3525511a91495da17b6f5f8aae117f3a4d054e9fbf8e3bb920b23bb3ae1",
-    "hash_7d": "17ec03eacbd8a3ec9fb44d11631982c85e1edea3aa508da159573c526445365f",
+    "hash_1d": "012b3c2c8400ca9eaf3001d48f55b4ae5d4ed7541e788f10cbb4c8bfbd8cf202",
+    "hash_7d": "bd076d3242d3dcf80c08d24f9d9f3fd5dcd5ed8f02ccdf9a9160d6347934f616",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -36,16 +36,17 @@
     "source": "gdelt_fimi",
     "status": "partial",
     "count": 0,
-    "raw_count": 26,
+    "raw_count": 6,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 26,
+    "rejected_count": 6,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 2,
-    "failed_queries": 1,
+    "ok_queries": 1,
+    "failed_queries": 2,
     "errors": [
-      "gdelt_fimi_1: HTTP 429"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: HTTP 429"
     ]
   },
   {
@@ -57,8 +58,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_1: request failed (TypeError)",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
