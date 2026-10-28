@@ -21,31 +21,33 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1633,
-    "count_7d": 16234,
-    "botnet_cc_count": 5426,
+    "count": 1707,
+    "count_7d": 15591,
+    "botnet_cc_count": 5399,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "1bb5af71a42b7ab0ffbd709e3eb8d3f9c800d4cf043b575b581472eb047e4e06",
-    "hash_7d": "0d22ce1bef6ba6525ee3fee32bb245f25f0625538b5b3b255bba6156437e78c5",
+    "hash_1d": "731c55307f657131d12901aeafdc5f7f004565682adfd3f4b695f9c344d8335a",
+    "hash_7d": "4084e2179bfcb22de1c8f6bef729a230e279fd0c390211382bd4c51f8755b48d",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
+    "status": "error",
     "count": 0,
-    "raw_count": 7,
+    "raw_count": 0,
     "core_count": 0,
     "global_spillover_count": 0,
-    "rejected_count": 7,
+    "rejected_count": 0,
     "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 2,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429"
+      "gdelt_fimi_1: request failed (TypeError)",
+      "gdelt_fimi_2: request failed (TypeError)",
+      "gdelt_fimi_3: request failed (TypeError)"
     ]
   },
   {
@@ -57,7 +59,7 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+      "euvsdisinfo_case_watch_1: HTTP 429",
       "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
