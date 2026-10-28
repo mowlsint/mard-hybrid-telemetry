@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-10-28T12:30:47.912Z",
+  "generated_at": "2026-10-28T18:27:02.416Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -27,15 +27,15 @@
       "status": "active",
       "points": 15,
       "minimum_days": 14,
-      "mean_hat_score": 65,
-      "delta_from_mean": -12
+      "mean_hat_score": 65.1,
+      "delta_from_mean": -12.1
     },
     "score_parts": {
       "kev_recent_7d": 75,
       "kev_recent_30d": 100,
-      "kev_epss_mean": 35,
-      "threatfox_ioc_current": 33,
-      "threatfox_botnet_c2_36h": 27
+      "kev_epss_mean": 36,
+      "threatfox_ioc_current": 40,
+      "threatfox_botnet_c2_36h": 20
     },
     "context_parts": {
       "epss_hot_global": 100,
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 33,
+      "ioc_current_percentile": 40,
       "botnet_c2_current_percentile": 27,
-      "ioc_36h_percentile": 33,
-      "botnet_c2_36h_percentile": 27,
-      "ioc_36h_count": 2714,
-      "botnet_c2_36h_count": 948,
+      "ioc_36h_percentile": 27,
+      "botnet_c2_36h_percentile": 20,
+      "ioc_36h_count": 2510,
+      "botnet_c2_36h_count": 924,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -93,7 +93,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "948 botnet/C2-like indicators in the current 36h window",
+      "924 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -160,94 +160,94 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1707,
-    "ioc_count_7d": 15591,
-    "botnet_c2_count_1d": 631,
-    "botnet_c2_count_7d": 5399,
+    "ioc_count_1d": 1752,
+    "ioc_count_7d": 15572,
+    "botnet_c2_count_1d": 618,
+    "botnet_c2_count_7d": 5429,
     "threat_types_1d": [
       {
         "name": "payload",
-        "count": 944
+        "count": 889
       },
       {
         "name": "botnet_cc",
-        "count": 543
+        "count": 582
       },
       {
         "name": "payload_delivery",
-        "count": 220
+        "count": 281
       }
     ],
     "malware_families_1d": [
       {
         "name": "Vidar",
-        "count": 330
+        "count": 333
       },
       {
         "name": "AMOS",
-        "count": 277
-      },
-      {
-        "name": "Unknown malware",
-        "count": 210
+        "count": 283
       },
       {
         "name": "Mirai",
-        "count": 205
+        "count": 203
+      },
+      {
+        "name": "Unknown malware",
+        "count": 156
       },
       {
         "name": "SalatStealer",
-        "count": 141
+        "count": 140
       },
       {
         "name": "ClearFake",
-        "count": 50
+        "count": 81
+      },
+      {
+        "name": "Stealc",
+        "count": 58
       },
       {
         "name": "StrelaStealer",
-        "count": 50
+        "count": 52
       },
       {
         "name": "Cobalt Strike",
-        "count": 48
+        "count": 49
       },
       {
-        "name": "NetWire RC",
-        "count": 30
-      },
-      {
-        "name": "php.shin_webshell",
-        "count": 28
+        "name": "Unknown Loader",
+        "count": 41
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Vidar",
-        "count": 1513
+        "count": 1525
       },
       {
         "name": "Unknown malware",
-        "count": 1476
+        "count": 1474
       },
       {
         "name": "Mirai",
-        "count": 449
+        "count": 443
       },
       {
         "name": "Cobalt Strike",
-        "count": 405
+        "count": 412
       },
       {
         "name": "VShell",
-        "count": 300
+        "count": 280
       },
       {
         "name": "IClickFix",
-        "count": 182
+        "count": 175
       },
       {
         "name": "Sliver",
-        "count": 148
+        "count": 146
       },
       {
         "name": "PureRAT",
@@ -259,7 +259,7 @@
       },
       {
         "name": "WARDENStealer",
-        "count": 57
+        "count": 58
       }
     ],
     "historical": {
@@ -271,12 +271,12 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2714,
-      "current_36h_botnet_c2_count": 948,
-      "current_ioc_percentile": 33,
+      "current_36h_ioc_count": 2510,
+      "current_36h_botnet_c2_count": 924,
+      "current_ioc_percentile": 40,
       "current_botnet_c2_percentile": 27,
-      "trailing_36h_ioc_percentile": 33,
-      "trailing_36h_botnet_c2_percentile": 27,
+      "trailing_36h_ioc_percentile": 27,
+      "trailing_36h_botnet_c2_percentile": 20,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -305,7 +305,7 @@
     "total_kev": 1760,
     "recent_7d": 6,
     "recent_30d": 32,
-    "epss_mean_recent_kev": 0.3452,
+    "epss_mean_recent_kev": 0.3643,
     "epss_enriched_count": 32,
     "epss_enrichment_coverage": 1,
     "top_recent_kev_by_epss": [
@@ -358,6 +358,14 @@
         "epss": 0.96525
       },
       {
+        "cve": "CVE-2026-111497",
+        "vendor_project": "Google",
+        "product": "Brotli",
+        "vulnerability_name": "Google Brotli Unchecked Return Value Vulnerability",
+        "date_added": "2026-10-27",
+        "epss": 0.87988
+      },
+      {
         "cve": "CVE-2026-104935",
         "vendor_project": "Ivanti",
         "product": "Connect Secure",
@@ -382,12 +390,12 @@
         "epss": 0.7947
       },
       {
-        "cve": "CVE-2026-111497",
-        "vendor_project": "Google",
-        "product": "Brotli",
-        "vulnerability_name": "Google Brotli Unchecked Return Value Vulnerability",
+        "cve": "CVE-2026-48356",
+        "vendor_project": "Adobe",
+        "product": "Commerce and Magento",
+        "vulnerability_name": "Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability",
         "date_added": "2026-10-27",
-        "epss": 0.55483
+        "epss": 0.59078
       },
       {
         "cve": "CVE-2026-76504",
@@ -396,14 +404,6 @@
         "vulnerability_name": "Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability",
         "date_added": "2026-09-30",
         "epss": 0.38928
-      },
-      {
-        "cve": "CVE-2026-48356",
-        "vendor_project": "Adobe",
-        "product": "Commerce and Magento",
-        "vulnerability_name": "Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability",
-        "date_added": "2026-10-27",
-        "epss": 0.30582
       }
     ]
   },
@@ -418,7 +418,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "dd34fb518825dbb5e8fa851b351308cd34584dcd05f3b777485a28b564e7856f"
+      "hash": "d74802c44e9058218dbafd27b918203ff69e0422fb76d3754a8cdc880e9f0b98"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -430,14 +430,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1707,
-      "count_7d": 15591,
-      "botnet_cc_count": 5399,
+      "count": 1752,
+      "count_7d": 15572,
+      "botnet_cc_count": 5429,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "731c55307f657131d12901aeafdc5f7f004565682adfd3f4b695f9c344d8335a",
-      "hash_7d": "4084e2179bfcb22de1c8f6bef729a230e279fd0c390211382bd4c51f8755b48d",
+      "hash_1d": "60034a8ae5d704329e40a9eb306c12b6f1aa0752db6f672c08c3ffda0a1908ad",
+      "hash_7d": "31a36e54ba1e7d17cb38813ac0bf09be8513defa09c6103bacfc7bf707e5b0d9",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -454,9 +454,9 @@
       "ok_queries": 0,
       "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)",
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_1: missing ArticleList articles array",
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -468,7 +468,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -486,9 +486,9 @@
     "6 CISA KEV additions in the last 7 days",
     "32 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.3452",
-    "1707 ThreatFox IOCs in the last 1 day",
-    "5399 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.3643",
+    "1752 ThreatFox IOCs in the last 1 day",
+    "5429 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -502,6 +502,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261028T123047_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261028T182702_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
