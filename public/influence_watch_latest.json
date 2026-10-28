@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-27T18:51:41.966Z",
+  "generated_at": "2026-10-28T01:00:24.827Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low",
   "data_quality": {
     "state": "best_effort",
-    "successful_sources": 121,
+    "successful_sources": 113,
     "expected_sources": 268,
-    "coverage_ratio": 0.45149253731343286,
+    "coverage_ratio": 0.4216417910447761,
     "platforms": {
       "website": {
         "expected_sources": 131,
-        "successful_sources": 92,
+        "successful_sources": 93,
         "state": "partial_or_best_effort"
       },
       "instagram": {
@@ -32,8 +32,8 @@
       },
       "youtube": {
         "expected_sources": 9,
-        "successful_sources": 9,
-        "state": "partial_or_best_effort"
+        "successful_sources": 0,
+        "state": "unavailable"
       },
       "pattern": {
         "expected_sources": 9,
@@ -70,28 +70,28 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_bluesky_youtube_and_best_effort_x",
   "history": {
-    "total_items": 22612,
-    "current_run_items": 1374,
-    "items_24h": 1151,
-    "items_7d": 8934,
-    "items_28d": 20463,
+    "total_items": 22935,
+    "current_run_items": 1239,
+    "items_24h": 1207,
+    "items_7d": 8953,
+    "items_28d": 20754,
     "timestamp_basis": "published_at_only; website snapshots retained as context",
-    "undated_observations": 1881,
+    "undated_observations": 1912,
     "oldest_item_at": "2026-07-31T09:03:45.000Z",
-    "newest_item_at": "2026-10-27T18:51:04.447Z",
+    "newest_item_at": "2026-10-28T00:59:52.982Z",
     "retained_days": 90,
     "max_items": 100000,
     "max_bytes": 64000000,
-    "actual_bytes": 18215538
+    "actual_bytes": 18487268
   },
   "activity": {
-    "active_actors_7d": 74,
+    "active_actors_7d": 73,
     "provisional_10_per_week_actors": 53,
     "final_selection_decisions": 0
   },
   "clusters": {
-    "total": 17,
-    "elevated": 10,
+    "total": 18,
+    "elevated": 11,
     "strong": 1,
     "top": [
       {
@@ -433,6 +433,46 @@
         "restricted_item_count": 0
       },
       {
+        "cluster_id": "e99e205dd45ca21d5cda3401",
+        "assessment": {
+          "label": "elevated_amplification_pattern",
+          "coordination_indicator_score": 65,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 2,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-10-27T18:23:46.000Z",
+          "end_at": "2026-10-27T19:32:35.000Z",
+          "span_minutes": 69
+        },
+        "signals": [
+          "similar_text",
+          "shared_referenced_domain",
+          "within_90_minutes"
+        ],
+        "platforms": {
+          "telegram": 2
+        },
+        "countries": {
+          "IR": 1,
+          "RU": 1
+        },
+        "actor_classes": {
+          "official_state_source": 1,
+          "state_media": 1
+        },
+        "shared_domain_count": 1,
+        "restricted_item_count": 0
+      },
+      {
         "cluster_id": "b3a2d52fbc28697ff8efa5c3",
         "assessment": {
           "label": "elevated_amplification_pattern",
@@ -588,7 +628,7 @@
         "restricted_item_count": 0
       },
       {
-        "cluster_id": "46a0f6ddb38dbf97c112ca14",
+        "cluster_id": "7b34b5f520915750e3d5f8a6",
         "assessment": {
           "label": "possible_amplification_pattern",
           "coordination_indicator_score": 55,
@@ -601,18 +641,18 @@
           "actors": 5,
           "endpoints": 5,
           "unique_content_hashes": 1,
-          "pair_edges": 250
+          "pair_edges": 256
         },
         "time": {
-          "start_at": "2026-10-24T20:31:59.000Z",
-          "end_at": "2026-10-27T17:22:23.000Z",
-          "span_minutes": 4130
+          "start_at": "2026-10-25T05:00:27.000Z",
+          "end_at": "2026-10-27T22:55:01.000Z",
+          "span_minutes": 3955
         },
         "signals": [
           "exact_content_hash",
+          "within_6_hours",
           "within_15_minutes",
-          "within_90_minutes",
-          "within_6_hours"
+          "within_90_minutes"
         ],
         "platforms": {
           "telegram": 35
