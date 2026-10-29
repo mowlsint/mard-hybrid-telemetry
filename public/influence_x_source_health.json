@@ -1,13 +1,32 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-29T01:01:14.021Z",
-  "state": "unavailable",
-  "configured_instances": 0,
-  "preflight_unavailable": true,
-  "skip_reason": "no_usable_public_instance_from_github_runner",
-  "status_counts": {},
-  "collection_mode_counts": {},
-  "instance_statistics": [],
-  "failures_by_country": {},
+  "generated_at": "2026-10-29T06:57:04.389Z",
+  "state": "partial",
+  "configured_instances": 1,
+  "preflight_unavailable": false,
+  "skip_reason": "",
+  "status_counts": {
+    "error": 40,
+    "ok": 23
+  },
+  "collection_mode_counts": {
+    "rss": 23
+  },
+  "instance_statistics": [
+    {
+      "instance_hash": "9b145327d6a5e9ef",
+      "endpoint_attempts": 63,
+      "successful_methods": 23,
+      "errors": 80,
+      "blocked": 0,
+      "empty": 0
+    }
+  ],
+  "failures_by_country": {
+    "DE": 32,
+    "CN": 5,
+    "IR": 2,
+    "YE": 1
+  },
   "failure_note": "Failures can reflect instance outages, rate limits, bot challenges, account availability or incomplete Nitter timelines."
 }
