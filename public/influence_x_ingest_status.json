@@ -1,29 +1,50 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-30T12:51:37.046Z",
+  "generated_at": "2026-10-30T18:54:16.202Z",
   "title": "MARD Influence & Narrative Watch — X/Nitter Ingest",
   "mode": "nitter_multi_instance_rss_html_fallback",
   "assessment_limit": "Best-effort public X collection through third-party Nitter instances. Missing posts or accounts are possible. No attribution, automation finding or HAT score integration.",
-  "collection_notice": "No configured public Nitter instance was usable from the GitHub runner. Per-account X collection was skipped and prior X metadata, if any, was retained.",
+  "collection_notice": "At least one public Nitter instance passed preflight; per-account collection was attempted.",
   "counts": {
-    "configured_instances": 0,
+    "configured_instances": 1,
     "eligible_endpoints": 63,
-    "checked_endpoints": 0,
-    "successful_endpoints": 0,
-    "failed_endpoints": 0,
-    "skipped_endpoints": 63,
-    "collected_x_items": 0,
-    "merged_current_items": 1383
+    "checked_endpoints": 63,
+    "successful_endpoints": 16,
+    "failed_endpoints": 47,
+    "skipped_endpoints": 0,
+    "collected_x_items": 317,
+    "merged_current_items": 1736
   },
   "coverage": {
-    "countries": {},
-    "actor_classes": {},
-    "collection_modes": {}
+    "countries": {
+      "DE": 47,
+      "CN": 7,
+      "IR": 3,
+      "RU": 3,
+      "BY": 2,
+      "YE": 1
+    },
+    "actor_classes": {
+      "political_actor": 28,
+      "party_channel": 8,
+      "official_state_source": 7,
+      "state_media": 7,
+      "bridge_media": 3,
+      "government_source": 3,
+      "independent_media": 3,
+      "armed_group_official_source": 1,
+      "high_reach_political_influencer": 1,
+      "party_aligned_media": 1,
+      "state_aligned_media": 1
+    },
+    "collection_modes": {
+      "rss": 16
+    }
   },
   "source_health": {
-    "state": "unavailable",
-    "success_ratio": 0,
+    "state": "partial",
+    "success_ratio": 0.254,
     "completeness_guaranteed": false,
-    "skip_reason": "no_usable_public_instance_from_github_runner"
+    "skip_reason": ""
   }
 }
