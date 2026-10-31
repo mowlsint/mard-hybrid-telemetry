@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-31T12:51:13.286Z",
+  "generated_at": "2026-10-31T18:51:16.230Z",
   "mode": "hash_simhash_domain_time_clustering",
   "assessment_limit": "Clusters are analytical indicators of similar or synchronized public content. They are not attribution findings or bot determinations.",
   "parameters": {
@@ -9,15 +9,15 @@
     "maximum_internal_clusters": 400
   },
   "counts": {
-    "analysed_items": 3784,
-    "clusters": 21,
-    "elevated_clusters": 8,
+    "analysed_items": 3727,
+    "clusters": 19,
+    "elevated_clusters": 7,
     "strong_clusters": 1
   },
   "clusters": [
     {
       "cluster_id": "8feb0274777b81034406f383",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -72,7 +72,7 @@
     },
     {
       "cluster_id": "8eda9dda2ca712f7f9211fc9",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 77,
@@ -122,7 +122,7 @@
     },
     {
       "cluster_id": "cd78fc3a4f89284415be5e3f",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 72,
@@ -175,7 +175,7 @@
     },
     {
       "cluster_id": "ed58c548624ad731d782aa75",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -229,7 +229,7 @@
     },
     {
       "cluster_id": "5126fc8edbf31552cd9f2e9f",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -285,7 +285,7 @@
     },
     {
       "cluster_id": "609a589eea0af6dd465c3bce",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -340,7 +340,7 @@
     },
     {
       "cluster_id": "518a3cef8f0881f26b034210",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -392,125 +392,8 @@
       "restricted_item_count": 0
     },
     {
-      "cluster_id": "658bca7da89209e18290b946",
-      "generated_at": "2026-10-31T12:51:13.244Z",
-      "assessment": {
-        "label": "elevated_amplification_pattern",
-        "coordination_indicator_score": 69,
-        "confidence": "low_medium",
-        "attribution_grade": false,
-        "automation_finding": false
-      },
-      "counts": {
-        "items": 2,
-        "actors": 2,
-        "endpoints": 2,
-        "unique_content_hashes": 1,
-        "pair_edges": 1
-      },
-      "time": {
-        "start_at": "2026-10-28T17:05:00.000Z",
-        "end_at": "2026-10-29T05:59:41.000Z",
-        "span_minutes": 775
-      },
-      "signals": [
-        "exact_content_hash",
-        "shared_referenced_domain"
-      ],
-      "actor_ids": [
-        "ru_two_majors",
-        "ru_rybar"
-      ],
-      "endpoint_ids": [
-        "ru_two_majors__telegram__dva_majors",
-        "ru_rybar__telegram__rybar"
-      ],
-      "item_ids": [
-        "28adeed3193a94d0f65e6458383e2665",
-        "780c5db2c3f333f728df2153a078c46d"
-      ],
-      "platforms": {
-        "telegram": 2
-      },
-      "countries": {
-        "RU": 2
-      },
-      "actor_classes": {
-        "milblogger": 2
-      },
-      "shared_referenced_domains": {
-        "max.ru": 1,
-        "qr.nspk.ru": 1,
-        "t.me": 1
-      },
-      "restricted_item_count": 0
-    },
-    {
-      "cluster_id": "d6792329e9e1d749180f5b4f",
-      "generated_at": "2026-10-31T12:51:13.244Z",
-      "assessment": {
-        "label": "possible_amplification_pattern",
-        "coordination_indicator_score": 63,
-        "confidence": "low",
-        "attribution_grade": false,
-        "automation_finding": false
-      },
-      "counts": {
-        "items": 4,
-        "actors": 3,
-        "endpoints": 3,
-        "unique_content_hashes": 4,
-        "pair_edges": 3
-      },
-      "time": {
-        "start_at": "2026-10-28T15:56:36.000Z",
-        "end_at": "2026-10-28T17:13:47.000Z",
-        "span_minutes": 77
-      },
-      "signals": [
-        "similar_text",
-        "within_90_minutes",
-        "shared_referenced_domain",
-        "weak_text_similarity",
-        "within_15_minutes"
-      ],
-      "actor_ids": [
-        "ru_southfront",
-        "ir_irna",
-        "ru_mfa"
-      ],
-      "endpoint_ids": [
-        "ru_southfront__website__southfront_press",
-        "ir_irna__telegram__irna_en",
-        "ru_mfa__telegram__mfarussia"
-      ],
-      "item_ids": [
-        "93d86344ca23809da0d3b479819a8140",
-        "1ee041dd57c38a566178687171f6f5ed",
-        "98757c2979ed1d1bd1f92c84a94cda9f",
-        "a30ca1f4dd55276a993abc49c1f98c2e"
-      ],
-      "platforms": {
-        "telegram": 3,
-        "website": 1
-      },
-      "countries": {
-        "IR": 2,
-        "RU": 2
-      },
-      "actor_classes": {
-        "state_media": 2,
-        "known_fimi_infrastructure": 1,
-        "official_state_source": 1
-      },
-      "shared_referenced_domains": {
-        "t.me": 2
-      },
-      "restricted_item_count": 0
-    },
-    {
       "cluster_id": "76aa1168b915e78b719bb7bf",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 61,
@@ -565,7 +448,7 @@
     },
     {
       "cluster_id": "bf246489b3503396b53f39a2",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 59,
@@ -616,7 +499,7 @@
     },
     {
       "cluster_id": "f31fcb4ea0341922300c9132",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -667,8 +550,59 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "c6ea7d4db3b564c2d9f8af12",
+      "generated_at": "2026-10-31T18:51:16.172Z",
+      "assessment": {
+        "label": "possible_amplification_pattern",
+        "coordination_indicator_score": 57,
+        "confidence": "low",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 2,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-10-31T14:29:02.000Z",
+        "end_at": "2026-10-31T14:53:01.000Z",
+        "span_minutes": 24
+      },
+      "signals": [
+        "near_duplicate_text",
+        "within_90_minutes"
+      ],
+      "actor_ids": [
+        "ru_colonelcassad",
+        "ru_mod"
+      ],
+      "endpoint_ids": [
+        "ru_colonelcassad__telegram__boris_rozhin",
+        "ru_mod__telegram__mod_russia"
+      ],
+      "item_ids": [
+        "4e99c4bbbf0d95755f0f4cf8249c9167",
+        "e3b8751380bd8098bb25b903acf6cd9a"
+      ],
+      "platforms": {
+        "telegram": 2
+      },
+      "countries": {
+        "RU": 2
+      },
+      "actor_classes": {
+        "milblogger": 1,
+        "official_state_source": 1
+      },
+      "shared_referenced_domains": {},
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "914ef3c6c6851de3f9e954bc",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -719,7 +653,7 @@
     },
     {
       "cluster_id": "facd7b9c2a26fa04074a4a7b",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -769,77 +703,26 @@
       "restricted_item_count": 0
     },
     {
-      "cluster_id": "5d2c192e547876337432ca46",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "cluster_id": "1787befd70346188f220526f",
+      "generated_at": "2026-10-31T18:51:16.172Z",
       "assessment": {
         "label": "possible_amplification_pattern",
-        "coordination_indicator_score": 57,
+        "coordination_indicator_score": 55,
         "confidence": "low",
         "attribution_grade": false,
         "automation_finding": false
       },
       "counts": {
-        "items": 2,
-        "actors": 2,
-        "endpoints": 2,
-        "unique_content_hashes": 2,
-        "pair_edges": 1
-      },
-      "time": {
-        "start_at": "2026-10-28T15:02:01.000Z",
-        "end_at": "2026-10-28T15:19:58.000Z",
-        "span_minutes": 18
-      },
-      "signals": [
-        "near_duplicate_text",
-        "within_90_minutes"
-      ],
-      "actor_ids": [
-        "ru_colonelcassad",
-        "ru_mod"
-      ],
-      "endpoint_ids": [
-        "ru_colonelcassad__telegram__boris_rozhin",
-        "ru_mod__telegram__mod_russia"
-      ],
-      "item_ids": [
-        "8f4b151401d76da1184fb63e26475c19",
-        "28c2a160791709a71a7212b717c987b1"
-      ],
-      "platforms": {
-        "telegram": 2
-      },
-      "countries": {
-        "RU": 2
-      },
-      "actor_classes": {
-        "milblogger": 1,
-        "official_state_source": 1
-      },
-      "shared_referenced_domains": {},
-      "restricted_item_count": 0
-    },
-    {
-      "cluster_id": "14d7c285fd5ac824b006bc92",
-      "generated_at": "2026-10-31T12:51:13.236Z",
-      "assessment": {
-        "label": "possible_amplification_pattern",
-        "coordination_indicator_score": 51,
-        "confidence": "low",
-        "attribution_grade": false,
-        "automation_finding": false
-      },
-      "counts": {
-        "items": 28,
-        "actors": 4,
-        "endpoints": 4,
+        "items": 31,
+        "actors": 5,
+        "endpoints": 5,
         "unique_content_hashes": 1,
-        "pair_edges": 164
+        "pair_edges": 182
       },
       "time": {
-        "start_at": "2026-10-28T13:36:23.000Z",
-        "end_at": "2026-10-31T08:51:29.000Z",
-        "span_minutes": 4035
+        "start_at": "2026-10-28T20:41:49.000Z",
+        "end_at": "2026-10-31T16:47:33.000Z",
+        "span_minutes": 4086
       },
       "signals": [
         "exact_content_hash",
@@ -848,18 +731,25 @@
         "within_90_minutes"
       ],
       "actor_ids": [
+        "de_freie_sachsen",
         "ru_readovka",
         "ru_rybar",
         "ru_two_majors",
         "ru_colonelcassad"
       ],
       "endpoint_ids": [
+        "de_freie_sachsen__telegram__freie_sachsen",
         "ru_readovka__telegram__readovkanews",
         "ru_rybar__telegram__rybar",
         "ru_two_majors__telegram__dva_majors",
         "ru_colonelcassad__telegram__boris_rozhin"
       ],
       "item_ids": [
+        "a3415c8da9b86a23c01b4188cf9f0d31",
+        "52b5ba94a3bcb84740820d0303bec2bc",
+        "17bb21e50e88e3cc1be8de1ce59c66c4",
+        "5dbf08ae3d4d0793ce0eb57b1475ce42",
+        "6f871bda9a7a0d317d8e75b001dab1a0",
         "bac8df9d8abfa851ebd38599609341bb",
         "cac04fa6041fa1b5e30032347a1e9606",
         "c093055c465d950bccee2b468ea1f969",
@@ -885,26 +775,26 @@
         "d509d98b701af60d95cf26dac66793c9",
         "cd43b4c89d7d22f8be0bad34575b9190",
         "56e6a2bd4436e51d5f06fadde04288ae",
-        "d89378fa51b89d4e8c8d263b94b6a2b0",
-        "c322b17549bf3f3f08f9b8c18e0f33d5",
-        "5f6daab0b3c0c3e83d6c33c80d929f41"
+        "d89378fa51b89d4e8c8d263b94b6a2b0"
       ],
       "platforms": {
-        "telegram": 28
+        "telegram": 31
       },
       "countries": {
-        "RU": 28
+        "RU": 26,
+        "DE": 5
       },
       "actor_classes": {
-        "milblogger": 17,
-        "state_aligned_media": 11
+        "milblogger": 16,
+        "state_aligned_media": 10,
+        "political_movement_channel": 5
       },
       "shared_referenced_domains": {},
       "restricted_item_count": 0
     },
     {
       "cluster_id": "d431bbe044ac964723138ec8",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 51,
@@ -957,7 +847,7 @@
     },
     {
       "cluster_id": "958071e77f5aa7a8a676b3ae",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 48,
@@ -1009,7 +899,7 @@
     },
     {
       "cluster_id": "46e399fd78a49459babd664b",
-      "generated_at": "2026-10-31T12:51:13.243Z",
+      "generated_at": "2026-10-31T18:51:16.179Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 44,
@@ -1063,7 +953,7 @@
     },
     {
       "cluster_id": "dc431b2336362e0a5a614e73",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 44,
@@ -1118,7 +1008,7 @@
     },
     {
       "cluster_id": "140ec5f12370ea1d2010c973",
-      "generated_at": "2026-10-31T12:51:13.244Z",
+      "generated_at": "2026-10-31T18:51:16.180Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 36,
