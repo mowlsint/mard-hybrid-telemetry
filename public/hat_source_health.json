@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1764,
-    "hash": "38a7172a5f26470dc7632aaa1c6cff4a51fe7bfec8cdce978a19b816a751e34d"
+    "count": 1766,
+    "hash": "3aa9cf3c01f116362a29d111702979175453c425e3733bde80fc4f6f8e2294e5"
   },
   {
     "source": "first_epss_top",
@@ -15,20 +15,20 @@
     "source": "first_epss_kev_enrichment",
     "status": "ok",
     "count": 34,
-    "coverage_ratio": 1
+    "coverage_ratio": 0.9714285714285714
   },
   {
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 3208,
-    "count_7d": 17330,
-    "botnet_cc_count": 5355,
+    "count": 1267,
+    "count_7d": 17424,
+    "botnet_cc_count": 5373,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "54c9cf2ed59a26c1d239c966a1f1d043c0e41b0b5070d7914f38ed0995b68941",
-    "hash_7d": "495ab4338fe02eaee5456e7c419636fd99a6e8da0ec69b87d4eaea5fde17454f",
+    "hash_1d": "5be9555dc699e58ad3c1c3424aea1f9d0bd79c85674c36104081740acd27631d",
+    "hash_7d": "fd2598a39b2433645155a8dfbf56ec66e99492df664e6af522b96189893da777",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -45,8 +45,8 @@
     "ok_queries": 0,
     "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429",
+      "gdelt_fimi_1: missing ArticleList articles array",
+      "gdelt_fimi_2: missing ArticleList articles array",
       "gdelt_fimi_3: HTTP 429"
     ]
   },
@@ -59,8 +59,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: request failed (TypeError)",
+      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
     ]
   },
   {
