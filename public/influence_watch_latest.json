@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-01T18:51:09.768Z",
+  "generated_at": "2026-11-02T00:55:06.104Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low",
   "data_quality": {
     "state": "best_effort",
-    "successful_sources": 122,
+    "successful_sources": 111,
     "expected_sources": 268,
-    "coverage_ratio": 0.4552238805970149,
+    "coverage_ratio": 0.4141791044776119,
     "platforms": {
       "website": {
         "expected_sources": 131,
-        "successful_sources": 93,
+        "successful_sources": 91,
         "state": "partial_or_best_effort"
       },
       "instagram": {
@@ -32,8 +32,8 @@
       },
       "youtube": {
         "expected_sources": 9,
-        "successful_sources": 9,
-        "state": "partial_or_best_effort"
+        "successful_sources": 0,
+        "state": "unavailable"
       },
       "pattern": {
         "expected_sources": 9,
@@ -70,22 +70,22 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_bluesky_youtube_and_best_effort_x",
   "history": {
-    "total_items": 29442,
-    "current_run_items": 1347,
-    "items_24h": 885,
-    "items_7d": 8460,
-    "items_28d": 26462,
+    "total_items": 29679,
+    "current_run_items": 1231,
+    "items_24h": 921,
+    "items_7d": 8415,
+    "items_28d": 26702,
     "timestamp_basis": "published_at_only; website snapshots retained as context",
-    "undated_observations": 2595,
+    "undated_observations": 2589,
     "oldest_item_at": "2026-08-04T10:35:22.000Z",
-    "newest_item_at": "2026-11-01T23:00:00.000Z",
+    "newest_item_at": "2026-11-02T00:54:37.326Z",
     "retained_days": 90,
     "max_items": 100000,
     "max_bytes": 64000000,
-    "actual_bytes": 23725996
+    "actual_bytes": 23928777
   },
   "activity": {
-    "active_actors_7d": 73,
+    "active_actors_7d": 72,
     "provisional_10_per_week_actors": 55,
     "final_selection_decisions": 0
   },
@@ -549,7 +549,7 @@
         "restricted_item_count": 0
       },
       {
-        "cluster_id": "099e46430f37d60289788b6a",
+        "cluster_id": "af5073fcf08de0d928c297ab",
         "assessment": {
           "label": "possible_amplification_pattern",
           "coordination_indicator_score": 55,
@@ -558,16 +558,16 @@
           "automation_finding": false
         },
         "counts": {
-          "items": 31,
-          "actors": 6,
-          "endpoints": 6,
+          "items": 29,
+          "actors": 5,
+          "endpoints": 5,
           "unique_content_hashes": 1,
-          "pair_edges": 186
+          "pair_edges": 162
         },
         "time": {
-          "start_at": "2026-10-29T19:30:36.000Z",
-          "end_at": "2026-11-01T18:11:48.000Z",
-          "span_minutes": 4241
+          "start_at": "2026-10-30T03:29:13.000Z",
+          "end_at": "2026-11-01T20:07:22.000Z",
+          "span_minutes": 3878
         },
         "signals": [
           "exact_content_hash",
@@ -576,15 +576,15 @@
           "within_15_minutes"
         ],
         "platforms": {
-          "telegram": 31
+          "telegram": 29
         },
         "countries": {
-          "RU": 26,
+          "RU": 24,
           "DE": 5
         },
         "actor_classes": {
-          "milblogger": 15,
-          "state_aligned_media": 10,
+          "milblogger": 14,
+          "state_aligned_media": 9,
           "political_movement_channel": 5,
           "official_state_source": 1
         },
