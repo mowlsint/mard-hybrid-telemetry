@@ -10,32 +10,32 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-03T18:22:51.553Z",
+  "generated_at": "2026-11-04T00:38:50.397Z",
   "window_days": 30,
-  "hat_score": 65,
-  "level": "high",
+  "hat_score": 56,
+  "level": "watch",
   "score_interpretation": {
-    "percentage": 65,
-    "label": "high",
-    "color": "deep orange",
-    "css": "high",
-    "meaning": "high contextual pressure",
+    "percentage": 56,
+    "label": "watch",
+    "color": "orange",
+    "css": "watch",
+    "meaning": "watch-level contextual pressure",
     "scale": "0-100 contextual pressure; not probability"
   },
   "confidence": "low",
-  "trend": "stable",
+  "trend": "falling",
   "baseline": {
     "status": "active",
     "points": 21,
     "minimum_days": 14,
     "mean_hat_score": 64.4,
-    "delta_from_mean": 0.6
+    "delta_from_mean": -8.4
   },
   "score_parts": {
-    "kev_recent_7d": 75,
+    "kev_recent_7d": 63,
     "kev_recent_30d": 100,
-    "kev_epss_mean": 38,
-    "threatfox_ioc_current": 52,
+    "kev_epss_mean": 37,
+    "threatfox_ioc_current": 24,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 52,
-      "botnet_c2_current_percentile": 19,
-      "ioc_36h_percentile": 90,
+      "ioc_current_percentile": 24,
+      "botnet_c2_current_percentile": 33,
+      "ioc_36h_percentile": 86,
       "botnet_c2_36h_percentile": 81,
-      "ioc_36h_count": 4041,
-      "botnet_c2_36h_count": 1893,
+      "ioc_36h_count": 3686,
+      "botnet_c2_36h_count": 1849,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -99,12 +99,12 @@
   },
   "metrics": {
     "kev": {
-      "total_kev": 1766,
-      "recent_7d": 6,
-      "recent_30d": 32,
-      "epss_mean_recent_kev": 0.3812,
-      "epss_enriched_count": 31,
-      "epss_enrichment_coverage": 0.96875,
+      "total_kev": 1767,
+      "recent_7d": 5,
+      "recent_30d": 33,
+      "epss_mean_recent_kev": 0.3695,
+      "epss_enriched_count": 32,
+      "epss_enrichment_coverage": 0.9696969696969697,
       "top_recent_kev_by_epss": [
         {
           "cve": "CVE-2026-109618",
@@ -283,90 +283,90 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 2128,
-      "ioc_count_7d": 15359,
-      "botnet_c2_count_1d": 545,
-      "botnet_c2_count_7d": 4550,
+      "ioc_count_1d": 1578,
+      "ioc_count_7d": 15129,
+      "botnet_c2_count_1d": 637,
+      "botnet_c2_count_7d": 4558,
       "threat_types_1d": [
         {
-          "name": "payload_delivery",
-          "count": 818
+          "name": "botnet_cc",
+          "count": 634
         },
         {
           "name": "payload",
-          "count": 768
+          "count": 603
         },
         {
-          "name": "botnet_cc",
-          "count": 542
+          "name": "payload_delivery",
+          "count": 341
         }
       ],
       "malware_families_1d": [
         {
           "name": "Vidar",
-          "count": 314
+          "count": 400
         },
         {
           "name": "AMOS",
-          "count": 271
-        },
-        {
-          "name": "ClearFake",
-          "count": 255
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 174
-        },
-        {
-          "name": "IClickFix",
-          "count": 150
+          "count": 280
         },
         {
           "name": "StrelaStealer",
-          "count": 120
+          "count": 117
         },
         {
           "name": "Unknown malware",
-          "count": 103
+          "count": 79
         },
         {
-          "name": "VShell",
-          "count": 74
+          "name": "ClearFake",
+          "count": 78
         },
         {
           "name": "Mirai",
-          "count": 51
+          "count": 61
         },
         {
-          "name": "SalatStealer",
-          "count": 49
+          "name": "IClickFix",
+          "count": 52
+        },
+        {
+          "name": "VShell",
+          "count": 42
+        },
+        {
+          "name": "WARDENStealer",
+          "count": 35
+        },
+        {
+          "name": "Cobalt Strike",
+          "count": 34
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 1589
+          "count": 1590
         },
         {
           "name": "Vidar",
-          "count": 1347
+          "count": 1353
         },
         {
           "name": "VShell",
-          "count": 348
+          "count": 344
         },
         {
           "name": "Cobalt Strike",
-          "count": 228
+          "count": 223
         },
         {
           "name": "PureRAT",
-          "count": 128
+          "count": 129
         },
         {
           "name": "WARDENStealer",
-          "count": 111
+          "count": 113
         },
         {
           "name": "Mirai",
@@ -382,7 +382,7 @@
         },
         {
           "name": "Remcos",
-          "count": 51
+          "count": 54
         }
       ],
       "historical": {
@@ -394,11 +394,11 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 4041,
-        "current_36h_botnet_c2_count": 1893,
-        "current_ioc_percentile": 52,
-        "current_botnet_c2_percentile": 19,
-        "trailing_36h_ioc_percentile": 90,
+        "current_36h_ioc_count": 3686,
+        "current_36h_botnet_c2_count": 1849,
+        "current_ioc_percentile": 24,
+        "current_botnet_c2_percentile": 33,
+        "trailing_36h_ioc_percentile": 86,
         "trailing_36h_botnet_c2_percentile": 81,
         "percentile_baselines": {
           "current_ioc_percentile": {
@@ -426,21 +426,21 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 2128,
-      "botnet_cc_count": 4550,
+      "threatfox_count": 1578,
+      "botnet_cc_count": 4558,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 1,
+      "observed_partial_score": 0,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
-        "successful_queries": 2,
+        "successful_queries": 1,
         "expected_queries": 5,
-        "coverage_ratio": 0.4,
+        "coverage_ratio": 0.2,
         "sources": {
           "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
@@ -454,69 +454,40 @@
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 2,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
         "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 18,
-        "accepted_articles": 4,
+        "raw_unique_articles": 41,
+        "accepted_articles": 0,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 4,
-        "rejected_as_noise_or_broad_context": 14,
-        "weighted_article_count": 1.6,
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 41,
+        "weighted_article_count": 0,
         "rejected_samples": [
           {
-            "title": "Putin warnt Europa : „ Russland ist bereit für einen Krieg",
-            "domain": "kreiszeitung.de",
+            "title": "У ПС назвали кількість знищених цілей у жовтні",
+            "domain": "news.bigmir.net",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
-                "russland"
+                "ukraine"
               ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Ukraine - Krieg im Liveticker : +++ 11 : 55 Russische Hacker spähen Behörden und Einrichtungen aus +++",
-            "domain": "n-tv.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "ukraine",
-                "russische"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Zu Midterms : Ölpreise steigen nach US - Angriffen im Iran",
-            "domain": "shz.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [
-                "deutschland"
-              ],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          },
-          {
-            "title": "Эксперт назвал опасность кабанов для людей в период осеннего гона",
-            "domain": "news.mail.ru",
+            "title": "A new cold war : hackers target fridges across the globe",
+            "domain": "ksut.org",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -526,49 +497,65 @@
             }
           },
           {
-            "title": "Putin warnt Europa : „ Russland ist bereit für einen Krieg",
-            "domain": "hna.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "russland"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Putin warnt Europa : „ Russland ist bereit für einen Krieg",
-            "domain": "az-online.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "russland"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Zu Midterms : Ölpreise steigen nach US - Angriffen im Iran",
-            "domain": "noz.de",
+            "title": "A new cold war : hackers target fridges across the globe",
+            "domain": "wcsufm.org",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [],
-              "region": [
-                "deutschland"
-              ],
-              "global_spillover": [
-                "iran"
-              ]
+              "region": [],
+              "global_spillover": []
             }
           },
           {
-            "title": "BPOM Masih Uji Kandungan Beeru Stevia , Ini Sanksi Jika Tak Sesuai Klaim",
-            "domain": "kesehatan.liputan6.com",
+            "title": "Росія зосередила удари на сході України дані Minos",
+            "domain": "ain.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "러시아 석유시설 활활 … 우크라이나 학교에 유도폭탄",
+            "domain": "ichannela.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Готувала теракт проти українських військових : у Харкові СБУ затримала продавчиню",
+            "domain": "unn.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Ukraine melder om 25 sårede efter angreb i Kharkiv",
+            "domain": "jyllands-posten.dk",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "ukraine"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Rusia a lansat un atac masiv asupra infrastructurii energetice a Ucrainei . Zeci de localități au rămas fără electricitate",
+            "domain": "europalibera.md",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -582,270 +569,19 @@
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 18,
+        "article_count": 41,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 18,
+        "observed_articles": 41,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 4,
-        "rejected_articles": 14,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 41,
         "weighted_articles": null,
         "historical_percentile": null,
-        "top_domains": [
-          {
-            "name": "bozemandailychronicle.com",
-            "count": 1
-          },
-          {
-            "name": "khqa.com",
-            "count": 1
-          },
-          {
-            "name": "stcatharinesstandard.ca",
-            "count": 1
-          },
-          {
-            "name": "wfmz.com",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "http://www.bozemandailychronicle.com/wire/news/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_2a589236-cc8b-5ff3-b827-2e79217f4103.html",
-            "domain": "bozemandailychronicle.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.stcatharinesstandard.ca/news/world/middle-east/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes-next/article_299bc1f8-1927-52e5-b95b-1271e3a4fbca.html",
-            "domain": "stcatharinesstandard.ca",
-            "language": "English",
-            "source_country": "Canada",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.wfmz.com/news/ap/ap-national/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes-next/article_b7d150b1-b5ee-570b-b828-fab0fd23b46a.html",
-            "domain": "wfmz.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.khqa.com/news/nation-world/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_896e1be2-c1cc-5a9f-9e92-606261f5d6d0.html",
-            "domain": "khqa.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          }
-        ],
-        "articles": [
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "http://www.bozemandailychronicle.com/wire/news/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_2a589236-cc8b-5ff3-b827-2e79217f4103.html",
-            "domain": "bozemandailychronicle.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.stcatharinesstandard.ca/news/world/middle-east/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes-next/article_299bc1f8-1927-52e5-b95b-1271e3a4fbca.html",
-            "domain": "stcatharinesstandard.ca",
-            "language": "English",
-            "source_country": "Canada",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.wfmz.com/news/ap/ap-national/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes-next/article_b7d150b1-b5ee-570b-b828-fab0fd23b46a.html",
-            "domain": "wfmz.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US strikes Iranian targets in the Strait of Hormuz , official says , leaving unclear what comes next",
-            "url": "https://www.khqa.com/news/nation-world/us-strikes-iranian-targets-in-the-strait-of-hormuz-official-says-leaving-unclear-what-comes/article_896e1be2-c1cc-5a9f-9e92-606261f5d6d0.html",
-            "domain": "khqa.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261103T111500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          }
-        ]
+        "top_domains": [],
+        "sample": [],
+        "articles": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -865,17 +601,18 @@
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 4,
-          "raw_count": 18,
+          "count": 0,
+          "raw_count": 41,
           "core_count": 0,
-          "global_spillover_count": 4,
-          "rejected_count": 14,
-          "weighted_count": 1.6,
+          "global_spillover_count": 0,
+          "rejected_count": 41,
+          "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 2,
-          "failed_queries": 1,
+          "ok_queries": 1,
+          "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_1: HTTP 429",
+            "gdelt_fimi_2: request failed (TypeError)"
           ]
         },
         {
@@ -887,7 +624,7 @@
           "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+            "euvsdisinfo_case_watch_1: request failed (TypeError)",
             "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
@@ -898,7 +635,7 @@
           "independent_evidence": false,
           "count": 0,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 4
+          "applied_to_articles": 0
         }
       ],
       "history": {
@@ -909,26 +646,23 @@
     }
   },
   "drivers": [
-    "6 CISA KEV additions in the last 7 days",
-    "32 CISA KEV additions in the last 30 days",
+    "5 CISA KEV additions in the last 7 days",
+    "33 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.3812",
-    "2128 ThreatFox IOCs in the last 1 day",
-    "4550 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.3695",
+    "1578 ThreatFox IOCs in the last 1 day",
+    "4558 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BWB — Recent C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "Maritime narrative pressure: not assessable (low confidence)",
-    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 4 Global Maritime Spillover, 14 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "source_health": [
     {
       "source": "cisa_kev",
       "status": "ok",
-      "count": 1766,
-      "hash": "3aa9cf3c01f116362a29d111702979175453c425e3733bde80fc4f6f8e2294e5"
+      "count": 1767,
+      "hash": "0e7e91681f2207c7920a338f0d2b14c67933473ecf9550153627efaaba8d2e4c"
     },
     {
       "source": "first_epss_top",
@@ -939,38 +673,39 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 31,
-      "coverage_ratio": 0.96875
+      "count": 32,
+      "coverage_ratio": 0.9696969696969697
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2128,
-      "count_7d": 15359,
-      "botnet_cc_count": 4550,
+      "count": 1578,
+      "count_7d": 15129,
+      "botnet_cc_count": 4558,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "538ec4988094bc44325c000a6ca3092a586716f836913f9bf9d491e04d83646c",
-      "hash_7d": "2b8da742f7323fe512ed617f7e359afebe12916a861392e89dfc2116af744d09",
+      "hash_1d": "a5a57b5f12dce482a9f37046e9f09af3304dca6570a1b5426773749da2d107b7",
+      "hash_7d": "c9ad6b4b80f3aede9dca9a1e163c0b19c1b151c81ee9f05d931860e569e7e679",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 4,
-      "raw_count": 18,
+      "count": 0,
+      "raw_count": 41,
       "core_count": 0,
-      "global_spillover_count": 4,
-      "rejected_count": 14,
-      "weighted_count": 1.6,
+      "global_spillover_count": 0,
+      "rejected_count": 41,
+      "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 2,
-      "failed_queries": 1,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: request failed (TypeError)"
       ]
     },
     {
@@ -982,7 +717,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+        "euvsdisinfo_case_watch_1: request failed (TypeError)",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -993,7 +728,7 @@
       "independent_evidence": false,
       "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 4
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -1031,15 +766,14 @@
     "level": "low",
     "signals": [
       "trailing bot/IOC proxy telemetry was elevated recently (BWB)",
-      "1893 botnet/C2-like indicators in the current 36h window",
-      "4 Global Maritime Spillover articles retained with lower weight",
+      "1849 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261103T182251_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261104T003850_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
