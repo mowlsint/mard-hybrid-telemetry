@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-07T06:27:11.997Z",
+  "generated_at": "2026-11-07T12:24:20.613Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,10 +11,10 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 38,
+    "hat_score": 33,
     "level": "elevated",
     "interpretation": {
-      "percentage": 38,
+      "percentage": 33,
       "label": "elevated",
       "color": "yellow",
       "css": "elevated",
@@ -28,13 +28,13 @@
       "points": 25,
       "minimum_days": 14,
       "mean_hat_score": 60.7,
-      "delta_from_mean": -22.7
+      "delta_from_mean": -27.7
     },
     "score_parts": {
       "kev_recent_7d": 38,
       "kev_recent_30d": 94,
       "kev_epss_mean": 33,
-      "threatfox_ioc_current": 32,
+      "threatfox_ioc_current": 8,
       "threatfox_botnet_c2_36h": 8
     },
     "context_parts": {
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 32,
-      "botnet_c2_current_percentile": 8,
-      "ioc_36h_percentile": 16,
+      "ioc_current_percentile": 8,
+      "botnet_c2_current_percentile": 0,
+      "ioc_36h_percentile": 24,
       "botnet_c2_36h_percentile": 8,
-      "ioc_36h_count": 2258,
-      "botnet_c2_36h_count": 550,
+      "ioc_36h_count": 2322,
+      "botnet_c2_36h_count": 563,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -93,7 +93,8 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "550 botnet/C2-like indicators in the current 36h window",
+      "563 botnet/C2-like indicators in the current 36h window",
+      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
       "2 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
@@ -120,74 +121,16 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 148,
-      "accepted_articles": 2,
-      "core_mard_eu_articles": 0,
+      "raw_unique_articles": 120,
+      "accepted_articles": 3,
+      "core_mard_eu_articles": 1,
       "global_maritime_spillover_articles": 2,
-      "rejected_as_noise_or_broad_context": 146,
-      "weighted_article_count": 0.8,
+      "rejected_as_noise_or_broad_context": 117,
+      "weighted_article_count": 1.8,
       "rejected_samples": [
         {
-          "title": "Iran reviews Qatar proposal to revive nuclear talks with US",
-          "domain": "siasat.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "US carries out targeted strikes as Iran leaders weigh proposals",
-          "domain": "wsbradio.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "strikes"
-            ],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "US carries out new targeted strikes on Iran , targeting air defense system",
-          "domain": "hindustantimes.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "strikes"
-            ],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "US military carries out new targeted strikes on Iran",
-          "domain": "wvtm13.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "strikes"
-            ],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "美 · 이란 중재안에 핵 협상 바로 착수 담겼다 … 트럼프 체면 살리기",
-          "domain": "heraldk.com",
+          "title": "Soldatinnen und Soldaten - Pistorius sieht Personalplanung der Bundeswehr auf gutem Weg",
+          "domain": "deutschlandfunk.de",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -197,40 +140,88 @@
           }
         },
         {
-          "title": "Kota bersih tak lahir dari denda",
-          "domain": "antaranews.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "The US Elections and the Policy Towards Cuba",
-          "domain": "havanatimes.org",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "US military carries out new targeted strikes on Iran",
-          "domain": "gulfcoastnewsnow.com",
+          "title": "Самолет - разведчик НАТО второй раз за неделю замечен над Черным морем",
+          "domain": "aif.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [
-              "strikes"
+              "nato",
+              "нато"
             ],
             "region": [],
-            "global_spillover": [
-              "iran"
-            ]
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Народная артистка Лидия Федосеева - Шукшина скончалась в возрасте 88 лет",
+          "domain": "news.mail.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Atinanın korsan planında Fransız kalkanı : Paris kendi kurallarını Türkiyeye karşı nasıl ihlal ediyor ?",
+          "domain": "turkiyegazetesi.com.tr",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "من قصف المدن إلى استهداف كابلات الاتصال ومراكز البيانات .. كيف تغير شكل الحروب في مائة عام ؟",
+          "domain": "shorouknews.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "KBS 뉴스",
+          "domain": "news.kbs.co.kr",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Арктика , нефть и газ – почему ЕС изменил свою политику и выиграет ли Россия",
+          "domain": "24tv.ua",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "россия"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "« Стали регулярными »: НАТО проводит учения у границ Белоруссии и России",
+          "domain": "russiatoday.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "nato",
+              "нато"
+            ],
+            "region": [],
+            "global_spillover": []
           }
         }
       ]
@@ -238,14 +229,14 @@
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 150,
+      "article_count": 123,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 148,
+      "observed_articles": 120,
       "sample_limited": true,
-      "core_mard_eu_articles": 0,
+      "core_mard_eu_articles": 1,
       "global_maritime_spillover_articles": 2,
-      "rejected_articles": 146,
+      "rejected_articles": 117,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [
@@ -254,11 +245,46 @@
           "count": 1
         },
         {
+          "name": "gcaptain.com",
+          "count": 1
+        },
+        {
           "name": "themarysue.com",
           "count": 1
         }
       ],
       "sample": [
+        {
+          "title": "Finnish Court Jails Cargo Ship Captain , Crew Member for Baltic Sea Cable Sabotage",
+          "url": "https://gcaptain.com/finnish-court-jails-cargo-ship-captain-crew-member-for-baltic-sea-cable-sabotage/",
+          "domain": "gcaptain.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261106T010000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship",
+                "cable"
+              ],
+              "threat_fimi": [
+                "sabotage"
+              ],
+              "region": [
+                "baltic sea",
+                "finnish",
+                "baltic"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
         {
           "title": "Pentagon says US troops are poised to strike Iran . Then 5 tankers are hit in the Strait of Hormuz",
           "url": "https://www.themarysue.com/pentagon-says-thousands-of-us-troops-are-poised-to-strike-iran-then-reports-emerge-of-what-happened-to-five-tankers-in-the-strait-of-hormuz/",
@@ -322,6 +348,37 @@
         }
       ],
       "articles": [
+        {
+          "title": "Finnish Court Jails Cargo Ship Captain , Crew Member for Baltic Sea Cable Sabotage",
+          "url": "https://gcaptain.com/finnish-court-jails-cargo-ship-captain-crew-member-for-baltic-sea-cable-sabotage/",
+          "domain": "gcaptain.com",
+          "language": "English",
+          "source_country": "United States",
+          "seen_date": "20261106T010000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship",
+                "cable"
+              ],
+              "threat_fimi": [
+                "sabotage"
+              ],
+              "region": [
+                "baltic sea",
+                "finnish",
+                "baltic"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
         {
           "title": "Pentagon says US troops are poised to strike Iran . Then 5 tankers are hit in the Strait of Hormuz",
           "url": "https://www.themarysue.com/pentagon-says-thousands-of-us-troops-are-poised-to-strike-iran-then-reports-emerge-of-what-happened-to-five-tankers-in-the-strait-of-hormuz/",
@@ -395,96 +452,113 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 0,
-      "tags": []
+      "tag_count": 2,
+      "tags": [
+        {
+          "id": "attribution_topics",
+          "label": "Attribution and responsibility topics",
+          "count": 1,
+          "matched_keywords": [
+            "sabotage"
+          ]
+        },
+        {
+          "id": "maritime_legal_topics",
+          "label": "Maritime law and sanctions topics",
+          "count": 1,
+          "matched_keywords": [
+            "ship"
+          ]
+        }
+      ]
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1693,
-    "ioc_count_7d": 12551,
-    "botnet_c2_count_1d": 393,
-    "botnet_c2_count_7d": 4002,
+    "ioc_count_1d": 1393,
+    "ioc_count_7d": 12390,
+    "botnet_c2_count_1d": 275,
+    "botnet_c2_count_7d": 3876,
     "threat_types_1d": [
       {
         "name": "payload",
-        "count": 1178
+        "count": 1000
       },
       {
         "name": "botnet_cc",
-        "count": 393
+        "count": 275
       },
       {
         "name": "payload_delivery",
-        "count": 122
+        "count": 118
       }
     ],
     "malware_families_1d": [
       {
-        "name": "Unknown Loader",
-        "count": 447
+        "name": "AMOS",
+        "count": 307
       },
       {
-        "name": "AMOS",
-        "count": 305
+        "name": "Unknown Loader",
+        "count": 239
       },
       {
         "name": "ZStealer",
         "count": 153
       },
       {
-        "name": "ValleyRAT",
-        "count": 106
-      },
-      {
         "name": "Mirai",
-        "count": 103
+        "count": 131
       },
       {
         "name": "VShell",
-        "count": 55
-      },
-      {
-        "name": "Vidar",
-        "count": 48
-      },
-      {
-        "name": "ClearFake",
-        "count": 44
-      },
-      {
-        "name": "Unknown malware",
-        "count": 43
+        "count": 53
       },
       {
         "name": "Cobalt Strike",
-        "count": 42
+        "count": 45
+      },
+      {
+        "name": "ClearFake",
+        "count": 40
+      },
+      {
+        "name": "Vidar",
+        "count": 37
+      },
+      {
+        "name": "Unknown malware",
+        "count": 34
+      },
+      {
+        "name": "Sliver",
+        "count": 28
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Unknown malware",
-        "count": 1580
+        "count": 1529
       },
       {
         "name": "Vidar",
-        "count": 731
+        "count": 739
       },
       {
         "name": "Cobalt Strike",
-        "count": 225
+        "count": 226
       },
       {
         "name": "VShell",
-        "count": 178
+        "count": 150
       },
       {
         "name": "WARDENStealer",
-        "count": 145
+        "count": 149
       },
       {
         "name": "PureRAT",
-        "count": 142
+        "count": 134
       },
       {
         "name": "ValleyRAT",
@@ -492,15 +566,15 @@
       },
       {
         "name": "Sliver",
-        "count": 91
+        "count": 72
       },
       {
         "name": "Astaroth",
         "count": 66
       },
       {
-        "name": "Mirai",
-        "count": 61
+        "name": "Remcos",
+        "count": 53
       }
     ],
     "historical": {
@@ -512,11 +586,11 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2258,
-      "current_36h_botnet_c2_count": 550,
-      "current_ioc_percentile": 32,
-      "current_botnet_c2_percentile": 8,
-      "trailing_36h_ioc_percentile": 16,
+      "current_36h_ioc_count": 2322,
+      "current_36h_botnet_c2_count": 563,
+      "current_ioc_percentile": 8,
+      "current_botnet_c2_percentile": 0,
+      "trailing_36h_ioc_percentile": 24,
       "trailing_36h_botnet_c2_percentile": 8,
       "percentile_baselines": {
         "current_ioc_percentile": {
@@ -671,31 +745,31 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1693,
-      "count_7d": 12551,
-      "botnet_cc_count": 4002,
+      "count": 1393,
+      "count_7d": 12390,
+      "botnet_cc_count": 3876,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "06ae09535421d2a312e856c7c472f96b21e85a9bee80242deec1722e57b8d422",
-      "hash_7d": "f61cf0f9f84a78550159bccccc723776a61cd406744b7202c275f723526eae2a",
+      "hash_1d": "ea42fd0c24014409d8382aefc454bc6bb668ee599864e09b5444146e236f22f1",
+      "hash_7d": "13cfb1a9d8e7e49e0849fefa177d6ce93d0c355ae474eaef8a25b33b6b70603b",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 2,
-      "raw_count": 148,
-      "core_count": 0,
+      "count": 3,
+      "raw_count": 120,
+      "core_count": 1,
       "global_spillover_count": 2,
-      "rejected_count": 146,
-      "weighted_count": 0.8,
+      "rejected_count": 117,
+      "weighted_count": 1.8,
       "queries": 3,
       "ok_queries": 2,
       "failed_queries": 1,
       "errors": [
-        "gdelt_fimi_1: HTTP 429"
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -716,9 +790,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 0,
+      "count": 2,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 2
+      "applied_to_articles": 3
     }
   ],
   "drivers": [
@@ -726,15 +800,16 @@
     "30 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.3338",
-    "1693 ThreatFox IOCs in the last 1 day",
-    "4002 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1393 ThreatFox IOCs in the last 1 day",
+    "3876 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 2 Global Maritime Spillover, 146 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d"
+    "Maritime filter: 1 Core MARD-Eu, 2 Global Maritime Spillover, 117 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "Narrative topic tags observed: Attribution and responsibility topics, Maritime law and sanctions topics"
   ],
   "assessment": {
     "label": "open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry",
@@ -744,6 +819,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261107T062711_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261107T122420_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
