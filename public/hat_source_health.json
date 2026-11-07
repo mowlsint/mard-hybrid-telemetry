@@ -21,33 +21,31 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 1758,
-    "count_7d": 12789,
-    "botnet_cc_count": 3932,
+    "count": 1693,
+    "count_7d": 12551,
+    "botnet_cc_count": 4002,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "68302ad861721dbc8a4ade31366d626760119941289b0840414ee74f57f1e033",
-    "hash_7d": "1099f4094382ff74aba3a471804f7c5892a5059010883db6849ed69e0e66b21d",
+    "hash_1d": "06ae09535421d2a312e856c7c472f96b21e85a9bee80242deec1722e57b8d422",
+    "hash_7d": "f61cf0f9f84a78550159bccccc723776a61cd406744b7202c275f723526eae2a",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "error",
-    "count": 0,
-    "raw_count": 0,
+    "status": "partial",
+    "count": 2,
+    "raw_count": 148,
     "core_count": 0,
-    "global_spillover_count": 0,
-    "rejected_count": 0,
-    "weighted_count": 0,
+    "global_spillover_count": 2,
+    "rejected_count": 146,
+    "weighted_count": 0.8,
     "queries": 3,
-    "ok_queries": 0,
-    "failed_queries": 3,
+    "ok_queries": 2,
+    "failed_queries": 1,
     "errors": [
-      "gdelt_fimi_1: HTTP 429",
-      "gdelt_fimi_2: HTTP 429",
-      "gdelt_fimi_3: request failed (TypeError)"
+      "gdelt_fimi_1: HTTP 429"
     ]
   },
   {
@@ -59,8 +57,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: request failed (TypeError)",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_1: HTTP 429",
+      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
     ]
   },
   {
@@ -70,6 +68,6 @@
     "independent_evidence": false,
     "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 0
+    "applied_to_articles": 2
   }
 ]
