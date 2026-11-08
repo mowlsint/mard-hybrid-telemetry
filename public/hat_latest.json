@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-08T12:23:55.797Z",
+  "generated_at": "2026-11-08T18:20:54.958Z",
   "window_days": 30,
   "hat_score": 36,
   "level": "elevated",
@@ -35,8 +35,8 @@
     "kev_recent_7d": 38,
     "kev_recent_30d": 94,
     "kev_epss_mean": 32,
-    "threatfox_ioc_current": 27,
-    "threatfox_botnet_c2_36h": 4
+    "threatfox_ioc_current": 31,
+    "threatfox_botnet_c2_36h": 0
   },
   "context_parts": {
     "epss_hot_global": 100,
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 27,
+      "ioc_current_percentile": 31,
       "botnet_c2_current_percentile": 4,
-      "ioc_36h_percentile": 4,
-      "botnet_c2_36h_percentile": 4,
-      "ioc_36h_count": 2044,
-      "botnet_c2_36h_count": 450,
+      "ioc_36h_percentile": 12,
+      "botnet_c2_36h_percentile": 0,
+      "ioc_36h_count": 2122,
+      "botnet_c2_36h_count": 396,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -211,154 +211,154 @@
           "cve": "CVE-2026-97229",
           "epss": 0.6522,
           "percentile": 0.99259,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-93616",
           "epss": 0.91605,
           "percentile": 0.99815,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-9082",
           "epss": 0.89381,
           "percentile": 0.99787,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-88772",
           "epss": 0.76566,
           "percentile": 0.99545,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-88771",
           "epss": 0.81894,
-          "percentile": 0.99652,
-          "date": "2026-11-07"
+          "percentile": 0.99653,
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-87902",
           "epss": 0.95769,
           "percentile": 0.99872,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-85706",
           "epss": 0.97355,
           "percentile": 0.99898,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-85102",
           "epss": 0.5414,
-          "percentile": 0.99014,
-          "date": "2026-11-07"
+          "percentile": 0.99015,
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-82078",
           "epss": 0.63047,
           "percentile": 0.99206,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-81578",
           "epss": 0.84734,
           "percentile": 0.99709,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-8037",
           "epss": 0.99794,
           "percentile": 0.99957,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         },
         {
           "cve": "CVE-2026-76460",
           "epss": 0.75599,
           "percentile": 0.99523,
-          "date": "2026-11-07"
+          "date": "2026-11-08"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1472,
-      "ioc_count_7d": 12031,
-      "botnet_c2_count_1d": 285,
-      "botnet_c2_count_7d": 3847,
+      "ioc_count_1d": 1492,
+      "ioc_count_7d": 11754,
+      "botnet_c2_count_1d": 287,
+      "botnet_c2_count_7d": 3814,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 696
+          "count": 659
         },
         {
           "name": "payload_delivery",
-          "count": 493
+          "count": 548
         },
         {
           "name": "botnet_cc",
-          "count": 283
+          "count": 285
         }
       ],
       "malware_families_1d": [
         {
           "name": "Mirai",
-          "count": 165
-        },
-        {
-          "name": "AMOS",
-          "count": 164
-        },
-        {
-          "name": "WARDENStealer",
-          "count": 158
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 140
+          "count": 184
         },
         {
           "name": "ClearFake",
-          "count": 124
+          "count": 172
+        },
+        {
+          "name": "WARDENStealer",
+          "count": 151
+        },
+        {
+          "name": "Unknown Loader",
+          "count": 147
         },
         {
           "name": "Unknown malware",
-          "count": 84
+          "count": 104
+        },
+        {
+          "name": "AMOS",
+          "count": 98
         },
         {
           "name": "SNOWLIGHT",
           "count": 77
         },
         {
-          "name": "VShell",
-          "count": 69
-        },
-        {
-          "name": "Vidar",
+          "name": "Raven Stealer",
           "count": 65
         },
         {
-          "name": "RN Stealer",
-          "count": 40
+          "name": "Vidar",
+          "count": 57
+        },
+        {
+          "name": "VShell",
+          "count": 47
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 1510
+          "count": 1516
         },
         {
           "name": "Vidar",
-          "count": 765
+          "count": 769
         },
         {
           "name": "Cobalt Strike",
-          "count": 224
+          "count": 213
         },
         {
           "name": "WARDENStealer",
-          "count": 140
+          "count": 137
         },
         {
           "name": "PureRAT",
@@ -370,11 +370,11 @@
         },
         {
           "name": "VShell",
-          "count": 89
+          "count": 83
         },
         {
           "name": "Sliver",
-          "count": 68
+          "count": 70
         },
         {
           "name": "ACR Stealer",
@@ -394,12 +394,12 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 2044,
-        "current_36h_botnet_c2_count": 450,
-        "current_ioc_percentile": 27,
+        "current_36h_ioc_count": 2122,
+        "current_36h_botnet_c2_count": 396,
+        "current_ioc_percentile": 31,
         "current_botnet_c2_percentile": 4,
-        "trailing_36h_ioc_percentile": 4,
-        "trailing_36h_botnet_c2_percentile": 4,
+        "trailing_36h_ioc_percentile": 12,
+        "trailing_36h_botnet_c2_percentile": 0,
         "percentile_baselines": {
           "current_ioc_percentile": {
             "source": "valid_local_daily_history",
@@ -426,15 +426,15 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1472,
-      "botnet_cc_count": 3847,
+      "threatfox_count": 1492,
+      "botnet_cc_count": 3814,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 3,
+      "observed_partial_score": 0,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
@@ -454,27 +454,42 @@
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": true,
-        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
+        "source_signal_present": false,
+        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 2,
+        "gdelt_narrative_pressure": 0,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 13
+        "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
         "raw_unique_articles": 75,
-        "accepted_articles": 3,
+        "accepted_articles": 0,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 3,
-        "rejected_as_noise_or_broad_context": 72,
-        "weighted_article_count": 1.2,
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 75,
+        "weighted_article_count": 0,
         "rejected_samples": [
           {
-            "title": "Saudi Arabia intercepts missiles as Aramco building in Riyadh is damaged , and other Mideast news",
-            "domain": "idahostatejournal.com",
+            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
+            "domain": "koco.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "strike",
+                "russia",
+                "ukraine"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Κυβερνοεπιθέσεις σε ψυγεία : Ποιος παίζει με τον θερμοστάτη της Ευρώπης ;",
+            "domain": "inewsgr.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -484,8 +499,23 @@
             }
           },
           {
-            "title": "Haftanın tarihine bakış",
-            "domain": "diyarbakirsoz.com",
+            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
+            "domain": "kmbc.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "strike",
+                "russia",
+                "ukraine"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Крах пропагандистских мифов : почему уличные туалеты в Киеве стали символом системной деградации",
+            "domain": "argumenti.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -495,8 +525,8 @@
             }
           },
           {
-            "title": "Saudi Arabia intercepts missiles as Aramco building in Riyadh is damaged , and other Mideast news",
-            "domain": "wsls.com",
+            "title": "росіяни посилили військову присутність в Олешках під прикриттям гуманітарної операції - Зеленський",
+            "domain": "unn.ua",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -506,8 +536,8 @@
             }
           },
           {
-            "title": "Muhibbi , ABDnin Iron Gate görev gücünü kağıt üzerinde plan olarak niteledi",
-            "domain": "haberler.com",
+            "title": "Росія атакувала Дніпропетровщину , Одесу та Хмельниччину : є загиблі",
+            "domain": "espreso.tv",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -517,45 +547,29 @@
             }
           },
           {
-            "title": "Saudi Arabia intercepts missiles as Aramco building in Riyadh is damaged , and other Mideast news",
-            "domain": "newsday.com",
+            "title": "Building owned by Saudi oil giant damaged in missile attack",
+            "domain": "wdsu.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
-              "threat_fimi": [],
+              "threat_fimi": [
+                "attack"
+              ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Saudi Arabia intercepts missiles as Aramco building in Riyadh is damaged , and other Mideast news – Winnipeg Free Press",
-            "domain": "winnipegfreepress.com",
+            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
+            "domain": "wdsu.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Trump makes hardliner Stephen Miller his chief of staff after midterm defeat",
-            "domain": "rappler.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "У Вашингтоні готують нову мирну ініціативу щодо України : WP розкрила деталі переговорів",
-            "domain": "glavnoe.in.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
+              "threat_fimi": [
+                "strike",
+                "russia",
+                "ukraine"
+              ],
               "region": [],
               "global_spillover": []
             }
@@ -571,200 +585,13 @@
         "observed_articles": 75,
         "sample_limited": true,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 3,
-        "rejected_articles": 72,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 75,
         "weighted_articles": null,
         "historical_percentile": null,
-        "top_domains": [
-          {
-            "name": "arynews.tv",
-            "count": 1
-          },
-          {
-            "name": "saharareporters.com",
-            "count": 1
-          },
-          {
-            "name": "yahoo.com",
-            "count": 1
-          }
-        ],
-        "sample": [
-          {
-            "title": "Trump Insists On Strait Of Hormuz Blockade , Claims Nothing Is Going To Iran , No Oil Going There",
-            "url": "https://saharareporters.com/2026/11/07/trump-insists-strait-hormuz-blockade-claims-nothing-going-iran-no-oil-going-there",
-            "domain": "saharareporters.com",
-            "language": "English",
-            "source_country": "Nigeria",
-            "seen_date": "20261107T220000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US Forms Task Force to Disrupt Iran Land Supply Routes",
-            "url": "https://arynews.tv/expanding-on-naval-blockade-us-military-looks-to-restrict-iranian-land-commerce",
-            "domain": "arynews.tv",
-            "language": "English",
-            "source_country": "Pakistan",
-            "seen_date": "20261107T180000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Expanding on naval blockade , US military looks to restrict Iranian land commerce",
-            "url": "https://www.yahoo.com/news/articles/exclusive-expanding-naval-blockade-us-133922238.html",
-            "domain": "yahoo.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261107T180000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "naval blockade"
-                ]
-              }
-            }
-          }
-        ],
-        "articles": [
-          {
-            "title": "Trump Insists On Strait Of Hormuz Blockade , Claims Nothing Is Going To Iran , No Oil Going There",
-            "url": "https://saharareporters.com/2026/11/07/trump-insists-strait-hormuz-blockade-claims-nothing-going-iran-no-oil-going-there",
-            "domain": "saharareporters.com",
-            "language": "English",
-            "source_country": "Nigeria",
-            "seen_date": "20261107T220000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "US Forms Task Force to Disrupt Iran Land Supply Routes",
-            "url": "https://arynews.tv/expanding-on-naval-blockade-us-military-looks-to-restrict-iranian-land-commerce",
-            "domain": "arynews.tv",
-            "language": "English",
-            "source_country": "Pakistan",
-            "seen_date": "20261107T180000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "iran"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Expanding on naval blockade , US military looks to restrict Iranian land commerce",
-            "url": "https://www.yahoo.com/news/articles/exclusive-expanding-naval-blockade-us-133922238.html",
-            "domain": "yahoo.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261107T180000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "naval"
-                ],
-                "threat_fimi": [
-                  "blockade"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "naval blockade"
-                ]
-              }
-            }
-          }
-        ]
+        "top_domains": [],
+        "sample": [],
+        "articles": []
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -776,35 +603,26 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 1,
-        "tags": [
-          {
-            "id": "maritime_legal_topics",
-            "label": "Maritime law and sanctions topics",
-            "count": 1,
-            "matched_keywords": [
-              "blockade"
-            ]
-          }
-        ]
+        "tag_count": 0,
+        "tags": []
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 3,
+          "count": 0,
           "raw_count": 75,
           "core_count": 0,
-          "global_spillover_count": 3,
-          "rejected_count": 72,
-          "weighted_count": 1.2,
+          "global_spillover_count": 0,
+          "rejected_count": 75,
+          "weighted_count": 0,
           "queries": 3,
           "ok_queries": 1,
           "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_1: request failed (TypeError)",
+            "gdelt_fimi_2: request failed (TypeError)"
           ]
         },
         {
@@ -817,7 +635,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: HTTP 429",
-            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
@@ -825,9 +643,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 1,
+          "count": 0,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 3
+          "applied_to_articles": 0
         }
       ],
       "history": {
@@ -842,16 +660,12 @@
     "30 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.3246",
-    "1472 ThreatFox IOCs in the last 1 day",
-    "3847 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1492 ThreatFox IOCs in the last 1 day",
+    "3814 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "Maritime narrative pressure: not assessable (low confidence)",
-    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 3 Global Maritime Spillover, 72 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "source_health": [
     {
@@ -864,7 +678,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "a32212d53733cfbc23cbed7437559412a4b60b0d7b073766288a7cbe8d77dad8"
+      "hash": "db51b82908b6f3eff326b4c44d60158e77881ec181fb81a9ea0949fc8419deb2"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -876,32 +690,32 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1472,
-      "count_7d": 12031,
-      "botnet_cc_count": 3847,
+      "count": 1492,
+      "count_7d": 11754,
+      "botnet_cc_count": 3814,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "72f8b6adf723455142069c5e04590551227ca1d73b2a37f750e1c7bcf8764a42",
-      "hash_7d": "190281af82dc1e792077fb60b38121a6ae2f925ca09bba79ec87901e991c0698",
+      "hash_1d": "9ac86237eb39ab25975d1cd53b58e7c03394a10cb75f702abd162ab00da9fc10",
+      "hash_7d": "748c031d0ee71629cf65b5ca442ca8d1a2af827777e3c40113f8c1040d6e8eec",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 3,
+      "count": 0,
       "raw_count": 75,
       "core_count": 0,
-      "global_spillover_count": 3,
-      "rejected_count": 72,
-      "weighted_count": 1.2,
+      "global_spillover_count": 0,
+      "rejected_count": 75,
+      "weighted_count": 0,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_1: request failed (TypeError)",
+        "gdelt_fimi_2: request failed (TypeError)"
       ]
     },
     {
@@ -914,7 +728,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -922,9 +736,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 3
+      "applied_to_articles": 0
     }
   ],
   "source_health_map": {
@@ -961,15 +775,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "450 botnet/C2-like indicators in the current 36h window",
-      "3 Global Maritime Spillover articles retained with lower weight",
+      "396 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261108T122355_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261108T182054_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
