@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-08T18:20:54.958Z",
+  "generated_at": "2026-11-09T00:43:11.406Z",
   "window_days": 30,
-  "hat_score": 36,
+  "hat_score": 38,
   "level": "elevated",
   "score_interpretation": {
-    "percentage": 36,
+    "percentage": 38,
     "label": "elevated",
     "color": "yellow",
     "css": "elevated",
@@ -29,13 +29,13 @@
     "points": 26,
     "minimum_days": 14,
     "mean_hat_score": 59.6,
-    "delta_from_mean": -23.6
+    "delta_from_mean": -21.6
   },
   "score_parts": {
     "kev_recent_7d": 38,
     "kev_recent_30d": 94,
     "kev_epss_mean": 32,
-    "threatfox_ioc_current": 31,
+    "threatfox_ioc_current": 38,
     "threatfox_botnet_c2_36h": 0
   },
   "context_parts": {
@@ -51,11 +51,11 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 31,
+      "ioc_current_percentile": 38,
       "botnet_c2_current_percentile": 4,
-      "ioc_36h_percentile": 12,
+      "ioc_36h_percentile": 31,
       "botnet_c2_36h_percentile": 0,
-      "ioc_36h_count": 2122,
+      "ioc_36h_count": 2437,
       "botnet_c2_36h_count": 396,
       "percentile_baselines": {
         "current_ioc_percentile": {
@@ -283,48 +283,44 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1492,
-      "ioc_count_7d": 11754,
-      "botnet_c2_count_1d": 287,
-      "botnet_c2_count_7d": 3814,
+      "ioc_count_1d": 1684,
+      "ioc_count_7d": 12032,
+      "botnet_c2_count_1d": 322,
+      "botnet_c2_count_7d": 3838,
       "threat_types_1d": [
         {
-          "name": "payload",
-          "count": 659
+          "name": "payload_delivery",
+          "count": 760
         },
         {
-          "name": "payload_delivery",
-          "count": 548
+          "name": "payload",
+          "count": 607
         },
         {
           "name": "botnet_cc",
-          "count": 285
+          "count": 317
         }
       ],
       "malware_families_1d": [
         {
-          "name": "Mirai",
-          "count": 184
+          "name": "IClickFix",
+          "count": 448
         },
         {
-          "name": "ClearFake",
-          "count": 172
+          "name": "Mirai",
+          "count": 198
         },
         {
           "name": "WARDENStealer",
-          "count": 151
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 147
+          "count": 150
         },
         {
           "name": "Unknown malware",
-          "count": 104
+          "count": 110
         },
         {
-          "name": "AMOS",
-          "count": 98
+          "name": "ClearFake",
+          "count": 97
         },
         {
           "name": "SNOWLIGHT",
@@ -336,33 +332,37 @@
         },
         {
           "name": "Vidar",
-          "count": 57
+          "count": 59
+        },
+        {
+          "name": "Unknown Loader",
+          "count": 47
         },
         {
           "name": "VShell",
-          "count": 47
+          "count": 45
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 1516
+          "count": 1530
         },
         {
           "name": "Vidar",
-          "count": 769
+          "count": 775
         },
         {
           "name": "Cobalt Strike",
-          "count": 213
+          "count": 204
         },
         {
           "name": "WARDENStealer",
-          "count": 137
+          "count": 134
         },
         {
           "name": "PureRAT",
-          "count": 117
+          "count": 115
         },
         {
           "name": "ValleyRAT",
@@ -370,11 +370,11 @@
         },
         {
           "name": "VShell",
-          "count": 83
+          "count": 79
         },
         {
           "name": "Sliver",
-          "count": 70
+          "count": 71
         },
         {
           "name": "ACR Stealer",
@@ -394,11 +394,11 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 2122,
+        "current_36h_ioc_count": 2437,
         "current_36h_botnet_c2_count": 396,
-        "current_ioc_percentile": 31,
+        "current_ioc_percentile": 38,
         "current_botnet_c2_percentile": 4,
-        "trailing_36h_ioc_percentile": 12,
+        "trailing_36h_ioc_percentile": 31,
         "trailing_36h_botnet_c2_percentile": 0,
         "percentile_baselines": {
           "current_ioc_percentile": {
@@ -426,8 +426,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1492,
-      "botnet_cc_count": 3814,
+      "threatfox_count": 1684,
+      "botnet_cc_count": 3838,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -473,12 +473,39 @@
         "weighted_article_count": 0,
         "rejected_samples": [
           {
-            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
-            "domain": "koco.com",
+            "title": "no german patriots and philosophy as a weapon of war and peace ....",
+            "domain": "yourdemocracy.net.au",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "german"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Another aircraft carrier arrived in Norway , as did a new US ambassador | Norway News in English www . newsinenglish . no",
+            "domain": "newsinenglish.no",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "norway"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Russia Attacks Ukraine Rescue Site Where 55 Died In Bomb Strike , Leaves Over 600 , 000 Without Electricity , Zelenskyy Says",
+            "domain": "saharareporters.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
+                "attacks",
                 "strike",
                 "russia",
                 "ukraine"
@@ -488,8 +515,8 @@
             }
           },
           {
-            "title": "Κυβερνοεπιθέσεις σε ψυγεία : Ποιος παίζει με τον θερμοστάτη της Ευρώπης ;",
-            "domain": "inewsgr.com",
+            "title": "Wackelt Polens Ruf als sicheres Land ?",
+            "domain": "dw.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -499,76 +526,52 @@
             }
           },
           {
-            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
-            "domain": "kmbc.com",
+            "title": "Τραμπ προειδοποιεί για νέες επιθέσεις αν αποτύχουν οι συνομιλίες",
+            "domain": "sbctv.gr",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Putins eigenes Starlink : Russland setzt im Ukraine - Krieg auf „ Rasswet",
+            "domain": "hna.de",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
-                "strike",
-                "russia",
-                "ukraine"
+                "ukraine",
+                "russland"
               ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Крах пропагандистских мифов : почему уличные туалеты в Киеве стали символом системной деградации",
-            "domain": "argumenti.ru",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "росіяни посилили військову присутність в Олешках під прикриттям гуманітарної операції - Зеленський",
-            "domain": "unn.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Росія атакувала Дніпропетровщину , Одесу та Хмельниччину : є загиблі",
-            "domain": "espreso.tv",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Building owned by Saudi oil giant damaged in missile attack",
-            "domain": "wdsu.com",
+            "title": "How a Botswana architect was duped into fighting for Russia",
+            "domain": "dailymaverick.co.za",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
-                "attack"
+                "russia"
               ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Russia targets emergency crews at the site of a deadly strike in Ukraine",
-            "domain": "wdsu.com",
+            "title": "Putins eigenes Starlink : Russland setzt im Ukraine - Krieg auf „ Rasswet",
+            "domain": "az-online.de",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
-                "strike",
-                "russia",
-                "ukraine"
+                "ukraine",
+                "russland"
               ],
               "region": [],
               "global_spillover": []
@@ -621,8 +624,8 @@
           "ok_queries": 1,
           "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
-            "gdelt_fimi_2: request failed (TypeError)"
+            "gdelt_fimi_1: HTTP 429",
+            "gdelt_fimi_2: HTTP 429"
           ]
         },
         {
@@ -635,7 +638,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: HTTP 429",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
           ]
         },
         {
@@ -660,8 +663,8 @@
     "30 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.3246",
-    "1492 ThreatFox IOCs in the last 1 day",
-    "3814 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1684 ThreatFox IOCs in the last 1 day",
+    "3838 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -690,14 +693,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1492,
-      "count_7d": 11754,
-      "botnet_cc_count": 3814,
+      "count": 1684,
+      "count_7d": 12032,
+      "botnet_cc_count": 3838,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "9ac86237eb39ab25975d1cd53b58e7c03394a10cb75f702abd162ab00da9fc10",
-      "hash_7d": "748c031d0ee71629cf65b5ca442ca8d1a2af827777e3c40113f8c1040d6e8eec",
+      "hash_1d": "c44ab870d2172c72c5286ff66b4610a2773ee46e0aa23b50205d7af8673d10a1",
+      "hash_7d": "eac9b7b32278924522cf41a2d2d6915545ca2b2470b49eeb640baa21744ff225",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -714,8 +717,8 @@
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: HTTP 429"
       ]
     },
     {
@@ -728,7 +731,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: HTTP 429",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -782,7 +785,7 @@
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261108T182054_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261109T004311_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
