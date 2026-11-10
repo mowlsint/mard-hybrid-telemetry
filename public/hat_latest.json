@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-10T12:26:01.388Z",
+  "generated_at": "2026-11-10T18:22:22.924Z",
   "window_days": 30,
   "hat_score": 42,
   "level": "watch",
@@ -55,7 +55,7 @@
       "botnet_c2_current_percentile": 4,
       "ioc_36h_percentile": 4,
       "botnet_c2_36h_percentile": 11,
-      "ioc_36h_count": 1591,
+      "ioc_36h_count": 1601,
       "botnet_c2_36h_count": 500,
       "percentile_baselines": {
         "current_ioc_percentile": {
@@ -102,7 +102,7 @@
       "total_kev": 1773,
       "recent_7d": 6,
       "recent_30d": 34,
-      "epss_mean_recent_kev": 0.2873,
+      "epss_mean_recent_kev": 0.2922,
       "epss_enriched_count": 34,
       "epss_enrichment_coverage": 1,
       "top_recent_kev_by_epss": [
@@ -195,12 +195,12 @@
           "epss": 0.47472
         },
         {
-          "cve": "CVE-2026-46300",
-          "vendor_project": "Linux",
-          "product": "Kernel",
-          "vulnerability_name": "Linux Kernel Missing Initialization of a Variable Vulnerability",
-          "date_added": "2026-10-28",
-          "epss": 0.1613
+          "cve": "CVE-2026-123158",
+          "vendor_project": "OpenBSD",
+          "product": "OpenSSH",
+          "vulnerability_name": "OpenBSD OpenSSH Unexpected Status Code or Return Value Vulnerability",
+          "date_added": "2026-11-09",
+          "epss": 0.16501
         }
       ]
     },
@@ -210,179 +210,179 @@
         {
           "cve": "CVE-2026-97229",
           "epss": 0.6522,
-          "percentile": 0.9926,
-          "date": "2026-11-09"
+          "percentile": 0.99261,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-93616",
           "epss": 0.91605,
           "percentile": 0.99815,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-9082",
           "epss": 0.89381,
           "percentile": 0.99787,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-88772",
           "epss": 0.76566,
           "percentile": 0.99545,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-88771",
           "epss": 0.81894,
-          "percentile": 0.99653,
-          "date": "2026-11-09"
+          "percentile": 0.99654,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-87902",
           "epss": 0.95769,
-          "percentile": 0.99872,
-          "date": "2026-11-09"
+          "percentile": 0.99873,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-85706",
           "epss": 0.97355,
           "percentile": 0.99898,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-85102",
           "epss": 0.5414,
-          "percentile": 0.99015,
-          "date": "2026-11-09"
+          "percentile": 0.99017,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-82078",
           "epss": 0.63047,
-          "percentile": 0.99207,
-          "date": "2026-11-09"
+          "percentile": 0.99208,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-81578",
           "epss": 0.84734,
-          "percentile": 0.99709,
-          "date": "2026-11-09"
+          "percentile": 0.9971,
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-8037",
           "epss": 0.99794,
           "percentile": 0.99957,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         },
         {
           "cve": "CVE-2026-76460",
           "epss": 0.75599,
           "percentile": 0.99523,
-          "date": "2026-11-09"
+          "date": "2026-11-10"
         }
       ]
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 762,
-      "ioc_count_7d": 9339,
+      "ioc_count_1d": 974,
+      "ioc_count_7d": 9184,
       "botnet_c2_count_1d": 291,
-      "botnet_c2_count_7d": 2518,
+      "botnet_c2_count_7d": 2422,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 349
+          "count": 542
         },
         {
           "name": "botnet_cc",
-          "count": 281
+          "count": 290
         },
         {
           "name": "payload_delivery",
-          "count": 132
+          "count": 142
         }
       ],
       "malware_families_1d": [
         {
           "name": "Mirai",
-          "count": 165
+          "count": 170
         },
         {
           "name": "Unknown Loader",
-          "count": 96
+          "count": 85
         },
         {
           "name": "ClearFake",
-          "count": 60
-        },
-        {
-          "name": "Vidar",
-          "count": 52
+          "count": 62
         },
         {
           "name": "SNOWLIGHT",
           "count": 51
         },
         {
+          "name": "Vidar",
+          "count": 51
+        },
+        {
           "name": "Unknown malware",
-          "count": 41
+          "count": 40
         },
         {
           "name": "Cobalt Strike",
-          "count": 36
+          "count": 37
         },
         {
           "name": "SalatStealer",
-          "count": 32
+          "count": 35
         },
         {
           "name": "php.shin_webshell",
-          "count": 30
+          "count": 34
         },
         {
           "name": "XWorm",
-          "count": 29
+          "count": 33
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Vidar",
-          "count": 596
+          "count": 534
         },
         {
           "name": "Unknown malware",
-          "count": 351
+          "count": 348
         },
         {
           "name": "Cobalt Strike",
-          "count": 209
-        },
-        {
-          "name": "WARDENStealer",
-          "count": 113
+          "count": 204
         },
         {
           "name": "PureRAT",
-          "count": 97
+          "count": 102
         },
         {
           "name": "ValleyRAT",
-          "count": 95
+          "count": 93
+        },
+        {
+          "name": "WARDENStealer",
+          "count": 92
         },
         {
           "name": "AsyncRAT",
-          "count": 82
+          "count": 86
         },
         {
           "name": "ACR Stealer",
           "count": 81
         },
         {
-          "name": "Sliver",
-          "count": 75
+          "name": "VShell",
+          "count": 77
         },
         {
-          "name": "VShell",
-          "count": 75
+          "name": "Sliver",
+          "count": 76
         }
       ],
       "historical": {
@@ -394,7 +394,7 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 1591,
+        "current_36h_ioc_count": 1601,
         "current_36h_botnet_c2_count": 500,
         "current_ioc_percentile": 0,
         "current_botnet_c2_percentile": 4,
@@ -426,8 +426,8 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 762,
-      "botnet_cc_count": 2518,
+      "threatfox_count": 974,
+      "botnet_cc_count": 2422,
       "historical_export_status": "error"
     },
     "fimi_lite": {
@@ -438,9 +438,9 @@
       "data_quality": {
         "state": "partial",
         "score_valid": false,
-        "successful_queries": 1,
+        "successful_queries": 2,
         "expected_queries": 5,
-        "coverage_ratio": 0.2,
+        "coverage_ratio": 0.4,
         "sources": {
           "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
@@ -465,11 +465,11 @@
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 75,
+        "raw_unique_articles": 146,
         "accepted_articles": 0,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 75,
+        "rejected_as_noise_or_broad_context": 146,
         "weighted_article_count": 0,
         "rejected_samples": [
           {
@@ -575,14 +575,14 @@
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 75,
+        "article_count": 150,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 75,
+        "observed_articles": 146,
         "sample_limited": true,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 75,
+        "rejected_articles": 146,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [],
@@ -608,17 +608,16 @@
           "source": "gdelt_fimi",
           "status": "partial",
           "count": 0,
-          "raw_count": 75,
+          "raw_count": 146,
           "core_count": 0,
           "global_spillover_count": 0,
-          "rejected_count": 75,
+          "rejected_count": 146,
           "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 1,
-          "failed_queries": 2,
+          "ok_queries": 2,
+          "failed_queries": 1,
           "errors": [
-            "gdelt_fimi_1: HTTP 429",
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_1: HTTP 429"
           ]
         },
         {
@@ -630,7 +629,7 @@
           "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: request failed (TypeError)",
+            "euvsdisinfo_case_watch_1: HTTP 429",
             "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
@@ -655,9 +654,9 @@
     "6 CISA KEV additions in the last 7 days",
     "34 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.2873",
-    "762 ThreatFox IOCs in the last 1 day",
-    "2518 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.2922",
+    "974 ThreatFox IOCs in the last 1 day",
+    "2422 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -674,7 +673,7 @@
       "source": "first_epss_top",
       "status": "ok",
       "count": 250,
-      "hash": "3815a8fc935ae7b13d4b55a44d7ed224859c16c82f48709dd85b73bc38bc8c66"
+      "hash": "1bcecfe2cd8f09e62043b13c41a3ae0c44a5d924c2ebcaf331be648ce8fcbb7c"
     },
     {
       "source": "first_epss_kev_enrichment",
@@ -686,14 +685,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 762,
-      "count_7d": 9339,
-      "botnet_cc_count": 2518,
+      "count": 974,
+      "count_7d": 9184,
+      "botnet_cc_count": 2422,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "440bd0be21573fe41468602a8b37576a8fe4797d354b92678744e0e99da7324e",
-      "hash_7d": "24c81db8aa55c30879462e86968aec1ddf351c87ea197cd499cf27fd94b186bf",
+      "hash_1d": "a22b67bbdc316657960368c5801b11e6aa89e9c2fd53307ca589ceeaadd22e41",
+      "hash_7d": "35b8827a4077cd08d6f978b39d9af85e327b3dc363b5f46fe27705e90bc6dcbf",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -701,17 +700,16 @@
       "source": "gdelt_fimi",
       "status": "partial",
       "count": 0,
-      "raw_count": 75,
+      "raw_count": 146,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 75,
+      "rejected_count": 146,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 2,
+      "failed_queries": 1,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_1: HTTP 429"
       ]
     },
     {
@@ -723,7 +721,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: request failed (TypeError)",
+        "euvsdisinfo_case_watch_1: HTTP 429",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -778,7 +776,7 @@
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261110T122601_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261110T182222_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
