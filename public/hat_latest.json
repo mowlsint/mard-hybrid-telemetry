@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-11T06:30:23.504Z",
+  "generated_at": "2026-11-11T12:26:54.836Z",
   "window_days": 30,
-  "hat_score": 50,
+  "hat_score": 57,
   "level": "watch",
   "score_interpretation": {
-    "percentage": 50,
+    "percentage": 57,
     "label": "watch",
     "color": "orange",
     "css": "watch",
@@ -28,19 +28,19 @@
     "status": "active",
     "points": 29,
     "minimum_days": 14,
-    "mean_hat_score": 57.6,
-    "delta_from_mean": -7.6
+    "mean_hat_score": 57.7,
+    "delta_from_mean": -0.7
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 100,
     "kev_epss_mean": 26,
-    "threatfox_ioc_current": 10,
+    "threatfox_ioc_current": 45,
     "threatfox_botnet_c2_36h": 14
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 58.333333333333336
+    "source_coverage": 66.66666666666666
   },
   "bot_activity_state": {
     "schema": "mard-hat-c2-state-v2",
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 10,
-      "botnet_c2_current_percentile": 17,
-      "ioc_36h_percentile": 7,
+      "ioc_current_percentile": 45,
+      "botnet_c2_current_percentile": 3,
+      "ioc_36h_percentile": 28,
       "botnet_c2_36h_percentile": 14,
-      "ioc_36h_count": 1703,
-      "botnet_c2_36h_count": 476,
+      "ioc_36h_count": 2199,
+      "botnet_c2_36h_count": 527,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -283,86 +283,90 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1281,
-      "ioc_count_7d": 9381,
-      "botnet_c2_count_1d": 361,
-      "botnet_c2_count_7d": 2357,
+      "ioc_count_1d": 1606,
+      "ioc_count_7d": 9664,
+      "botnet_c2_count_1d": 301,
+      "botnet_c2_count_7d": 2298,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 593
-        },
-        {
-          "name": "botnet_cc",
-          "count": 360
+          "count": 876
         },
         {
           "name": "payload_delivery",
-          "count": 328
+          "count": 429
+        },
+        {
+          "name": "botnet_cc",
+          "count": 301
         }
       ],
       "malware_families_1d": [
         {
-          "name": "Unknown malware",
-          "count": 267
-        },
-        {
           "name": "Unknown Loader",
-          "count": 149
+          "count": 305
         },
         {
-          "name": "ClearFake",
-          "count": 118
-        },
-        {
-          "name": "Mirai",
-          "count": 87
+          "name": "Unknown malware",
+          "count": 272
         },
         {
           "name": "SalatStealer",
-          "count": 55
+          "count": 188
+        },
+        {
+          "name": "ClearFake",
+          "count": 114
+        },
+        {
+          "name": "StrelaStealer",
+          "count": 77
+        },
+        {
+          "name": "Mirai",
+          "count": 67
         },
         {
           "name": "Vidar",
-          "count": 50
+          "count": 49
         },
         {
           "name": "IClickFix",
-          "count": 47
+          "count": 45
         },
         {
           "name": "PureRAT",
           "count": 40
         },
         {
-          "name": "XWorm",
+          "name": "Cobalt Strike",
           "count": 33
-        },
-        {
-          "name": "php.shin_webshell",
-          "count": 32
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 407
+          "count": 388
         },
         {
           "name": "Vidar",
-          "count": 371
+          "count": 356
         },
         {
           "name": "Cobalt Strike",
-          "count": 213
+          "count": 219
         },
         {
           "name": "PureRAT",
-          "count": 111
+          "count": 106
         },
         {
           "name": "AsyncRAT",
-          "count": 94
+          "count": 95
+        },
+        {
+          "name": "ACR Stealer",
+          "count": 91
         },
         {
           "name": "ValleyRAT",
@@ -370,19 +374,15 @@
         },
         {
           "name": "WARDENStealer",
-          "count": 85
+          "count": 86
         },
         {
           "name": "Sliver",
-          "count": 83
-        },
-        {
-          "name": "ACR Stealer",
-          "count": 81
+          "count": 82
         },
         {
           "name": "VShell",
-          "count": 69
+          "count": 70
         }
       ],
       "historical": {
@@ -394,11 +394,11 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 1703,
-        "current_36h_botnet_c2_count": 476,
-        "current_ioc_percentile": 10,
-        "current_botnet_c2_percentile": 17,
-        "trailing_36h_ioc_percentile": 7,
+        "current_36h_ioc_count": 2199,
+        "current_36h_botnet_c2_count": 527,
+        "current_ioc_percentile": 45,
+        "current_botnet_c2_percentile": 3,
+        "trailing_36h_ioc_percentile": 28,
         "trailing_36h_botnet_c2_percentile": 14,
         "percentile_baselines": {
           "current_ioc_percentile": {
@@ -426,23 +426,23 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1281,
-      "botnet_cc_count": 2357,
+      "threatfox_count": 1606,
+      "botnet_cc_count": 2298,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "unavailable",
+      "status": "partial",
       "score": null,
-      "observed_partial_score": null,
+      "observed_partial_score": 0,
       "data_quality": {
-        "state": "unavailable",
+        "state": "partial",
         "score_valid": false,
-        "successful_queries": 0,
+        "successful_queries": 1,
         "expected_queries": 5,
-        "coverage_ratio": 0,
+        "coverage_ratio": 0.2,
         "sources": {
-          "gdelt_fimi": "error",
+          "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
         },
         "sample_limited": false
@@ -452,7 +452,7 @@
       "confidence": "low",
       "mode": "maritime_narrative_pressure; not a disinformation determination",
       "source_state": {
-        "external_ok": false,
+        "external_ok": true,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -465,25 +465,121 @@
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 0,
+        "raw_unique_articles": 37,
         "accepted_articles": 0,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 0,
+        "rejected_as_noise_or_broad_context": 37,
         "weighted_article_count": 0,
-        "rejected_samples": []
+        "rejected_samples": [
+          {
+            "title": "Rusyanın enerji limanı vuruldu ! 150 İHA düşürüldü",
+            "domain": "mansethaber.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Атака на Усть - Лугу пожар виден из космоса последние новости",
+            "domain": "focus.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "атака"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Ust - Luga : Russischer Ölhafen von Drohnen getroffen",
+            "domain": "berliner-zeitung.de",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "drohnen",
+                "russischer"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Πυρκαγιά σε ρωσικό λιμάνι στη Βαλτική εξαιτίας ουκρανικής επίθεσης – Τρεις τραυματίες",
+            "domain": "inewsgr.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Последствия удара Украины по Усть - Луге 11 ноября 2026 года | Новости Украины",
+            "domain": "news.liga.net",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Ρωσία : Στις φλόγες λιμάνι στη Βαλτική μετά από ουκρανική επίθεση",
+            "domain": "in.gr",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Πυρκαγιά σε λιμάνι στη Βαλτική , στρατηγικής σημασίας για τις εξαγωγές υδρογονανθράκων , εξαιτίας επιδρομής της Ουκρανίας",
+            "domain": "inewsgr.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Порт Усть - Луг - дрони ударили по ключовому порту росіян в Ленінградській області",
+            "domain": "unian.ua",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "порт"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          }
+        ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
+        "article_count": 37,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 0,
+        "observed_articles": 37,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 0,
+        "rejected_articles": 37,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [],
@@ -507,20 +603,19 @@
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
+          "status": "partial",
           "count": 0,
-          "raw_count": 0,
+          "raw_count": 37,
           "core_count": 0,
           "global_spillover_count": 0,
-          "rejected_count": 0,
+          "rejected_count": 37,
           "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 0,
-          "failed_queries": 3,
+          "ok_queries": 1,
+          "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
-            "gdelt_fimi_2: request failed (TypeError)",
-            "gdelt_fimi_3: request failed (TypeError)"
+            "gdelt_fimi_2: HTTP 429",
+            "gdelt_fimi_3: HTTP 429"
           ]
         },
         {
@@ -533,7 +628,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
           ]
         },
         {
@@ -558,8 +653,8 @@
     "40 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2624",
-    "1281 ThreatFox IOCs in the last 1 day",
-    "2357 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1606 ThreatFox IOCs in the last 1 day",
+    "2298 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -588,33 +683,32 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1281,
-      "count_7d": 9381,
-      "botnet_cc_count": 2357,
+      "count": 1606,
+      "count_7d": 9664,
+      "botnet_cc_count": 2298,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "f7157eea64f4afa32a9a26d9e6d30ab0045629d3bfdeb053e139558ed96d846a",
-      "hash_7d": "8556a5d5978a6c765512c4bd6c15bfd0059ccf9dd88181e5baab82c12b7a8e10",
+      "hash_1d": "d43d348a44c2b7872142debcb660598792f014137657305a995d8fb03f27526b",
+      "hash_7d": "f48abb25035828bb3bb91c1a5c1d73dbfc00c9dbad0c583b4e6cfcca6f3216cd",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
+      "status": "partial",
       "count": 0,
-      "raw_count": 0,
+      "raw_count": 37,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 0,
+      "rejected_count": 37,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 0,
-      "failed_queries": 3,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)",
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -627,7 +721,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -645,7 +739,7 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "partial",
-    "gdelt_fimi": "error",
+    "gdelt_fimi": "partial",
     "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "partial"
   },
@@ -674,14 +768,14 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "476 botnet/C2-like indicators in the current 36h window",
+      "527 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261111T063023_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261111T122654_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
