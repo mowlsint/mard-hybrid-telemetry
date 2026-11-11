@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-11T12:26:54.836Z",
+  "generated_at": "2026-11-11T18:22:33.054Z",
   "window_days": 30,
   "hat_score": 57,
   "level": "watch",
@@ -28,8 +28,8 @@
     "status": "active",
     "points": 29,
     "minimum_days": 14,
-    "mean_hat_score": 57.7,
-    "delta_from_mean": -0.7
+    "mean_hat_score": 57.8,
+    "delta_from_mean": -0.8
   },
   "score_parts": {
     "kev_recent_7d": 100,
@@ -52,11 +52,11 @@
     "basis": {
       "threshold_percentile": 75,
       "ioc_current_percentile": 45,
-      "botnet_c2_current_percentile": 3,
+      "botnet_c2_current_percentile": 17,
       "ioc_36h_percentile": 28,
       "botnet_c2_36h_percentile": 14,
-      "ioc_36h_count": 2199,
-      "botnet_c2_36h_count": 527,
+      "ioc_36h_count": 2230,
+      "botnet_c2_36h_count": 518,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -283,40 +283,48 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1606,
-      "ioc_count_7d": 9664,
-      "botnet_c2_count_1d": 301,
-      "botnet_c2_count_7d": 2298,
+      "ioc_count_1d": 1678,
+      "ioc_count_7d": 9560,
+      "botnet_c2_count_1d": 342,
+      "botnet_c2_count_7d": 2315,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 876
+          "count": 668
         },
         {
           "name": "payload_delivery",
-          "count": 429
+          "count": 668
         },
         {
           "name": "botnet_cc",
-          "count": 301
+          "count": 341
+        },
+        {
+          "name": "cc_skimming",
+          "count": 1
         }
       ],
       "malware_families_1d": [
         {
           "name": "Unknown Loader",
-          "count": 305
+          "count": 306
+        },
+        {
+          "name": "IClickFix",
+          "count": 285
         },
         {
           "name": "Unknown malware",
-          "count": 272
+          "count": 284
         },
         {
           "name": "SalatStealer",
-          "count": 188
+          "count": 185
         },
         {
           "name": "ClearFake",
-          "count": 114
+          "count": 109
         },
         {
           "name": "StrelaStealer",
@@ -324,48 +332,44 @@
         },
         {
           "name": "Mirai",
-          "count": 67
-        },
-        {
-          "name": "Vidar",
-          "count": 49
-        },
-        {
-          "name": "IClickFix",
-          "count": 45
-        },
-        {
-          "name": "PureRAT",
-          "count": 40
+          "count": 61
         },
         {
           "name": "Cobalt Strike",
-          "count": 33
+          "count": 53
+        },
+        {
+          "name": "Vidar",
+          "count": 50
+        },
+        {
+          "name": "php.shin_webshell",
+          "count": 24
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 388
+          "count": 385
         },
         {
           "name": "Vidar",
-          "count": 356
+          "count": 357
         },
         {
           "name": "Cobalt Strike",
-          "count": 219
+          "count": 237
         },
         {
           "name": "PureRAT",
           "count": 106
         },
         {
-          "name": "AsyncRAT",
-          "count": 95
+          "name": "ACR Stealer",
+          "count": 91
         },
         {
-          "name": "ACR Stealer",
+          "name": "AsyncRAT",
           "count": 91
         },
         {
@@ -373,12 +377,12 @@
           "count": 91
         },
         {
-          "name": "WARDENStealer",
-          "count": 86
-        },
-        {
           "name": "Sliver",
           "count": 82
+        },
+        {
+          "name": "WARDENStealer",
+          "count": 77
         },
         {
           "name": "VShell",
@@ -394,10 +398,10 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 2199,
-        "current_36h_botnet_c2_count": 527,
+        "current_36h_ioc_count": 2230,
+        "current_36h_botnet_c2_count": 518,
         "current_ioc_percentile": 45,
-        "current_botnet_c2_percentile": 3,
+        "current_botnet_c2_percentile": 17,
         "trailing_36h_ioc_percentile": 28,
         "trailing_36h_botnet_c2_percentile": 14,
         "percentile_baselines": {
@@ -426,21 +430,21 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1606,
-      "botnet_cc_count": 2298,
+      "threatfox_count": 1678,
+      "botnet_cc_count": 2315,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 0,
+      "observed_partial_score": 5,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
-        "successful_queries": 1,
+        "successful_queries": 2,
         "expected_queries": 5,
-        "coverage_ratio": 0.2,
+        "coverage_ratio": 0.4,
         "sources": {
           "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
@@ -454,23 +458,23 @@
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": false,
-        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
+        "source_signal_present": true,
+        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 0,
+        "gdelt_narrative_pressure": 1,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 0
+        "disarm_tag_relevance": 25
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 37,
-        "accepted_articles": 0,
+        "raw_unique_articles": 78,
+        "accepted_articles": 1,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 37,
-        "weighted_article_count": 0,
+        "global_maritime_spillover_articles": 1,
+        "rejected_as_noise_or_broad_context": 77,
+        "weighted_article_count": 0.4,
         "rejected_samples": [
           {
             "title": "Rusyanın enerji limanı vuruldu ! 150 İHA düşürüldü",
@@ -572,19 +576,82 @@
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 37,
+        "article_count": 78,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 37,
+        "observed_articles": 78,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_articles": 37,
+        "global_maritime_spillover_articles": 1,
+        "rejected_articles": 77,
         "weighted_articles": null,
         "historical_percentile": null,
-        "top_domains": [],
-        "sample": [],
-        "articles": []
+        "top_domains": [
+          {
+            "name": "ironmountaindailynews.com",
+            "count": 1
+          }
+        ],
+        "sample": [
+          {
+            "title": "Exclusive : AP granted rare access to European Union naval patrol fighting piracy in the Gulf of Aden",
+            "url": "https://www.ironmountaindailynews.com/extra-extra/2026/11/exclusive-ap-granted-rare-access-to-european-union-naval-patrol-fighting-piracy-in-the-gulf-of-aden/",
+            "domain": "ironmountaindailynews.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261111T023000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "naval"
+                ],
+                "threat_fimi": [
+                  "piracy"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "gulf of aden"
+                ]
+              }
+            }
+          }
+        ],
+        "articles": [
+          {
+            "title": "Exclusive : AP granted rare access to European Union naval patrol fighting piracy in the Gulf of Aden",
+            "url": "https://www.ironmountaindailynews.com/extra-extra/2026/11/exclusive-ap-granted-rare-access-to-european-union-naval-patrol-fighting-piracy-in-the-gulf-of-aden/",
+            "domain": "ironmountaindailynews.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261111T023000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "naval"
+                ],
+                "threat_fimi": [
+                  "piracy"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "gulf of aden"
+                ]
+              }
+            }
+          }
+        ]
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -596,25 +663,42 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 0,
-        "tags": []
+        "tag_count": 2,
+        "tags": [
+          {
+            "id": "institutional_topics",
+            "label": "Institutions and alliances topics",
+            "count": 2,
+            "matched_keywords": [
+              "european union",
+              "piracy"
+            ]
+          },
+          {
+            "id": "maritime_legal_topics",
+            "label": "Maritime law and sanctions topics",
+            "count": 1,
+            "matched_keywords": [
+              "piracy"
+            ]
+          }
+        ]
       },
       "downloads_hint": "See public/downloads/hat_analyst_bundle_latest.json and public/downloads/fimi_maritime_articles_latest.csv for re-use.",
       "source_health": [
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 0,
-          "raw_count": 37,
+          "count": 1,
+          "raw_count": 78,
           "core_count": 0,
-          "global_spillover_count": 0,
-          "rejected_count": 37,
-          "weighted_count": 0,
+          "global_spillover_count": 1,
+          "rejected_count": 77,
+          "weighted_count": 0.4,
           "queries": 3,
-          "ok_queries": 1,
-          "failed_queries": 2,
+          "ok_queries": 2,
+          "failed_queries": 1,
           "errors": [
-            "gdelt_fimi_2: HTTP 429",
             "gdelt_fimi_3: HTTP 429"
           ]
         },
@@ -636,9 +720,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 0,
+          "count": 2,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 0
+          "applied_to_articles": 1
         }
       ],
       "history": {
@@ -653,12 +737,16 @@
     "40 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2624",
-    "1606 ThreatFox IOCs in the last 1 day",
-    "2298 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1678 ThreatFox IOCs in the last 1 day",
+    "2315 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
+    "Maritime narrative pressure: not assessable (low confidence)",
+    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
+    "Maritime filter: 0 Core MARD-Eu, 1 Global Maritime Spillover, 77 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
+    "Narrative topic tags observed: Institutions and alliances topics, Maritime law and sanctions topics"
   ],
   "source_health": [
     {
@@ -683,31 +771,30 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1606,
-      "count_7d": 9664,
-      "botnet_cc_count": 2298,
+      "count": 1678,
+      "count_7d": 9560,
+      "botnet_cc_count": 2315,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "d43d348a44c2b7872142debcb660598792f014137657305a995d8fb03f27526b",
-      "hash_7d": "f48abb25035828bb3bb91c1a5c1d73dbfc00c9dbad0c583b4e6cfcca6f3216cd",
+      "hash_1d": "67815d6bb306660d1f9d674dd31266442c4d48a5fb950ef9c063df3cc3874536",
+      "hash_7d": "11b7806af27f42fabbc1d7fae47a80c91d91dcbccb016059e3b0f3d27c1bf84c",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 0,
-      "raw_count": 37,
+      "count": 1,
+      "raw_count": 78,
       "core_count": 0,
-      "global_spillover_count": 0,
-      "rejected_count": 37,
-      "weighted_count": 0,
+      "global_spillover_count": 1,
+      "rejected_count": 77,
+      "weighted_count": 0.4,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 2,
+      "failed_queries": 1,
       "errors": [
-        "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: HTTP 429"
       ]
     },
@@ -729,9 +816,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 0,
+      "count": 2,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 0
+      "applied_to_articles": 1
     }
   ],
   "source_health_map": {
@@ -768,14 +855,15 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "527 botnet/C2-like indicators in the current 36h window",
+      "518 botnet/C2-like indicators in the current 36h window",
+      "1 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261111T122654_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261111T182233_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
