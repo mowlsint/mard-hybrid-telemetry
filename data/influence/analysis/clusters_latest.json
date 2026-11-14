@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-13T18:50:54.997Z",
+  "generated_at": "2026-11-14T00:53:36.062Z",
   "mode": "hash_simhash_domain_time_clustering",
   "assessment_limit": "Clusters are analytical indicators of similar or synchronized public content. They are not attribution findings or bot determinations.",
   "parameters": {
@@ -9,15 +9,339 @@
     "maximum_internal_clusters": 400
   },
   "counts": {
-    "analysed_items": 3702,
-    "clusters": 11,
-    "elevated_clusters": 7,
-    "strong_clusters": 1
+    "analysed_items": 3739,
+    "clusters": 18,
+    "elevated_clusters": 14,
+    "strong_clusters": 7
   },
   "clusters": [
     {
+      "cluster_id": "4705f95ff0add6841787b1dc",
+      "generated_at": "2026-11-14T00:53:35.969Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-13T19:18:50.000Z",
+        "end_at": "2026-11-13T19:18:50.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_amira_mohamed_ali"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_amira_mohamed_ali__x__amira_m_ali"
+      ],
+      "item_ids": [
+        "1e91ffe1533d0b1a343a623665a293d3",
+        "cd405d36890a32e42b8a7e490a40b2aa"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "2912f3ed8e685ecd5602f3ec",
+      "generated_at": "2026-11-14T00:53:35.970Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-13T14:54:22.000Z",
+        "end_at": "2026-11-13T14:54:22.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_sahra_wagenknecht"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_sahra_wagenknecht__x__swagenknecht"
+      ],
+      "item_ids": [
+        "eb38d8c693fc76aa54ec72109a86a9c9",
+        "67dad3d78f6d7ad5939be4e71f49ba67"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "6cffe3996b870c13ae6a8fda",
+      "generated_at": "2026-11-14T00:53:35.970Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-13T13:29:24.000Z",
+        "end_at": "2026-11-13T13:29:24.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_amira_mohamed_ali"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_amira_mohamed_ali__x__amira_m_ali"
+      ],
+      "item_ids": [
+        "e0383978973e2de16649c58c04e07dd7",
+        "4c300e4b5be7950c510af58ee7eb5386"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "a4f941f80849574814dd1741",
+      "generated_at": "2026-11-14T00:53:35.970Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-12T16:45:49.000Z",
+        "end_at": "2026-11-12T16:45:49.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_sahra_wagenknecht"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_sahra_wagenknecht__x__swagenknecht"
+      ],
+      "item_ids": [
+        "d2ed4ee33708e5f52382204391e0c502",
+        "500e3930a4c9cc6da9d4a8a9f252b5f4"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "e768be1712ab06151f4ae85d",
+      "generated_at": "2026-11-14T00:53:35.970Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-12T11:17:13.000Z",
+        "end_at": "2026-11-12T11:17:13.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_sahra_wagenknecht"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_sahra_wagenknecht__x__swagenknecht"
+      ],
+      "item_ids": [
+        "ee49e5d31c822d9147406b60d481a4fa",
+        "95850ef8696504ebe5e7d0bbe50fe062"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
+      "cluster_id": "bda73d6a58218f82f8dea478",
+      "generated_at": "2026-11-14T00:53:35.970Z",
+      "assessment": {
+        "label": "strong_amplification_pattern",
+        "coordination_indicator_score": 88,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-12T07:45:22.000Z",
+        "end_at": "2026-11-12T07:45:22.000Z",
+        "span_minutes": 0
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_15_minutes"
+      ],
+      "actor_ids": [
+        "de_bsw_bund",
+        "de_sahra_wagenknecht"
+      ],
+      "endpoint_ids": [
+        "de_bsw_bund__x__bswbund",
+        "de_sahra_wagenknecht__x__swagenknecht"
+      ],
+      "item_ids": [
+        "46b91012f7fe89151f7772c41f911e83",
+        "b9c436efca618defbe3238523a078308"
+      ],
+      "platforms": {
+        "x": 2
+      },
+      "countries": {
+        "DE": 2
+      },
+      "actor_classes": {
+        "party_channel": 1,
+        "political_actor": 1
+      },
+      "shared_referenced_domains": {
+        "pbs.twimg.com": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "34a975529956dc49e91e6ce4",
-      "generated_at": "2026-11-13T18:50:54.925Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "strong_amplification_pattern",
         "coordination_indicator_score": 88,
@@ -71,8 +395,62 @@
       "restricted_item_count": 0
     },
     {
+      "cluster_id": "e905b3536bc64cf534f5210c",
+      "generated_at": "2026-11-14T00:53:35.969Z",
+      "assessment": {
+        "label": "elevated_amplification_pattern",
+        "coordination_indicator_score": 70,
+        "confidence": "low_medium",
+        "attribution_grade": false,
+        "automation_finding": false
+      },
+      "counts": {
+        "items": 2,
+        "actors": 2,
+        "endpoints": 2,
+        "unique_content_hashes": 1,
+        "pair_edges": 1
+      },
+      "time": {
+        "start_at": "2026-11-13T17:10:12.000Z",
+        "end_at": "2026-11-13T19:29:58.000Z",
+        "span_minutes": 140
+      },
+      "signals": [
+        "exact_content_hash",
+        "shared_referenced_domain",
+        "within_6_hours"
+      ],
+      "actor_ids": [
+        "ru_two_majors",
+        "ru_rybar"
+      ],
+      "endpoint_ids": [
+        "ru_two_majors__telegram__dva_majors",
+        "ru_rybar__telegram__rybar"
+      ],
+      "item_ids": [
+        "b82b212ab8caf50417a41e12f3d1e1d5",
+        "f2552b874505fda7941822adee929218"
+      ],
+      "platforms": {
+        "telegram": 2
+      },
+      "countries": {
+        "RU": 2
+      },
+      "actor_classes": {
+        "milblogger": 2
+      },
+      "shared_referenced_domains": {
+        "max.ru": 1,
+        "t.me": 1
+      },
+      "restricted_item_count": 0
+    },
+    {
       "cluster_id": "c3c5798a6807a6ddbdd3edd0",
-      "generated_at": "2026-11-13T18:50:54.924Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 70,
@@ -126,7 +504,7 @@
     },
     {
       "cluster_id": "6804c3d2c3461525c8cbc25a",
-      "generated_at": "2026-11-13T18:50:54.924Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 70,
@@ -181,7 +559,7 @@
     },
     {
       "cluster_id": "37fc914c3b09b6605d735387",
-      "generated_at": "2026-11-13T18:50:54.925Z",
+      "generated_at": "2026-11-14T00:53:35.971Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 70,
@@ -236,7 +614,7 @@
     },
     {
       "cluster_id": "8005e7fb8d1c7be0311e18ab",
-      "generated_at": "2026-11-13T18:50:54.924Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -291,7 +669,7 @@
     },
     {
       "cluster_id": "620e59286741d5b1fc66515c",
-      "generated_at": "2026-11-13T18:50:54.925Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 69,
@@ -346,7 +724,7 @@
     },
     {
       "cluster_id": "58f19592ccaaebd7929cd63e",
-      "generated_at": "2026-11-13T18:50:54.925Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "elevated_amplification_pattern",
         "coordination_indicator_score": 68,
@@ -401,7 +779,7 @@
     },
     {
       "cluster_id": "24c2de196844820812647cab",
-      "generated_at": "2026-11-13T18:50:54.924Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 57,
@@ -451,11 +829,11 @@
       "restricted_item_count": 0
     },
     {
-      "cluster_id": "9536b2979381d6ceac93dc28",
-      "generated_at": "2026-11-13T18:50:54.919Z",
+      "cluster_id": "7d3da232d361362d6c9b388d",
+      "generated_at": "2026-11-14T00:53:35.969Z",
       "assessment": {
         "label": "possible_amplification_pattern",
-        "coordination_indicator_score": 55,
+        "coordination_indicator_score": 56,
         "confidence": "low",
         "attribution_grade": false,
         "automation_finding": false
@@ -465,12 +843,12 @@
         "actors": 5,
         "endpoints": 5,
         "unique_content_hashes": 1,
-        "pair_edges": 190
+        "pair_edges": 187
       },
       "time": {
-        "start_at": "2026-11-10T21:40:21.000Z",
-        "end_at": "2026-11-13T18:47:27.000Z",
-        "span_minutes": 4147
+        "start_at": "2026-11-11T03:51:36.000Z",
+        "end_at": "2026-11-13T19:28:57.000Z",
+        "span_minutes": 3817
       },
       "signals": [
         "exact_content_hash",
@@ -479,20 +857,21 @@
         "within_15_minutes"
       ],
       "actor_ids": [
+        "ru_rybar",
         "ru_two_majors",
         "ru_colonelcassad",
         "ru_readovka",
-        "ru_rybar",
         "by_mfa"
       ],
       "endpoint_ids": [
+        "ru_rybar__telegram__rybar",
         "ru_two_majors__telegram__dva_majors",
         "ru_colonelcassad__telegram__boris_rozhin",
         "ru_readovka__telegram__readovkanews",
-        "ru_rybar__telegram__rybar",
         "by_mfa__telegram__belarusmfa"
       ],
       "item_ids": [
+        "5af5e96de972cca1b322a8f312c29749",
         "fc551f039d2409cb4e7e199e566a3b77",
         "e5e1705f9741fa5009d16153d33d734f",
         "a78141e81ab5c1bc520b9d0a516660ab",
@@ -523,8 +902,7 @@
         "d1f7fdde6b9f01ca896992ff7f6349d0",
         "ae8e282dc8fe4fe66a4a1d35c112ec56",
         "5df0278db4b62126f5c566ac5654c956",
-        "c84fb4d6bfffcfc2ab83067346586583",
-        "fede30c196018104df9cb0a74662921c"
+        "c84fb4d6bfffcfc2ab83067346586583"
       ],
       "platforms": {
         "telegram": 32
@@ -543,7 +921,7 @@
     },
     {
       "cluster_id": "5ffcd75b44a99b50e33919ec",
-      "generated_at": "2026-11-13T18:50:54.924Z",
+      "generated_at": "2026-11-14T00:53:35.970Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 46,
@@ -597,7 +975,7 @@
     },
     {
       "cluster_id": "084bcfd4369df8e5fc3d93fd",
-      "generated_at": "2026-11-13T18:50:54.925Z",
+      "generated_at": "2026-11-14T00:53:35.971Z",
       "assessment": {
         "label": "possible_amplification_pattern",
         "coordination_indicator_score": 44,
