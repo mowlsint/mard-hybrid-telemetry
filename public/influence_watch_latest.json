@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-15T18:50:34.457Z",
+  "generated_at": "2026-11-16T01:00:40.035Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low",
   "data_quality": {
     "state": "best_effort",
-    "successful_sources": 122,
+    "successful_sources": 111,
     "expected_sources": 268,
-    "coverage_ratio": 0.4552238805970149,
+    "coverage_ratio": 0.4141791044776119,
     "platforms": {
       "website": {
         "expected_sources": 131,
-        "successful_sources": 93,
+        "successful_sources": 91,
         "state": "partial_or_best_effort"
       },
       "instagram": {
@@ -32,8 +32,8 @@
       },
       "youtube": {
         "expected_sources": 9,
-        "successful_sources": 9,
-        "state": "partial_or_best_effort"
+        "successful_sources": 0,
+        "state": "unavailable"
       },
       "pattern": {
         "expected_sources": 9,
@@ -70,27 +70,27 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_bluesky_youtube_and_best_effort_x",
   "history": {
-    "total_items": 49484,
-    "current_run_items": 1323,
-    "items_24h": 973,
-    "items_7d": 8543,
-    "items_28d": 36291,
+    "total_items": 49680,
+    "current_run_items": 1137,
+    "items_24h": 1003,
+    "items_7d": 8485,
+    "items_28d": 36222,
     "timestamp_basis": "published_at_only; website snapshots retained as context",
-    "undated_observations": 4508,
+    "undated_observations": 4507,
     "oldest_item_at": "2026-08-18T08:29:19.000Z",
-    "newest_item_at": "2026-11-15T23:00:00.000Z",
+    "newest_item_at": "2026-11-16T01:00:17.855Z",
     "retained_days": 90,
     "max_items": 100000,
     "max_bytes": 64000000,
-    "actual_bytes": 39858528
+    "actual_bytes": 40017405
   },
   "activity": {
     "active_actors_7d": 76,
-    "provisional_10_per_week_actors": 56,
+    "provisional_10_per_week_actors": 55,
     "final_selection_decisions": 0
   },
   "clusters": {
-    "total": 19,
+    "total": 20,
     "elevated": 13,
     "strong": 6,
     "top": [
@@ -670,7 +670,7 @@
         "restricted_item_count": 0
       },
       {
-        "cluster_id": "b8ad21d73215f2d94606efde",
+        "cluster_id": "0f258423024df3938e9a8ee2",
         "assessment": {
           "label": "possible_amplification_pattern",
           "coordination_indicator_score": 56,
@@ -683,12 +683,12 @@
           "actors": 5,
           "endpoints": 5,
           "unique_content_hashes": 1,
-          "pair_edges": 109
+          "pair_edges": 108
         },
         "time": {
-          "start_at": "2026-11-12T21:20:20.000Z",
-          "end_at": "2026-11-15T18:47:42.000Z",
-          "span_minutes": 4167
+          "start_at": "2026-11-13T03:34:58.000Z",
+          "end_at": "2026-11-15T20:33:05.000Z",
+          "span_minutes": 3898
         },
         "signals": [
           "exact_content_hash",
@@ -772,6 +772,44 @@
         "signals": [
           "similar_text",
           "within_90_minutes"
+        ],
+        "platforms": {
+          "telegram": 2
+        },
+        "countries": {
+          "RU": 2
+        },
+        "actor_classes": {
+          "milblogger": 1,
+          "official_state_source": 1
+        },
+        "shared_domain_count": 0,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "d3761ae1207f854583d16e7a",
+        "assessment": {
+          "label": "possible_amplification_pattern",
+          "coordination_indicator_score": 36,
+          "confidence": "low",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 2,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-15T15:13:54.000Z",
+          "end_at": "2026-11-15T19:40:11.000Z",
+          "span_minutes": 266
+        },
+        "signals": [
+          "near_duplicate_text",
+          "within_6_hours"
         ],
         "platforms": {
           "telegram": 2
