@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-16T18:53:55.127Z",
+  "generated_at": "2026-11-17T00:57:02.144Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low",
   "data_quality": {
     "state": "best_effort",
-    "successful_sources": 140,
+    "successful_sources": 126,
     "expected_sources": 268,
-    "coverage_ratio": 0.5223880597014925,
+    "coverage_ratio": 0.4701492537313433,
     "platforms": {
       "website": {
         "expected_sources": 131,
-        "successful_sources": 96,
+        "successful_sources": 97,
         "state": "partial_or_best_effort"
       },
       "instagram": {
@@ -27,8 +27,8 @@
       },
       "x": {
         "expected_sources": 63,
-        "successful_sources": 15,
-        "state": "partial_or_best_effort"
+        "successful_sources": 0,
+        "state": "unavailable"
       },
       "youtube": {
         "expected_sources": 9,
@@ -70,29 +70,29 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_bluesky_youtube_and_best_effort_x",
   "history": {
-    "total_items": 50792,
-    "current_run_items": 1651,
-    "items_24h": 1110,
-    "items_7d": 8463,
-    "items_28d": 35955,
+    "total_items": 51019,
+    "current_run_items": 1350,
+    "items_24h": 1140,
+    "items_7d": 8466,
+    "items_28d": 35922,
     "timestamp_basis": "published_at_only; website snapshots retained as context",
-    "undated_observations": 4660,
+    "undated_observations": 4663,
     "oldest_item_at": "2026-08-19T08:55:42.000Z",
-    "newest_item_at": "2026-11-16T23:00:00.000Z",
+    "newest_item_at": "2026-11-17T00:55:28.745Z",
     "retained_days": 90,
     "max_items": 100000,
     "max_bytes": 64000000,
-    "actual_bytes": 40906887
+    "actual_bytes": 41087504
   },
   "activity": {
-    "active_actors_7d": 76,
-    "provisional_10_per_week_actors": 54,
+    "active_actors_7d": 75,
+    "provisional_10_per_week_actors": 53,
     "final_selection_decisions": 0
   },
   "clusters": {
-    "total": 14,
-    "elevated": 8,
-    "strong": 3,
+    "total": 13,
+    "elevated": 7,
+    "strong": 2,
     "top": [
       {
         "cluster_id": "5c5d315d83922258be9ddc17",
@@ -151,45 +151,6 @@
         "time": {
           "start_at": "2026-11-14T11:43:36.000Z",
           "end_at": "2026-11-14T11:43:38.000Z",
-          "span_minutes": 0
-        },
-        "signals": [
-          "exact_content_hash",
-          "shared_referenced_domain",
-          "within_15_minutes"
-        ],
-        "platforms": {
-          "x": 2
-        },
-        "countries": {
-          "DE": 2
-        },
-        "actor_classes": {
-          "party_channel": 1,
-          "political_actor": 1
-        },
-        "shared_domain_count": 1,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "4705f95ff0add6841787b1dc",
-        "assessment": {
-          "label": "strong_amplification_pattern",
-          "coordination_indicator_score": 88,
-          "confidence": "low_medium",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 2,
-          "actors": 2,
-          "endpoints": 2,
-          "unique_content_hashes": 1,
-          "pair_edges": 1
-        },
-        "time": {
-          "start_at": "2026-11-13T19:18:50.000Z",
-          "end_at": "2026-11-13T19:18:50.000Z",
           "span_minutes": 0
         },
         "signals": [
@@ -439,7 +400,7 @@
         "restricted_item_count": 0
       },
       {
-        "cluster_id": "8622fa285d5b773ee23c66d5",
+        "cluster_id": "da5e83b9cb3ce5a8943345b3",
         "assessment": {
           "label": "possible_amplification_pattern",
           "coordination_indicator_score": 55,
@@ -452,18 +413,18 @@
           "actors": 7,
           "endpoints": 7,
           "unique_content_hashes": 2,
-          "pair_edges": 112
+          "pair_edges": 111
         },
         "time": {
-          "start_at": "2026-11-13T19:28:57.000Z",
-          "end_at": "2026-11-16T13:58:01.000Z",
-          "span_minutes": 3989
+          "start_at": "2026-11-14T03:52:29.000Z",
+          "end_at": "2026-11-16T19:41:52.000Z",
+          "span_minutes": 3829
         },
         "signals": [
           "exact_content_hash",
+          "within_6_hours",
           "within_15_minutes",
           "within_90_minutes",
-          "within_6_hours",
           "near_duplicate_text"
         ],
         "platforms": {
