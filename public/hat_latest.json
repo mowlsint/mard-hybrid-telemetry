@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-18T06:30:50.348Z",
+  "generated_at": "2026-11-18T12:26:59.592Z",
   "window_days": 30,
-  "hat_score": 36,
+  "hat_score": 38,
   "level": "elevated",
   "score_interpretation": {
-    "percentage": 36,
+    "percentage": 38,
     "label": "elevated",
     "color": "yellow",
     "css": "elevated",
@@ -29,14 +29,14 @@
     "points": 36,
     "minimum_days": 14,
     "mean_hat_score": 56.1,
-    "delta_from_mean": -20.1
+    "delta_from_mean": -18.1
   },
   "score_parts": {
     "kev_recent_7d": 38,
     "kev_recent_30d": 100,
     "kev_epss_mean": 18,
     "threatfox_ioc_current": 11,
-    "threatfox_botnet_c2_36h": 31
+    "threatfox_botnet_c2_36h": 39
   },
   "context_parts": {
     "epss_hot_global": 100,
@@ -52,11 +52,11 @@
     "basis": {
       "threshold_percentile": 75,
       "ioc_current_percentile": 11,
-      "botnet_c2_current_percentile": 44,
-      "ioc_36h_percentile": 8,
-      "botnet_c2_36h_percentile": 31,
-      "ioc_36h_count": 1936,
-      "botnet_c2_36h_count": 645,
+      "botnet_c2_current_percentile": 42,
+      "ioc_36h_percentile": 6,
+      "botnet_c2_36h_percentile": 39,
+      "ioc_36h_count": 1816,
+      "botnet_c2_36h_count": 714,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -283,22 +283,22 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1363,
-      "ioc_count_7d": 9998,
-      "botnet_c2_count_1d": 519,
-      "botnet_c2_count_7d": 2425,
+      "ioc_count_1d": 1301,
+      "ioc_count_7d": 9473,
+      "botnet_c2_count_1d": 488,
+      "botnet_c2_count_7d": 2434,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 518
+          "count": 487
         },
         {
           "name": "payload_delivery",
-          "count": 513
+          "count": 429
         },
         {
           "name": "payload",
-          "count": 330
+          "count": 383
         },
         {
           "name": "cc_skimming",
@@ -308,84 +308,84 @@
       "malware_families_1d": [
         {
           "name": "Unknown malware",
-          "count": 263
+          "count": 246
         },
         {
           "name": "IClickFix",
-          "count": 170
-        },
-        {
-          "name": "ClearFake",
-          "count": 128
+          "count": 148
         },
         {
           "name": "Mirai",
-          "count": 94
+          "count": 146
         },
         {
-          "name": "Unknown Loader",
-          "count": 86
+          "name": "ClearFake",
+          "count": 129
         },
         {
           "name": "StrelaStealer",
-          "count": 57
+          "count": 55
         },
         {
           "name": "Vidar",
-          "count": 51
+          "count": 52
         },
         {
           "name": "AsyncRAT",
-          "count": 44
+          "count": 43
+        },
+        {
+          "name": "Unknown Loader",
+          "count": 37
         },
         {
           "name": "Cobalt Strike",
-          "count": 40
+          "count": 36
         },
         {
-          "name": "VShell",
-          "count": 28
+          "name": "Agent Tesla",
+          "count": 29
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 883
+          "count": 926
         },
         {
           "name": "Vidar",
-          "count": 310
+          "count": 309
         },
         {
           "name": "Cobalt Strike",
-          "count": 183
+          "count": 174
         },
         {
           "name": "AsyncRAT",
-          "count": 80
+          "count": 79
         },
         {
           "name": "WARDENStealer",
-          "count": 77
+          "count": 75
         },
         {
           "name": "PureRAT",
-          "count": 72
+          "count": 71
         },
         {
           "name": "Unknown Stealer",
-          "count": 59
+          "count": 62
         },
         {
           "name": "Sliver",
-          "count": 55
+          "count": 59
+        },
+        {
+          "name": "AdaptixC2",
+          "count": 50
         },
         {
           "name": "Aisuru",
-          "count": 46
-        },
-        {
-          "name": "Unknown RAT",
           "count": 46
         }
       ],
@@ -398,12 +398,12 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 1936,
-        "current_36h_botnet_c2_count": 645,
+        "current_36h_ioc_count": 1816,
+        "current_36h_botnet_c2_count": 714,
         "current_ioc_percentile": 11,
-        "current_botnet_c2_percentile": 44,
-        "trailing_36h_ioc_percentile": 8,
-        "trailing_36h_botnet_c2_percentile": 31,
+        "current_botnet_c2_percentile": 42,
+        "trailing_36h_ioc_percentile": 6,
+        "trailing_36h_botnet_c2_percentile": 39,
         "percentile_baselines": {
           "current_ioc_percentile": {
             "source": "valid_local_daily_history",
@@ -430,21 +430,21 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1363,
-      "botnet_cc_count": 2425,
+      "threatfox_count": 1301,
+      "botnet_cc_count": 2434,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 0,
+      "observed_partial_score": 1,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
-        "successful_queries": 1,
+        "successful_queries": 2,
         "expected_queries": 5,
-        "coverage_ratio": 0.2,
+        "coverage_ratio": 0.4,
         "sources": {
           "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
@@ -458,24 +458,70 @@
       "source_state": {
         "external_ok": true,
         "external_errors": true,
-        "source_signal_present": false,
-        "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
+        "source_signal_present": true,
+        "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 0,
+        "gdelt_narrative_pressure": 3,
         "euvsdisinfo_case_signal": 0,
         "disarm_tag_relevance": 0
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 16,
-        "accepted_articles": 0,
+        "raw_unique_articles": 25,
+        "accepted_articles": 5,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 16,
-        "weighted_article_count": 0,
+        "global_maritime_spillover_articles": 5,
+        "rejected_as_noise_or_broad_context": 20,
+        "weighted_article_count": 2,
         "rejected_samples": [
+          {
+            "title": "美당국 , 지난해 앨리스 황 직접 조사했다 … 늑장 대응 도마",
+            "domain": "edaily.co.kr",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Nearly 100 , 000 Iranians Shelter In Turkey As War , Blockade And Repression Fuel Unprecedented Brain Drain",
+            "domain": "foreignpolicyjournal.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "blockade"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "战火会烧到美国本土吗 ？ 美伊僵局之下 ， 华盛顿连夜设防最危险的报复",
+            "domain": "news.ifeng.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "深圳再出发 ， 亚太共命运",
+            "domain": "163.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
           {
             "title": "Ukraine strikes major Russian bridge as aerial attacks escalate",
             "domain": "richmondandtwickenhamtimes.co.uk",
@@ -529,83 +575,338 @@
               "region": [],
               "global_spillover": []
             }
-          },
-          {
-            "title": "Ukraine strikes major Russian bridge as aerial attacks escalate",
-            "domain": "guardian-series.co.uk",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "attacks",
-                "strikes",
-                "russian",
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Selenskyj : Sind bei Waffenentwicklung Nummer eins in Europa - Politik - Nachrichten - Reutlinger General - Anzeiger",
-            "domain": "gea.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Ukraine strikes major Russian bridge as aerial attacks escalate",
-            "domain": "thisiswiltshire.co.uk",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "attacks",
-                "strikes",
-                "russian",
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Ukraine hits Russia Kerch Bridge , as Russia strikes back at Kyiv bridges",
-            "domain": "10news.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "strikes",
-                "russia",
-                "ukraine"
-              ],
-              "region": [],
-              "global_spillover": []
-            }
           }
         ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 16,
+        "article_count": 25,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 16,
+        "observed_articles": 25,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 0,
-        "rejected_articles": 16,
+        "global_maritime_spillover_articles": 5,
+        "rejected_articles": 20,
         "weighted_articles": null,
         "historical_percentile": null,
-        "top_domains": [],
-        "sample": [],
-        "articles": []
+        "top_domains": [
+          {
+            "name": "kazu.org",
+            "count": 1
+          },
+          {
+            "name": "kccu.org",
+            "count": 1
+          },
+          {
+            "name": "kwit.org",
+            "count": 1
+          },
+          {
+            "name": "news.prairiepublic.org",
+            "count": 1
+          },
+          {
+            "name": "publicradiotulsa.org",
+            "count": 1
+          }
+        ],
+        "sample": [
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kwit.org/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kwit.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://news.prairiepublic.org/news-from-npr/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "news.prairiepublic.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kazu.org/npr-news/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kazu.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.publicradiotulsa.org/npr-national-news/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "publicradiotulsa.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kccu.org/world/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kccu.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          }
+        ],
+        "articles": [
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kwit.org/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kwit.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://news.prairiepublic.org/news-from-npr/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "news.prairiepublic.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kazu.org/npr-news/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kazu.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.publicradiotulsa.org/npr-national-news/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "publicradiotulsa.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran launches a third round of strikes on Bahrain , host of U . S . Navy 5th Fleet",
+            "url": "https://www.kccu.org/world/2026-11-17/iran-launches-a-third-round-of-strikes-on-bahrain-host-of-u-s-navys-5th-fleet",
+            "domain": "kccu.org",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261118T011500Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "fleet",
+                  "navy"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          }
+        ]
       },
       "euvsdisinfo": {
         "timespan": "90d",
@@ -625,18 +926,17 @@
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 0,
-          "raw_count": 16,
+          "count": 5,
+          "raw_count": 25,
           "core_count": 0,
-          "global_spillover_count": 0,
-          "rejected_count": 16,
-          "weighted_count": 0,
+          "global_spillover_count": 5,
+          "rejected_count": 20,
+          "weighted_count": 2,
           "queries": 3,
-          "ok_queries": 1,
-          "failed_queries": 2,
+          "ok_queries": 2,
+          "failed_queries": 1,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
-            "gdelt_fimi_2: request failed (TypeError)"
+            "gdelt_fimi_1: HTTP 429"
           ]
         },
         {
@@ -659,7 +959,7 @@
           "independent_evidence": false,
           "count": 0,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 0
+          "applied_to_articles": 5
         }
       ],
       "history": {
@@ -674,12 +974,15 @@
     "34 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.1777",
-    "1363 ThreatFox IOCs in the last 1 day",
-    "2425 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1301 ThreatFox IOCs in the last 1 day",
+    "2434 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BIL — C2 indicators below threshold",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
+    "Maritime narrative pressure: not assessable (low confidence)",
+    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
+    "Maritime filter: 0 Core MARD-Eu, 5 Global Maritime Spillover, 20 rejected as broad/noisy context",
+    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d"
   ],
   "source_health": [
     {
@@ -704,32 +1007,31 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1363,
-      "count_7d": 9998,
-      "botnet_cc_count": 2425,
+      "count": 1301,
+      "count_7d": 9473,
+      "botnet_cc_count": 2434,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "f6f48e218b5ea7ad887295c51e0189aa99d37b0c225818dbf2af0cdd887a73fb",
-      "hash_7d": "d512bdb15b3a546d2c68e29999b2d97eb611ae0f543f313630b984bfb718e819",
+      "hash_1d": "001dccca177e42f341fa90436ff2f6a031deb3ad7b719b9ce49b246a1562d537",
+      "hash_7d": "cd015c6048c48fb7910d854755eac1a79fca19c57c17d9b5bdebb5a70897254b",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 0,
-      "raw_count": 16,
+      "count": 5,
+      "raw_count": 25,
       "core_count": 0,
-      "global_spillover_count": 0,
-      "rejected_count": 16,
-      "weighted_count": 0,
+      "global_spillover_count": 5,
+      "rejected_count": 20,
+      "weighted_count": 2,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 2,
+      "failed_queries": 1,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)"
+        "gdelt_fimi_1: HTTP 429"
       ]
     },
     {
@@ -752,7 +1054,7 @@
       "independent_evidence": false,
       "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 0
+      "applied_to_articles": 5
     }
   ],
   "source_health_map": {
@@ -789,14 +1091,15 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "low",
     "signals": [
-      "645 botnet/C2-like indicators in the current 36h window",
+      "714 botnet/C2-like indicators in the current 36h window",
+      "5 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261118T063050_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261118T122659_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
