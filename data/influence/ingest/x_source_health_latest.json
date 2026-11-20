@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-19T18:54:05.622Z",
+  "generated_at": "2026-11-20T00:56:06.654Z",
   "mode": "nitter_multi_instance_rss_html_fallback",
   "preflight_unavailable": false,
   "preflight_skip_reason": "",
@@ -15,18 +15,18 @@
   ],
   "endpoint_count": 63,
   "status_counts": {
-    "ok": 45,
-    "error": 18
+    "error": 35,
+    "ok": 28
   },
   "collection_mode_counts": {
-    "rss": 45
+    "rss": 28
   },
   "instance_statistics": [
     {
       "instance_hash": "9b145327d6a5e9ef",
       "endpoint_attempts": 63,
-      "successful_methods": 45,
-      "errors": 36,
+      "successful_methods": 28,
+      "errors": 70,
       "blocked": 0,
       "empty": 0
     }
@@ -41,8 +41,8 @@
       "priority": "critical",
       "handle_hash": "df25fc389d98d443",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:29.171Z",
-      "duration_ms": 5606,
+      "checked_at": "2026-11-20T00:54:40.606Z",
+      "duration_ms": 1277,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -69,26 +69,34 @@
       "platform": "x",
       "priority": "critical",
       "handle_hash": "e2ecd6396ae4881d",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:51:29.203Z",
-      "duration_ms": 6166,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:54:40.640Z",
+      "duration_ms": 1830,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 404,
+              "blocked": false,
+              "error": "HTTP 404"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_afd_bund__x__afd",
@@ -99,8 +107,8 @@
       "priority": "critical",
       "handle_hash": "d35347e8c099e212",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:29.204Z",
-      "duration_ms": 9728,
+      "checked_at": "2026-11-20T00:54:40.641Z",
+      "duration_ms": 1517,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -127,38 +135,9 @@
       "platform": "x",
       "priority": "critical",
       "handle_hash": "21afb66af2ade62d",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:51:35.128Z",
-      "duration_ms": 5691,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_linke_bund__x__dielinke",
-      "actor_id": "de_linke_bund",
-      "country": "DE",
-      "actor_class": "party_channel",
-      "platform": "x",
-      "priority": "critical",
-      "handle_hash": "414105be3615ce3e",
       "status": "error",
-      "checked_at": "2026-11-19T18:51:35.719Z",
-      "duration_ms": 776,
+      "checked_at": "2026-11-20T00:54:42.233Z",
+      "duration_ms": 1285,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -169,9 +148,46 @@
             {
               "mode": "rss",
               "status": "error",
-              "http_status": 429,
+              "http_status": 404,
               "blocked": false,
-              "error": "HTTP 429"
+              "error": "HTTP 404"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_linke_bund__x__dielinke",
+      "actor_id": "de_linke_bund",
+      "country": "DE",
+      "actor_class": "party_channel",
+      "platform": "x",
+      "priority": "critical",
+      "handle_hash": "414105be3615ce3e",
+      "status": "error",
+      "checked_at": "2026-11-20T00:54:42.508Z",
+      "duration_ms": 12497,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 503,
+              "blocked": false,
+              "error": "HTTP 503"
             },
             {
               "mode": "html",
@@ -194,8 +210,8 @@
       "priority": "critical",
       "handle_hash": "23e044c2b8bdd93a",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:36.845Z",
-      "duration_ms": 6954,
+      "checked_at": "2026-11-20T00:54:42.820Z",
+      "duration_ms": 1291,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -223,8 +239,8 @@
       "priority": "critical",
       "handle_hash": "3bd0ef41f97ed4f8",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:39.282Z",
-      "duration_ms": 363,
+      "checked_at": "2026-11-20T00:54:43.869Z",
+      "duration_ms": 1085,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -252,8 +268,8 @@
       "priority": "critical",
       "handle_hash": "53bd1885a7730be4",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:39.995Z",
-      "duration_ms": 3883,
+      "checked_at": "2026-11-20T00:54:44.461Z",
+      "duration_ms": 10533,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -281,8 +297,8 @@
       "priority": "critical",
       "handle_hash": "1196df4372b340ea",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:41.169Z",
-      "duration_ms": 4310,
+      "checked_at": "2026-11-20T00:54:45.304Z",
+      "duration_ms": 1126,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -310,11 +326,11 @@
       "priority": "critical",
       "handle_hash": "b7115f2052b1f758",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:44.149Z",
-      "duration_ms": 12197,
+      "checked_at": "2026-11-20T00:54:46.780Z",
+      "duration_ms": 237,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
-      "item_count": 20,
+      "item_count": 17,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
@@ -323,7 +339,7 @@
               "mode": "rss",
               "status": "ok",
               "http_status": 200,
-              "item_count": 20
+              "item_count": 17
             }
           ]
         }
@@ -339,8 +355,8 @@
       "priority": "critical",
       "handle_hash": "3059a0b911f7d45f",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:44.227Z",
-      "duration_ms": 306,
+      "checked_at": "2026-11-20T00:54:47.367Z",
+      "duration_ms": 7614,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -368,8 +384,8 @@
       "priority": "critical",
       "handle_hash": "fc714cbf4949eb27",
       "status": "error",
-      "checked_at": "2026-11-19T18:51:44.882Z",
-      "duration_ms": 2744,
+      "checked_at": "2026-11-20T00:54:55.331Z",
+      "duration_ms": 12043,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -405,8 +421,8 @@
       "priority": "high",
       "handle_hash": "cd62165ead9c9e43",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:45.830Z",
-      "duration_ms": 255,
+      "checked_at": "2026-11-20T00:54:55.344Z",
+      "duration_ms": 11657,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -434,8 +450,8 @@
       "priority": "high",
       "handle_hash": "43d1ba282e6a28e4",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:46.435Z",
-      "duration_ms": 271,
+      "checked_at": "2026-11-20T00:54:55.356Z",
+      "duration_ms": 906,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -463,8 +479,8 @@
       "priority": "high",
       "handle_hash": "7fce20e8f2f36df0",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:47.058Z",
-      "duration_ms": 5228,
+      "checked_at": "2026-11-20T00:54:56.612Z",
+      "duration_ms": 2433,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -492,8 +508,8 @@
       "priority": "high",
       "handle_hash": "d421e053cc726f81",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:47.975Z",
-      "duration_ms": 663,
+      "checked_at": "2026-11-20T00:54:59.396Z",
+      "duration_ms": 1117,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -520,34 +536,26 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "b2db176f5f91c9c7",
-      "status": "error",
-      "checked_at": "2026-11-19T18:51:48.988Z",
-      "duration_ms": 15619,
-      "selected_instance_hash": "",
-      "collection_mode": "",
-      "item_count": 0,
+      "status": "ok",
+      "checked_at": "2026-11-20T00:55:00.862Z",
+      "duration_ms": 947,
+      "selected_instance_hash": "9b145327d6a5e9ef",
+      "collection_mode": "rss",
+      "item_count": 20,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "error",
-              "http_status": 503,
-              "blocked": false,
-              "error": "HTTP 503"
-            },
-            {
-              "mode": "html",
-              "status": "error",
-              "http_status": 403,
-              "blocked": false,
-              "error": "HTTP 403"
+              "status": "ok",
+              "http_status": 200,
+              "item_count": 20
             }
           ]
         }
       ],
-      "error": "All configured Nitter instances failed or returned no public posts"
+      "error": ""
     },
     {
       "endpoint_id": "cn_peoples_daily__x__pdchina",
@@ -558,8 +566,8 @@
       "priority": "high",
       "handle_hash": "cf782c007b099b1c",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:52.636Z",
-      "duration_ms": 5691,
+      "checked_at": "2026-11-20T00:55:02.159Z",
+      "duration_ms": 1751,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 18,
@@ -587,8 +595,8 @@
       "priority": "high",
       "handle_hash": "2b25c64d396901b7",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:56.695Z",
-      "duration_ms": 7822,
+      "checked_at": "2026-11-20T00:55:04.261Z",
+      "duration_ms": 1393,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -616,8 +624,8 @@
       "priority": "high",
       "handle_hash": "fc5cdce6461e1b77",
       "status": "ok",
-      "checked_at": "2026-11-19T18:51:58.678Z",
-      "duration_ms": 5857,
+      "checked_at": "2026-11-20T00:55:06.005Z",
+      "duration_ms": 289,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -645,8 +653,8 @@
       "priority": "high",
       "handle_hash": "72efb9e8a0c4c3d8",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:04.867Z",
-      "duration_ms": 6129,
+      "checked_at": "2026-11-20T00:55:06.644Z",
+      "duration_ms": 1646,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -674,8 +682,8 @@
       "priority": "high",
       "handle_hash": "64eab59e12940bc8",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:04.885Z",
-      "duration_ms": 5102,
+      "checked_at": "2026-11-20T00:55:07.351Z",
+      "duration_ms": 1792,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -702,26 +710,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "3f0409fcf090e151",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:04.958Z",
-      "duration_ms": 5451,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:07.724Z",
+      "duration_ms": 1459,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 404,
+              "blocked": false,
+              "error": "HTTP 404"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_beatrix_von_storch__x__beatrix_vstorch",
@@ -732,8 +748,8 @@
       "priority": "high",
       "handle_hash": "52177c6bb163666a",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:10.338Z",
-      "duration_ms": 6231,
+      "checked_at": "2026-11-20T00:55:08.640Z",
+      "duration_ms": 1368,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 19,
@@ -761,8 +777,8 @@
       "priority": "high",
       "handle_hash": "4348163d867815d7",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:10.760Z",
-      "duration_ms": 13372,
+      "checked_at": "2026-11-20T00:55:09.493Z",
+      "duration_ms": 1349,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -773,9 +789,9 @@
             {
               "mode": "rss",
               "status": "error",
-              "http_status": 503,
+              "http_status": 429,
               "blocked": false,
-              "error": "HTTP 503"
+              "error": "HTTP 429"
             },
             {
               "mode": "html",
@@ -798,8 +814,8 @@
       "priority": "high",
       "handle_hash": "e60a6420670ad862",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:11.346Z",
-      "duration_ms": 5228,
+      "checked_at": "2026-11-20T00:55:09.533Z",
+      "duration_ms": 1322,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -827,8 +843,8 @@
       "priority": "high",
       "handle_hash": "2b129aa4945f57d0",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:16.919Z",
-      "duration_ms": 2431,
+      "checked_at": "2026-11-20T00:55:10.359Z",
+      "duration_ms": 1561,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -863,26 +879,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "c28807fc3040693b",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:16.924Z",
-      "duration_ms": 3441,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 19,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:11.192Z",
+      "duration_ms": 1315,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 19
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_christian_lindner__x__c_lindner",
@@ -892,26 +916,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "7d2e0e00ff488d12",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:19.700Z",
-      "duration_ms": 5608,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:11.205Z",
+      "duration_ms": 1316,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_csu_bund__x__csu",
@@ -921,26 +953,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "611113d350be4f11",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:20.715Z",
-      "duration_ms": 244,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:12.270Z",
+      "duration_ms": 1270,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_deutschland_kurier__x__deu_kurier",
@@ -951,8 +991,8 @@
       "priority": "high",
       "handle_hash": "7c31cb4b55c6c3f7",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:21.310Z",
-      "duration_ms": 10922,
+      "checked_at": "2026-11-20T00:55:12.857Z",
+      "duration_ms": 10745,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -987,34 +1027,26 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "4f7af55ca4391d75",
-      "status": "error",
-      "checked_at": "2026-11-19T18:52:24.482Z",
-      "duration_ms": 9936,
-      "selected_instance_hash": "",
-      "collection_mode": "",
-      "item_count": 0,
+      "status": "ok",
+      "checked_at": "2026-11-20T00:55:12.872Z",
+      "duration_ms": 1341,
+      "selected_instance_hash": "9b145327d6a5e9ef",
+      "collection_mode": "rss",
+      "item_count": 20,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "error",
-              "http_status": 503,
-              "blocked": false,
-              "error": "HTTP 503"
-            },
-            {
-              "mode": "html",
-              "status": "error",
-              "http_status": 403,
-              "blocked": false,
-              "error": "HTTP 403"
+              "status": "ok",
+              "http_status": 200,
+              "item_count": 20
             }
           ]
         }
       ],
-      "error": "All configured Nitter instances failed or returned no public posts"
+      "error": ""
     },
     {
       "endpoint_id": "de_fabio_de_masi__x__fabiodemasi",
@@ -1025,8 +1057,8 @@
       "priority": "high",
       "handle_hash": "098d928a9f43a0e6",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:25.659Z",
-      "duration_ms": 16792,
+      "checked_at": "2026-11-20T00:55:13.891Z",
+      "duration_ms": 9698,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1062,8 +1094,8 @@
       "priority": "high",
       "handle_hash": "c28a08a1a507d5c8",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:32.583Z",
-      "duration_ms": 6376,
+      "checked_at": "2026-11-20T00:55:14.563Z",
+      "duration_ms": 1662,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -1091,8 +1123,8 @@
       "priority": "high",
       "handle_hash": "54dbf27c07f200e0",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:34.768Z",
-      "duration_ms": 5047,
+      "checked_at": "2026-11-20T00:55:16.575Z",
+      "duration_ms": 1183,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1128,8 +1160,8 @@
       "priority": "high",
       "handle_hash": "f66bfcb8cd7f9d65",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:39.310Z",
-      "duration_ms": 254,
+      "checked_at": "2026-11-20T00:55:18.108Z",
+      "duration_ms": 940,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -1156,26 +1188,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "7aadefa62668030f",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:39.915Z",
-      "duration_ms": 5667,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:19.399Z",
+      "duration_ms": 1277,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_gregor_gysi__x__gregorgysi",
@@ -1185,26 +1225,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "8dac79b06dce96c8",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:40.165Z",
-      "duration_ms": 5254,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:21.027Z",
+      "duration_ms": 1342,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_gruene_bund__x__die_gruenen",
@@ -1214,26 +1262,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "2ff600b9cd710b12",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:42.802Z",
-      "duration_ms": 6224,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:22.719Z",
+      "duration_ms": 7007,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_hans_georg_maassen__x__hgmaassen",
@@ -1244,8 +1300,8 @@
       "priority": "high",
       "handle_hash": "e1343b2a16322593",
       "status": "ok",
-      "checked_at": "2026-11-19T18:52:45.770Z",
-      "duration_ms": 5779,
+      "checked_at": "2026-11-20T00:55:23.940Z",
+      "duration_ms": 12163,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 18,
@@ -1272,9 +1328,38 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "6389bb6f5f3b9bc4",
+      "status": "ok",
+      "checked_at": "2026-11-20T00:55:23.952Z",
+      "duration_ms": 1420,
+      "selected_instance_hash": "9b145327d6a5e9ef",
+      "collection_mode": "rss",
+      "item_count": 20,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "ok",
+              "http_status": 200,
+              "item_count": 20
+            }
+          ]
+        }
+      ],
+      "error": ""
+    },
+    {
+      "endpoint_id": "de_joana_cotar__x__joanacotar",
+      "actor_id": "de_joana_cotar",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "2f5aab56018432f9",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:45.932Z",
-      "duration_ms": 12275,
+      "checked_at": "2026-11-20T00:55:25.722Z",
+      "duration_ms": 11735,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1285,9 +1370,9 @@
             {
               "mode": "rss",
               "status": "error",
-              "http_status": 503,
+              "http_status": 404,
               "blocked": false,
-              "error": "HTTP 503"
+              "error": "HTTP 404"
             },
             {
               "mode": "html",
@@ -1302,35 +1387,6 @@
       "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
-      "endpoint_id": "de_joana_cotar__x__joanacotar",
-      "actor_id": "de_joana_cotar",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "2f5aab56018432f9",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:49.376Z",
-      "duration_ms": 5721,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 17,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 17
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
       "endpoint_id": "de_junge_freiheit__x__junge_freiheit",
       "actor_id": "de_junge_freiheit",
       "country": "DE",
@@ -1339,8 +1395,8 @@
       "priority": "high",
       "handle_hash": "b210e9383636437e",
       "status": "error",
-      "checked_at": "2026-11-19T18:52:51.898Z",
-      "duration_ms": 3320,
+      "checked_at": "2026-11-20T00:55:30.076Z",
+      "duration_ms": 647,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1375,26 +1431,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "e633ad5eac65bec2",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:55.447Z",
-      "duration_ms": 15561,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:31.073Z",
+      "duration_ms": 1349,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_lars_klingbeil__x__larsklingbeil",
@@ -1404,26 +1468,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "d5bb3012a12e254d",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:55.566Z",
-      "duration_ms": 17277,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:32.773Z",
+      "duration_ms": 1282,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_marie_agnes_strack_zimmermann__x__mastrackzi",
@@ -1433,26 +1505,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "a37f6ea69c89d9bc",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:52:58.557Z",
-      "duration_ms": 5864,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:34.406Z",
+      "duration_ms": 1401,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_markus_soeder__x__markus_soeder",
@@ -1462,26 +1542,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "cd1ab6f9dff11be2",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:04.772Z",
-      "duration_ms": 5739,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:36.158Z",
+      "duration_ms": 1529,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_matthias_helferich__x__matthiasmdb",
@@ -1492,8 +1580,8 @@
       "priority": "high",
       "handle_hash": "bc45c4adcda0ed69",
       "status": "ok",
-      "checked_at": "2026-11-19T18:53:10.861Z",
-      "duration_ms": 5538,
+      "checked_at": "2026-11-20T00:55:36.454Z",
+      "duration_ms": 2597,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 19,
@@ -1520,34 +1608,26 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "f06d3af5aa913f97",
-      "status": "error",
-      "checked_at": "2026-11-19T18:53:11.358Z",
-      "duration_ms": 15886,
-      "selected_instance_hash": "",
-      "collection_mode": "",
-      "item_count": 0,
+      "status": "ok",
+      "checked_at": "2026-11-20T00:55:37.807Z",
+      "duration_ms": 2214,
+      "selected_instance_hash": "9b145327d6a5e9ef",
+      "collection_mode": "rss",
+      "item_count": 19,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "error",
-              "http_status": 503,
-              "blocked": false,
-              "error": "HTTP 503"
-            },
-            {
-              "mode": "html",
-              "status": "error",
-              "http_status": 403,
-              "blocked": false,
-              "error": "HTTP 403"
+              "status": "ok",
+              "http_status": 200,
+              "item_count": 19
             }
           ]
         }
       ],
-      "error": "All configured Nitter instances failed or returned no public posts"
+      "error": ""
     },
     {
       "endpoint_id": "de_nachdenkseiten__x__nachdenkseiten",
@@ -1558,8 +1638,8 @@
       "priority": "high",
       "handle_hash": "f7c539f44bed39f4",
       "status": "error",
-      "checked_at": "2026-11-19T18:53:13.193Z",
-      "duration_ms": 14115,
+      "checked_at": "2026-11-20T00:55:38.036Z",
+      "duration_ms": 1446,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1570,9 +1650,9 @@
             {
               "mode": "rss",
               "status": "error",
-              "http_status": 503,
+              "http_status": 429,
               "blocked": false,
-              "error": "HTTP 503"
+              "error": "HTTP 429"
             },
             {
               "mode": "html",
@@ -1595,8 +1675,8 @@
       "priority": "high",
       "handle_hash": "b97fd5095218ae9e",
       "status": "error",
-      "checked_at": "2026-11-19T18:53:16.750Z",
-      "duration_ms": 12326,
+      "checked_at": "2026-11-20T00:55:39.402Z",
+      "duration_ms": 657,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1631,220 +1711,9 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "f901f4f31357664d",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:27.595Z",
-      "duration_ms": 15336,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_omid_nouripour__x__nouripour",
-      "actor_id": "de_omid_nouripour",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "7cbd1e813e7110f9",
       "status": "error",
-      "checked_at": "2026-11-19T18:53:27.658Z",
-      "duration_ms": 11964,
-      "selected_instance_hash": "",
-      "collection_mode": "",
-      "item_count": 0,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "error",
-              "http_status": 503,
-              "blocked": false,
-              "error": "HTTP 503"
-            },
-            {
-              "mode": "html",
-              "status": "error",
-              "http_status": 403,
-              "blocked": false,
-              "error": "HTTP 403"
-            }
-          ]
-        }
-      ],
-      "error": "All configured Nitter instances failed or returned no public posts"
-    },
-    {
-      "endpoint_id": "de_reitschuster__x__reitschuster",
-      "actor_id": "de_reitschuster",
-      "country": "DE",
-      "actor_class": "independent_media",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "9c37a2dbeacde11f",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:29.426Z",
-      "duration_ms": 5831,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_rene_springer__x__rene_springer",
-      "actor_id": "de_rene_springer",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "c63e7636191f102c",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:35.606Z",
-      "duration_ms": 5498,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_ricarda_lang__x__ricarda_lang",
-      "actor_id": "de_ricarda_lang",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "4caa0cee6e217ac7",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:39.972Z",
-      "duration_ms": 6444,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_roderich_kiesewetter__x__rkiesewetter",
-      "actor_id": "de_roderich_kiesewetter",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "3206ccb559b89d2b",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:41.454Z",
-      "duration_ms": 5708,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_sahra_wagenknecht__x__swagenknecht",
-      "actor_id": "de_sahra_wagenknecht",
-      "country": "DE",
-      "actor_class": "political_actor",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "7b104144236e1c41",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:43.282Z",
-      "duration_ms": 5464,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
-      "instance_attempts": [
-        {
-          "instance_hash": "9b145327d6a5e9ef",
-          "attempts": [
-            {
-              "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
-            }
-          ]
-        }
-      ],
-      "error": ""
-    },
-    {
-      "endpoint_id": "de_spd_bund__x__spdde",
-      "actor_id": "de_spd_bund",
-      "country": "DE",
-      "actor_class": "party_channel",
-      "platform": "x",
-      "priority": "high",
-      "handle_hash": "aa1af2955e2fcd06",
-      "status": "error",
-      "checked_at": "2026-11-19T18:53:46.767Z",
-      "duration_ms": 2488,
+      "checked_at": "2026-11-20T00:55:39.833Z",
+      "duration_ms": 1288,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1872,16 +1741,53 @@
       "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
-      "endpoint_id": "de_tichys_einblick__x__tichyseinblick",
-      "actor_id": "de_tichys_einblick",
+      "endpoint_id": "de_omid_nouripour__x__nouripour",
+      "actor_id": "de_omid_nouripour",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "7cbd1e813e7110f9",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:40.371Z",
+      "duration_ms": 1277,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_reitschuster__x__reitschuster",
+      "actor_id": "de_reitschuster",
       "country": "DE",
       "actor_class": "independent_media",
       "platform": "x",
       "priority": "high",
-      "handle_hash": "74f16272b4482bad",
+      "handle_hash": "9c37a2dbeacde11f",
       "status": "ok",
-      "checked_at": "2026-11-19T18:53:47.513Z",
-      "duration_ms": 5194,
+      "checked_at": "2026-11-20T00:55:40.410Z",
+      "duration_ms": 1522,
       "selected_instance_hash": "9b145327d6a5e9ef",
       "collection_mode": "rss",
       "item_count": 20,
@@ -1901,16 +1807,164 @@
       "error": ""
     },
     {
-      "endpoint_id": "de_tino_chrupalla__x__tino_chrupalla",
-      "actor_id": "de_tino_chrupalla",
+      "endpoint_id": "de_rene_springer__x__rene_springer",
+      "actor_id": "de_rene_springer",
       "country": "DE",
       "actor_class": "political_actor",
       "platform": "x",
       "priority": "high",
-      "handle_hash": "0fe473bcd2cc6f3e",
+      "handle_hash": "c63e7636191f102c",
       "status": "error",
-      "checked_at": "2026-11-19T18:53:49.096Z",
-      "duration_ms": 9580,
+      "checked_at": "2026-11-20T00:55:41.471Z",
+      "duration_ms": 1341,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_ricarda_lang__x__ricarda_lang",
+      "actor_id": "de_ricarda_lang",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "4caa0cee6e217ac7",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:41.998Z",
+      "duration_ms": 1354,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_roderich_kiesewetter__x__rkiesewetter",
+      "actor_id": "de_roderich_kiesewetter",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "3206ccb559b89d2b",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:42.283Z",
+      "duration_ms": 1287,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_sahra_wagenknecht__x__swagenknecht",
+      "actor_id": "de_sahra_wagenknecht",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "7b104144236e1c41",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:43.163Z",
+      "duration_ms": 1302,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_spd_bund__x__spdde",
+      "actor_id": "de_spd_bund",
+      "country": "DE",
+      "actor_class": "party_channel",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "aa1af2955e2fcd06",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:43.702Z",
+      "duration_ms": 10473,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
@@ -1938,6 +1992,80 @@
       "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
+      "endpoint_id": "de_tichys_einblick__x__tichyseinblick",
+      "actor_id": "de_tichys_einblick",
+      "country": "DE",
+      "actor_class": "independent_media",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "74f16272b4482bad",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:43.921Z",
+      "duration_ms": 10291,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 503,
+              "blocked": false,
+              "error": "HTTP 503"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
+      "endpoint_id": "de_tino_chrupalla__x__tino_chrupalla",
+      "actor_id": "de_tino_chrupalla",
+      "country": "DE",
+      "actor_class": "political_actor",
+      "platform": "x",
+      "priority": "high",
+      "handle_hash": "0fe473bcd2cc6f3e",
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:44.815Z",
+      "duration_ms": 1340,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
+      "instance_attempts": [
+        {
+          "instance_hash": "9b145327d6a5e9ef",
+          "attempts": [
+            {
+              "mode": "rss",
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
+            }
+          ]
+        }
+      ],
+      "error": "All configured Nitter instances failed or returned no public posts"
+    },
+    {
       "endpoint_id": "de_ulrich_siegmund__x__ulrichsiegmund",
       "actor_id": "de_ulrich_siegmund",
       "country": "DE",
@@ -1945,26 +2073,34 @@
       "platform": "x",
       "priority": "high",
       "handle_hash": "77721d1adce9ef4d",
-      "status": "ok",
-      "checked_at": "2026-11-19T18:53:49.605Z",
-      "duration_ms": 5413,
-      "selected_instance_hash": "9b145327d6a5e9ef",
-      "collection_mode": "rss",
-      "item_count": 20,
+      "status": "error",
+      "checked_at": "2026-11-20T00:55:46.505Z",
+      "duration_ms": 8725,
+      "selected_instance_hash": "",
+      "collection_mode": "",
+      "item_count": 0,
       "instance_attempts": [
         {
           "instance_hash": "9b145327d6a5e9ef",
           "attempts": [
             {
               "mode": "rss",
-              "status": "ok",
-              "http_status": 200,
-              "item_count": 20
+              "status": "error",
+              "http_status": 429,
+              "blocked": false,
+              "error": "HTTP 429"
+            },
+            {
+              "mode": "html",
+              "status": "error",
+              "http_status": 403,
+              "blocked": false,
+              "error": "HTTP 403"
             }
           ]
         }
       ],
-      "error": ""
+      "error": "All configured Nitter instances failed or returned no public posts"
     },
     {
       "endpoint_id": "de_wolfgang_kubicki__x__kubickiwo",
@@ -1975,8 +2111,8 @@
       "priority": "high",
       "handle_hash": "7e8977ecab90fa2a",
       "status": "error",
-      "checked_at": "2026-11-19T18:53:53.057Z",
-      "duration_ms": 12203,
+      "checked_at": "2026-11-20T00:55:54.526Z",
+      "duration_ms": 11763,
       "selected_instance_hash": "",
       "collection_mode": "",
       "item_count": 0,
