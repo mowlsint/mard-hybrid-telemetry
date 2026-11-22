@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-21T18:22:30.743Z",
+  "generated_at": "2026-11-22T00:43:20.633Z",
   "window_days": 30,
   "hat_score": 70,
   "level": "high",
@@ -28,13 +28,13 @@
     "status": "active",
     "points": 39,
     "minimum_days": 14,
-    "mean_hat_score": 55.7,
-    "delta_from_mean": 14.3
+    "mean_hat_score": 55.8,
+    "delta_from_mean": 14.2
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 100,
-    "kev_epss_mean": 28,
+    "kev_epss_mean": 27,
     "threatfox_ioc_current": 65,
     "threatfox_botnet_c2_36h": 56
   },
@@ -44,19 +44,19 @@
   },
   "bot_activity_state": {
     "schema": "mard-hat-c2-state-v2",
-    "primary_code": "BIL",
-    "primary_number": 0,
-    "primary_label": "C2 indicators below threshold",
+    "primary_code": "BAB",
+    "primary_number": 2,
+    "primary_label": "Current C2 indicator pressure elevated",
     "confidence": "low",
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 69,
-      "botnet_c2_current_percentile": 46,
+      "ioc_current_percentile": 90,
+      "botnet_c2_current_percentile": 77,
       "ioc_36h_percentile": 54,
       "botnet_c2_36h_percentile": 56,
-      "ioc_36h_count": 2417,
-      "botnet_c2_36h_count": 897,
+      "ioc_36h_count": 2528,
+      "botnet_c2_36h_count": 878,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -101,9 +101,9 @@
     "kev": {
       "total_kev": 1790,
       "recent_7d": 9,
-      "recent_30d": 36,
-      "epss_mean_recent_kev": 0.2827,
-      "epss_enriched_count": 36,
+      "recent_30d": 34,
+      "epss_mean_recent_kev": 0.2747,
+      "epss_enriched_count": 34,
       "epss_enrichment_coverage": 1,
       "top_recent_kev_by_epss": [
         {
@@ -155,14 +155,6 @@
           "epss": 0.78004
         },
         {
-          "cve": "CVE-2026-110447",
-          "vendor_project": "Collabora",
-          "product": "Collabora Online – Built-in CODE Server",
-          "vulnerability_name": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability",
-          "date_added": "2026-10-23",
-          "epss": 0.7615
-        },
-        {
           "cve": "CVE-2026-116606",
           "vendor_project": "Barracuda Networks",
           "product": "Barracuda Email Security Gateway (ESG)",
@@ -201,6 +193,14 @@
           "vulnerability_name": "Vanderbilt University Research Electronic Data Capture (REDCap) Code Injection Vulnerability",
           "date_added": "2026-11-18",
           "epss": 0.33395
+        },
+        {
+          "cve": "CVE-2026-102895",
+          "vendor_project": "GPUStack",
+          "product": "GPUStack",
+          "vulnerability_name": "GPUStack Improper Authentication Vulnerability",
+          "date_added": "2026-11-09",
+          "epss": 0.18787
         }
       ]
     },
@@ -283,18 +283,18 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1872,
-      "ioc_count_7d": 9442,
-      "botnet_c2_count_1d": 532,
-      "botnet_c2_count_7d": 3116,
+      "ioc_count_1d": 2235,
+      "ioc_count_7d": 9814,
+      "botnet_c2_count_1d": 703,
+      "botnet_c2_count_7d": 3280,
       "threat_types_1d": [
         {
           "name": "payload",
-          "count": 812
+          "count": 906
         },
         {
           "name": "botnet_cc",
-          "count": 529
+          "count": 700
         },
         {
           "name": "cc_skimming",
@@ -302,33 +302,33 @@
         },
         {
           "name": "payload_delivery",
-          "count": 198
+          "count": 296
         }
       ],
       "malware_families_1d": [
         {
           "name": "Unknown malware",
-          "count": 528
+          "count": 758
         },
         {
           "name": "Skimer",
           "count": 335
         },
         {
+          "name": "Unknown Loader",
+          "count": 159
+        },
+        {
           "name": "ZStealer",
           "count": 156
         },
         {
+          "name": "Mirai",
+          "count": 145
+        },
+        {
           "name": "Merdoor",
           "count": 120
-        },
-        {
-          "name": "Mirai",
-          "count": 113
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 89
         },
         {
           "name": "Raven Stealer",
@@ -340,25 +340,25 @@
         },
         {
           "name": "ClearFake",
-          "count": 37
+          "count": 44
         },
         {
           "name": "Cobalt Strike",
-          "count": 31
+          "count": 39
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 1403
+          "count": 1575
         },
         {
           "name": "Vidar",
-          "count": 289
+          "count": 280
         },
         {
           "name": "Cobalt Strike",
-          "count": 185
+          "count": 192
         },
         {
           "name": "Unknown Stealer",
@@ -366,7 +366,7 @@
         },
         {
           "name": "AsyncRAT",
-          "count": 112
+          "count": 108
         },
         {
           "name": "Sliver",
@@ -374,19 +374,19 @@
         },
         {
           "name": "PureRAT",
-          "count": 74
+          "count": 67
         },
         {
           "name": "VShell",
           "count": 67
         },
         {
-          "name": "AdaptixC2",
-          "count": 51
+          "name": "Remcos",
+          "count": 52
         },
         {
-          "name": "Remcos",
-          "count": 51
+          "name": "AdaptixC2",
+          "count": 49
         }
       ],
       "historical": {
@@ -398,10 +398,10 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 2417,
-        "current_36h_botnet_c2_count": 897,
-        "current_ioc_percentile": 69,
-        "current_botnet_c2_percentile": 46,
+        "current_36h_ioc_count": 2528,
+        "current_36h_botnet_c2_count": 878,
+        "current_ioc_percentile": 90,
+        "current_botnet_c2_percentile": 77,
         "trailing_36h_ioc_percentile": 54,
         "trailing_36h_botnet_c2_percentile": 56,
         "percentile_baselines": {
@@ -430,15 +430,15 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1872,
-      "botnet_cc_count": 3116,
+      "threatfox_count": 2235,
+      "botnet_cc_count": 3280,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 10,
+      "observed_partial_score": 9,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
@@ -462,20 +462,68 @@
         "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 6,
+        "gdelt_narrative_pressure": 9,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 38
+        "disarm_tag_relevance": 25
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
         "raw_unique_articles": 121,
-        "accepted_articles": 9,
-        "core_mard_eu_articles": 2,
-        "global_maritime_spillover_articles": 7,
-        "rejected_as_noise_or_broad_context": 112,
-        "weighted_article_count": 4.8,
+        "accepted_articles": 12,
+        "core_mard_eu_articles": 3,
+        "global_maritime_spillover_articles": 9,
+        "rejected_as_noise_or_broad_context": 109,
+        "weighted_article_count": 6.6,
         "rejected_samples": [
+          {
+            "title": "Denmark Expels Russian Attaché Over Foiled Plot to Kill Rapper",
+            "domain": "hngn.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "russian"
+              ],
+              "region": [
+                "denmark"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "广深地位为何易位 ？- 虎嗅网",
+            "domain": "huxiu.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "31 Years After Dayton : How Milorad Dodik Is Threatening Stability in Bosnia and the Western Balkans",
+            "domain": "bgnes.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Зеленский требует у спонсоров новое оружие после ударов армии России",
+            "domain": "vesti.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
           {
             "title": "Военкор Александр Коц : Атака на судно в Финском заливе - это репетиция блокады Калининграда",
             "domain": "u-f.ru",
@@ -527,54 +575,6 @@
               "region": [],
               "global_spillover": []
             }
-          },
-          {
-            "title": "Estonia - Russia border closure sends residents rushing to cross before deadline",
-            "domain": "euronews.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [
-                "russia"
-              ],
-              "region": [
-                "estonia"
-              ],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Попадание ракеты в Польшу – Сикорский рассказал , какой будет реакция Варшавы",
-            "domain": "24tv.ua",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Несладкая жизнь : за что итальянцы бастуют против бюджета Мелони",
-            "domain": "pnp.ru",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Raketen gehen in Ostpolen nieder : Kreml provoziert Warschau",
-            "domain": "taz.de",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
           }
         ]
       },
@@ -586,9 +586,9 @@
         "unique_articles": null,
         "observed_articles": 121,
         "sample_limited": true,
-        "core_mard_eu_articles": 2,
-        "global_maritime_spillover_articles": 7,
-        "rejected_articles": 112,
+        "core_mard_eu_articles": 3,
+        "global_maritime_spillover_articles": 9,
+        "rejected_articles": 109,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [
@@ -601,7 +601,7 @@
             "count": 1
           },
           {
-            "name": "dailymail.com",
+            "name": "euronews.com",
             "count": 1
           },
           {
@@ -621,11 +621,68 @@
             "count": 1
           },
           {
-            "name": "wboc.com",
+            "name": "telegraph.co.uk",
             "count": 1
           }
         ],
         "sample": [
+          {
+            "title": "Iran attacks US bases in Bahrain as its tankers get ready to break the US blockade",
+            "url": "https://www.euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade",
+            "domain": "euronews.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261122T003000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "tankers"
+                ],
+                "threat_fimi": [
+                  "attacks",
+                  "blockade"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran strikes tankers and Israeli hit on food truck in Gaza kills 3",
+            "url": "https://www.wdbo.com/news/world/iran-strikes-3/5DOQKPG6KUZP3LICC6KBHJWPF4/",
+            "domain": "wdbo.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261121T203000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "tankers"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
           {
             "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
             "url": "http://www.idahopress.com/ap_news/us/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_d69706d0-0aa1-5a72-85d7-55f28dbbb892.html",
@@ -828,6 +885,66 @@
             }
           },
           {
+            "title": "Drones hit Russian cargo ship in Baltic , Finland tightens security",
+            "url": "https://timesofindia.indiatimes.com/world/europe/drones-hit-russian-cargo-ship-in-baltic-finland-tightens-security/articleshow/136065032.cms",
+            "domain": "timesofindia.indiatimes.com",
+            "language": "English",
+            "source_country": "India",
+            "seen_date": "20261122T003000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "ship"
+                ],
+                "threat_fimi": [
+                  "drones",
+                  "russian"
+                ],
+                "region": [
+                  "finland",
+                  "baltic"
+                ],
+                "global_spillover": []
+              }
+            }
+          },
+          {
+            "title": "Russian cargo ship bound for Kaliningrad hit by drones near Finland",
+            "url": "https://www.telegraph.co.uk/world-news/2026/11/21/russian-cargo-ship-bound-for-kaliningrad-hit-by-drones-near/",
+            "domain": "telegraph.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20261121T203000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "ship"
+                ],
+                "threat_fimi": [
+                  "drones",
+                  "russian"
+                ],
+                "region": [
+                  "kaliningrad",
+                  "finland"
+                ],
+                "global_spillover": []
+              }
+            }
+          },
+          {
             "title": "Ukraine Strikes Commercial Vessel In Gulf Of Finland In War First",
             "url": "http://www.zerohedge.com/geopolitical/ukraine-strikes-commercial-vessel-gulf-finland-war-first",
             "domain": "zerohedge.com",
@@ -848,37 +965,6 @@
                 "threat_fimi": [
                   "strikes",
                   "ukraine"
-                ],
-                "region": [
-                  "gulf of finland",
-                  "finland"
-                ],
-                "global_spillover": []
-              }
-            }
-          },
-          {
-            "title": "Russian cargo ship carrying military supplie is hit by drones in Gulf of Finland as it drifts towards Nato waters",
-            "url": "https://www.dailymail.com/news/article-16311227/Russian-ship-military-supplies-drones-Gulf-Finland-Nato.html",
-            "domain": "dailymail.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261121T143000Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "core_mard_eu",
-              "weight": 1,
-              "reason": "maritime+threat+regional_anchor",
-              "matched": {
-                "maritime": [
-                  "ship"
-                ],
-                "threat_fimi": [
-                  "drones",
-                  "nato",
-                  "russian"
                 ],
                 "region": [
                   "gulf of finland",
@@ -891,6 +977,63 @@
         ],
         "articles": [
           {
+            "title": "Iran attacks US bases in Bahrain as its tankers get ready to break the US blockade",
+            "url": "https://www.euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade",
+            "domain": "euronews.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261122T003000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "tankers"
+                ],
+                "threat_fimi": [
+                  "attacks",
+                  "blockade"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
+            "title": "Iran strikes tankers and Israeli hit on food truck in Gaza kills 3",
+            "url": "https://www.wdbo.com/news/world/iran-strikes-3/5DOQKPG6KUZP3LICC6KBHJWPF4/",
+            "domain": "wdbo.com",
+            "language": "English",
+            "source_country": "United States",
+            "seen_date": "20261121T203000Z",
+            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "global_maritime_spillover",
+              "weight": 0.4,
+              "reason": "maritime+threat+global_spillover_anchor",
+              "matched": {
+                "maritime": [
+                  "tankers"
+                ],
+                "threat_fimi": [
+                  "strikes"
+                ],
+                "region": [],
+                "global_spillover": [
+                  "iran"
+                ]
+              }
+            }
+          },
+          {
             "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
             "url": "http://www.idahopress.com/ap_news/us/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_d69706d0-0aa1-5a72-85d7-55f28dbbb892.html",
             "domain": "idahopress.com",
@@ -1092,6 +1235,66 @@
             }
           },
           {
+            "title": "Drones hit Russian cargo ship in Baltic , Finland tightens security",
+            "url": "https://timesofindia.indiatimes.com/world/europe/drones-hit-russian-cargo-ship-in-baltic-finland-tightens-security/articleshow/136065032.cms",
+            "domain": "timesofindia.indiatimes.com",
+            "language": "English",
+            "source_country": "India",
+            "seen_date": "20261122T003000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "ship"
+                ],
+                "threat_fimi": [
+                  "drones",
+                  "russian"
+                ],
+                "region": [
+                  "finland",
+                  "baltic"
+                ],
+                "global_spillover": []
+              }
+            }
+          },
+          {
+            "title": "Russian cargo ship bound for Kaliningrad hit by drones near Finland",
+            "url": "https://www.telegraph.co.uk/world-news/2026/11/21/russian-cargo-ship-bound-for-kaliningrad-hit-by-drones-near/",
+            "domain": "telegraph.co.uk",
+            "language": "English",
+            "source_country": "United Kingdom",
+            "seen_date": "20261121T203000Z",
+            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
+            "maritime_relevance": {
+              "accepted": true,
+              "classification_basis": "headline_and_url_path_only",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
+              "matched": {
+                "maritime": [
+                  "ship"
+                ],
+                "threat_fimi": [
+                  "drones",
+                  "russian"
+                ],
+                "region": [
+                  "kaliningrad",
+                  "finland"
+                ],
+                "global_spillover": []
+              }
+            }
+          },
+          {
             "title": "Ukraine Strikes Commercial Vessel In Gulf Of Finland In War First",
             "url": "http://www.zerohedge.com/geopolitical/ukraine-strikes-commercial-vessel-gulf-finland-war-first",
             "domain": "zerohedge.com",
@@ -1112,37 +1315,6 @@
                 "threat_fimi": [
                   "strikes",
                   "ukraine"
-                ],
-                "region": [
-                  "gulf of finland",
-                  "finland"
-                ],
-                "global_spillover": []
-              }
-            }
-          },
-          {
-            "title": "Russian cargo ship carrying military supplie is hit by drones in Gulf of Finland as it drifts towards Nato waters",
-            "url": "https://www.dailymail.com/news/article-16311227/Russian-ship-military-supplies-drones-Gulf-Finland-Nato.html",
-            "domain": "dailymail.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261121T143000Z",
-            "query": "(GPS OR GNSS OR jamming OR drones OR \"critical infrastructure\") (Baltic OR maritime OR port OR cable OR pipeline OR NATO OR Russia)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "core_mard_eu",
-              "weight": 1,
-              "reason": "maritime+threat+regional_anchor",
-              "matched": {
-                "maritime": [
-                  "ship"
-                ],
-                "threat_fimi": [
-                  "drones",
-                  "nato",
-                  "russian"
                 ],
                 "region": [
                   "gulf of finland",
@@ -1164,33 +1336,25 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 3,
+        "tag_count": 2,
         "tags": [
           {
             "id": "maritime_legal_topics",
             "label": "Maritime law and sanctions topics",
-            "count": 3,
+            "count": 4,
             "matched_keywords": [
               "tanker",
               "ship",
-              "vessel"
+              "vessel",
+              "blockade"
             ]
           },
           {
             "id": "attribution_topics",
             "label": "Attribution and responsibility topics",
-            "count": 2,
-            "matched_keywords": [
-              "ukraine",
-              "nato"
-            ]
-          },
-          {
-            "id": "institutional_topics",
-            "label": "Institutions and alliances topics",
             "count": 1,
             "matched_keywords": [
-              "nato"
+              "ukraine"
             ]
           }
         ]
@@ -1200,17 +1364,17 @@
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 9,
+          "count": 12,
           "raw_count": 121,
-          "core_count": 2,
-          "global_spillover_count": 7,
-          "rejected_count": 112,
-          "weighted_count": 4.8,
+          "core_count": 3,
+          "global_spillover_count": 9,
+          "rejected_count": 109,
+          "weighted_count": 6.6,
           "queries": 3,
           "ok_queries": 2,
           "failed_queries": 1,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)"
+            "gdelt_fimi_1: HTTP 429"
           ]
         },
         {
@@ -1222,8 +1386,8 @@
           "failed_queries": 2,
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
-            "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-            "euvsdisinfo_case_watch_2: request failed (TypeError)"
+            "euvsdisinfo_case_watch_1: request failed (TypeError)",
+            "euvsdisinfo_case_watch_2: HTTP 429"
           ]
         },
         {
@@ -1231,9 +1395,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 3,
+          "count": 2,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 9
+          "applied_to_articles": 12
         }
       ],
       "history": {
@@ -1245,19 +1409,19 @@
   },
   "drivers": [
     "9 CISA KEV additions in the last 7 days",
-    "36 CISA KEV additions in the last 30 days",
+    "34 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.2827",
-    "1872 ThreatFox IOCs in the last 1 day",
-    "3116 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.2747",
+    "2235 ThreatFox IOCs in the last 1 day",
+    "3280 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
-    "Bot state: BIL — C2 indicators below threshold",
+    "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 2 Core MARD-Eu, 7 Global Maritime Spillover, 112 rejected as broad/noisy context",
+    "Maritime filter: 3 Core MARD-Eu, 9 Global Maritime Spillover, 109 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics, Attribution and responsibility topics, Institutions and alliances topics"
+    "Narrative topic tags observed: Maritime law and sanctions topics, Attribution and responsibility topics"
   ],
   "source_health": [
     {
@@ -1275,38 +1439,38 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 36,
+      "count": 34,
       "coverage_ratio": 1
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1872,
-      "count_7d": 9442,
-      "botnet_cc_count": 3116,
+      "count": 2235,
+      "count_7d": 9814,
+      "botnet_cc_count": 3280,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "4616f19b925c6e6564ea9e88eef33cf2d8f7c3021add4ea632a68ff426d2c57e",
-      "hash_7d": "57872e7a18ccb8bd6ed3bbbab07c1667c81abe230a86305c2107e59043046a5e",
+      "hash_1d": "2ed1ff7da31f7cef1d4d786a2cccead94ab00ae37c49c35b090beb9d40f9117c",
+      "hash_7d": "bf20639dc760df182efb1f1b212521dcc6540347777bde7f595c12f9388e95d3",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 9,
+      "count": 12,
       "raw_count": 121,
-      "core_count": 2,
-      "global_spillover_count": 7,
-      "rejected_count": 112,
-      "weighted_count": 4.8,
+      "core_count": 3,
+      "global_spillover_count": 9,
+      "rejected_count": 109,
+      "weighted_count": 6.6,
       "queries": 3,
       "ok_queries": 2,
       "failed_queries": 1,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)"
+        "gdelt_fimi_1: HTTP 429"
       ]
     },
     {
@@ -1318,8 +1482,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: request failed (TypeError)"
+        "euvsdisinfo_case_watch_1: request failed (TypeError)",
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -1327,9 +1491,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 3,
+      "count": 2,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 9
+      "applied_to_articles": 12
     }
   ],
   "source_health_map": {
@@ -1364,18 +1528,19 @@
   },
   "obscuration_context": {
     "schema": "mard-hat-obscuration-context-v1",
-    "level": "low",
+    "level": "watch",
     "signals": [
-      "897 botnet/C2-like indicators in the current 36h window",
-      "2 score-relevant Core MARD-Eu maritime/FIMI articles",
-      "7 Global Maritime Spillover articles retained with lower weight",
+      "current bot/IOC proxy telemetry is elevated (BAB)",
+      "878 botnet/C2-like indicators in the current 36h window",
+      "3 score-relevant Core MARD-Eu maritime/FIMI articles",
+      "9 Global Maritime Spillover articles retained with lower weight",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261121T182230_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261122T004320_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
