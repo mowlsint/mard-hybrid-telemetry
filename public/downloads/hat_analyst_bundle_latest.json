@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-22T06:29:14.527Z",
+  "generated_at": "2026-11-22T12:25:18.790Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "partial",
@@ -75,8 +75,7 @@
     "schema": "mard-hat-obscuration-context-v1",
     "level": "not_assessable",
     "signals": [
-      "2 score-relevant Core MARD-Eu maritime/FIMI articles",
-      "9 Global Maritime Spillover articles retained with lower weight",
+      "4 score-relevant Core MARD-Eu maritime/FIMI articles",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -87,9 +86,9 @@
     "data_quality": {
       "state": "partial",
       "score_valid": false,
-      "successful_queries": 2,
+      "successful_queries": 1,
       "expected_queries": 5,
-      "coverage_ratio": 0.4,
+      "coverage_ratio": 0.2,
       "sources": {
         "gdelt_fimi": "partial",
         "euvsdisinfo_case_watch": "error"
@@ -102,15 +101,52 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 99,
-      "accepted_articles": 11,
-      "core_mard_eu_articles": 2,
-      "global_maritime_spillover_articles": 9,
-      "rejected_as_noise_or_broad_context": 88,
-      "weighted_article_count": 5.6,
+      "raw_unique_articles": 65,
+      "accepted_articles": 4,
+      "core_mard_eu_articles": 4,
+      "global_maritime_spillover_articles": 0,
+      "rejected_as_noise_or_broad_context": 61,
+      "weighted_article_count": 4,
       "rejected_samples": [
         {
-          "title": "В Финляндии обвинили Зеленского в попытке втянуть Европу в конфликт с Россией",
+          "title": "Krieg in der Ukraine - Brand auf russischem Frachter in Ostsee dauert die ganze Nacht",
+          "domain": "srf.ch",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "ukraine"
+            ],
+            "region": [
+              "ostsee"
+            ],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Russisk skib ramt af droner skal ud af finsk farvand",
+          "domain": "kristeligt-dagblad.dk",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "سفينة شحن روسية لا تزال مشتعلة قبالة فنلندا عقب هجوم | العالم",
+          "domain": "ammonnews.net",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Премьер Латвии Кулбергс назвал невозможным восстановление отношений с Россией",
           "domain": "news.mail.ru",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
@@ -121,22 +157,23 @@
           }
         },
         {
-          "title": "Кара за безумие Зеленского : дан мощнейший ответ за Петербург и Калининград",
-          "domain": "aif.ru",
+          "title": "Russischer Frachter in der Ostsee brennt weiter",
+          "domain": "sn.at",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
-            "threat_fimi": [],
+            "threat_fimi": [
+              "russischer"
+            ],
             "region": [
-              "kaliningrad",
-              "калининград"
+              "ostsee"
             ],
             "global_spillover": []
           }
         },
         {
-          "title": "كيف اقتربت الحرب الروسية الأوكرانية من حدود فنلندا ؟",
-          "domain": "aljazeera.net",
+          "title": "Russisk skib ramt af droner skal ud af finsk farvand",
+          "domain": "jyllands-posten.dk",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
@@ -146,64 +183,26 @@
           }
         },
         {
-          "title": "Силы обороны Финляндии : по российскому судну могла ударить Украина",
-          "domain": "tvzvezda.ru",
+          "title": "« Ο πόλεμος στην Ουκρανία επεκτείνεται »: Προειδοποιήσεις της Φινλανδίας μετά την επίθεση με drone εναντίον ρωσικού πλοίου στη Βαλτική",
+          "domain": "cedarnews.net",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
-            "threat_fimi": [],
+            "threat_fimi": [
+              "drone"
+            ],
             "region": [],
             "global_spillover": []
           }
         },
         {
-          "title": "Ukraina todennäköisesti Suomenlahdella tehdyn alusiskun takana – Puolustusvoimat : Elämme epävakauden ja epävarmuuden aikaa",
-          "domain": "ilkkapohjalainen.fi",
+          "title": "„ A háború átterjed a közvetlen környezetünkbe – írta a finn miniszterelnök , miután dróncsapás ért egy orosz teherhajót a Balti - tenger nemzetközi vizein",
+          "domain": "444.hu",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [],
             "threat_fimi": [],
             "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ostsee : Russisches Frachtschiff nach Drohnenangriff vor Finnland in Brand",
-          "domain": "handelsblatt.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [
-              "frachtschiff"
-            ],
-            "threat_fimi": [],
-            "region": [
-              "ostsee",
-              "finnland"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "В Калининградской области назвали фейком фото взрыва в Балтийске",
-          "domain": "news.mail.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Kaliningrad rotasında ilerleyen Rus yük gemisine Finlandiya açıklarında İHA saldırısı",
-          "domain": "haberport.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "kaliningrad"
-            ],
             "global_spillover": []
           }
         }
@@ -212,51 +211,97 @@
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 100,
+      "article_count": 65,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 99,
+      "observed_articles": 65,
       "sample_limited": false,
-      "core_mard_eu_articles": 2,
-      "global_maritime_spillover_articles": 9,
-      "rejected_articles": 88,
+      "core_mard_eu_articles": 4,
+      "global_maritime_spillover_articles": 0,
+      "rejected_articles": 61,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [
-        {
-          "name": "bozemandailychronicle.com",
-          "count": 1
-        },
-        {
-          "name": "cecildaily.com",
-          "count": 1
-        },
         {
           "name": "dailymail.com",
           "count": 1
         },
         {
-          "name": "euronews.com",
+          "name": "dailymirror.lk",
           "count": 1
         },
         {
-          "name": "gcaptain.com",
+          "name": "navbharattimes.indiatimes.com",
           "count": 1
         },
         {
-          "name": "idahopress.com",
-          "count": 1
-        },
-        {
-          "name": "kake.com",
-          "count": 1
-        },
-        {
-          "name": "rockymounttelegram.com",
+          "name": "timesofindia.indiatimes.com",
           "count": 1
         }
       ],
       "sample": [
+        {
+          "title": "Russian cargo ship still on fire off Finland after attack - International",
+          "url": "https://www.dailymirror.lk/international/Russian-cargo-ship-still-on-fire-off-Finland-after-attack/107-355501",
+          "domain": "dailymirror.lk",
+          "language": "English",
+          "source_country": "Sri Lanka",
+          "seen_date": "20261122T103000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship"
+              ],
+              "threat_fimi": [
+                "attack",
+                "russian"
+              ],
+              "region": [
+                "finland"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
+        {
+          "title": "Russia Ship Attack , रूसी जहाज पर बाल्टिक सागर में ड्रोन हमला , रातभर धधकती रही आग , यूक्रेन पर शक - russia cargo vessel bound for kaliningrad drone attack in gulf of finland - Rest of Europe News",
+          "url": "https://navbharattimes.indiatimes.com/world/rest-of-europe/russia-cargo-vessel-bound-for-kaliningrad-drone-attack-in-gulf-of-finland/articleshow/136071478.cms",
+          "domain": "navbharattimes.indiatimes.com",
+          "language": "Hindi",
+          "source_country": "India",
+          "seen_date": "20261122T103000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship",
+                "vessel"
+              ],
+              "threat_fimi": [
+                "attack",
+                "drone",
+                "russia"
+              ],
+              "region": [
+                "gulf of finland",
+                "kaliningrad",
+                "finland"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
         {
           "title": "Drones hit Russian cargo ship in Baltic , Finland tightens security",
           "url": "https://timesofindia.indiatimes.com/world/europe/drones-hit-russian-cargo-ship-in-baltic-finland-tightens-security/articleshow/136065032.cms",
@@ -315,270 +360,74 @@
                 "finland"
               ],
               "global_spillover": []
-            }
-          }
-        },
-        {
-          "title": "Iran attacks US bases in Bahrain as its tankers get ready to break the US blockade",
-          "url": "https://www.euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade",
-          "domain": "euronews.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261122T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "attacks",
-                "blockade"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes tankers and Israeli hit on food truck in Gaza kills 3",
-          "url": "https://www.wdbo.com/news/world/iran-strikes-3/5DOQKPG6KUZP3LICC6KBHJWPF4/",
-          "domain": "wdbo.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T203000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.idahopress.com/ap_news/us/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_d69706d0-0aa1-5a72-85d7-55f28dbbb892.html",
-          "domain": "idahopress.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "https://www.wboc.com/news/international/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_01da6b4b-0bb9-5d63-96fd-a41f63b4e2d6.html",
-          "domain": "wboc.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.rockymounttelegram.com/news/national/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_cf8214ba-1461-56d3-9213-344895893f91.html",
-          "domain": "rockymounttelegram.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.bozemandailychronicle.com/wire/news/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_ccf9db54-917b-5716-ac6a-ccc60f72baa9.html",
-          "domain": "bozemandailychronicle.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.cecildaily.com/ap/nation/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_f349f73f-8b70-55f7-be84-d7ac14708fc6.html",
-          "domain": "cecildaily.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Strait of Hormuz attacks have increased to highest level since Iran war began",
-          "url": "https://www.kake.com/news/national/strait-of-hormuz-attacks-have-increased-to-highest-level-since-iran-war-began/article_a4749f3d-3247-4907-a39d-6795d12d82f0.html",
-          "domain": "kake.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T123000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "strait"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz",
-                "iran",
-                "strait"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Another Tanker Hit in Strait of Hormuz as Maritime Attacks Surge Worldwide",
-          "url": "https://gcaptain.com/another-tanker-hit-in-strait-of-hormuz-as-maritime-attacks-surge-worldwide/",
-          "domain": "gcaptain.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261120T214500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tanker",
-                "maritime",
-                "strait"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz",
-                "strait"
-              ]
             }
           }
         }
       ],
       "articles": [
         {
+          "title": "Russian cargo ship still on fire off Finland after attack - International",
+          "url": "https://www.dailymirror.lk/international/Russian-cargo-ship-still-on-fire-off-Finland-after-attack/107-355501",
+          "domain": "dailymirror.lk",
+          "language": "English",
+          "source_country": "Sri Lanka",
+          "seen_date": "20261122T103000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship"
+              ],
+              "threat_fimi": [
+                "attack",
+                "russian"
+              ],
+              "region": [
+                "finland"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
+        {
+          "title": "Russia Ship Attack , रूसी जहाज पर बाल्टिक सागर में ड्रोन हमला , रातभर धधकती रही आग , यूक्रेन पर शक - russia cargo vessel bound for kaliningrad drone attack in gulf of finland - Rest of Europe News",
+          "url": "https://navbharattimes.indiatimes.com/world/rest-of-europe/russia-cargo-vessel-bound-for-kaliningrad-drone-attack-in-gulf-of-finland/articleshow/136071478.cms",
+          "domain": "navbharattimes.indiatimes.com",
+          "language": "Hindi",
+          "source_country": "India",
+          "seen_date": "20261122T103000Z",
+          "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
+          "maritime_relevance": {
+            "accepted": true,
+            "classification_basis": "headline_and_url_path_only",
+            "classification": "core_mard_eu",
+            "weight": 1,
+            "reason": "maritime+threat+regional_anchor",
+            "matched": {
+              "maritime": [
+                "ship",
+                "vessel"
+              ],
+              "threat_fimi": [
+                "attack",
+                "drone",
+                "russia"
+              ],
+              "region": [
+                "gulf of finland",
+                "kaliningrad",
+                "finland"
+              ],
+              "global_spillover": []
+            }
+          }
+        },
+        {
           "title": "Drones hit Russian cargo ship in Baltic , Finland tightens security",
           "url": "https://timesofindia.indiatimes.com/world/europe/drones-hit-russian-cargo-ship-in-baltic-finland-tightens-security/articleshow/136065032.cms",
           "domain": "timesofindia.indiatimes.com",
@@ -636,264 +485,6 @@
                 "finland"
               ],
               "global_spillover": []
-            }
-          }
-        },
-        {
-          "title": "Iran attacks US bases in Bahrain as its tankers get ready to break the US blockade",
-          "url": "https://www.euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade",
-          "domain": "euronews.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261122T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "attacks",
-                "blockade"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes tankers and Israeli hit on food truck in Gaza kills 3",
-          "url": "https://www.wdbo.com/news/world/iran-strikes-3/5DOQKPG6KUZP3LICC6KBHJWPF4/",
-          "domain": "wdbo.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T203000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.idahopress.com/ap_news/us/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_d69706d0-0aa1-5a72-85d7-55f28dbbb892.html",
-          "domain": "idahopress.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "https://www.wboc.com/news/international/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_01da6b4b-0bb9-5d63-96fd-a41f63b4e2d6.html",
-          "domain": "wboc.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.rockymounttelegram.com/news/national/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_cf8214ba-1461-56d3-9213-344895893f91.html",
-          "domain": "rockymounttelegram.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.bozemandailychronicle.com/wire/news/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_ccf9db54-917b-5716-ac6a-ccc60f72baa9.html",
-          "domain": "bozemandailychronicle.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran strikes 3 tankers as it shows off missile launchers , and other Mideast news",
-          "url": "http://www.cecildaily.com/ap/nation/iran-strikes-3-tankers-as-it-shows-off-missile-launchers-and-other-mideast-news/article_f349f73f-8b70-55f7-be84-d7ac14708fc6.html",
-          "domain": "cecildaily.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T163000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "strikes"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Strait of Hormuz attacks have increased to highest level since Iran war began",
-          "url": "https://www.kake.com/news/national/strait-of-hormuz-attacks-have-increased-to-highest-level-since-iran-war-began/article_a4749f3d-3247-4907-a39d-6795d12d82f0.html",
-          "domain": "kake.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261121T123000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "strait"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz",
-                "iran",
-                "strait"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Another Tanker Hit in Strait of Hormuz as Maritime Attacks Surge Worldwide",
-          "url": "https://gcaptain.com/another-tanker-hit-in-strait-of-hormuz-as-maritime-attacks-surge-worldwide/",
-          "domain": "gcaptain.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261120T214500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tanker",
-                "maritime",
-                "strait"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "hormuz",
-                "strait"
-              ]
             }
           }
         }
@@ -914,11 +505,10 @@
         {
           "id": "maritime_legal_topics",
           "label": "Maritime law and sanctions topics",
-          "count": 3,
+          "count": 2,
           "matched_keywords": [
-            "tanker",
             "ship",
-            "blockade"
+            "vessel"
           ]
         },
         {
@@ -1076,17 +666,18 @@
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 11,
-      "raw_count": 99,
-      "core_count": 2,
-      "global_spillover_count": 9,
-      "rejected_count": 88,
-      "weighted_count": 5.6,
+      "count": 4,
+      "raw_count": 65,
+      "core_count": 4,
+      "global_spillover_count": 0,
+      "rejected_count": 61,
+      "weighted_count": 4,
       "queries": 3,
-      "ok_queries": 2,
-      "failed_queries": 1,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -1098,8 +689,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: request failed (TypeError)",
-        "euvsdisinfo_case_watch_2: request failed (TypeError)"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
     {
@@ -1109,7 +700,7 @@
       "independent_evidence": false,
       "count": 3,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 11
+      "applied_to_articles": 4
     }
   ],
   "drivers": [
@@ -1119,7 +710,7 @@
     "Mean EPSS of recent KEV items: 0.2747",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 2 Core MARD-Eu, 9 Global Maritime Spillover, 88 rejected as broad/noisy context",
+    "Maritime filter: 4 Core MARD-Eu, 0 Global Maritime Spillover, 61 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
     "Narrative topic tags observed: Maritime law and sanctions topics, Attribution and responsibility topics, Institutions and alliances topics"
   ],
@@ -1131,6 +722,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261122T062914_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261122T122518_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
