@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-11-24T12:50:54.522Z",
+  "generated_at": "2026-11-24T18:52:20.341Z",
   "title": "MARD Influence & Narrative Watch",
   "level": "elevated",
   "confidence": "low",
   "data_quality": {
     "state": "best_effort",
-    "successful_sources": 124,
+    "successful_sources": 148,
     "expected_sources": 268,
-    "coverage_ratio": 0.4626865671641791,
+    "coverage_ratio": 0.5522388059701493,
     "platforms": {
       "website": {
         "expected_sources": 131,
-        "successful_sources": 95,
+        "successful_sources": 94,
         "state": "partial_or_best_effort"
       },
       "instagram": {
@@ -27,8 +27,8 @@
       },
       "x": {
         "expected_sources": 63,
-        "successful_sources": 0,
-        "state": "unavailable"
+        "successful_sources": 25,
+        "state": "partial_or_best_effort"
       },
       "youtube": {
         "expected_sources": 9,
@@ -70,30 +70,69 @@
   "score_integration": false,
   "source_stage": "website_rss_telegram_bluesky_youtube_and_best_effort_x",
   "history": {
-    "total_items": 61969,
-    "current_run_items": 1348,
-    "items_24h": 1239,
-    "items_7d": 9053,
-    "items_28d": 35782,
+    "total_items": 62504,
+    "current_run_items": 1802,
+    "items_24h": 1208,
+    "items_7d": 9109,
+    "items_28d": 35848,
     "timestamp_basis": "published_at_only; website snapshots retained as context",
-    "undated_observations": 5693,
+    "undated_observations": 5763,
     "oldest_item_at": "2026-08-27T08:42:38.000Z",
-    "newest_item_at": "2026-11-24T16:00:00.000Z",
+    "newest_item_at": "2026-11-24T23:00:00.000Z",
     "retained_days": 90,
     "max_items": 100000,
     "max_bytes": 64000000,
-    "actual_bytes": 49790258
+    "actual_bytes": 50217361
   },
   "activity": {
-    "active_actors_7d": 80,
-    "provisional_10_per_week_actors": 62,
+    "active_actors_7d": 81,
+    "provisional_10_per_week_actors": 67,
     "final_selection_decisions": 0
   },
   "clusters": {
-    "total": 29,
-    "elevated": 22,
-    "strong": 10,
+    "total": 37,
+    "elevated": 28,
+    "strong": 15,
     "top": [
+      {
+        "cluster_id": "19ba038ef81543ebb731ce67",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-23T15:57:22.000Z",
+          "end_at": "2026-11-23T15:57:22.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 1,
+        "restricted_item_count": 0
+      },
       {
         "cluster_id": "27856349c8074ab22c8dcb92",
         "assessment": {
@@ -134,6 +173,45 @@
         "restricted_item_count": 0
       },
       {
+        "cluster_id": "ba66314b24842840cb4f827d",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-23T11:10:26.000Z",
+          "end_at": "2026-11-23T11:10:26.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 1,
+        "restricted_item_count": 0
+      },
+      {
         "cluster_id": "6e22e8572463d521e9121d3c",
         "assessment": {
           "label": "strong_amplification_pattern",
@@ -170,6 +248,84 @@
           "political_actor": 1
         },
         "shared_domain_count": 2,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "4cfb380116ce6f620041569b",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-23T08:01:11.000Z",
+          "end_at": "2026-11-23T08:01:11.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 1,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "425f8854f9339afdca1992c4",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-22T16:17:32.000Z",
+          "end_at": "2026-11-22T16:17:32.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 1,
         "restricted_item_count": 0
       },
       {
@@ -407,6 +563,45 @@
         "restricted_item_count": 0
       },
       {
+        "cluster_id": "58f3fc945025e3362ccafbc2",
+        "assessment": {
+          "label": "strong_amplification_pattern",
+          "coordination_indicator_score": 88,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-22T10:38:19.000Z",
+          "end_at": "2026-11-22T10:38:19.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "shared_referenced_domain",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 2,
+        "restricted_item_count": 0
+      },
+      {
         "cluster_id": "3ace6d11f0c3291f25406a93",
         "assessment": {
           "label": "strong_amplification_pattern",
@@ -503,6 +698,81 @@
         "time": {
           "start_at": "2026-11-23T18:40:12.000Z",
           "end_at": "2026-11-23T18:40:12.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "party_channel": 1,
+          "political_actor": 1
+        },
+        "shared_domain_count": 0,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "70e3c51f95c573162a0b02ac",
+        "assessment": {
+          "label": "elevated_amplification_pattern",
+          "coordination_indicator_score": 77,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-23T14:10:51.000Z",
+          "end_at": "2026-11-23T14:10:51.000Z",
+          "span_minutes": 0
+        },
+        "signals": [
+          "exact_content_hash",
+          "within_15_minutes"
+        ],
+        "platforms": {
+          "x": 2
+        },
+        "countries": {
+          "DE": 2
+        },
+        "actor_classes": {
+          "political_actor": 2
+        },
+        "shared_domain_count": 0,
+        "restricted_item_count": 0
+      },
+      {
+        "cluster_id": "61d40afa1bed5dd9b77c740b",
+        "assessment": {
+          "label": "elevated_amplification_pattern",
+          "coordination_indicator_score": 77,
+          "confidence": "low_medium",
+          "attribution_grade": false,
+          "automation_finding": false
+        },
+        "counts": {
+          "items": 2,
+          "actors": 2,
+          "endpoints": 2,
+          "unique_content_hashes": 1,
+          "pair_edges": 1
+        },
+        "time": {
+          "start_at": "2026-11-23T12:49:31.000Z",
+          "end_at": "2026-11-23T12:49:31.000Z",
           "span_minutes": 0
         },
         "signals": [
@@ -906,11 +1176,11 @@
         "restricted_item_count": 0
       },
       {
-        "cluster_id": "80b89026b2bdbe8eac95ffab",
+        "cluster_id": "5f9d520cf9b4d016ab4308d0",
         "assessment": {
-          "label": "elevated_amplification_pattern",
-          "coordination_indicator_score": 65,
-          "confidence": "low_medium",
+          "label": "possible_amplification_pattern",
+          "coordination_indicator_score": 61,
+          "confidence": "low",
           "attribution_grade": false,
           "automation_finding": false
         },
@@ -922,25 +1192,24 @@
           "pair_edges": 1
         },
         "time": {
-          "start_at": "2026-11-21T14:57:57.000Z",
-          "end_at": "2026-11-21T16:05:53.000Z",
-          "span_minutes": 68
+          "start_at": "2026-11-23T20:53:14.000Z",
+          "end_at": "2026-11-23T20:54:59.000Z",
+          "span_minutes": 2
         },
         "signals": [
-          "similar_text",
+          "weak_text_similarity",
           "shared_referenced_domain",
-          "within_90_minutes"
+          "within_15_minutes"
         ],
         "platforms": {
           "x": 2
         },
         "countries": {
-          "CN": 1,
-          "RU": 1
+          "DE": 2
         },
         "actor_classes": {
-          "official_state_source": 1,
-          "state_media": 1
+          "party_channel": 1,
+          "political_actor": 1
         },
         "shared_domain_count": 1,
         "restricted_item_count": 0
@@ -981,254 +1250,6 @@
         "actor_classes": {
           "party_channel": 1,
           "party_media": 1
-        },
-        "shared_domain_count": 1,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "982026c3e06f1deb0ebd3d3e",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 60,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 3,
-          "actors": 3,
-          "endpoints": 3,
-          "unique_content_hashes": 3,
-          "pair_edges": 2
-        },
-        "time": {
-          "start_at": "2026-11-24T01:12:11.000Z",
-          "end_at": "2026-11-24T02:56:20.000Z",
-          "span_minutes": 104
-        },
-        "signals": [
-          "near_duplicate_text",
-          "shared_referenced_domain",
-          "within_6_hours",
-          "weak_text_similarity",
-          "within_15_minutes"
-        ],
-        "platforms": {
-          "x": 3
-        },
-        "countries": {
-          "CN": 3
-        },
-        "actor_classes": {
-          "state_media": 2,
-          "state_aligned_media": 1
-        },
-        "shared_domain_count": 1,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "3f620744cc0a62bd9289276d",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 60,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 3,
-          "actors": 3,
-          "endpoints": 3,
-          "unique_content_hashes": 3,
-          "pair_edges": 2
-        },
-        "time": {
-          "start_at": "2026-11-23T05:23:23.000Z",
-          "end_at": "2026-11-23T06:15:05.000Z",
-          "span_minutes": 52
-        },
-        "signals": [
-          "similar_text",
-          "within_90_minutes",
-          "weak_text_similarity",
-          "shared_referenced_domain",
-          "within_15_minutes"
-        ],
-        "platforms": {
-          "telegram": 3
-        },
-        "countries": {
-          "RU": 3
-        },
-        "actor_classes": {
-          "milblogger": 2,
-          "official_state_source": 1
-        },
-        "shared_domain_count": 1,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "7e8a0e1d7a5e91a8c678b8b0",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 54,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 33,
-          "actors": 9,
-          "endpoints": 9,
-          "unique_content_hashes": 3,
-          "pair_edges": 204
-        },
-        "time": {
-          "start_at": "2026-11-21T13:01:49.000Z",
-          "end_at": "2026-11-24T12:46:12.000Z",
-          "span_minutes": 4304
-        },
-        "signals": [
-          "exact_content_hash",
-          "within_6_hours",
-          "within_90_minutes",
-          "near_duplicate_text"
-        ],
-        "platforms": {
-          "telegram": 31,
-          "x": 2
-        },
-        "countries": {
-          "RU": 27,
-          "DE": 6
-        },
-        "actor_classes": {
-          "milblogger": 17,
-          "state_aligned_media": 8,
-          "political_movement_channel": 3,
-          "official_state_source": 2,
-          "party_aligned_media": 2,
-          "bridge_media": 1
-        },
-        "shared_domain_count": 0,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "b6efe50660e234161fe41a51",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 52,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 2,
-          "actors": 2,
-          "endpoints": 2,
-          "unique_content_hashes": 2,
-          "pair_edges": 1
-        },
-        "time": {
-          "start_at": "2026-11-22T05:37:43.000Z",
-          "end_at": "2026-11-22T05:45:41.000Z",
-          "span_minutes": 8
-        },
-        "signals": [
-          "similar_text",
-          "within_15_minutes"
-        ],
-        "platforms": {
-          "telegram": 2
-        },
-        "countries": {
-          "RU": 2
-        },
-        "actor_classes": {
-          "milblogger": 1,
-          "official_state_source": 1
-        },
-        "shared_domain_count": 0,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "a9e3a308f860ce23fb6d25f5",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 50,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 7,
-          "actors": 3,
-          "endpoints": 3,
-          "unique_content_hashes": 7,
-          "pair_edges": 6
-        },
-        "time": {
-          "start_at": "2026-11-23T08:44:14.000Z",
-          "end_at": "2026-11-24T05:35:28.000Z",
-          "span_minutes": 1251
-        },
-        "signals": [
-          "similar_text",
-          "shared_referenced_domain",
-          "within_6_hours",
-          "weak_text_similarity",
-          "within_15_minutes"
-        ],
-        "platforms": {
-          "telegram": 7
-        },
-        "countries": {
-          "IR": 4,
-          "RU": 3
-        },
-        "actor_classes": {
-          "state_media": 4,
-          "official_state_source": 3
-        },
-        "shared_domain_count": 1,
-        "restricted_item_count": 0
-      },
-      {
-        "cluster_id": "39f718f4a5f8b40afaa201d1",
-        "assessment": {
-          "label": "possible_amplification_pattern",
-          "coordination_indicator_score": 44,
-          "confidence": "low",
-          "attribution_grade": false,
-          "automation_finding": false
-        },
-        "counts": {
-          "items": 3,
-          "actors": 2,
-          "endpoints": 2,
-          "unique_content_hashes": 3,
-          "pair_edges": 2
-        },
-        "time": {
-          "start_at": "2026-11-24T09:54:01.000Z",
-          "end_at": "2026-11-24T12:31:56.000Z",
-          "span_minutes": 158
-        },
-        "signals": [
-          "similar_text",
-          "shared_referenced_domain",
-          "within_6_hours"
-        ],
-        "platforms": {
-          "telegram": 3
-        },
-        "countries": {
-          "IR": 2,
-          "RU": 1
-        },
-        "actor_classes": {
-          "state_media": 2,
-          "official_state_source": 1
         },
         "shared_domain_count": 1,
         "restricted_item_count": 0
