@@ -21,31 +21,33 @@
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 6256,
-    "count_7d": 14909,
-    "botnet_cc_count": 8202,
+    "count": 6391,
+    "count_7d": 15060,
+    "botnet_cc_count": 8399,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "9bffab7208cfd73f23ef06ac48c8cbe3633744ef8037401035dc7246aa6a2263",
-    "hash_7d": "c35eb1e49812da7068ea3f3041efe577604ce5d436f941088c211e4d9262a170",
+    "hash_1d": "3af3eca4c764313551b9e470783ae093321454e0b24e0e9f652dfac61de5a6e7",
+    "hash_7d": "7ce140e885b8ec211d64385212e285f847f8b538eb2b3bfb93c4be5ab6ccb61d",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
   {
     "source": "gdelt_fimi",
-    "status": "partial",
-    "count": 2,
-    "raw_count": 146,
+    "status": "error",
+    "count": 0,
+    "raw_count": 0,
     "core_count": 0,
-    "global_spillover_count": 2,
-    "rejected_count": 144,
-    "weighted_count": 0.8,
+    "global_spillover_count": 0,
+    "rejected_count": 0,
+    "weighted_count": 0,
     "queries": 3,
-    "ok_queries": 2,
-    "failed_queries": 1,
+    "ok_queries": 0,
+    "failed_queries": 3,
     "errors": [
-      "gdelt_fimi_1: HTTP 429"
+      "gdelt_fimi_1: HTTP 429",
+      "gdelt_fimi_2: request failed (TypeError)",
+      "gdelt_fimi_3: request failed (TypeError)"
     ]
   },
   {
@@ -57,8 +59,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_1: request failed (TypeError)",
+      "euvsdisinfo_case_watch_2: request failed (TypeError)"
     ]
   },
   {
@@ -66,8 +68,8 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-    "applied_to_articles": 2
+    "applied_to_articles": 0
   }
 ]

@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-24T06:32:25.150Z",
+  "generated_at": "2026-11-24T12:28:43.319Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -39,7 +39,7 @@
     },
     "context_parts": {
       "epss_hot_global": 100,
-      "source_coverage": 66.66666666666666
+      "source_coverage": 58.333333333333336
     }
   },
   "bot_activity_state": {
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 98,
+      "ioc_current_percentile": 100,
       "botnet_c2_current_percentile": 100,
       "ioc_36h_percentile": 100,
-      "botnet_c2_36h_percentile": 98,
-      "ioc_36h_count": 6936,
-      "botnet_c2_36h_count": 5490,
+      "botnet_c2_36h_percentile": 100,
+      "ioc_36h_count": 7234,
+      "botnet_c2_36h_count": 5778,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -94,8 +94,7 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "5490 botnet/C2-like indicators in the current 36h window",
-      "2 Global Maritime Spillover articles retained with lower weight",
+      "5778 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -104,16 +103,16 @@
   "maritime_fimi": {
     "score": null,
     "data_quality": {
-      "state": "partial",
+      "state": "unavailable",
       "score_valid": false,
-      "successful_queries": 2,
+      "successful_queries": 0,
       "expected_queries": 5,
-      "coverage_ratio": 0.4,
+      "coverage_ratio": 0,
       "sources": {
-        "gdelt_fimi": "partial",
+        "gdelt_fimi": "error",
         "euvsdisinfo_case_watch": "error"
       },
-      "sample_limited": true
+      "sample_limited": false
     },
     "last_successful": null,
     "confidence": "low",
@@ -121,254 +120,30 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 146,
-      "accepted_articles": 2,
+      "raw_unique_articles": 0,
+      "accepted_articles": 0,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 2,
-      "rejected_as_noise_or_broad_context": 144,
-      "weighted_article_count": 0.8,
-      "rejected_samples": [
-        {
-          "title": "Vance and Rubio meet with Qatari PM as Iran talks are stalled",
-          "domain": "wdbo.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "Iran tuyên bố quyết đối phó với lệnh phong tỏa hải quân của Mỹ",
-          "domain": "baomoi.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "ГИБДД стала штрафовать водителей на 15000 рублей за езду с прицепом ?",
-          "domain": "carexpo.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Trump suggests Iran strikes will resume next year if talks fail",
-          "domain": "spokesman.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "strikes"
-            ],
-            "region": [],
-            "global_spillover": [
-              "iran"
-            ]
-          }
-        },
-        {
-          "title": "Война США и Ирана после выборов 2026 : подземные ракетные города , блокада и уран",
-          "domain": "vestikavkaza.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "WHO director - general visits Cuba as healthcare system breaks down",
-          "domain": "jamaica-gleaner.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "randan ABDye kar abluka hamlesi : Yakýn zamanda adýmlar atacaz",
-          "domain": "star.com.tr",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "北朝鮮 、 ウニ養殖を拡大 ／「 美味 、 高収益 」 と宣伝 | 全国ニュース",
-          "domain": "shikoku-np.co.jp",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        }
-      ]
+      "global_maritime_spillover_articles": 0,
+      "rejected_as_noise_or_broad_context": 0,
+      "weighted_article_count": 0,
+      "rejected_samples": []
     },
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 150,
+      "article_count": 0,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 146,
-      "sample_limited": true,
+      "observed_articles": 0,
+      "sample_limited": false,
       "core_mard_eu_articles": 0,
-      "global_maritime_spillover_articles": 2,
-      "rejected_articles": 144,
+      "global_maritime_spillover_articles": 0,
+      "rejected_articles": 0,
       "weighted_articles": null,
       "historical_percentile": null,
-      "top_domains": [
-        {
-          "name": "algemeiner.com",
-          "count": 1
-        },
-        {
-          "name": "dailymail.com",
-          "count": 1
-        }
-      ],
-      "sample": [
-        {
-          "title": "Iran believed to have launched dozens of cyber attacks and bomb threats against nearly 50 tankers as Tehran ramps up terror plots",
-          "url": "https://www.dailymail.com/news/article-16316883/iran-tankers-cyberattack-suspect-fed.html",
-          "domain": "dailymail.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261124T021500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "tehran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran Says It Will Use All Its Tools to Confront US Naval Blockade",
-          "url": "https://www.algemeiner.com/2026/11/23/iran-says-will-use-all-tools-confront-us-naval-blockade/",
-          "domain": "algemeiner.com",
-          "language": "English",
-          "source_country": "Israel",
-          "seen_date": "20261124T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "naval"
-              ],
-              "threat_fimi": [
-                "blockade"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "naval blockade"
-              ]
-            }
-          }
-        }
-      ],
-      "articles": [
-        {
-          "title": "Iran believed to have launched dozens of cyber attacks and bomb threats against nearly 50 tankers as Tehran ramps up terror plots",
-          "url": "https://www.dailymail.com/news/article-16316883/iran-tankers-cyberattack-suspect-fed.html",
-          "domain": "dailymail.com",
-          "language": "English",
-          "source_country": "United States",
-          "seen_date": "20261124T021500Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "tankers"
-              ],
-              "threat_fimi": [
-                "attacks"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "tehran"
-              ]
-            }
-          }
-        },
-        {
-          "title": "Iran Says It Will Use All Its Tools to Confront US Naval Blockade",
-          "url": "https://www.algemeiner.com/2026/11/23/iran-says-will-use-all-tools-confront-us-naval-blockade/",
-          "domain": "algemeiner.com",
-          "language": "English",
-          "source_country": "Israel",
-          "seen_date": "20261124T003000Z",
-          "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-          "maritime_relevance": {
-            "accepted": true,
-            "classification_basis": "headline_and_url_path_only",
-            "classification": "global_maritime_spillover",
-            "weight": 0.4,
-            "reason": "maritime+threat+global_spillover_anchor",
-            "matched": {
-              "maritime": [
-                "naval"
-              ],
-              "threat_fimi": [
-                "blockade"
-              ],
-              "region": [],
-              "global_spillover": [
-                "iran",
-                "naval blockade"
-              ]
-            }
-          }
-        }
-      ]
+      "top_domains": [],
+      "sample": [],
+      "articles": []
     },
     "euvsdisinfo_summary": {
       "timespan": "90d",
@@ -380,37 +155,28 @@
     },
     "disarm_aligned": {
       "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-      "tag_count": 1,
-      "tags": [
-        {
-          "id": "maritime_legal_topics",
-          "label": "Maritime law and sanctions topics",
-          "count": 1,
-          "matched_keywords": [
-            "blockade"
-          ]
-        }
-      ]
+      "tag_count": 0,
+      "tags": []
     }
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 6256,
-    "ioc_count_7d": 14909,
-    "botnet_c2_count_1d": 5403,
-    "botnet_c2_count_7d": 8202,
+    "ioc_count_1d": 6391,
+    "ioc_count_7d": 15060,
+    "botnet_c2_count_1d": 5584,
+    "botnet_c2_count_7d": 8399,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 5403
+        "count": 5584
       },
       {
         "name": "payload",
-        "count": 642
+        "count": 588
       },
       {
         "name": "payload_delivery",
-        "count": 119
+        "count": 127
       },
       {
         "name": "cc_skimming",
@@ -420,30 +186,30 @@
     "malware_families_1d": [
       {
         "name": "Unknown malware",
-        "count": 5405
-      },
-      {
-        "name": "Mirai",
-        "count": 110
+        "count": 5590
       },
       {
         "name": "magecart",
         "count": 92
       },
       {
-        "name": "Unknown Loader",
-        "count": 72
+        "name": "Mirai",
+        "count": 77
       },
       {
-        "name": "XWorm",
-        "count": 62
+        "name": "Unknown Loader",
+        "count": 68
       },
       {
         "name": "Vidar",
-        "count": 58
+        "count": 62
       },
       {
         "name": "ClearFake",
+        "count": 49
+      },
+      {
+        "name": "Cobalt Strike",
         "count": 40
       },
       {
@@ -451,22 +217,22 @@
         "count": 38
       },
       {
-        "name": "Cobalt Strike",
-        "count": 34
+        "name": "VShell",
+        "count": 30
       },
       {
         "name": "IClickFix",
-        "count": 32
+        "count": 27
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Unknown malware",
-        "count": 6501
+        "count": 6707
       },
       {
         "name": "Vidar",
-        "count": 253
+        "count": 256
       },
       {
         "name": "Cobalt Strike",
@@ -474,31 +240,31 @@
       },
       {
         "name": "Unknown Stealer",
-        "count": 110
+        "count": 116
       },
       {
         "name": "AsyncRAT",
-        "count": 108
+        "count": 109
       },
       {
         "name": "XWorm",
-        "count": 90
+        "count": 91
       },
       {
         "name": "PureRAT",
-        "count": 86
+        "count": 87
       },
       {
         "name": "Sliver",
-        "count": 85
+        "count": 84
       },
       {
         "name": "VShell",
-        "count": 69
+        "count": 68
       },
       {
-        "name": "Mirai",
-        "count": 48
+        "name": "WARDENStealer",
+        "count": 47
       }
     ],
     "historical": {
@@ -510,12 +276,12 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 6936,
-      "current_36h_botnet_c2_count": 5490,
-      "current_ioc_percentile": 98,
+      "current_36h_ioc_count": 7234,
+      "current_36h_botnet_c2_count": 5778,
+      "current_ioc_percentile": 100,
       "current_botnet_c2_percentile": 100,
       "trailing_36h_ioc_percentile": 100,
-      "trailing_36h_botnet_c2_percentile": 98,
+      "trailing_36h_botnet_c2_percentile": 100,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -669,31 +435,33 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 6256,
-      "count_7d": 14909,
-      "botnet_cc_count": 8202,
+      "count": 6391,
+      "count_7d": 15060,
+      "botnet_cc_count": 8399,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "9bffab7208cfd73f23ef06ac48c8cbe3633744ef8037401035dc7246aa6a2263",
-      "hash_7d": "c35eb1e49812da7068ea3f3041efe577604ce5d436f941088c211e4d9262a170",
+      "hash_1d": "3af3eca4c764313551b9e470783ae093321454e0b24e0e9f652dfac61de5a6e7",
+      "hash_7d": "7ce140e885b8ec211d64385212e285f847f8b538eb2b3bfb93c4be5ab6ccb61d",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "partial",
-      "count": 2,
-      "raw_count": 146,
+      "status": "error",
+      "count": 0,
+      "raw_count": 0,
       "core_count": 0,
-      "global_spillover_count": 2,
-      "rejected_count": 144,
-      "weighted_count": 0.8,
+      "global_spillover_count": 0,
+      "rejected_count": 0,
+      "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 2,
-      "failed_queries": 1,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_1: HTTP 429"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: request failed (TypeError)",
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -705,8 +473,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_1: request failed (TypeError)",
+        "euvsdisinfo_case_watch_2: request failed (TypeError)"
       ]
     },
     {
@@ -714,9 +482,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 0,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 2
+      "applied_to_articles": 0
     }
   ],
   "drivers": [
@@ -724,16 +492,12 @@
     "36 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.276",
-    "6256 ThreatFox IOCs in the last 1 day",
-    "8202 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "6391 ThreatFox IOCs in the last 1 day",
+    "8399 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
-    "Maritime narrative pressure: not assessable (low confidence)",
-    "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 2 Global Maritime Spillover, 144 rejected as broad/noisy context",
-    "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics"
+    "FIMI-lite sources degraded or rate-limited; no corroborating source signal detected in this run"
   ],
   "assessment": {
     "label": "open-source cyber/exploit, IOC, bot-state and FIMI-lite telemetry",
@@ -743,6 +507,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261124T063225_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261124T122843_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
