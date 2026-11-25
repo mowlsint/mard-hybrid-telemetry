@@ -10,12 +10,12 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-25T06:32:52.338Z",
+  "generated_at": "2026-11-25T12:29:14.431Z",
   "window_days": 30,
-  "hat_score": 69,
+  "hat_score": 70,
   "level": "high",
   "score_interpretation": {
-    "percentage": 69,
+    "percentage": 70,
     "label": "high",
     "color": "deep orange",
     "css": "high",
@@ -29,13 +29,13 @@
     "points": 43,
     "minimum_days": 14,
     "mean_hat_score": 56.9,
-    "delta_from_mean": 12.1
+    "delta_from_mean": 13.1
   },
   "score_parts": {
     "kev_recent_7d": 100,
     "kev_recent_30d": 100,
     "kev_epss_mean": 24,
-    "threatfox_ioc_current": 58,
+    "threatfox_ioc_current": 60,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 58,
+      "ioc_current_percentile": 60,
       "botnet_c2_current_percentile": 86,
-      "ioc_36h_percentile": 98,
-      "botnet_c2_36h_percentile": 100,
-      "ioc_36h_count": 7166,
-      "botnet_c2_36h_count": 6090,
+      "ioc_36h_percentile": 51,
+      "botnet_c2_36h_percentile": 84,
+      "ioc_36h_count": 2558,
+      "botnet_c2_36h_count": 1454,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -283,28 +283,28 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1709,
-      "ioc_count_7d": 15217,
-      "botnet_c2_count_1d": 934,
-      "botnet_c2_count_7d": 8589,
+      "ioc_count_1d": 1760,
+      "ioc_count_7d": 15577,
+      "botnet_c2_count_1d": 943,
+      "botnet_c2_count_7d": 8896,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 933
+          "count": 942
         },
         {
           "name": "payload",
-          "count": 621
+          "count": 620
         },
         {
           "name": "payload_delivery",
-          "count": 155
+          "count": 198
         }
       ],
       "malware_families_1d": [
         {
           "name": "Unknown malware",
-          "count": 888
+          "count": 933
         },
         {
           "name": "ZStealer",
@@ -312,77 +312,77 @@
         },
         {
           "name": "ClearFake",
-          "count": 61
+          "count": 63
         },
         {
           "name": "Cobalt Strike",
-          "count": 61
+          "count": 58
+        },
+        {
+          "name": "Mirai",
+          "count": 56
         },
         {
           "name": "Vidar",
           "count": 52
         },
         {
+          "name": "Mozi",
+          "count": 39
+        },
+        {
           "name": "IClickFix",
-          "count": 34
-        },
-        {
-          "name": "Unknown Stealer",
-          "count": 30
-        },
-        {
-          "name": "Unknown Loader",
           "count": 27
         },
         {
-          "name": "Mirai",
-          "count": 24
+          "name": "Unknown Stealer",
+          "count": 25
         },
         {
           "name": "PureRAT",
-          "count": 22
+          "count": 21
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 6901
+          "count": 7211
         },
         {
           "name": "Vidar",
-          "count": 259
+          "count": 261
         },
         {
           "name": "Cobalt Strike",
-          "count": 231
+          "count": 233
         },
         {
           "name": "Unknown Stealer",
-          "count": 132
+          "count": 129
         },
         {
           "name": "PureRAT",
           "count": 100
         },
         {
-          "name": "Sliver",
-          "count": 92
+          "name": "XWorm",
+          "count": 91
         },
         {
-          "name": "XWorm",
-          "count": 92
+          "name": "Sliver",
+          "count": 90
         },
         {
           "name": "AsyncRAT",
-          "count": 86
+          "count": 85
         },
         {
           "name": "VShell",
-          "count": 74
+          "count": 73
         },
         {
           "name": "Remcos",
-          "count": 46
+          "count": 48
         }
       ],
       "historical": {
@@ -394,12 +394,12 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 7166,
-        "current_36h_botnet_c2_count": 6090,
-        "current_ioc_percentile": 58,
+        "current_36h_ioc_count": 2558,
+        "current_36h_botnet_c2_count": 1454,
+        "current_ioc_percentile": 60,
         "current_botnet_c2_percentile": 86,
-        "trailing_36h_ioc_percentile": 98,
-        "trailing_36h_botnet_c2_percentile": 100,
+        "trailing_36h_ioc_percentile": 51,
+        "trailing_36h_botnet_c2_percentile": 84,
         "percentile_baselines": {
           "current_ioc_percentile": {
             "source": "valid_local_daily_history",
@@ -426,15 +426,15 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1709,
-      "botnet_cc_count": 8589,
+      "threatfox_count": 1760,
+      "botnet_cc_count": 8896,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
       "status": "partial",
       "score": null,
-      "observed_partial_score": 3,
+      "observed_partial_score": 6,
       "data_quality": {
         "state": "partial",
         "score_valid": false,
@@ -458,60 +458,103 @@
         "note": "FIMI-lite source state derived from open-source crawl health and score-relevant maritime/FIMI source signals."
       },
       "score_parts": {
-        "gdelt_narrative_pressure": 2,
+        "gdelt_narrative_pressure": 1,
         "euvsdisinfo_case_signal": 0,
-        "disarm_tag_relevance": 13
+        "disarm_tag_relevance": 25
       },
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
         "raw_unique_articles": 75,
-        "accepted_articles": 4,
-        "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 4,
-        "rejected_as_noise_or_broad_context": 71,
-        "weighted_article_count": 1.6,
+        "accepted_articles": 1,
+        "core_mard_eu_articles": 1,
+        "global_maritime_spillover_articles": 0,
+        "rejected_as_noise_or_broad_context": 74,
+        "weighted_article_count": 1,
         "rejected_samples": [
           {
-            "title": "Два нефтяных танкера подорвались на минах в Ормузском проливе",
-            "domain": "1prime.ru",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "WHO chief urges end to US fuel blockade on Cuba - Grenada Chronicle – Daily Grenada And Caribbean News",
-            "domain": "grenadachronicle.com",
+            "title": "U . S . Shelves Plans for Business Deals With Russia to End Ukraine War – FT",
+            "domain": "themoscowtimes.com",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
               "threat_fimi": [
-                "blockade"
+                "russia",
+                "ukraine"
               ],
               "region": [],
               "global_spillover": []
             }
           },
           {
-            "title": "Iran War Updates : Iran developing chemical weapons , Israeli defense minister claims – Ya Libnan",
-            "domain": "yalibnan.com",
+            "title": "Россия готова продолжить поставки зерна в страны Африки через Балтику",
+            "domain": "vesti.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
-              "threat_fimi": [],
+              "threat_fimi": [
+                "россия"
+              ],
               "region": [],
-              "global_spillover": [
-                "iran"
-              ]
+              "global_spillover": []
             }
           },
           {
-            "title": "Цена комфорта",
-            "domain": "rg.ru",
+            "title": "Вероятность морской блокады Калининграда оценили",
+            "domain": "lenta.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "морской"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Ruská válečná loď u britských břehů letadlům rušila signál GPS",
+            "domain": "novinky.cz",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "gps"
+              ],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Почему НАТО просит реже применять статью 4 : данные Rapporteur",
+            "domain": "iz.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "nato",
+                "нато"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Спрогнозирована реакция России на атаку ВСУ на российский сухогруз на Балтике",
+            "domain": "lenta.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "российский"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "To libyske soldater dør efter ukrainsk angreb på russisk skib",
+            "domain": "tidende.dk",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -521,41 +564,8 @@
             }
           },
           {
-            "title": "The Rand Corporation speaks of war in Europe",
-            "domain": "venezuelastar.com",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Doanh nghiệp khai thác khoáng sản không phép có thể bị phạt tới 1 . 8 tỷ đồng",
-            "domain": "vietstock.vn",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Bloomberg : объем замороженных в Швейцарии российских активов превысил $10 млрд РБК",
-            "domain": "rbc.ru",
-            "reason": "missing_required_maritime_threat_region_combination",
-            "matched": {
-              "maritime": [],
-              "threat_fimi": [],
-              "region": [],
-              "global_spillover": []
-            }
-          },
-          {
-            "title": "Ljudi uznemireni zbog zatvaranja granice između Estonije i Rusije",
-            "domain": "blic.rs",
+            "title": "Дипломатия на грани : В Польше допустили риск войны с Россией из - за высылки посла",
+            "domain": "news.mail.ru",
             "reason": "missing_required_maritime_threat_region_combination",
             "matched": {
               "maritime": [],
@@ -574,267 +584,79 @@
         "unique_articles": null,
         "observed_articles": 75,
         "sample_limited": true,
-        "core_mard_eu_articles": 0,
-        "global_maritime_spillover_articles": 4,
-        "rejected_articles": 71,
+        "core_mard_eu_articles": 1,
+        "global_maritime_spillover_articles": 0,
+        "rejected_articles": 74,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [
           {
-            "name": "presstv.co.uk",
-            "count": 2
-          },
-          {
-            "name": "aninews.in",
-            "count": 1
-          },
-          {
-            "name": "news.antiwar.com",
+            "name": "cyprusnews.eu",
             "count": 1
           }
         ],
         "sample": [
           {
-            "title": "Iran claims downing of US MQ - 9 , Lucas drones over Strait of Hormuz",
-            "url": "https://aninews.in/news/world/middle-east/iran-claims-downing-of-us-mq-9-lucas-drones-over-strait-of-hormuz20261125101519/",
-            "domain": "aninews.in",
+            "title": "Russian ship hit by drones in Baltic still smoulders as Finland , Estonia help put out blaze",
+            "url": "https://cyprusnews.eu/cnn-kosmos/russian-ship-hit-by-drones-in-baltic-still-smoulders-as-finland-estonia-help-put-out-blaze/",
+            "domain": "cyprusnews.eu",
             "language": "English",
-            "source_country": "India",
-            "seen_date": "20261125T054500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "source_country": "Greece",
+            "seen_date": "20261125T021500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
             "maritime_relevance": {
               "accepted": true,
               "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
               "matched": {
                 "maritime": [
-                  "strait"
+                  "ship"
                 ],
                 "threat_fimi": [
-                  "drones"
+                  "drones",
+                  "russian"
                 ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Iran Continues Targeting Ships in Strait of Hormuz as US Ramps Up Sanctions",
-            "url": "https://news.antiwar.com/2026/11/24/iran-continues-targeting-ships-in-strait-of-hormuz-as-us-ramps-up-sanctions/",
-            "domain": "news.antiwar.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261125T024500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ships",
-                  "strait"
+                "region": [
+                  "finland",
+                  "estonia",
+                  "baltic"
                 ],
-                "threat_fimi": [
-                  "sanctions"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Irans air defenses deliver double blow , down US LUCAS , MQ - 9 drones over Strait of Hormuz",
-            "url": "https://www.presstv.co.uk/Detail/2026/11/24/781528/irans-air-defenses-deliver-double-blow-down-us-lucas-mq-9-drones-over-strait-of-hormuz",
-            "domain": "presstv.co.uk",
-            "language": "English",
-            "source_country": null,
-            "seen_date": "20261125T003000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "drones"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "IRGC Navy renews warning as cargo vessel strikes mine south of Strait of Hormuz",
-            "url": "https://www.presstv.co.uk/Detail/2026/11/24/781533/irgc-navy-renews-warning-as-cargo-vessel-strikes-mine-south-of-strait-of-hormuz",
-            "domain": "presstv.co.uk",
-            "language": "English",
-            "source_country": null,
-            "seen_date": "20261125T003000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "vessel",
-                  "navy",
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
+                "global_spillover": []
               }
             }
           }
         ],
         "articles": [
           {
-            "title": "Iran claims downing of US MQ - 9 , Lucas drones over Strait of Hormuz",
-            "url": "https://aninews.in/news/world/middle-east/iran-claims-downing-of-us-mq-9-lucas-drones-over-strait-of-hormuz20261125101519/",
-            "domain": "aninews.in",
+            "title": "Russian ship hit by drones in Baltic still smoulders as Finland , Estonia help put out blaze",
+            "url": "https://cyprusnews.eu/cnn-kosmos/russian-ship-hit-by-drones-in-baltic-still-smoulders-as-finland-estonia-help-put-out-blaze/",
+            "domain": "cyprusnews.eu",
             "language": "English",
-            "source_country": "India",
-            "seen_date": "20261125T054500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
+            "source_country": "Greece",
+            "seen_date": "20261125T021500Z",
+            "query": "(\"Baltic Sea\" OR \"North Sea\" OR \"undersea cable\" OR \"submarine cable\" OR \"Nord Stream\" OR Balticconnector) (sabotage OR attack OR Russia OR NATO OR Ukraine OR \"false flag\" OR piracy)",
             "maritime_relevance": {
               "accepted": true,
               "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
+              "classification": "core_mard_eu",
+              "weight": 1,
+              "reason": "maritime+threat+regional_anchor",
               "matched": {
                 "maritime": [
-                  "strait"
+                  "ship"
                 ],
                 "threat_fimi": [
-                  "drones"
+                  "drones",
+                  "russian"
                 ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Iran Continues Targeting Ships in Strait of Hormuz as US Ramps Up Sanctions",
-            "url": "https://news.antiwar.com/2026/11/24/iran-continues-targeting-ships-in-strait-of-hormuz-as-us-ramps-up-sanctions/",
-            "domain": "news.antiwar.com",
-            "language": "English",
-            "source_country": "United States",
-            "seen_date": "20261125T024500Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "ships",
-                  "strait"
+                "region": [
+                  "finland",
+                  "estonia",
+                  "baltic"
                 ],
-                "threat_fimi": [
-                  "sanctions"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "iran",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "Irans air defenses deliver double blow , down US LUCAS , MQ - 9 drones over Strait of Hormuz",
-            "url": "https://www.presstv.co.uk/Detail/2026/11/24/781528/irans-air-defenses-deliver-double-blow-down-us-lucas-mq-9-drones-over-strait-of-hormuz",
-            "domain": "presstv.co.uk",
-            "language": "English",
-            "source_country": null,
-            "seen_date": "20261125T003000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "drones"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
-              }
-            }
-          },
-          {
-            "title": "IRGC Navy renews warning as cargo vessel strikes mine south of Strait of Hormuz",
-            "url": "https://www.presstv.co.uk/Detail/2026/11/24/781533/irgc-navy-renews-warning-as-cargo-vessel-strikes-mine-south-of-strait-of-hormuz",
-            "domain": "presstv.co.uk",
-            "language": "English",
-            "source_country": null,
-            "seen_date": "20261125T003000Z",
-            "query": "(\"Russian-linked ships\" OR \"shadow fleet\" OR tanker OR sanctions OR \"oil tanker\") (NATO OR EU OR piracy OR sabotage OR blockade OR inspection)",
-            "maritime_relevance": {
-              "accepted": true,
-              "classification_basis": "headline_and_url_path_only",
-              "classification": "global_maritime_spillover",
-              "weight": 0.4,
-              "reason": "maritime+threat+global_spillover_anchor",
-              "matched": {
-                "maritime": [
-                  "vessel",
-                  "navy",
-                  "strait"
-                ],
-                "threat_fimi": [
-                  "strikes"
-                ],
-                "region": [],
-                "global_spillover": [
-                  "hormuz",
-                  "strait"
-                ]
+                "global_spillover": []
               }
             }
           }
@@ -850,15 +672,22 @@
       },
       "disarm_aligned": {
         "method": "local transparent keyword mapping; no official DISARM technique IDs claimed",
-        "tag_count": 1,
+        "tag_count": 2,
         "tags": [
+          {
+            "id": "institutional_topics",
+            "label": "Institutions and alliances topics",
+            "count": 1,
+            "matched_keywords": [
+              "eu"
+            ]
+          },
           {
             "id": "maritime_legal_topics",
             "label": "Maritime law and sanctions topics",
-            "count": 2,
+            "count": 1,
             "matched_keywords": [
-              "sanctions",
-              "vessel"
+              "ship"
             ]
           }
         ]
@@ -868,18 +697,18 @@
         {
           "source": "gdelt_fimi",
           "status": "partial",
-          "count": 4,
+          "count": 1,
           "raw_count": 75,
-          "core_count": 0,
-          "global_spillover_count": 4,
-          "rejected_count": 71,
-          "weighted_count": 1.6,
+          "core_count": 1,
+          "global_spillover_count": 0,
+          "rejected_count": 74,
+          "weighted_count": 1,
           "queries": 3,
           "ok_queries": 1,
           "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
-            "gdelt_fimi_3: HTTP 429"
+            "gdelt_fimi_2: request failed (TypeError)",
+            "gdelt_fimi_3: request failed (TypeError)"
           ]
         },
         {
@@ -892,7 +721,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: request failed (TypeError)",
-            "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+            "euvsdisinfo_case_watch_2: request failed (TypeError)"
           ]
         },
         {
@@ -900,9 +729,9 @@
           "status": "partial",
           "derived": true,
           "independent_evidence": false,
-          "count": 1,
+          "count": 2,
           "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-          "applied_to_articles": 4
+          "applied_to_articles": 1
         }
       ],
       "history": {
@@ -917,16 +746,16 @@
     "37 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.2433",
-    "1709 ThreatFox IOCs in the last 1 day",
-    "8589 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1760 ThreatFox IOCs in the last 1 day",
+    "8896 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
     "Maritime narrative pressure: not assessable (low confidence)",
     "GDELT maritime/FIMI watch: 0 score-relevant articles in 36h after local maritime filtering",
-    "Maritime filter: 0 Core MARD-Eu, 4 Global Maritime Spillover, 71 rejected as broad/noisy context",
+    "Maritime filter: 1 Core MARD-Eu, 0 Global Maritime Spillover, 74 rejected as broad/noisy context",
     "EUvsDisinfo case watch: 0 maritime/FIMI candidate items in 90d",
-    "Narrative topic tags observed: Maritime law and sanctions topics"
+    "Narrative topic tags observed: Institutions and alliances topics, Maritime law and sanctions topics"
   ],
   "source_health": [
     {
@@ -951,32 +780,32 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1709,
-      "count_7d": 15217,
-      "botnet_cc_count": 8589,
+      "count": 1760,
+      "count_7d": 15577,
+      "botnet_cc_count": 8896,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "68a3e123e07c40177c836ccca9cd4658f3c0a1293193b9c4dae1ab02cd4c5794",
-      "hash_7d": "d67a61924ee00ca7c5c4fcab814c896f3cb38b46f0f37fbcb150d5c9ce54ee05",
+      "hash_1d": "fb06aa05e8b7d27294fa5436a7b344859c97f286bc1e7f891acf6e390e3878ff",
+      "hash_7d": "e59f4c4ad0b1d3673590c51bec0191e6d03d48305759a78df02c6ce7e9808eae",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
       "status": "partial",
-      "count": 4,
+      "count": 1,
       "raw_count": 75,
-      "core_count": 0,
-      "global_spillover_count": 4,
-      "rejected_count": 71,
-      "weighted_count": 1.6,
+      "core_count": 1,
+      "global_spillover_count": 0,
+      "rejected_count": 74,
+      "weighted_count": 1,
       "queries": 3,
       "ok_queries": 1,
       "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_3: HTTP 429"
+        "gdelt_fimi_2: request failed (TypeError)",
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -989,7 +818,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: request failed (TypeError)",
-        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+        "euvsdisinfo_case_watch_2: request failed (TypeError)"
       ]
     },
     {
@@ -997,9 +826,9 @@
       "status": "partial",
       "derived": true,
       "independent_evidence": false,
-      "count": 1,
+      "count": 2,
       "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
-      "applied_to_articles": 4
+      "applied_to_articles": 1
     }
   ],
   "source_health_map": {
@@ -1034,18 +863,18 @@
   },
   "obscuration_context": {
     "schema": "mard-hat-obscuration-context-v1",
-    "level": "low",
+    "level": "watch",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "6090 botnet/C2-like indicators in the current 36h window",
-      "4 Global Maritime Spillover articles retained with lower weight",
+      "1454 botnet/C2-like indicators in the current 36h window",
+      "1 score-relevant Core MARD-Eu maritime/FIMI articles",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261125T063252_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261125T122914_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
