@@ -2,8 +2,8 @@
   {
     "source": "cisa_kev",
     "status": "ok",
-    "count": 1792,
-    "hash": "ac8f0c4e73ec9212dd00afbb9bed2b43abc9cdb3c8719fc2c2606f008171f70a"
+    "count": 1795,
+    "hash": "17dfaace755c075c10757f20687eaa588181ed9663de80e82936a08ba08e8a1f"
   },
   {
     "source": "first_epss_top",
@@ -15,20 +15,20 @@
     "source": "first_epss_kev_enrichment",
     "status": "ok",
     "count": 36,
-    "coverage_ratio": 1
+    "coverage_ratio": 0.972972972972973
   },
   {
     "source": "threatfox_optional",
     "status": "partial",
     "recent_api_status": "ok",
-    "count": 6435,
-    "count_7d": 15257,
-    "botnet_cc_count": 8482,
+    "count": 1690,
+    "count_7d": 15146,
+    "botnet_cc_count": 8527,
     "historical_export_status": "error",
     "historical_export_count": 0,
     "historical_export_format": null,
-    "hash_1d": "5820d239c7e3357dbd1ac828abff50bb40a89b727741de043213e1be4cd8c2c5",
-    "hash_7d": "8bbf56171691246e91cd7f64c34eb224ca5c896a15f8f78628ee8bf4c17ee267",
+    "hash_1d": "de13d2f5d60c1c763d948ac41720350c41e6a7327042ecbecc4e838fb38cd281",
+    "hash_7d": "29638060de5d2e62d9a935f5f6b442fdb92b3706936069ede2fd04a52d967d67",
     "export_hash": null,
     "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
   },
@@ -36,16 +36,16 @@
     "source": "gdelt_fimi",
     "status": "partial",
     "count": 2,
-    "raw_count": 142,
-    "core_count": 1,
-    "global_spillover_count": 1,
-    "rejected_count": 140,
-    "weighted_count": 1.4,
+    "raw_count": 147,
+    "core_count": 0,
+    "global_spillover_count": 2,
+    "rejected_count": 145,
+    "weighted_count": 0.8,
     "queries": 3,
     "ok_queries": 2,
     "failed_queries": 1,
     "errors": [
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_1: HTTP 429"
     ]
   },
   {
@@ -57,8 +57,8 @@
     "failed_queries": 2,
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
-      "euvsdisinfo_case_watch_1: HTTP 429",
-      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
+      "euvsdisinfo_case_watch_1: missing ArticleList articles array",
+      "euvsdisinfo_case_watch_2: HTTP 429"
     ]
   },
   {
@@ -66,7 +66,7 @@
     "status": "partial",
     "derived": true,
     "independent_evidence": false,
-    "count": 1,
+    "count": 0,
     "method": "local_topic_keyword_mapping; no falsehood or TTP finding",
     "applied_to_articles": 2
   }
