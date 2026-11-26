@@ -19,18 +19,8 @@
   },
   {
     "source": "threatfox_optional",
-    "status": "partial",
-    "recent_api_status": "ok",
-    "count": 2357,
-    "count_7d": 16527,
-    "botnet_cc_count": 8987,
-    "historical_export_status": "error",
-    "historical_export_count": 0,
-    "historical_export_format": null,
-    "hash_1d": "dfc7c2b6be87bd2947ef207e629a6e3902995c2753898a72ac16647b6b21110f",
-    "hash_7d": "a81b992170ff5d7536f95606fb1ac015746b107a4fc8fcee49189745d48db672",
-    "export_hash": null,
-    "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
+    "status": "error",
+    "error": "terminated"
   },
   {
     "source": "gdelt_fimi",
@@ -47,7 +37,7 @@
     "errors": [
       "gdelt_fimi_1: request failed (TypeError)",
       "gdelt_fimi_2: HTTP 429",
-      "gdelt_fimi_3: HTTP 429"
+      "gdelt_fimi_3: request failed (TypeError)"
     ]
   },
   {
@@ -60,7 +50,7 @@
     "method": "gdelt_domain_restricted_artlist",
     "errors": [
       "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-      "euvsdisinfo_case_watch_2: HTTP 429"
+      "euvsdisinfo_case_watch_2: missing ArticleList articles array"
     ]
   },
   {
