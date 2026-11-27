@@ -10,7 +10,7 @@
     "threatfox_baseline_limited": true
   },
   "observed_partial_score": null,
-  "generated_at": "2026-11-27T06:32:40.436Z",
+  "generated_at": "2026-11-27T12:28:28.877Z",
   "window_days": 30,
   "hat_score": 68,
   "level": "high",
@@ -35,12 +35,12 @@
     "kev_recent_7d": 100,
     "kev_recent_30d": 100,
     "kev_epss_mean": 9,
-    "threatfox_ioc_current": 65,
+    "threatfox_ioc_current": 64,
     "threatfox_botnet_c2_36h": 65
   },
   "context_parts": {
     "epss_hot_global": 100,
-    "source_coverage": 58.333333333333336
+    "source_coverage": 66.66666666666666
   },
   "bot_activity_state": {
     "schema": "mard-hat-c2-state-v2",
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 69,
+      "ioc_current_percentile": 64,
       "botnet_c2_current_percentile": 87,
-      "ioc_36h_percentile": 76,
-      "botnet_c2_36h_percentile": 84,
-      "ioc_36h_count": 3243,
-      "botnet_c2_36h_count": 1574,
+      "ioc_36h_percentile": 64,
+      "botnet_c2_36h_percentile": 87,
+      "ioc_36h_count": 2971,
+      "botnet_c2_36h_count": 1817,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -283,52 +283,44 @@
     },
     "threatfox": {
       "enabled": true,
-      "ioc_count_1d": 1984,
-      "ioc_count_7d": 17734,
-      "botnet_c2_count_1d": 1163,
-      "botnet_c2_count_7d": 9942,
+      "ioc_count_1d": 1863,
+      "ioc_count_7d": 17713,
+      "botnet_c2_count_1d": 1228,
+      "botnet_c2_count_7d": 9999,
       "threat_types_1d": [
         {
           "name": "botnet_cc",
-          "count": 1163
+          "count": 1228
         },
         {
           "name": "payload",
-          "count": 428
+          "count": 440
         },
         {
           "name": "payload_delivery",
-          "count": 393
+          "count": 195
         }
       ],
       "malware_families_1d": [
         {
           "name": "Unknown malware",
-          "count": 1022
-        },
-        {
-          "name": "Unknown Loader",
-          "count": 199
+          "count": 1093
         },
         {
           "name": "ClearFake",
-          "count": 65
+          "count": 63
+        },
+        {
+          "name": "Mirai",
+          "count": 61
         },
         {
           "name": "Vidar",
           "count": 55
         },
         {
-          "name": "Mirai",
-          "count": 50
-        },
-        {
           "name": "AsyncRAT",
-          "count": 49
-        },
-        {
-          "name": "Cobalt Strike",
-          "count": 49
+          "count": 48
         },
         {
           "name": "Raven Stealer",
@@ -341,40 +333,48 @@
         {
           "name": "Formbook",
           "count": 39
+        },
+        {
+          "name": "VShell",
+          "count": 32
+        },
+        {
+          "name": "Cobalt Strike",
+          "count": 30
         }
       ],
       "botnet_families_7d": [
         {
           "name": "Unknown malware",
-          "count": 8283
+          "count": 8357
         },
         {
           "name": "Cobalt Strike",
-          "count": 269
+          "count": 265
         },
         {
           "name": "Vidar",
-          "count": 258
+          "count": 261
         },
         {
           "name": "Unknown Stealer",
-          "count": 121
+          "count": 112
         },
         {
           "name": "XWorm",
-          "count": 101
+          "count": 100
         },
         {
           "name": "AsyncRAT",
-          "count": 89
+          "count": 88
+        },
+        {
+          "name": "VShell",
+          "count": 88
         },
         {
           "name": "PureRAT",
           "count": 86
-        },
-        {
-          "name": "VShell",
-          "count": 82
         },
         {
           "name": "Sliver",
@@ -382,7 +382,7 @@
         },
         {
           "name": "WARDENStealer",
-          "count": 40
+          "count": 48
         }
       ],
       "historical": {
@@ -394,12 +394,12 @@
         "days_with_iocs": 0,
         "bot_activity_hours": 36,
         "time_filter_valid": true,
-        "current_36h_ioc_count": 3243,
-        "current_36h_botnet_c2_count": 1574,
-        "current_ioc_percentile": 69,
+        "current_36h_ioc_count": 2971,
+        "current_36h_botnet_c2_count": 1817,
+        "current_ioc_percentile": 64,
         "current_botnet_c2_percentile": 87,
-        "trailing_36h_ioc_percentile": 76,
-        "trailing_36h_botnet_c2_percentile": 84,
+        "trailing_36h_ioc_percentile": 64,
+        "trailing_36h_botnet_c2_percentile": 87,
         "percentile_baselines": {
           "current_ioc_percentile": {
             "source": "valid_local_daily_history",
@@ -426,23 +426,23 @@
     },
     "optional_abusech": {
       "threatfox_enabled": true,
-      "threatfox_count": 1984,
-      "botnet_cc_count": 9942,
+      "threatfox_count": 1863,
+      "botnet_cc_count": 9999,
       "historical_export_status": "error"
     },
     "fimi_lite": {
       "enabled": true,
-      "status": "unavailable",
+      "status": "partial",
       "score": null,
-      "observed_partial_score": null,
+      "observed_partial_score": 0,
       "data_quality": {
-        "state": "unavailable",
+        "state": "partial",
         "score_valid": false,
-        "successful_queries": 0,
+        "successful_queries": 1,
         "expected_queries": 5,
-        "coverage_ratio": 0,
+        "coverage_ratio": 0.2,
         "sources": {
-          "gdelt_fimi": "error",
+          "gdelt_fimi": "partial",
           "euvsdisinfo_case_watch": "error"
         },
         "sample_limited": false
@@ -452,7 +452,7 @@
       "confidence": "low",
       "mode": "maritime_narrative_pressure; not a disinformation determination",
       "source_state": {
-        "external_ok": false,
+        "external_ok": true,
         "external_errors": true,
         "source_signal_present": false,
         "note": "GDELT/EUvsDisinfo source access was degraded or rate-limited and no score-relevant maritime FIMI-lite signal was detected."
@@ -465,25 +465,132 @@
       "maritime_filter": {
         "schema": "mard-hat-maritime-filter-v1",
         "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-        "raw_unique_articles": 0,
+        "raw_unique_articles": 51,
         "accepted_articles": 0,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_as_noise_or_broad_context": 0,
+        "rejected_as_noise_or_broad_context": 51,
         "weighted_article_count": 0,
-        "rejected_samples": []
+        "rejected_samples": [
+          {
+            "title": "美弹药库存见底 川普撤退 欧盟成 价值美国 首都",
+            "domain": "wenxuecity.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Мирные переговоры приближаются к срыву ( Steigan blogger , Норвегия )",
+            "domain": "inosmi.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "норвегия"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Писториус обеспокоен тем , что Украина переносит конфликт в Балтийское море ( Junge Freiheit , Германия )",
+            "domain": "inosmi.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [
+                "балтийское море",
+                "германия"
+              ],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Najvažnije vesti iz sveta za 26 . novembar 2026 . - Vesti",
+            "domain": "telegraf.rs",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Zelenskyy warns of major Russian attack as Trump urges Putin to pull back | Russia - Ukraine war News",
+            "domain": "aljazeera.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "attack",
+                "russia",
+                "russian",
+                "ukraine"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Zelenskyy warns of major Russian attack as Trump urges Putin to pull back - Dominican Republic Post – Caribbean News , Business , Travel & Culture",
+            "domain": "dominicanrepublicpost.com",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [
+                "attack",
+                "russian"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Трамп снова возмутился отставанием США от России по числу ледоколов",
+            "domain": "ria.ru",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [],
+              "threat_fimi": [],
+              "region": [],
+              "global_spillover": []
+            }
+          },
+          {
+            "title": "Libyen : Libyen und Italien kritisieren ukrainischen Angriff auf russische Schiffe",
+            "domain": "spiegel.de",
+            "reason": "missing_required_maritime_threat_region_combination",
+            "matched": {
+              "maritime": [
+                "schiffe"
+              ],
+              "threat_fimi": [
+                "angriff",
+                "russische"
+              ],
+              "region": [],
+              "global_spillover": []
+            }
+          }
+        ]
       },
       "gdelt": {
         "timespan": "36h",
         "query_count": 3,
-        "article_count": 0,
+        "article_count": 51,
         "unique_articles_raw": null,
         "unique_articles": null,
-        "observed_articles": 0,
+        "observed_articles": 51,
         "sample_limited": false,
         "core_mard_eu_articles": 0,
         "global_maritime_spillover_articles": 0,
-        "rejected_articles": 0,
+        "rejected_articles": 51,
         "weighted_articles": null,
         "historical_percentile": null,
         "top_domains": [],
@@ -507,18 +614,17 @@
       "source_health": [
         {
           "source": "gdelt_fimi",
-          "status": "error",
+          "status": "partial",
           "count": 0,
-          "raw_count": 0,
+          "raw_count": 51,
           "core_count": 0,
           "global_spillover_count": 0,
-          "rejected_count": 0,
+          "rejected_count": 51,
           "weighted_count": 0,
           "queries": 3,
-          "ok_queries": 0,
-          "failed_queries": 3,
+          "ok_queries": 1,
+          "failed_queries": 2,
           "errors": [
-            "gdelt_fimi_1: request failed (TypeError)",
             "gdelt_fimi_2: HTTP 429",
             "gdelt_fimi_3: request failed (TypeError)"
           ]
@@ -533,7 +639,7 @@
           "method": "gdelt_domain_restricted_artlist",
           "errors": [
             "euvsdisinfo_case_watch_1: request failed (TypeError)",
-            "euvsdisinfo_case_watch_2: HTTP 429"
+            "euvsdisinfo_case_watch_2: request failed (TypeError)"
           ]
         },
         {
@@ -558,8 +664,8 @@
     "43 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.0879",
-    "1984 ThreatFox IOCs in the last 1 day",
-    "9942 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1863 ThreatFox IOCs in the last 1 day",
+    "9999 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -588,31 +694,30 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1984,
-      "count_7d": 17734,
-      "botnet_cc_count": 9942,
+      "count": 1863,
+      "count_7d": 17713,
+      "botnet_cc_count": 9999,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "e1e865ed018251125b1afab2a6161c731a2115c691f34d8aafa9da6c3dd9e8ad",
-      "hash_7d": "a55df0126113747a0e0749c42f0b438c0200e205852a3b529ef28558409a9675",
+      "hash_1d": "b80527f133e84944b89029790e18a09c329da086613f817ab66d25b62c51c844",
+      "hash_7d": "559e554510c3f8a89529c4aa3dc1ad318ad543e7f37576f319524846bad98b24",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "error",
+      "status": "partial",
       "count": 0,
-      "raw_count": 0,
+      "raw_count": 51,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 0,
+      "rejected_count": 51,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 0,
-      "failed_queries": 3,
+      "ok_queries": 1,
+      "failed_queries": 2,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
         "gdelt_fimi_2: HTTP 429",
         "gdelt_fimi_3: request failed (TypeError)"
       ]
@@ -627,7 +732,7 @@
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
         "euvsdisinfo_case_watch_1: request failed (TypeError)",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_2: request failed (TypeError)"
       ]
     },
     {
@@ -645,7 +750,7 @@
     "first_epss_top": "ok",
     "first_epss_kev_enrichment": "ok",
     "threatfox_optional": "partial",
-    "gdelt_fimi": "error",
+    "gdelt_fimi": "partial",
     "euvsdisinfo_case_watch": "error",
     "disarm_aligned_taxonomy": "partial"
   },
@@ -675,14 +780,14 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1574 botnet/C2-like indicators in the current 36h window",
+      "1817 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
     "claim_limit": "Context only. No attribution, no proof of coordination, and no proof of sabotage or disinformation by itself."
   },
   "evidence_cards": [
-    "evidence_cards/20261127T063240_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261127T122828_open_source_exploit_ioc_botstate_pressure.json"
   ],
   "downloads": {
     "analyst_bundle": "downloads/hat_analyst_bundle_latest.json",
