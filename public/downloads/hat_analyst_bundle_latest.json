@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-27T00:41:11.816Z",
+  "generated_at": "2026-11-27T06:32:40.436Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -25,10 +25,10 @@
     "confidence": "low",
     "baseline": {
       "status": "active",
-      "points": 44,
+      "points": 45,
       "minimum_days": 14,
-      "mean_hat_score": 57.1,
-      "delta_from_mean": 10.9
+      "mean_hat_score": 57.4,
+      "delta_from_mean": 10.6
     },
     "score_parts": {
       "kev_recent_7d": 100,
@@ -39,7 +39,7 @@
     },
     "context_parts": {
       "epss_hot_global": 100,
-      "source_coverage": 66.66666666666666
+      "source_coverage": 58.333333333333336
     }
   },
   "bot_activity_state": {
@@ -51,31 +51,31 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 66,
-      "botnet_c2_current_percentile": 84,
-      "ioc_36h_percentile": 77,
-      "botnet_c2_36h_percentile": 75,
-      "ioc_36h_count": 3292,
-      "botnet_c2_36h_count": 1107,
+      "ioc_current_percentile": 69,
+      "botnet_c2_current_percentile": 87,
+      "ioc_36h_percentile": 76,
+      "botnet_c2_36h_percentile": 84,
+      "ioc_36h_count": 3243,
+      "botnet_c2_36h_count": 1574,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 36
         }
       }
@@ -94,7 +94,7 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1107 botnet/C2-like indicators in the current 36h window",
+      "1574 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -103,16 +103,16 @@
   "maritime_fimi": {
     "score": null,
     "data_quality": {
-      "state": "partial",
+      "state": "unavailable",
       "score_valid": false,
-      "successful_queries": 1,
+      "successful_queries": 0,
       "expected_queries": 5,
-      "coverage_ratio": 0.2,
+      "coverage_ratio": 0,
       "sources": {
-        "gdelt_fimi": "partial",
+        "gdelt_fimi": "error",
         "euvsdisinfo_case_watch": "error"
       },
-      "sample_limited": true
+      "sample_limited": false
     },
     "last_successful": null,
     "confidence": "low",
@@ -120,127 +120,25 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 75,
+      "raw_unique_articles": 0,
       "accepted_articles": 0,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 75,
+      "rejected_as_noise_or_broad_context": 0,
       "weighted_article_count": 0,
-      "rejected_samples": [
-        {
-          "title": "Pentagon confirms preliminary talks with GM , Ford on drone component production",
-          "domain": "news3lv.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "drone"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ликбез для полезных идиотов на Западе",
-          "domain": "9tv.co.il",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Race for Super - Fast Interceptor Drones Gathers Speed",
-          "domain": "kyivpost.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "drones"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "GTA 6 : UFO Walkthrough & How to Find Aliens",
-          "domain": "pushsquare.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Rumänen fordern deutsche Soldaten an Ukraine - Grenze",
-          "domain": "bild.de",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Canadian Auto Factories Eye Military Production for Ukraine",
-          "domain": "kyivpost.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Russia preparing new mass strike soon : Zelenskiy",
-          "domain": "goulburnpost.com.au",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "strike",
-              "russia"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Ukraine - Krieg | Merz über Garantien für Kiew : Darüber sind wir uns einig",
-          "domain": "t-online.de",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        }
-      ]
+      "rejected_samples": []
     },
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 75,
+      "article_count": 0,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 75,
-      "sample_limited": true,
+      "observed_articles": 0,
+      "sample_limited": false,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_articles": 75,
+      "rejected_articles": 0,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [],
@@ -263,52 +161,52 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1850,
-    "ioc_count_7d": 17285,
-    "botnet_c2_count_1d": 870,
-    "botnet_c2_count_7d": 9467,
+    "ioc_count_1d": 1984,
+    "ioc_count_7d": 17734,
+    "botnet_c2_count_1d": 1163,
+    "botnet_c2_count_7d": 9942,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 870
-      },
-      {
-        "name": "payload_delivery",
-        "count": 546
+        "count": 1163
       },
       {
         "name": "payload",
-        "count": 434
+        "count": 428
+      },
+      {
+        "name": "payload_delivery",
+        "count": 393
       }
     ],
     "malware_families_1d": [
       {
         "name": "Unknown malware",
-        "count": 900
+        "count": 1022
       },
       {
         "name": "Unknown Loader",
-        "count": 203
+        "count": 199
       },
       {
         "name": "ClearFake",
-        "count": 113
+        "count": 65
       },
       {
         "name": "Vidar",
         "count": 55
       },
       {
-        "name": "Cobalt Strike",
-        "count": 51
-      },
-      {
         "name": "Mirai",
         "count": 50
       },
       {
-        "name": "Formbook",
-        "count": 42
+        "name": "AsyncRAT",
+        "count": 49
+      },
+      {
+        "name": "Cobalt Strike",
+        "count": 49
       },
       {
         "name": "Raven Stealer",
@@ -319,22 +217,22 @@
         "count": 39
       },
       {
-        "name": "Unknown RAT",
-        "count": 29
+        "name": "Formbook",
+        "count": 39
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Unknown malware",
-        "count": 7798
+        "count": 8283
       },
       {
         "name": "Cobalt Strike",
-        "count": 274
+        "count": 269
       },
       {
         "name": "Vidar",
-        "count": 261
+        "count": 258
       },
       {
         "name": "Unknown Stealer",
@@ -342,27 +240,27 @@
       },
       {
         "name": "XWorm",
-        "count": 99
-      },
-      {
-        "name": "PureRAT",
-        "count": 91
-      },
-      {
-        "name": "Sliver",
-        "count": 91
-      },
-      {
-        "name": "VShell",
-        "count": 71
+        "count": 101
       },
       {
         "name": "AsyncRAT",
-        "count": 70
+        "count": 89
+      },
+      {
+        "name": "PureRAT",
+        "count": 86
+      },
+      {
+        "name": "VShell",
+        "count": 82
+      },
+      {
+        "name": "Sliver",
+        "count": 74
       },
       {
         "name": "WARDENStealer",
-        "count": 47
+        "count": 40
       }
     ],
     "historical": {
@@ -374,31 +272,31 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3292,
-      "current_36h_botnet_c2_count": 1107,
-      "current_ioc_percentile": 66,
-      "current_botnet_c2_percentile": 84,
-      "trailing_36h_ioc_percentile": 77,
-      "trailing_36h_botnet_c2_percentile": 75,
+      "current_36h_ioc_count": 3243,
+      "current_36h_botnet_c2_count": 1574,
+      "current_ioc_percentile": 69,
+      "current_botnet_c2_percentile": 87,
+      "trailing_36h_ioc_percentile": 76,
+      "trailing_36h_botnet_c2_percentile": 84,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 24
         },
         "current_botnet_c2_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 24
         },
         "trailing_36h_ioc_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 36
         },
         "trailing_36h_botnet_c2_percentile": {
           "source": "valid_local_daily_history",
-          "days": 44,
+          "days": 45,
           "window_hours": 36
         }
       }
@@ -533,32 +431,33 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1850,
-      "count_7d": 17285,
-      "botnet_cc_count": 9467,
+      "count": 1984,
+      "count_7d": 17734,
+      "botnet_cc_count": 9942,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "edeff47df220d08b4247785f694e6cf341d89774da1337a3c9567f266202e263",
-      "hash_7d": "54d696bf50c40630d3f039927155da9ab9a2dcca33b505780d9c169448cf3b0e",
+      "hash_1d": "e1e865ed018251125b1afab2a6161c731a2115c691f34d8aafa9da6c3dd9e8ad",
+      "hash_7d": "a55df0126113747a0e0749c42f0b438c0200e205852a3b529ef28558409a9675",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
     {
       "source": "gdelt_fimi",
-      "status": "partial",
+      "status": "error",
       "count": 0,
-      "raw_count": 75,
+      "raw_count": 0,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 75,
+      "rejected_count": 0,
       "weighted_count": 0,
       "queries": 3,
-      "ok_queries": 1,
-      "failed_queries": 2,
+      "ok_queries": 0,
+      "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_1: HTTP 429",
-        "gdelt_fimi_2: HTTP 429"
+        "gdelt_fimi_1: request failed (TypeError)",
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: request failed (TypeError)"
       ]
     },
     {
@@ -570,7 +469,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_1: request failed (TypeError)",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -589,8 +488,8 @@
     "43 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.0879",
-    "1850 ThreatFox IOCs in the last 1 day",
-    "9467 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1984 ThreatFox IOCs in the last 1 day",
+    "9942 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -604,6 +503,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261127T004111_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261127T063240_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
