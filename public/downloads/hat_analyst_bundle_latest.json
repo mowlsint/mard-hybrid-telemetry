@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-28T06:29:58.641Z",
+  "generated_at": "2026-11-28T12:25:30.463Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -11,30 +11,30 @@
   },
   "created_for": "analyst re-use; no secrets; no raw Auth-Key material",
   "score": {
-    "hat_score": 68,
+    "hat_score": 65,
     "level": "high",
     "interpretation": {
-      "percentage": 68,
+      "percentage": 65,
       "label": "high",
       "color": "deep orange",
       "css": "high",
       "meaning": "high contextual pressure",
       "scale": "0-100 contextual pressure; not probability"
     },
-    "trend": "rising",
+    "trend": "stable",
     "confidence": "low",
     "baseline": {
       "status": "active",
       "points": 46,
       "minimum_days": 14,
       "mean_hat_score": 57.6,
-      "delta_from_mean": 10.4
+      "delta_from_mean": 7.4
     },
     "score_parts": {
       "kev_recent_7d": 100,
       "kev_recent_30d": 100,
       "kev_epss_mean": 9,
-      "threatfox_ioc_current": 65,
+      "threatfox_ioc_current": 50,
       "threatfox_botnet_c2_36h": 65
     },
     "context_parts": {
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 65,
-      "botnet_c2_current_percentile": 87,
-      "ioc_36h_percentile": 65,
-      "botnet_c2_36h_percentile": 89,
-      "ioc_36h_count": 3003,
-      "botnet_c2_36h_count": 2008,
+      "ioc_current_percentile": 50,
+      "botnet_c2_current_percentile": 83,
+      "ioc_36h_percentile": 57,
+      "botnet_c2_36h_percentile": 93,
+      "ioc_36h_count": 2830,
+      "botnet_c2_36h_count": 2105,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -94,7 +94,7 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "2008 botnet/C2-like indicators in the current 36h window",
+      "2105 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -161,22 +161,22 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 1895,
-    "ioc_count_7d": 17805,
-    "botnet_c2_count_1d": 1320,
-    "botnet_c2_count_7d": 10687,
+    "ioc_count_1d": 1586,
+    "ioc_count_7d": 17742,
+    "botnet_c2_count_1d": 1109,
+    "botnet_c2_count_7d": 10711,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 1265
+        "count": 1054
       },
       {
         "name": "payload",
-        "count": 406
+        "count": 348
       },
       {
         "name": "payload_delivery",
-        "count": 223
+        "count": 183
       },
       {
         "name": "cc_skimming",
@@ -186,7 +186,7 @@
     "malware_families_1d": [
       {
         "name": "Unknown malware",
-        "count": 1146
+        "count": 930
       },
       {
         "name": "ZStealer",
@@ -194,56 +194,52 @@
       },
       {
         "name": "Mirai",
-        "count": 97
+        "count": 64
       },
       {
         "name": "ClearFake",
-        "count": 56
+        "count": 52
+      },
+      {
+        "name": "Cobalt Strike",
+        "count": 42
       },
       {
         "name": "Unknown Loader",
-        "count": 51
-      },
-      {
-        "name": "VShell",
-        "count": 46
-      },
-      {
-        "name": "Unknown RAT",
         "count": 40
       },
       {
-        "name": "Vidar",
+        "name": "VShell",
         "count": 37
       },
       {
-        "name": "WARDENStealer",
-        "count": 34
+        "name": "Jackskid",
+        "count": 31
+      },
+      {
+        "name": "Vidar",
+        "count": 28
       },
       {
         "name": "IClickFix",
-        "count": 27
+        "count": 25
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Unknown malware",
-        "count": 9042
+        "count": 9119
       },
       {
         "name": "Cobalt Strike",
-        "count": 269
+        "count": 276
       },
       {
         "name": "Vidar",
-        "count": 263
+        "count": 262
       },
       {
         "name": "VShell",
-        "count": 112
-      },
-      {
-        "name": "Unknown Stealer",
         "count": 111
       },
       {
@@ -263,8 +259,12 @@
         "count": 66
       },
       {
+        "name": "Unknown Stealer",
+        "count": 63
+      },
+      {
         "name": "WARDENStealer",
-        "count": 60
+        "count": 58
       }
     ],
     "historical": {
@@ -276,12 +276,12 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 3003,
-      "current_36h_botnet_c2_count": 2008,
-      "current_ioc_percentile": 65,
-      "current_botnet_c2_percentile": 87,
-      "trailing_36h_ioc_percentile": 65,
-      "trailing_36h_botnet_c2_percentile": 89,
+      "current_36h_ioc_count": 2830,
+      "current_36h_botnet_c2_count": 2105,
+      "current_ioc_percentile": 50,
+      "current_botnet_c2_percentile": 83,
+      "trailing_36h_ioc_percentile": 57,
+      "trailing_36h_botnet_c2_percentile": 93,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -435,14 +435,14 @@
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 1895,
-      "count_7d": 17805,
-      "botnet_cc_count": 10687,
+      "count": 1586,
+      "count_7d": 17742,
+      "botnet_cc_count": 10711,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "065032f1a268ef6139ddf0885a5840e978b93fd687237790d4ddf6bba7c08a6c",
-      "hash_7d": "6878f1ed94d8d80a428bccf240d631f7ec9457f3a6c064ab4b4e20192b566622",
+      "hash_1d": "9c1769f805793e8fdb497dd09edede56d97d8025796c9f1fdd0ee78340434c63",
+      "hash_7d": "8b49d198c20284b10f290a8111b7a2ba5a1ca94a5dd818132ba0d521c799cc04",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -459,9 +459,9 @@
       "ok_queries": 0,
       "failed_queries": 3,
       "errors": [
-        "gdelt_fimi_1: request failed (TypeError)",
-        "gdelt_fimi_2: request failed (TypeError)",
-        "gdelt_fimi_3: request failed (TypeError)"
+        "gdelt_fimi_1: HTTP 429",
+        "gdelt_fimi_2: HTTP 429",
+        "gdelt_fimi_3: HTTP 429"
       ]
     },
     {
@@ -473,7 +473,7 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
         "euvsdisinfo_case_watch_2: HTTP 429"
       ]
     },
@@ -492,8 +492,8 @@
     "44 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
     "Mean EPSS of recent KEV items: 0.0897",
-    "1895 ThreatFox IOCs in the last 1 day",
-    "10687 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "1586 ThreatFox IOCs in the last 1 day",
+    "10711 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -507,6 +507,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261128T062958_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261128T122530_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
