@@ -1,6 +1,6 @@
 {
   "schema": "mard-hat-analyst-download-bundle-v1",
-  "generated_at": "2026-11-27T18:24:13.930Z",
+  "generated_at": "2026-11-28T00:40:00.999Z",
   "scoring_version": "0.2.0",
   "data_quality": {
     "state": "valid",
@@ -33,7 +33,7 @@
     "score_parts": {
       "kev_recent_7d": 100,
       "kev_recent_30d": 100,
-      "kev_epss_mean": 10,
+      "kev_epss_mean": 9,
       "threatfox_ioc_current": 65,
       "threatfox_botnet_c2_36h": 65
     },
@@ -51,12 +51,12 @@
     "finding": "reported malware infrastructure indicators; no social-bot or attribution finding",
     "basis": {
       "threshold_percentile": 75,
-      "ioc_current_percentile": 71,
-      "botnet_c2_current_percentile": 89,
-      "ioc_36h_percentile": 64,
+      "ioc_current_percentile": 82,
+      "botnet_c2_current_percentile": 98,
+      "ioc_36h_percentile": 62,
       "botnet_c2_36h_percentile": 87,
-      "ioc_36h_count": 2969,
-      "botnet_c2_36h_count": 1847,
+      "ioc_36h_count": 2889,
+      "botnet_c2_36h_count": 1892,
       "percentile_baselines": {
         "current_ioc_percentile": {
           "source": "valid_local_daily_history",
@@ -94,7 +94,7 @@
     "level": "low",
     "signals": [
       "current bot/IOC proxy telemetry is elevated (BAB)",
-      "1847 botnet/C2-like indicators in the current 36h window",
+      "1892 botnet/C2-like indicators in the current 36h window",
       "partial/degraded source access: threatfox_optional, gdelt_fimi, euvsdisinfo_case_watch, disarm_aligned_taxonomy"
     ],
     "explanation": "This is not proof that botnets or narratives are intentionally hiding maritime events. It marks conditions compatible with information fog or obscuration: elevated botnet/C2 proxy telemetry can support access, spam, amplification or disruption infrastructure, while broad narrative volume can bury or blur maritime/security signals. Source rate-limits or partial fetches can add analytical blind spots.",
@@ -120,113 +120,123 @@
     "maritime_filter": {
       "schema": "mard-hat-maritime-filter-v1",
       "rule": "score only if headline or URL path contains a maritime anchor and a threat/FIMI anchor; Core MARD-Eu also requires a North/Baltic/Northern Europe anchor; Global Maritime Spillover is retained but down-weighted.",
-      "raw_unique_articles": 31,
+      "raw_unique_articles": 46,
       "accepted_articles": 0,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_as_noise_or_broad_context": 31,
+      "rejected_as_noise_or_broad_context": 46,
       "weighted_article_count": 0,
       "rejected_samples": [
         {
-          "title": "美弹药库存见底 川普撤退 欧盟成 价值美国 首都",
-          "domain": "wenxuecity.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Мирные переговоры приближаются к срыву ( Steigan blogger , Норвегия )",
-          "domain": "inosmi.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "норвегия"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Писториус обеспокоен тем , что Украина переносит конфликт в Балтийское море ( Junge Freiheit , Германия )",
-          "domain": "inosmi.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [
-              "балтийское море",
-              "германия"
-            ],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Najvažnije vesti iz sveta za 26 . novembar 2026 . - Vesti",
-          "domain": "telegraf.rs",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Zelenskyy warns of major Russian attack as Trump urges Putin to pull back | Russia - Ukraine war News",
-          "domain": "aljazeera.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "attack",
-              "russia",
-              "russian",
-              "ukraine"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Zelenskyy warns of major Russian attack as Trump urges Putin to pull back - Dominican Republic Post – Caribbean News , Business , Travel & Culture",
-          "domain": "dominicanrepublicpost.com",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [
-              "attack",
-              "russian"
-            ],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Трамп снова возмутился отставанием США от России по числу ледоколов",
-          "domain": "ria.ru",
-          "reason": "missing_required_maritime_threat_region_combination",
-          "matched": {
-            "maritime": [],
-            "threat_fimi": [],
-            "region": [],
-            "global_spillover": []
-          }
-        },
-        {
-          "title": "Libyen : Libyen und Italien kritisieren ukrainischen Angriff auf russische Schiffe",
-          "domain": "spiegel.de",
+          "title": "Croatian Court Overturns Nord Stream Suspect Extradition to Germany",
+          "domain": "kyivpost.com",
           "reason": "missing_required_maritime_threat_region_combination",
           "matched": {
             "maritime": [
-              "schiffe"
+              "nord stream"
+            ],
+            "threat_fimi": [],
+            "region": [
+              "germany"
+            ],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Zelensky Libya attack , Merz freezes battle in Brussels , the USAID propaganda machine exposed : RT top stories of the week",
+          "domain": "kenyastar.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "attack",
+              "propaganda"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Schläge gegen Putins Schattenflotte : Kiesewetter verteidigt ukrainische Angriffe",
+          "domain": "tz.de",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [
+              "schattenflotte"
             ],
             "threat_fimi": [
-              "angriff",
+              "ukraine",
+              "russische"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "В Хорватии отменили решение о выдаче подозреваемого в подрыве « Северных потоков »",
+          "domain": "news.mail.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "« Средиземное море может вспыхнуть »: Кремль предупредил лидеров ЕС о риске большой морской войны после атак на корабли РФ – инсайд",
+          "domain": "bloknot.ru",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [
+              "корабли",
+              "морской"
+            ],
+            "threat_fimi": [],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Schläge gegen Putins Schattenflotte : Kiesewetter verteidigt ukrainische Angriffe",
+          "domain": "hna.de",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [
+              "schattenflotte"
+            ],
+            "threat_fimi": [
+              "ukraine",
+              "russische"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Zelensky Libya attack , Merz freezes battle in Brussels , the USAID propaganda machine exposed : RT top stories of the week",
+          "domain": "bignewsnetwork.com",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [],
+            "threat_fimi": [
+              "attack",
+              "propaganda"
+            ],
+            "region": [],
+            "global_spillover": []
+          }
+        },
+        {
+          "title": "Schläge gegen Putins Schattenflotte : Kiesewetter verteidigt ukrainische Angriffe",
+          "domain": "fnp.de",
+          "reason": "missing_required_maritime_threat_region_combination",
+          "matched": {
+            "maritime": [
+              "schattenflotte"
+            ],
+            "threat_fimi": [
+              "ukraine",
               "russische"
             ],
             "region": [],
@@ -238,14 +248,14 @@
     "gdelt_summary": {
       "timespan": "36h",
       "query_count": 3,
-      "article_count": 31,
+      "article_count": 46,
       "unique_articles_raw": null,
       "unique_articles": null,
-      "observed_articles": 31,
+      "observed_articles": 46,
       "sample_limited": false,
       "core_mard_eu_articles": 0,
       "global_maritime_spillover_articles": 0,
-      "rejected_articles": 31,
+      "rejected_articles": 46,
       "weighted_articles": null,
       "historical_percentile": null,
       "top_domains": [],
@@ -268,28 +278,32 @@
   },
   "threatfox_summary": {
     "enabled": true,
-    "ioc_count_1d": 2088,
-    "ioc_count_7d": 18010,
-    "botnet_c2_count_1d": 1277,
-    "botnet_c2_count_7d": 10102,
+    "ioc_count_1d": 2222,
+    "ioc_count_7d": 18444,
+    "botnet_c2_count_1d": 1660,
+    "botnet_c2_count_7d": 10488,
     "threat_types_1d": [
       {
         "name": "botnet_cc",
-        "count": 1225
+        "count": 1608
       },
       {
         "name": "payload",
-        "count": 639
+        "count": 389
       },
       {
         "name": "payload_delivery",
         "count": 224
+      },
+      {
+        "name": "cc_skimming",
+        "count": 1
       }
     ],
     "malware_families_1d": [
       {
         "name": "Unknown malware",
-        "count": 1146
+        "count": 1455
       },
       {
         "name": "ZStealer",
@@ -297,49 +311,49 @@
       },
       {
         "name": "ClearFake",
-        "count": 58
+        "count": 65
       },
       {
         "name": "Mirai",
-        "count": 56
-      },
-      {
-        "name": "Vidar",
-        "count": 54
-      },
-      {
-        "name": "AsyncRAT",
-        "count": 46
-      },
-      {
-        "name": "Raven Stealer",
-        "count": 43
-      },
-      {
-        "name": "Formbook",
-        "count": 42
+        "count": 61
       },
       {
         "name": "Unknown Loader",
+        "count": 52
+      },
+      {
+        "name": "VShell",
+        "count": 45
+      },
+      {
+        "name": "Unknown RAT",
         "count": 40
       },
       {
-        "name": "Agent Tesla",
+        "name": "AsyncRAT",
         "count": 39
+      },
+      {
+        "name": "Vidar",
+        "count": 39
+      },
+      {
+        "name": "WARDENStealer",
+        "count": 35
       }
     ],
     "botnet_families_7d": [
       {
         "name": "Unknown malware",
-        "count": 8532
+        "count": 8868
       },
       {
         "name": "Cobalt Strike",
-        "count": 272
+        "count": 273
       },
       {
         "name": "Vidar",
-        "count": 255
+        "count": 257
       },
       {
         "name": "Unknown Stealer",
@@ -347,19 +361,19 @@
       },
       {
         "name": "VShell",
-        "count": 93
+        "count": 99
+      },
+      {
+        "name": "PureRAT",
+        "count": 94
       },
       {
         "name": "XWorm",
         "count": 89
       },
       {
-        "name": "PureRAT",
-        "count": 86
-      },
-      {
         "name": "AsyncRAT",
-        "count": 82
+        "count": 81
       },
       {
         "name": "Sliver",
@@ -367,7 +381,7 @@
       },
       {
         "name": "WARDENStealer",
-        "count": 62
+        "count": 61
       }
     ],
     "historical": {
@@ -379,11 +393,11 @@
       "days_with_iocs": 0,
       "bot_activity_hours": 36,
       "time_filter_valid": true,
-      "current_36h_ioc_count": 2969,
-      "current_36h_botnet_c2_count": 1847,
-      "current_ioc_percentile": 71,
-      "current_botnet_c2_percentile": 89,
-      "trailing_36h_ioc_percentile": 64,
+      "current_36h_ioc_count": 2889,
+      "current_36h_botnet_c2_count": 1892,
+      "current_ioc_percentile": 82,
+      "current_botnet_c2_percentile": 98,
+      "trailing_36h_ioc_percentile": 62,
       "trailing_36h_botnet_c2_percentile": 87,
       "percentile_baselines": {
         "current_ioc_percentile": {
@@ -412,9 +426,9 @@
   "kev_summary": {
     "total_kev": 1805,
     "recent_7d": 15,
-    "recent_30d": 43,
-    "epss_mean_recent_kev": 0.1049,
-    "epss_enriched_count": 43,
+    "recent_30d": 41,
+    "epss_mean_recent_kev": 0.0916,
+    "epss_enriched_count": 41,
     "epss_enrichment_coverage": 1,
     "top_recent_kev_by_epss": [
       {
@@ -424,14 +438,6 @@
         "vulnerability_name": "OpenBSD OpenSSH Unexpected Status Code or Return Value Vulnerability",
         "date_added": "2026-11-09",
         "epss": 0.89631
-      },
-      {
-        "cve": "CVE-2026-97229",
-        "vendor_project": "GitLab",
-        "product": "Community Edition and Enterprise Edition",
-        "vulnerability_name": "GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability",
-        "date_added": "2026-10-29",
-        "epss": 0.74315
       },
       {
         "cve": "CVE-2026-116779",
@@ -512,6 +518,14 @@
         "vulnerability_name": "UnrealIRCd Improper Neutralization of Delimiters Vulnerability",
         "date_added": "2026-11-13",
         "epss": 0.10202
+      },
+      {
+        "cve": "CVE-2026-102895",
+        "vendor_project": "GPUStack",
+        "product": "GPUStack",
+        "vulnerability_name": "GPUStack Improper Authentication Vulnerability",
+        "date_added": "2026-11-09",
+        "epss": 0.08546
       }
     ]
   },
@@ -531,21 +545,21 @@
     {
       "source": "first_epss_kev_enrichment",
       "status": "ok",
-      "count": 43,
+      "count": 41,
       "coverage_ratio": 1
     },
     {
       "source": "threatfox_optional",
       "status": "partial",
       "recent_api_status": "ok",
-      "count": 2088,
-      "count_7d": 18010,
-      "botnet_cc_count": 10102,
+      "count": 2222,
+      "count_7d": 18444,
+      "botnet_cc_count": 10488,
       "historical_export_status": "error",
       "historical_export_count": 0,
       "historical_export_format": null,
-      "hash_1d": "888a220e6c76962191d90b617f8c31a76c9125db7ff149e6e94098c19493bb8a",
-      "hash_7d": "c02c9309870477b0e6b7b719fc209a635d610eeba78e1718e72a8f08930d0ed1",
+      "hash_1d": "b8c649b12fee4b0889aef74671a493cf5620931a68f83523d77ae5c4516ed50d",
+      "hash_7d": "934de2d3d60f54df9847fb39b397d4d7250536a26d0d68f83053cc08c890d12f",
       "export_hash": null,
       "export_error": "json:threatfox_full_json_export: HTTP 403 | json:threatfox_full_json_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403 | csv:threatfox_full_csv_export: HTTP 403"
     },
@@ -553,10 +567,10 @@
       "source": "gdelt_fimi",
       "status": "partial",
       "count": 0,
-      "raw_count": 31,
+      "raw_count": 46,
       "core_count": 0,
       "global_spillover_count": 0,
-      "rejected_count": 31,
+      "rejected_count": 46,
       "weighted_count": 0,
       "queries": 3,
       "ok_queries": 1,
@@ -575,8 +589,8 @@
       "failed_queries": 2,
       "method": "gdelt_domain_restricted_artlist",
       "errors": [
-        "euvsdisinfo_case_watch_1: missing ArticleList articles array",
-        "euvsdisinfo_case_watch_2: HTTP 429"
+        "euvsdisinfo_case_watch_1: HTTP 429",
+        "euvsdisinfo_case_watch_2: missing ArticleList articles array"
       ]
     },
     {
@@ -591,11 +605,11 @@
   ],
   "drivers": [
     "15 CISA KEV additions in the last 7 days",
-    "43 CISA KEV additions in the last 30 days",
+    "41 CISA KEV additions in the last 30 days",
     "250 EPSS entries above the configured hot percentile query window (context only)",
-    "Mean EPSS of recent KEV items: 0.1049",
-    "2088 ThreatFox IOCs in the last 1 day",
-    "10102 ThreatFox botnet/C2-like indicators in the last 7 days",
+    "Mean EPSS of recent KEV items: 0.0916",
+    "2222 ThreatFox IOCs in the last 1 day",
+    "10488 ThreatFox botnet/C2-like indicators in the last 7 days",
     "ThreatFox historical approximation not fully active; conservative fallback scoring is capped and BAB/BWB should be read cautiously",
     "Bot state: BAB — Current C2 indicator pressure elevated",
     "Maritime narrative alert: not assessable (not_assessable)",
@@ -609,6 +623,6 @@
     "no_proof_by_itself": true
   },
   "evidence_cards": [
-    "evidence_cards/20261127T182413_open_source_exploit_ioc_botstate_pressure.json"
+    "evidence_cards/20261128T004000_open_source_exploit_ioc_botstate_pressure.json"
   ]
 }
